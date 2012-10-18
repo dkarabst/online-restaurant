@@ -1,5 +1,4 @@
 package com.softserve.academy.food.dao;
-//package com.hello.dao;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,36 +6,45 @@ import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
+import com.softserve.academy.food.entity.Category;
 import com.softserve.academy.food.entity.Dish;
 import com.softserve.academy.food.model.DishModel;
 import com.softserve.academy.food.model.IModel;
 
 public class DishDAO
 {
-	
+
 	protected Query		queryResult;
 	protected Session	session;
 
+	public DishDAO()
+	{
+		session = HibernateUtil.getSession();
+		session.beginTransaction();
+	}
 
 	public IModel getModelById(int id)
 	{
-		queryResult = session.createQuery("from DISHES where dish_id =" + id);
-		session.flush();
-		Dish d = (Dish) queryResult.list().get(0);
+		Dish d = (Dish) session.get(Dish.class, id);
 		return new DishModel(d.getCategory(), d.getName(), d.getPrice(),
 				d.getPhoto(), d.getDescr(), d.getAvail(), d.getPrepTime(),
 				d.getWeight());
 	}
 
-
-	public IModel getModelByName(String name)
+	public ArrayList<DishModel> getModelByName(String name)
 	{
-		queryResult = session.createQuery("from DISHES where dish_id =" + name);
+		queryResult = session.createQuery("from DISHES where DISH_NAME =" + name);
 		session.flush();
-		Dish d = (Dish) queryResult.list().get(0);
-		return new DishModel(d.getCategory(), d.getName(), d.getPrice(),
-				d.getPhoto(), d.getDescr(), d.getAvail(), d.getPrepTime(),
-				d.getWeight());
+		@SuppressWarnings("unchecked")
+		List<Dish> entityList = queryResult.list();
+		ArrayList<DishModel> modelList = new ArrayList<DishModel>();
+		for (Dish d : entityList)
+		{
+			modelList.add(new DishModel(d.getCategory(), d.getName(), d
+					.getPrice(), d.getPhoto(), d.getDescr(), d.getAvail(), d
+					.getPrepTime(), d.getWeight()));
+		}
+		return modelList;
 	}
 
 	public ArrayList<DishModel> getAllModels()
@@ -45,25 +53,25 @@ public class DishDAO
 		session.flush();
 		@SuppressWarnings("unchecked")
 		List<Dish> entityList = queryResult.list();
-		DishModel model = null;
 		ArrayList<DishModel> modelList = new ArrayList<DishModel>();
 		for (Dish d : entityList)
 		{
-			model = new DishModel(d.getCategory(), d.getName(), d.getPrice(),
-					d.getPhoto(), d.getDescr(), d.getAvail(), d.getPrepTime(),
-					d.getWeight());
-			modelList.add(model);
+			modelList.add(new DishModel(d.getCategory(), d.getName(), d
+					.getPrice(), d.getPhoto(), d.getDescr(), d.getAvail(), d
+					.getPrepTime(), d.getWeight()));
 		}
 		return modelList;
 	}
 
-
-	public void addModel(String name)
+	public void addModel(Category category, String name, Integer price,
+			String photo, String descr, Character avail, Integer prepTime,
+			String weight)
 	{
-		// TODO Auto-generated method stub
+		session.save(new Dish(category, name, price, photo, descr, avail,
+				prepTime, weight));
+		session.flush();
 
 	}
-
 
 	public void delModelById(int id)
 	{
@@ -71,7 +79,6 @@ public class DishDAO
 		session.createQuery(hql);
 
 	}
-
 
 	public void delModelByName(String name)
 	{

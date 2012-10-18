@@ -6,61 +6,63 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-
-import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 @Table(name = "CATEGORIES")
-public class Category extends AbsEntity {
+public class Category extends AbsEntity
+{
 
-	private static final long serialVersionUID = 1L;
+	private static final long	serialVersionUID	= 1L;
 
 	@Id
 	@Column(name = "cat_id")
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Integer id;
+	private Integer				id;
 
 	@Column(name = "CAT_NAME", length = 50)
-	private String name;
-	
-//	create table CATEGORIES (
-//			CAT_ID integer,
-//			CAT_NAME varchar(50)
-//		)
-	
-//	insert into CATEGORIES (cat_id,
-//			CAT_NAME)
-//		 values (?, ?)
+	private String				name;
 
+	// create table CATEGORIES (
+	// CAT_ID integer,
+	// CAT_NAME varchar(50)
+	// )
 
-	public Category() {
+	// insert into CATEGORIES (cat_id,
+	// CAT_NAME)
+	// values (?, ?)
+
+	public Category()
+	{
 	}
 
-	public Category(Integer id, String name) {
-		setId(id);
+	public Category(String name)
+	{
 		setName(name);
 	}
 
-	public Integer getId() {
+	public Integer getId()
+	{
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(Integer id)
+	{
 		this.id = id;
 	}
 
-	public String getName() {
+	public String getName()
+	{
 		return name;
 	}
 
-	public void setName(String name) {
+	public void setName(String name)
+	{
 		this.name = name;
 	}
 
 	@Override
-	public int hashCode() {
+	public int hashCode()
+	{
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
@@ -69,7 +71,8 @@ public class Category extends AbsEntity {
 	}
 
 	@Override
-	public boolean equals(Object obj) {
+	public boolean equals(Object obj)
+	{
 		if (this == obj)
 			return true;
 		if (obj == null)

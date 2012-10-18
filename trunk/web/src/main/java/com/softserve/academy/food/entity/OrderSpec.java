@@ -7,72 +7,81 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "ORDER_SPECS")
-public class OrderSpec extends AbsEntity {
+public class OrderSpec extends AbsEntity
+{
 
-	private static final long serialVersionUID = 1L;
+	private static final long	serialVersionUID	= 1L;
 
 	@Id
 	@Column(name = "ospec_id")
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id;
+	private Long				id;
 
-	private OrderInfo orderInfo;
+	private OrderInfo			orderInfo;
 
-	@OneToOne(mappedBy="ORDER_SPECS" )
-	private Dish dish;
+	@OneToOne(mappedBy = "ORDER_SPECS")
+	private Dish				dish;
 
 	@Column(name = "OSPEC_QUANTITY")
-	private Integer quantity;
+	private Integer				quantity;
 
-	public OrderSpec() {
+	public OrderSpec()
+	{
 	}
 
-	public OrderSpec(Long id, OrderInfo orderInfo, Dish dish, Integer quantity) {
-		setId(id);
+	public OrderSpec(OrderInfo orderInfo, Dish dish, Integer quantity)
+	{
 		setOrderInfo(orderInfo);
 		setDish(dish);
 		setQuantity(quantity);
 	}
 
-	public Long getId() {
+	public Long getId()
+	{
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(Long id)
+	{
 		this.id = id;
 	}
 
-	public OrderInfo getOrderInfo() {
+	public OrderInfo getOrderInfo()
+	{
 		return orderInfo;
 	}
 
-	public void setOrderInfo(OrderInfo orderInfo) {
+	public void setOrderInfo(OrderInfo orderInfo)
+	{
 		this.orderInfo = orderInfo;
 	}
 
-	public Dish getDish() {
+	public Dish getDish()
+	{
 		return dish;
 	}
 
-	public void setDish(Dish dish) {
+	public void setDish(Dish dish)
+	{
 		this.dish = dish;
 	}
 
-	public Integer getQuantity() {
+	public Integer getQuantity()
+	{
 		return quantity;
 	}
 
-	public void setQuantity(Integer quantity) {
+	public void setQuantity(Integer quantity)
+	{
 		this.quantity = quantity;
 	}
 
 	@Override
-	public int hashCode() {
+	public int hashCode()
+	{
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((dish == null) ? 0 : dish.hashCode());
@@ -85,7 +94,8 @@ public class OrderSpec extends AbsEntity {
 	}
 
 	@Override
-	public boolean equals(Object obj) {
+	public boolean equals(Object obj)
+	{
 		if (this == obj)
 			return true;
 		if (obj == null)
@@ -93,28 +103,31 @@ public class OrderSpec extends AbsEntity {
 		if (getClass() != obj.getClass())
 			return false;
 		OrderSpec other = (OrderSpec) obj;
-		if (dish == null) {
+		if (dish == null)
+		{
 			if (other.dish != null)
 				return false;
 		} else if (!dish.equals(other.dish))
 			return false;
-		if (id == null) {
+		if (id == null)
+		{
 			if (other.id != null)
 				return false;
 		} else if (!id.equals(other.id))
 			return false;
-		if (orderInfo == null) {
+		if (orderInfo == null)
+		{
 			if (other.orderInfo != null)
 				return false;
 		} else if (!orderInfo.equals(other.orderInfo))
 			return false;
-		if (quantity == null) {
+		if (quantity == null)
+		{
 			if (other.quantity != null)
 				return false;
 		} else if (!quantity.equals(other.quantity))
 			return false;
 		return true;
 	}
-	
 
 } // OrderSpec
