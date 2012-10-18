@@ -1,5 +1,4 @@
 package com.softserve.academy.food.dao;
-//package com.hello.dao;
 
 import org.hibernate.*;
 import org.hibernate.cfg.Configuration;

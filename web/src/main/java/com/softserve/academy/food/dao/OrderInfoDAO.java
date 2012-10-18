@@ -1,14 +1,14 @@
 package com.softserve.academy.food.dao;
-//package com.hello.dao;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
 
 import com.softserve.academy.food.entity.OrderInfo;
+import com.softserve.academy.food.entity.OrderSpec;
 import com.softserve.academy.food.entity.User;
 import com.softserve.academy.food.model.IModel;
 import com.softserve.academy.food.model.OrderInfoModel;
@@ -18,27 +18,54 @@ public class OrderInfoDAO
 	protected Query		queryResult;
 	protected Session	session;
 
+	public OrderInfoDAO()
+	{
+		session = HibernateUtil.getSession();
+		session.beginTransaction();
+	}
+
 	public IModel getModelById(int id)
 	{
-		queryResult = session.createQuery("from ORDERINFO where oinfo_id ="
-				+ id);
+		OrderInfo oi = (OrderInfo) session.get(OrderInfo.class, id);
+		return new OrderInfoModel(oi.getUser(), oi.getDate(), oi.getStatus(),
+				oi.getSpec());
+	}
+	
+	public List<OrderInfoModel> getAllModels()
+	{
+		queryResult = session.createQuery("from ORDERINFO ");
 		session.flush();
-		OrderInfo oi = (OrderInfo) queryResult.list().get(0);
-		return new OrderInfoModel(oi.getUser(), oi.getDate(), oi.getStatus());
+		@SuppressWarnings("unchecked")
+		List<OrderInfo> entityList = queryResult.list();
+		ArrayList<OrderInfoModel> modelList = new ArrayList<OrderInfoModel>();
+		for (OrderInfo entity : entityList)
+		{
+			modelList.add(new OrderInfoModel(entity.getUser(),
+					entity.getDate(), entity.getStatus(), entity.getSpec()));
+		}
+		return modelList;
 	}
 
-	public void getModelByUser(String name)
+	public List<OrderInfoModel> getModelByUser(User user)
 	{
-		// todo return model;
+		queryResult = session.createQuery("from ORDERINFO where OINFO_USER ="
+				+ user);
+		session.flush();
+		@SuppressWarnings("unchecked")
+		List<OrderInfo> entityList = queryResult.list();
+		ArrayList<OrderInfoModel> modelList = new ArrayList<OrderInfoModel>();
+		for (OrderInfo entity : entityList)
+		{
+			modelList.add(new OrderInfoModel(entity.getUser(),
+					entity.getDate(), entity.getStatus(), entity.getSpec()));
+		}
+		return modelList;
 	}
 
-	public void addModel(User user)
+	public void addModel(User user, Date date, Character status,
+			List<OrderSpec> spec)
 	{
-		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-		Date date = new Date();
-		String sql = "INSERT INTO ORDERINFO(OINFO_USER,OINFO_DATE,OINFO_STATUS) values ('"
-				+ user + "','" + dateFormat.format(date) + "','A')";
-		session.createSQLQuery(sql);
+		session.save(new OrderInfo(user, date, status, spec));
 		session.flush();
 
 	}
@@ -50,9 +77,10 @@ public class OrderInfoDAO
 
 	}
 
-	public void delModelByUser(String name)
+	public void delModelByUser(User user)
 	{
-		// TODO Auto-generated method stub
+		String hql = "DELETE FROM ORDERINFO WHERE OINFO_USER =" + user;
+		session.createQuery(hql);
 
 	}
 

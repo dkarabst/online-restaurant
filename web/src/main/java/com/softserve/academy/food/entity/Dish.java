@@ -7,46 +7,43 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-
-import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 @Table(name = "DISHES")
-public class Dish extends AbsEntity {
+public class Dish extends AbsEntity
+{
 
-	private static final long serialVersionUID = 1L;
+	private static final long	serialVersionUID	= 1L;
 
 	@Id
 	@Column(name = "dish_id")
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Integer id;
+	private Integer				id;
 
 	// Is it right???
-	@OneToOne(mappedBy="Dish" )
-	private Category category;
+	@OneToOne(mappedBy = "Dish")
+	private Category			category;
 
 	@Column(name = "DISH_NAME", length = 50)
-	private String name;
+	private String				name;
 
 	@Column(name = "DISH_PRICE")
-	private Integer price;
+	private Integer				price;
 
 	@Column(name = "DISH_PHOTO", length = 50)
-	private String photo;
+	private String				photo;
 
 	@Column(name = "DISH_DESCR", length = 50)
-	private String descr;
+	private String				descr;
 
 	@Column(name = "DISH_AVAIL")
-	private Character avail;
+	private Character			avail;
 
 	@Column(name = "DISH_PREP_TIME")
-	private Integer prepTime;
+	private Integer				prepTime;
 
 	@Column(name = "DISH_WEIGHT", length = 50)
-	private String weight;
+	private String				weight;
 
 	// create table DISHES (
 	// DISH_ID integer,
@@ -63,13 +60,13 @@ public class Dish extends AbsEntity {
 	// DISH_WEIGHT)
 	// values (?, ?, ?, ?, ?, ?, ?)
 
-	public Dish() {
+	public Dish()
+	{
 	}
 
-	public Dish(Integer id, Category category, String name, Integer price,
-			String photo, String descr, Character avail, Integer prepTime,
-			String weight) {
-		setId(id);
+	public Dish(Category category, String name, Integer price, String photo,
+			String descr, Character avail, Integer prepTime, String weight)
+	{
 		setCategory(category);
 		setName(name);
 		setPrice(price);
@@ -80,80 +77,99 @@ public class Dish extends AbsEntity {
 		setWeight(weight);
 	}
 
-	public Integer getId() {
+	public Integer getId()
+	{
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(Integer id)
+	{
 		this.id = id;
 	}
 
-	public Category getCategory() {
+	public Category getCategory()
+	{
 		return category;
 	}
 
-	public void setCategory(Category category) {
+	public void setCategory(Category category)
+	{
 		this.category = category;
 	}
 
-	public String getName() {
+	public String getName()
+	{
 		return name;
 	}
 
-	public void setName(String name) {
+	public void setName(String name)
+	{
 		this.name = name;
 	}
 
-	public Integer getPrice() {
+	public Integer getPrice()
+	{
 		return price;
 	}
 
-	public void setPrice(Integer price) {
+	public void setPrice(Integer price)
+	{
 		this.price = price;
 	}
 
-	public String getPhoto() {
+	public String getPhoto()
+	{
 		return photo;
 	}
 
-	public void setPhoto(String photo) {
+	public void setPhoto(String photo)
+	{
 		this.photo = photo;
 	}
 
-	public String getDescr() {
+	public String getDescr()
+	{
 		return descr;
 	}
 
-	public void setDescr(String descr) {
+	public void setDescr(String descr)
+	{
 		this.descr = descr;
 	}
 
-	public Character getAvail() {
+	public Character getAvail()
+	{
 		return avail;
 	}
 
-	public void setAvail(Character avail) {
+	public void setAvail(Character avail)
+	{
 		this.avail = avail;
 	}
 
-	public Integer getPrepTime() {
+	public Integer getPrepTime()
+	{
 		return prepTime;
 	}
 
-	public void setPrepTime(Integer prepTime) {
+	public void setPrepTime(Integer prepTime)
+	{
 		this.prepTime = prepTime;
 	}
 
-	public String getWeight() {
+	public String getWeight()
+	{
 		return weight;
 	}
 
-	public void setWeight(String weight) {
+	public void setWeight(String weight)
+	{
 		this.weight = weight;
 	}
 
 	@Override
-	public int hashCode() {
+	public int hashCode()
+	{
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((avail == null) ? 0 : avail.hashCode());
@@ -171,7 +187,8 @@ public class Dish extends AbsEntity {
 	}
 
 	@Override
-	public boolean equals(Object obj) {
+	public boolean equals(Object obj)
+	{
 		if (this == obj)
 			return true;
 		if (obj == null)
@@ -179,52 +196,61 @@ public class Dish extends AbsEntity {
 		if (getClass() != obj.getClass())
 			return false;
 		Dish other = (Dish) obj;
-		if (avail == null) {
+		if (avail == null)
+		{
 			if (other.avail != null)
 				return false;
 		} else if (!avail.equals(other.avail))
 			return false;
-		if (category == null) {
+		if (category == null)
+		{
 			if (other.category != null)
 				return false;
 		} else if (!category.equals(other.category))
 			return false;
-		if (descr == null) {
+		if (descr == null)
+		{
 			if (other.descr != null)
 				return false;
 		} else if (!descr.equals(other.descr))
 			return false;
-		if (id == null) {
+		if (id == null)
+		{
 			if (other.id != null)
 				return false;
 		} else if (!id.equals(other.id))
 			return false;
-		if (name == null) {
+		if (name == null)
+		{
 			if (other.name != null)
 				return false;
 		} else if (!name.equals(other.name))
 			return false;
-		if (photo == null) {
+		if (photo == null)
+		{
 			if (other.photo != null)
 				return false;
 		} else if (!photo.equals(other.photo))
 			return false;
-		if (prepTime == null) {
+		if (prepTime == null)
+		{
 			if (other.prepTime != null)
 				return false;
 		} else if (!prepTime.equals(other.prepTime))
 			return false;
-		if (price == null) {
+		if (price == null)
+		{
 			if (other.price != null)
 				return false;
 		} else if (!price.equals(other.price))
 			return false;
-		if (weight == null) {
+		if (weight == null)
+		{
 			if (other.weight != null)
 				return false;
 		} else if (!weight.equals(other.weight))
 			return false;
 		return true;
 	}
-	
+
 } // Dish

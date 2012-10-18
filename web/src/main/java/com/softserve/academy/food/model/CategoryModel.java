@@ -1,5 +1,4 @@
 package com.softserve.academy.food.model;
-//package com.hello.model;
 
 public class CategoryModel implements IModel
 {

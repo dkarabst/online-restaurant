@@ -1,5 +1,4 @@
 package com.softserve.academy.food.model;
-//package com.hello.model;
 
 import com.softserve.academy.food.entity.Category;
 

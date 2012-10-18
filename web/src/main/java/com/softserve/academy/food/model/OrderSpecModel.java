@@ -1,15 +1,14 @@
 package com.softserve.academy.food.model;
-//package com.hello.model;
 
 import com.softserve.academy.food.entity.Dish;
 import com.softserve.academy.food.entity.OrderInfo;
 
 public class OrderSpecModel implements IModel
 {
-	private OrderInfo orderInfo;
-	private Dish dish;
-	private Integer quantity;
-	
+	private OrderInfo	orderInfo;
+	private Dish		dish;
+	private Integer		quantity;
+
 	public OrderSpecModel()
 	{
 	}
@@ -50,9 +49,5 @@ public class OrderSpecModel implements IModel
 	{
 		this.quantity = quantity;
 	}
-	
-	
-	
-	
 
 }

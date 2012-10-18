@@ -1,7 +1,5 @@
 package com.softserve.academy.food.model;
-//package com.hello.model;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -19,12 +17,12 @@ public class OrderInfoModel implements IModel
 	{
 	}
 
-	public OrderInfoModel(User user, Date date, Character status)
+	public OrderInfoModel(User user, Date date, Character status,List <OrderSpec> spec)
 	{
 		this.user = user;
 		this.date = date;
 		this.status = status;
-		spec = new ArrayList<OrderSpec>();
+		this.spec = spec;
 	}
 
 	public User getUser()

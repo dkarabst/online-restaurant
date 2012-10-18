@@ -1,5 +1,4 @@
 package com.softserve.academy.food.dao;
-//package com.hello.dao;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,8 +24,7 @@ public class CategoryDAO
 
 	public void addModel(String name)
 	{
-		String sql = "INSERT INTO Category(CAT_NAME) values ('" + name + "')";
-		session.createSQLQuery(sql);
+		session.save(new Category(name));
 		session.flush();
 	}
 
@@ -36,12 +34,10 @@ public class CategoryDAO
 		session.flush();
 		@SuppressWarnings("unchecked")
 		List<Category> entityList = queryResult.list();
-		CategoryModel model = null;
 		ArrayList<CategoryModel> modelList = new ArrayList<CategoryModel>();
 		for (Category entity : entityList)
 		{
-			model = new CategoryModel(entity.getName());
-			modelList.add(model);
+			modelList.add(new CategoryModel(entity.getName()));
 		}
 		return modelList;
 	}
@@ -58,15 +54,11 @@ public class CategoryDAO
 		session.createQuery(hql);
 	}
 
-
 	public IModel getModelById(int id)
 	{
-		queryResult = session.createQuery("from Category where cat_id =" + id);
-		session.flush();
-		Category cat = (Category) queryResult.list().get(0);
-		return new CategoryModel(cat.getName());
+		return new CategoryModel(
+				((Category) session.get(Category.class, id)).getName());
 	}
-
 
 	public IModel getModelByName(String name)
 	{
