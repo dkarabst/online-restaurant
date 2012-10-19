@@ -9,7 +9,7 @@ import org.hibernate.Session;
 import com.softserve.academy.food.entity.Category;
 import com.softserve.academy.food.model.CategoryModel;
 import com.softserve.academy.food.model.IModel;
-
+//Test
 public class CategoryDAO
 {
 
