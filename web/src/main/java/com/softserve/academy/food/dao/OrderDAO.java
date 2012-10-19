@@ -11,14 +11,14 @@ import com.softserve.academy.food.entity.OrderInfo;
 import com.softserve.academy.food.entity.OrderSpec;
 import com.softserve.academy.food.entity.User;
 import com.softserve.academy.food.model.IModel;
-import com.softserve.academy.food.model.OrderInfoModel;
+import com.softserve.academy.food.model.OrderModel;
 
-public class OrderInfoDAO
+public class OrderDAO
 {
 	protected Query		queryResult;
 	protected Session	session;
 
-	public OrderInfoDAO()
+	public OrderDAO()
 	{
 		session = HibernateUtil.getSession();
 		session.beginTransaction();
@@ -27,36 +27,36 @@ public class OrderInfoDAO
 	public IModel getModelById(int id)
 	{
 		OrderInfo oi = (OrderInfo) session.get(OrderInfo.class, id);
-		return new OrderInfoModel(oi.getUser(), oi.getDate(), oi.getStatus(),
+		return new OrderModel(oi.getUser(), oi.getDate(), oi.getStatus(),
 				oi.getSpec());
 	}
 	
-	public List<OrderInfoModel> getAllModels()
+	public List<OrderModel> getAllModels()
 	{
 		queryResult = session.createQuery("from ORDERINFO ");
 		session.flush();
 		@SuppressWarnings("unchecked")
 		List<OrderInfo> entityList = queryResult.list();
-		ArrayList<OrderInfoModel> modelList = new ArrayList<OrderInfoModel>();
+		ArrayList<OrderModel> modelList = new ArrayList<OrderModel>();
 		for (OrderInfo entity : entityList)
 		{
-			modelList.add(new OrderInfoModel(entity.getUser(),
+			modelList.add(new OrderModel(entity.getUser(),
 					entity.getDate(), entity.getStatus(), entity.getSpec()));
 		}
 		return modelList;
 	}
 
-	public List<OrderInfoModel> getModelByUser(User user)
+	public List<OrderModel> getModelByUser(User user)
 	{
 		queryResult = session.createQuery("from ORDERINFO where OINFO_USER ="
 				+ user);
 		session.flush();
 		@SuppressWarnings("unchecked")
 		List<OrderInfo> entityList = queryResult.list();
-		ArrayList<OrderInfoModel> modelList = new ArrayList<OrderInfoModel>();
+		ArrayList<OrderModel> modelList = new ArrayList<OrderModel>();
 		for (OrderInfo entity : entityList)
 		{
-			modelList.add(new OrderInfoModel(entity.getUser(),
+			modelList.add(new OrderModel(entity.getUser(),
 					entity.getDate(), entity.getStatus(), entity.getSpec()));
 		}
 		return modelList;

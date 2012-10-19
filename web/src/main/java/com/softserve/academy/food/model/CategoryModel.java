@@ -2,25 +2,35 @@ package com.softserve.academy.food.model;
 
 public class CategoryModel implements IModel
 {
+	private int		id;
 	private String	name;
 
-	public CategoryModel(String name)
+	public CategoryModel(int id, String name)
 	{
+		super();
+		this.id = id;
 		this.name = name;
 	}
-	
+
+	public int getId()
+	{
+		return id;
+	}
+
+	public void setId(int id)
+	{
+		this.id = id;
+	}
 
 	public String getName()
 	{
 		return name;
 	}
 
-
 	public void setName(String name)
 	{
 		this.name = name;
 	}
-
 
 	@Override
 	public String toString()

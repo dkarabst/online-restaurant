@@ -4,6 +4,7 @@ import com.softserve.academy.food.entity.Category;
 
 public class DishModel implements IModel
 {
+	private int			id;
 	private Category	category;
 	private String		name;
 	private Integer		price;
@@ -17,10 +18,11 @@ public class DishModel implements IModel
 	{
 	}
 
-	public DishModel(Category category, String name, Integer price,
+	public DishModel(int id, Category category, String name, Integer price,
 			String photo, String descr, Character avail, Integer prepTime,
 			String weight)
 	{
+		this.id = id;
 		this.category = category;
 		this.name = name;
 		this.price = price;
@@ -29,6 +31,16 @@ public class DishModel implements IModel
 		this.avail = avail;
 		this.prepTime = prepTime;
 		this.weight = weight;
+	}
+
+	public int getId()
+	{
+		return id;
+	}
+
+	public void setId(int id)
+	{
+		this.id = id;
 	}
 
 	public Category getCategory()

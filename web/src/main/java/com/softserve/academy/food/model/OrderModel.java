@@ -6,18 +6,18 @@ import java.util.List;
 import com.softserve.academy.food.entity.OrderSpec;
 import com.softserve.academy.food.entity.User;
 
-public class OrderInfoModel implements IModel
+public class OrderModel implements IModel
 {
 	private User user;
 	private Date date;
 	private Character status;
 	private List <OrderSpec> spec;
 	
-	public OrderInfoModel()
+	public OrderModel()
 	{
 	}
 
-	public OrderInfoModel(User user, Date date, Character status,List <OrderSpec> spec)
+	public OrderModel(User user, Date date, Character status,List <OrderSpec> spec)
 	{
 		this.user = user;
 		this.date = date;

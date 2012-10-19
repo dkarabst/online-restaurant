@@ -10,67 +10,82 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-
-import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 @Table(name = "USERS")
-public class User extends AbsEntity {
+public class User extends AbsEntity
+{
 
-	private static final long serialVersionUID = 1L;
+	private static final long	serialVersionUID	= 1L;
 
 	@Id
 	@Column(name = "USER_ID")
-	@GeneratedValue (strategy = GenerationType.AUTO)
-	private Integer id;
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Integer				id;
 
 	@Column(name = "USER_NAME", length = 50)
-	private String name;
+	private String				name;
 
 	@Column(name = "USER_EMAIL", length = 50)
-	private String email;
+	private String				email;
 
 	@Column(name = "USER_PHONE", length = 50)
-	private String phone;
+	private String				phone;
 
-	public User() {}
-	public User(Integer id, String name, String email, String phone) {
-		setId(id);
+	public User()
+	{
+	}
+
+	public User(String name, String email, String phone)
+	{
 		setName(name);
 		setEmail(email);
 		setPhone(phone);
 	}
 
-
-
-	public Integer getId() {
+	public Integer getId()
+	{
 		return id;
 	}
-	public void setId(Integer id) {
+
+	public void setId(Integer id)
+	{
 		this.id = id;
 	}
-	public String getName() {
+
+	public String getName()
+	{
 		return name;
 	}
-	public void setName(String name) {
+
+	public void setName(String name)
+	{
 		this.name = name;
 	}
-	public String getEmail() {
+
+	public String getEmail()
+	{
 		return email;
 	}
-	public void setEmail(String email) {
+
+	public void setEmail(String email)
+	{
 		this.email = email;
 	}
-	public String getPhone() {
+
+	public String getPhone()
+	{
 		return phone;
 	}
-	public void setPhone(String phone) {
+
+	public void setPhone(String phone)
+	{
 		this.phone = phone;
 	}
+
 	@Override
-	public int hashCode() {
+	public int hashCode()
+	{
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((email == null) ? 0 : email.hashCode());
@@ -79,8 +94,10 @@ public class User extends AbsEntity {
 		result = prime * result + ((phone == null) ? 0 : phone.hashCode());
 		return result;
 	}
+
 	@Override
-	public boolean equals(Object obj) {
+	public boolean equals(Object obj)
+	{
 		if (this == obj)
 			return true;
 		if (obj == null)
@@ -114,5 +131,5 @@ public class User extends AbsEntity {
 			return false;
 		return true;
 	}
-	
+
 } // User
