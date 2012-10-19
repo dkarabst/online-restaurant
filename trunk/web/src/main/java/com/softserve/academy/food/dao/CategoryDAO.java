@@ -37,7 +37,7 @@ public class CategoryDAO
 		ArrayList<CategoryModel> modelList = new ArrayList<CategoryModel>();
 		for (Category entity : entityList)
 		{
-			modelList.add(new CategoryModel(entity.getName()));
+			modelList.add(new CategoryModel(entity.getId(),entity.getName()));
 		}
 		return modelList;
 	}
@@ -56,8 +56,8 @@ public class CategoryDAO
 
 	public IModel getModelById(int id)
 	{
-		return new CategoryModel(
-				((Category) session.get(Category.class, id)).getName());
+		Category cat = (Category) session.get(Category.class, id);
+		return new CategoryModel(cat.getId(),cat.getName());
 	}
 
 	public IModel getModelByName(String name)
@@ -66,7 +66,7 @@ public class CategoryDAO
 				+ name);
 		session.flush();
 		Category cat = (Category) queryResult.list().get(0);
-		return new CategoryModel(cat.getName());
+		return new CategoryModel(cat.getId(),cat.getName());
 
 	}
 

@@ -26,23 +26,24 @@ public class DishDAO
 	public IModel getModelById(int id)
 	{
 		Dish d = (Dish) session.get(Dish.class, id);
-		return new DishModel(d.getCategory(), d.getName(), d.getPrice(),
-				d.getPhoto(), d.getDescr(), d.getAvail(), d.getPrepTime(),
-				d.getWeight());
+		return new DishModel(d.getId(), d.getCategory(), d.getName(),
+				d.getPrice(), d.getPhoto(), d.getDescr(), d.getAvail(),
+				d.getPrepTime(), d.getWeight());
 	}
 
 	public ArrayList<DishModel> getModelByName(String name)
 	{
-		queryResult = session.createQuery("from DISHES where DISH_NAME =" + name);
+		queryResult = session.createQuery("from DISHES where DISH_NAME ="
+				+ name);
 		session.flush();
 		@SuppressWarnings("unchecked")
 		List<Dish> entityList = queryResult.list();
 		ArrayList<DishModel> modelList = new ArrayList<DishModel>();
 		for (Dish d : entityList)
 		{
-			modelList.add(new DishModel(d.getCategory(), d.getName(), d
-					.getPrice(), d.getPhoto(), d.getDescr(), d.getAvail(), d
-					.getPrepTime(), d.getWeight()));
+			modelList.add(new DishModel(d.getId(), d.getCategory(),
+					d.getName(), d.getPrice(), d.getPhoto(), d.getDescr(), d
+							.getAvail(), d.getPrepTime(), d.getWeight()));
 		}
 		return modelList;
 	}
@@ -56,9 +57,9 @@ public class DishDAO
 		ArrayList<DishModel> modelList = new ArrayList<DishModel>();
 		for (Dish d : entityList)
 		{
-			modelList.add(new DishModel(d.getCategory(), d.getName(), d
-					.getPrice(), d.getPhoto(), d.getDescr(), d.getAvail(), d
-					.getPrepTime(), d.getWeight()));
+			modelList.add(new DishModel(d.getId(), d.getCategory(),
+					d.getName(), d.getPrice(), d.getPhoto(), d.getDescr(), d
+							.getAvail(), d.getPrepTime(), d.getWeight()));
 		}
 		return modelList;
 	}

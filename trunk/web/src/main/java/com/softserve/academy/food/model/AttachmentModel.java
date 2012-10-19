@@ -1,56 +1,64 @@
 package com.softserve.academy.food.model;
 
-
 import com.softserve.academy.food.entity.User;
 import java.util.Date;
 
-public class AttachmentModel implements IModel{
-    private User	user;
-    private String  name;
-    private String  Path;
-    private Date modified;
+public class AttachmentModel implements IModel
+{
+	private User	user;
+	private String	name;
+	private String	path;
+	private Date	modified;
 
-    public AttachmentModel()
-    {
-    }
+	public AttachmentModel()
+	{
+	}
 
-    public AttachmentModel(User user,String name,String Path,Date modified)
-    {
-        this.user = user;
-        this.name=name;
-        this.Path = Path;
-        this.modified = modified;
-    }
+	public AttachmentModel(User user, String name, String path, Date modified)
+	{
+		this.user = user;
+		this.name = name;
+		this.path = path;
+		this.modified = modified;
+	}
 
-    public User getUser(){
-        return user;
-    }
+	public User getUser()
+	{
+		return user;
+	}
 
-    public void setUser(User user){
-        this.user=user;
-    }
+	public void setUser(User user)
+	{
+		this.user = user;
+	}
 
-    public String getName(){
-        return name;
-    }
+	public String getName()
+	{
+		return name;
+	}
 
-    public void setName(String name){
-        this.name=name;
-    }
+	public void setName(String name)
+	{
+		this.name = name;
+	}
 
-    public String getPath(){
-        return Path;
-    }
+	public String getPath()
+	{
+		return path;
+	}
 
-    public void setPath(String Path){
-        this.Path=Path;
-    }
+	public void setPath(String path)
+	{
+		this.path = path;
+	}
 
-    public Date getModified(){
-        return modified;
-    }
+	public Date getModified()
+	{
+		return modified;
+	}
 
-    public void setModified(Date modified){
-        this.modified=modified;
-    }
+	public void setModified(Date modified)
+	{
+		this.modified = modified;
+	}
 }

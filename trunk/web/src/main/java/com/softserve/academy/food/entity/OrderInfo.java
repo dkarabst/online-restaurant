@@ -54,7 +54,8 @@ public class OrderInfo extends AbsEntity
 	{
 	}
 
-	public OrderInfo(User user, Date date, Character status,List<OrderSpec>	spec)
+	public OrderInfo(User user, Date date, Character status,
+			List<OrderSpec> spec)
 	{
 		setUser(user);
 		setDate(date);
