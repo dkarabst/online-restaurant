@@ -11,7 +11,9 @@ public class CategoryTest {
 						CategoryXML c = new CategoryXML();
 						CategorySimple cat = new CategorySimple(1,"Vine");
 						c.addModel(cat);
-						CategoryModel l =c.getModelById(1);
-						System.out.println(l);
+						ArrayList<CategoryModel> l =c.getAllModels();
+						for (CategoryModel m : l)
+						System.out.println(m);
+						
 	}
 }
