@@ -15,10 +15,16 @@ public class CategoryTest
 		Category cat= new Category();
 		cat.setId(1);
 		cat.setName("Vine");
+		Category cat2= new Category();
+		cat2.setId(2);
+		cat2.setName("Vodka");
+		//add
 		c.addModel(cat);
+		c.addModel(cat2);
+		c.addModel(cat2);
 		ArrayList<CategoryModel> l = c.getAllModels();
 		for (CategoryModel m : l)
 			System.out.println(m);
-
+		
 	}
 }
