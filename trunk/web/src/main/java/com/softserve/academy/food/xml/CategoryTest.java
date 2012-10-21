@@ -3,6 +3,7 @@ package com.softserve.academy.food.xml;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
+import com.softserve.academy.food.entity.Category;
 import com.softserve.academy.food.model.CategoryModel;
 
 public class CategoryTest
@@ -11,7 +12,9 @@ public class CategoryTest
 			ClassNotFoundException
 	{
 		CategoryXML c = new CategoryXML();
-		CategorySimple cat = new CategorySimple(1, "Vine");
+		Category cat= new Category();
+		cat.setId(1);
+		cat.setName("Vine");
 		c.addModel(cat);
 		ArrayList<CategoryModel> l = c.getAllModels();
 		for (CategoryModel m : l)
