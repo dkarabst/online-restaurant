@@ -95,4 +95,4 @@ public class Category extends AbsEntity
 		return true;
 	}
 
-} // Category
+} // CategorySimple

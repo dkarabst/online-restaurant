@@ -8,6 +8,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.util.ArrayList;
 
+import com.softserve.academy.food.entity.Category;
 import com.softserve.academy.food.model.CategoryModel;
 import com.softserve.academy.food.model.IModel;
 
@@ -21,7 +22,7 @@ public class CategoryXML
 		try
 		{
 			e = new XMLEncoder(new FileOutputStream(new File(
-					"D:\\CategorySimple.xml")));
+					"\\java\\CategorySimple.xml")));
 		} catch (FileNotFoundException e)
 		{
 			// TODO Auto-generated catch block
@@ -30,7 +31,7 @@ public class CategoryXML
 		try
 		{
 			d = new XMLDecoder(new FileInputStream(new File(
-					"D:\\CategorySimple.xml")));
+					"\\java\\CategorySimple.xml")));
 		} catch (FileNotFoundException e)
 		{
 			// TODO Auto-generated catch block
@@ -38,7 +39,7 @@ public class CategoryXML
 		}
 	}
 
-	public void addModel(CategorySimple cat) throws ClassNotFoundException,
+	public void addModel(Category cat) throws ClassNotFoundException,
 			FileNotFoundException
 	{
 		e.writeObject(cat);
@@ -47,11 +48,11 @@ public class CategoryXML
 
 	public ArrayList<CategoryModel> getAllModels() throws FileNotFoundException
 	{
-		ArrayList<CategorySimple> cat = new ArrayList<CategorySimple>();
-		cat.add((CategorySimple) d.readObject());
+		ArrayList<Category> cat = new ArrayList<Category>();
+		cat.add((Category) d.readObject());
 		CategoryModel model = null;
 		ArrayList<CategoryModel> modelList = new ArrayList<CategoryModel>();
-		for (CategorySimple entity : cat)
+		for (Category entity : cat)
 		{
 			model = new CategoryModel(entity.getId(), entity.getName());
 			modelList.add(model);
@@ -62,11 +63,11 @@ public class CategoryXML
 
 	public void delModelById(int id)
 	{
-		ArrayList<CategorySimple> cat = new ArrayList<CategorySimple>();
-		cat.add((CategorySimple) d.readObject());
+		ArrayList<Category> cat = new ArrayList<Category>();
+		cat.add((Category) d.readObject());
 		for (int i = 0; i < cat.size(); i++)
 		{
-			CategorySimple c = cat.get(i);
+			Category c = cat.get(i);
 			if (c.getId().equals(id))
 			{
 				cat.remove(i);
@@ -78,12 +79,12 @@ public class CategoryXML
 
 	public void delModelByName(String name)
 	{
-		ArrayList<CategorySimple> cat = new ArrayList<CategorySimple>();
-		cat.add((CategorySimple) d.readObject());
+		ArrayList<Category> cat = new ArrayList<Category>();
+		cat.add((Category) d.readObject());
 
 		for (int i = 0; i < cat.size(); i++)
 		{
-			CategorySimple c = cat.get(i);
+			Category c = cat.get(i);
 			if (c.getName().equals(name))
 			{
 				cat.remove(i);
@@ -96,12 +97,12 @@ public class CategoryXML
 	public CategoryModel getModelById(int id)
 	{
 		CategoryModel catmodel = null;
-		ArrayList<CategorySimple> cat = new ArrayList<CategorySimple>();
-		cat.add((CategorySimple) d.readObject());
+		ArrayList<Category> cat = new ArrayList<Category>();
+		cat.add((Category) d.readObject());
 
 		for (int i = 0; i < cat.size(); i++)
 		{
-			CategorySimple c = (CategorySimple) cat.get(i);
+			Category c = (Category) cat.get(i);
 			if (c.getId().equals(id))
 			{
 				catmodel = new CategoryModel(c.getId(), c.getName());
@@ -114,11 +115,11 @@ public class CategoryXML
 	public IModel getModelByName(String name)
 	{
 		CategoryModel catmodel = null;
-		ArrayList<CategorySimple> cat = new ArrayList<CategorySimple>();
-		cat.add((CategorySimple) d.readObject());
+		ArrayList<Category> cat = new ArrayList<Category>();
+		cat.add((Category) d.readObject());
 		for (int i = 0; i < cat.size(); i++)
 		{
-			CategorySimple c = cat.get(i);
+			Category c = cat.get(i);
 			if (c.getName().equals(name))
 			{
 				catmodel = new CategoryModel(c.getId(), c.getName());
