@@ -19,12 +19,12 @@ public class CategoryXML
 	
 	public XMLEncoder GetXMLEncoder() throws FileNotFoundException{
 		return  new XMLEncoder(new FileOutputStream(new File(
-				"//java//Category.xml")));
+				"D:\\Category.xml")));
 	}
 	
 	public XMLDecoder GetXMLDecoder() throws FileNotFoundException{
 		return new XMLDecoder(new FileInputStream(new File(
-				"//java//Category.xml")));
+				"D:\\Category.xml")));
 	}
 
 	public CategoryXML()
