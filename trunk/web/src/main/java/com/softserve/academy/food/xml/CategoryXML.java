@@ -14,15 +14,14 @@ import com.softserve.academy.food.model.IModel;
 
 public class CategoryXML
 {
-	
 	public XMLEncoder GetXMLEncoder() throws FileNotFoundException{
 		return  new XMLEncoder(new FileOutputStream(new File(
-				"D:\\Category.xml")));
+				"//java//Category.xml")));
 	}
 	
 	public XMLDecoder GetXMLDecoder() throws FileNotFoundException{
 		return new XMLDecoder(new FileInputStream(new File(
-				"D:\\Category.xml")));
+				"//java//Category.xml")));
 	}
 
 	
@@ -60,10 +59,7 @@ public class CategoryXML
 		{
 			Category c = cat.get(i);
 			if (c.getId().equals(id))
-			{
 				cat.remove(i);
-			}
-		
 		}
 		XMLEncoder e = GetXMLEncoder();
 		e.writeObject(cat);
@@ -79,11 +75,10 @@ public class CategoryXML
 		for (Category c : cat)
 		{
 			if (c.getName().equals(name))
-			{
 				cat.remove(c);
-			}
-		
+			if (cat.size()==0) break;
 		}
+		
 		XMLEncoder e = GetXMLEncoder();
 		e.writeObject(cat);
 		e.close();
@@ -100,9 +95,7 @@ public class CategoryXML
 		{
 			Category c = (Category) cat.get(i);
 			if (c.getId().equals(id))
-			{
 				catmodel = new CategoryModel(c.getId(), c.getName());
-			}
 		}
 		d.close();
 		return catmodel;
@@ -118,12 +111,9 @@ public class CategoryXML
 		{
 			Category c = cat.get(i);
 			if (c.getName().equals(name))
-			{
 				catmodel = new CategoryModel(c.getId(), c.getName());
-			}
 		}
 		d.close();
 		return catmodel;
 	}
-
 }
