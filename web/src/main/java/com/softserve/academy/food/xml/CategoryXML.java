@@ -14,8 +14,6 @@ import com.softserve.academy.food.model.IModel;
 
 public class CategoryXML
 {
-	//private XMLEncoder	e;
-	//private XMLDecoder	d;
 	
 	public XMLEncoder GetXMLEncoder() throws FileNotFoundException{
 		return  new XMLEncoder(new FileOutputStream(new File(
@@ -27,45 +25,21 @@ public class CategoryXML
 				"D:\\Category.xml")));
 	}
 
-	public CategoryXML()
-	{
-		/*
-		try
-		
-		{
-			e = new XMLEncoder(new FileOutputStream(new File(
-					"\\java\\CategorySimple.xml")));
-		} catch (FileNotFoundException e)
-		{
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		try
-		{
-			d = new XMLDecoder(new FileInputStream(new File(
-					"\\java\\CategorySimple.xml")));
-		} catch (FileNotFoundException e)
-		{
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		*/
-	}
-
-	public void addModel(Category cat) throws ClassNotFoundException,
+	
+	public void addModel(ArrayList<Category> cat) throws ClassNotFoundException,
 			FileNotFoundException
 	{   
 		XMLEncoder e = GetXMLEncoder();
 		e.writeObject(cat);
 		e.close();  
-		System.out.println("Category added"+cat.getName());
 	}
+
 
 	public ArrayList<CategoryModel> getAllModels() throws FileNotFoundException
 	{
 		XMLDecoder d = GetXMLDecoder();
 		ArrayList<Category> cat = new ArrayList<Category>();
-		cat.add((Category) d.readObject());
+		cat=(ArrayList<Category>) d.readObject();
 		CategoryModel model = null;
 		ArrayList<CategoryModel> modelList = new ArrayList<CategoryModel>();
 		for (Category entity : cat)
@@ -73,7 +47,7 @@ public class CategoryXML
 			model = new CategoryModel(entity.getId(), entity.getName());
 			modelList.add(model);
 		}
-		//d.close();
+		d.close();
 		return modelList;
 	}
 
@@ -81,37 +55,38 @@ public class CategoryXML
 	{   	
 		XMLDecoder d = GetXMLDecoder();
 		ArrayList<Category> cat = new ArrayList<Category>();
-		cat.add((Category) d.readObject());
+		cat=(ArrayList<Category>) d.readObject();
 		for (int i = 0; i < cat.size(); i++)
 		{
 			Category c = cat.get(i);
 			if (c.getId().equals(id))
 			{
 				cat.remove(i);
-				XMLEncoder e = GetXMLEncoder();
-				e.writeObject(cat);
-				e.close();
 			}
+		
 		}
+		XMLEncoder e = GetXMLEncoder();
+		e.writeObject(cat);
+		e.close();
 	}
 
 	public void delModelByName(String name) throws FileNotFoundException
 	{
 		XMLDecoder d = GetXMLDecoder();
 		ArrayList<Category> cat = new ArrayList<Category>();
-		cat.add((Category) d.readObject());
+		cat=(ArrayList<Category>) d.readObject();
 
-		for (int i = 0; i < cat.size(); i++)
+		for (Category c : cat)
 		{
-			Category c = cat.get(i);
 			if (c.getName().equals(name))
 			{
-				cat.remove(i);
-				XMLEncoder e = GetXMLEncoder();
-				e.writeObject(cat);
-				e.close();
+				cat.remove(c);
 			}
+		
 		}
+		XMLEncoder e = GetXMLEncoder();
+		e.writeObject(cat);
+		e.close();
 	}
 
 	public CategoryModel getModelById(int id) throws FileNotFoundException
@@ -119,7 +94,7 @@ public class CategoryXML
 		XMLDecoder d = GetXMLDecoder();
 		CategoryModel catmodel = null;
 		ArrayList<Category> cat = new ArrayList<Category>();
-		cat.add((Category) d.readObject());
+		cat=(ArrayList<Category>) d.readObject();
 
 		for (int i = 0; i < cat.size(); i++)
 		{
@@ -138,7 +113,7 @@ public class CategoryXML
 		XMLDecoder d = GetXMLDecoder();
 		CategoryModel catmodel = null;
 		ArrayList<Category> cat = new ArrayList<Category>();
-		cat.add((Category) d.readObject());
+		cat=(ArrayList<Category>) d.readObject();
 		for (int i = 0; i < cat.size(); i++)
 		{
 			Category c = cat.get(i);
