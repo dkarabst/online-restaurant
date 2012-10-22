@@ -1,0 +1,111 @@
+package com.softserve.academy.food.xml;
+
+import java.beans.XMLDecoder;
+import java.beans.XMLEncoder;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.util.ArrayList;
+import java.util.Date;
+
+import org.hibernate.Query;
+import org.hibernate.Session;
+
+import com.softserve.academy.food.entity.Attachment;
+import com.softserve.academy.food.entity.Category;
+import com.softserve.academy.food.entity.User;
+import com.softserve.academy.food.model.AttachmentModel;
+import com.softserve.academy.food.model.CategoryModel;
+import com.softserve.academy.food.model.IModel;
+
+public class AttachmentsXML {
+	protected Query		queryResult;
+	protected Session	session;
+	
+	public XMLEncoder GetXMLEncoder() throws FileNotFoundException{
+		return  new XMLEncoder(new FileOutputStream(new File(
+				"//java//Attachments.xml")));
+	}
+	
+	public XMLDecoder GetXMLDecoder() throws FileNotFoundException{
+		return new XMLDecoder(new FileInputStream(new File(
+				"//java//Attachments.xml")));
+	}
+	public IModel getModelById(int id)
+	{
+		Attachment att = (Attachment) session.get(Attachment.class, id);
+		return new AttachmentModel(att.getUser(), att.getName(), att.getPath(),
+				att.getModified());
+	}
+	
+	public IModel getModelByName(String name)
+	{
+		queryResult = session.createQuery("from ATTACHMENTS where name ="
+				+ name);
+		session.flush();
+		Attachment att = (Attachment) queryResult.list().get(0);
+		return new AttachmentModel(att.getUser(), att.getName(), att.getPath(),
+				att.getModified());
+	}
+	
+	public void addModel(User user, String name, String path, Date modified) throws FileNotFoundException
+	{
+		XMLEncoder e = GetXMLEncoder();
+		e.writeObject(new Attachment(user,name,path,modified));
+		e.close();  	
+	}	
+	
+	public ArrayList<AttachmentModel> getAllModels() throws FileNotFoundException
+	{
+		
+		XMLDecoder d = GetXMLDecoder();
+		ArrayList<Attachment> entityList = new ArrayList<Attachment>();
+		entityList=(ArrayList<Attachment>) d.readObject();
+		ArrayList<AttachmentModel> modelList = new ArrayList<AttachmentModel>();
+		for (Attachment att : entityList)
+		{
+			modelList.add(new AttachmentModel(att.getUser(), att.getName(), att
+					.getPath(), att.getModified()));
+		}
+		d.close();
+		return modelList;
+	}
+	
+	public void delModelById(int id) throws FileNotFoundException
+	{
+		XMLDecoder d = GetXMLDecoder();
+		ArrayList<Attachment> cat = new ArrayList<Attachment>();
+		cat=(ArrayList<Attachment>) d.readObject();
+		for (int i = 0; i < cat.size(); i++)
+		{
+			Attachment c = cat.get(i);
+			if (c.getId().equals(id))
+				cat.remove(i);
+		}
+		XMLEncoder e = GetXMLEncoder();
+		e.writeObject(cat);
+		e.close();
+	}
+	
+	public void delModelByName(String name) throws FileNotFoundException
+	{
+		XMLDecoder d = GetXMLDecoder();
+		ArrayList<Attachment> cat = new ArrayList<Attachment>();
+		cat=(ArrayList<Attachment>) d.readObject();
+
+		for (Attachment c : cat)
+		{
+			if (c.getName().equals(name))
+				cat.remove(c);
+			if (cat.size()==0) break;
+		}
+		
+		XMLEncoder e = GetXMLEncoder();
+		e.writeObject(cat);
+		e.close();
+	}
+	
+}
+
+
