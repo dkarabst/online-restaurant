@@ -12,7 +12,6 @@ public class CategoryTest
 			ClassNotFoundException
 	{
 		CategoryXML c = new CategoryXML();
-		ArrayList<Category> m = new ArrayList<Category>();
 		Category cat = new Category();
 		cat.setId(1);
 		cat.setName("Vine");
@@ -22,16 +21,15 @@ public class CategoryTest
 		Category cat3 = new Category();
 		cat3.setId(3);
 		cat3.setName("Pivo");
-		m.add(cat);
-		m.add(cat2);
-		m.add(cat3);
-		
-		c.addModel(m);
+	
+		c.addModel(cat);
+		c.addModel(cat2);
+		c.addModel(cat3);
 		
 		
 		ArrayList<CategoryModel> l = c.getAllModels();
 		for (CategoryModel mm : l)
-			System.out.println(mm);
+			System.out.println(mm+"/r/n");
 		
         c.delModelById(2);
         

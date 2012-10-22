@@ -25,9 +25,16 @@ public class CategoryXML
 	}
 
 	
-	public void addModel(ArrayList<Category> cat) throws ClassNotFoundException,
+	public void addModel(Category c) throws ClassNotFoundException,
 			FileNotFoundException
 	{   
+		ArrayList<Category> cat = new ArrayList<Category>();
+		if (new File("//java//Category.xml").exists())
+		{
+		XMLDecoder d = GetXMLDecoder();
+		cat=(ArrayList<Category>) d.readObject();
+		}
+		cat.add(c);
 		XMLEncoder e = GetXMLEncoder();
 		e.writeObject(cat);
 		e.close();  
@@ -75,8 +82,10 @@ public class CategoryXML
 		for (Category c : cat)
 		{
 			if (c.getName().equals(name))
-				cat.remove(c);
+			{	
+			cat.remove(c);
 			if (cat.size()==0) break;
+			}
 		}
 		
 		XMLEncoder e = GetXMLEncoder();
