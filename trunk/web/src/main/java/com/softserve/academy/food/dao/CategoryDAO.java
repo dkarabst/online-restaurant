@@ -61,9 +61,9 @@ public class CategoryDAO
 
 	public Category getEntityByName(String name)
 	{
-//		queryResult = session.createQuery("from Category where cat_name ="
-//				+ name);
-//		session.flush();
+		queryResult = session.createQuery("from Category where cat_name ="
+				+ name);
+		session.flush();
 //		Category cat = (Category) queryResult.list().get(0);
 		return (Category) queryResult.list().get(0);
 
