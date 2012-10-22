@@ -20,7 +20,6 @@ import com.softserve.academy.food.model.CategoryModel;
 import com.softserve.academy.food.model.IModel;
 
 public class AttachmentsXML {
-	protected Query		queryResult;
 	protected Session	session;
 	
 	public XMLEncoder GetXMLEncoder() throws FileNotFoundException{
@@ -39,20 +38,35 @@ public class AttachmentsXML {
 				att.getModified());
 	}
 	
-	public IModel getModelByName(String name)
+	public IModel getModelByName(String name) throws FileNotFoundException
 	{
-		queryResult = session.createQuery("from ATTACHMENTS where name ="
-				+ name);
-		session.flush();
-		Attachment att = (Attachment) queryResult.list().get(0);
-		return new AttachmentModel(att.getUser(), att.getName(), att.getPath(),
-				att.getModified());
+		XMLDecoder d = GetXMLDecoder();
+		AttachmentModel atmodel = null;
+		ArrayList<Attachment> cat = new ArrayList<Attachment>();
+		cat=(ArrayList<Attachment>) d.readObject();
+		for (int i = 0; i < cat.size(); i++)
+		{
+			Attachment att = cat.get(i);
+			if (att.getName().equals(name))
+				atmodel =new AttachmentModel(att.getUser(), att.getName(), att.getPath(),
+						att.getModified());
+		}
+		d.close();
+		return atmodel;
 	}
 	
 	public void addModel(User user, String name, String path, Date modified) throws FileNotFoundException
 	{
+		Attachment c = new Attachment(user,name,path,modified);
+		ArrayList<Attachment> cat = new ArrayList<Attachment>();
+		if (new File("//java//Attachment.xml").exists())
+		{
+		XMLDecoder d = GetXMLDecoder();
+		cat=(ArrayList<Attachment>) d.readObject();
+		}
+		cat.add(c);
 		XMLEncoder e = GetXMLEncoder();
-		e.writeObject(new Attachment(user,name,path,modified));
+		e.writeObject(cat);
 		e.close();  	
 	}	
 	
@@ -100,7 +114,6 @@ public class AttachmentsXML {
 				cat.remove(c);
 			if (cat.size()==0) break;
 		}
-		
 		XMLEncoder e = GetXMLEncoder();
 		e.writeObject(cat);
 		e.close();
