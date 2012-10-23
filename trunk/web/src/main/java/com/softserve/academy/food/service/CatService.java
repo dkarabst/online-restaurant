@@ -6,49 +6,47 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.softserve.academy.food.dao.CategoryDAO;
 import com.softserve.academy.food.entity.Category;
+import com.softserve.academy.food.model.CategoryModel;
 
 public class CatService
 {
 
-	CategoryDAO	category	= new CategoryDAO();
+	private static CategoryDAO	category	= new CategoryDAO();
 
-	public ArrayList<String> getCategoryList()
+	public static ArrayList<CategoryModel> getCategoryList()
 	{
-
-		ArrayList<Category> mList = category.getAllEntities();
-		mList.remove(0); // remove category "Вне категории"
-		ArrayList<String> sList = new ArrayList<String>();
-		for (Category m : mList)
+		ArrayList<CategoryModel> models = new ArrayList<CategoryModel>();
+		for (Category m : category.getAllEntities())
 		{
-			sList.add(m.getName());
+			models.add(m.toModel());
 		}
-		return sList;
+		return models;
 	}
 
-	public String getById(int id)
+	public static CategoryModel getById(int id)
 	{
-		return ((Category) category.getEntityById(id)).getName();
+		return ((Category) category.getEntityById(id)).toModel();
 	}
 
-	public String getByName(String st)
+	public static CategoryModel getByName(String st)
 	{
-		return ((Category) category.getEntityByName(st)).getName();
+		return ((Category) category.getEntityByName(st)).toModel();
 	}
 
 	@Transactional
-	public void addCat(String name)
+	public static void addCat(String name)
 	{
 		category.addEntity(name);
 	}
 
 	@Transactional
-	public void delById(int id)
+	public static void delById(int id)
 	{
 		category.delEntityById(id);
 	}
 
 	@Transactional
-	public void delByName(String name)
+	public static void delByName(String name)
 	{
 		category.delEntityByName(name);
 	}
