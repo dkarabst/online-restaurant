@@ -7,6 +7,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.softserve.academy.food.model.CategoryModel;
+
 @Entity
 @Table(name = "CATEGORIES")
 public class Category extends AbsEntity
@@ -34,10 +36,15 @@ public class Category extends AbsEntity
 	public Category()
 	{
 	}
+	
+	public CategoryModel toModel()
+	{
+		return new CategoryModel(id, name);
+	}
 
 	public Category(String name)
 	{
-		setName(name);
+		this.name = name;
 	}
 
 	public Integer getId()
@@ -95,4 +102,4 @@ public class Category extends AbsEntity
 		return true;
 	}
 
-} // CategorySimple
+} // Category
