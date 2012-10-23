@@ -2,6 +2,8 @@ package com.softserve.academy.food.service;
 
 import java.util.ArrayList;
 
+import org.springframework.transaction.annotation.Transactional;
+
 import com.softserve.academy.food.dao.CategoryDAO;
 import com.softserve.academy.food.entity.Category;
 
@@ -33,16 +35,19 @@ public class CatService
 		return ((Category) category.getEntityByName(st)).getName();
 	}
 
+	@Transactional
 	public void addCat(String name)
 	{
 		category.addEntity(name);
 	}
 
+	@Transactional
 	public void delById(int id)
 	{
 		category.delEntityById(id);
 	}
 
+	@Transactional
 	public void delByName(String name)
 	{
 		category.delEntityByName(name);
