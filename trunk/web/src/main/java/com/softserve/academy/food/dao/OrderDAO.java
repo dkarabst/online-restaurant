@@ -1,17 +1,16 @@
 package com.softserve.academy.food.dao;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-
-import org.hibernate.Query;
-import org.hibernate.Session;
-
 import com.softserve.academy.food.entity.OrderInfo;
 import com.softserve.academy.food.entity.OrderSpec;
 import com.softserve.academy.food.entity.User;
 import com.softserve.academy.food.model.IModel;
 import com.softserve.academy.food.model.OrderModel;
+import org.hibernate.Query;
+import org.hibernate.Session;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 public class OrderDAO
 {
@@ -24,7 +23,7 @@ public class OrderDAO
 		session.beginTransaction();
 	}
 
-	public IModel getModelById(int id)
+	public IModel getModelById(Integer id)
 	{
 		OrderInfo oi = (OrderInfo) session.get(OrderInfo.class, id);
 		return new OrderModel(oi.getUser(), oi.getDate(), oi.getStatus(),
@@ -70,7 +69,7 @@ public class OrderDAO
 
 	}
 
-	public void delModelById(int id)
+	public void delModelById(Integer id)
 	{
 		String hql = "DELETE FROM ORDERINFO WHERE oinfo_id =" + id;
 		session.createQuery(hql);
