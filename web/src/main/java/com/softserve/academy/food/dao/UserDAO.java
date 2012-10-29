@@ -20,7 +20,7 @@ public class UserDAO
 
 	public User getEntityById(int id)
 	{
-		User u = (User) session.get(User.class, id);
+//		User u = (User) session.get(User.class, id);
 //		return new UserModel(u.getId(), u.getName(), u.getEmail(),u.getPhone());
 	    return (User) session.get(User.class, id);
 	}
