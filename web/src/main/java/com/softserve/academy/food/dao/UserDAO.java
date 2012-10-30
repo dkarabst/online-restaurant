@@ -3,86 +3,63 @@ package com.softserve.academy.food.dao;
 import java.util.List;
 
 import org.hibernate.Query;
-import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import com.softserve.academy.food.entity.User;
 
-public class UserDAO
-{
-	protected Query		queryResult;
-	protected Session	session;
+@Repository
+public class UserDao {
 
-	public UserDAO()
-	{
-		session = HibernateUtil.getSession();
-		session.beginTransaction();
-	}
+	@Autowired
+	private SessionFactory session;
 
-	public User getEntityById(int id)
-	{
-//		User u = (User) session.get(User.class, id);
-//		return new UserModel(u.getId(), u.getName(), u.getEmail(),u.getPhone());
-	    return (User) session.get(User.class, id);
+	public User get(int id) {
+
+		return (User) session.getCurrentSession().get(User.class, id);
 	}
 
 	@SuppressWarnings("unchecked")
-	public List<User> getAllEntities()
-	{	   
-		queryResult = session.createQuery("from USERS ");
-		session.flush();
-//		@SuppressWarnings("unchecked")
-//		List<User> entityList = queryResult.list();
-//		ArrayList<UserModel> modelList = new ArrayList<UserModel>();
-//		for (User entity : entityList)
-//		{
-//			modelList.add(new UserModel(entity.getId(), entity.getName(),
-//					entity.getEmail(),entity.getPhone()));
-//		}
-//		return modelList;
-		return (List<User>) queryResult.list();
-	}
-
-	public User getEntityByName(String name)
-	{
-		queryResult = session
-				.createQuery("from USERS where USER_NAME =" + name);
-		session.flush();
-//		@SuppressWarnings("unchecked")
-//		List<User> entityList = queryResult.list();
-//		ArrayList<UserModel> modelList = new ArrayList<UserModel>();
-//		for (User entity : entityList)
-//		{
-//			modelList.add(new UserModel(entity.getId(), entity.getName(),
-//					entity.getEmail(),entity.getPhone()));
-//		}
-//		return modelList;
-		return  (User) queryResult.list().get(0);
-	}
-
-	public void addEntity(String name, String email, String phone)
-	{
-		session.save(new User(name, email, phone));
-		session.flush();
-	}
-
-	public void delEntityById(int id)
-	{
-		String hql = "DELETE FROM USERS WHERE user_id =" + id;
-		session.createQuery(hql);
+	public List<User> getAll() {
+		
+		return (List<User>) session.getCurrentSession().createQuery("from User ").list();
 	}
 	
-	public void delEntityByPhone(String phone)
-	{
-		String hql = "DELETE FROM USERS WHERE USER_PHONE =" + phone;
-		session.createQuery(hql);
+	@SuppressWarnings("unchecked")
+	public User get(String name) {
+		
+		List<User> list = session.getCurrentSession().createQuery("from User where USER_NAME = '" + name + "'").list();
+
+		if (list.isEmpty()) {
+			
+			return null;
+		}
+		return list.get(0);
 	}
 
-	public void delEntityByNameAndEmail(String name, String email)
-	{
-		String hql = "DELETE FROM USERS WHERE USER_NAME =" + name
-				+ "and USER_EMAIL=" + email;
-		session.createQuery(hql);
+	public User add(User user) {
+		
+		user.setId( (Integer)session.getCurrentSession().save(user));
+		
+		return user;
+	}
 
+	public void delelete(int id) {
+
+		Query query;
+		query = session.getCurrentSession().createQuery("delete from User where id = " + id);
+		query.executeUpdate();
+	}
+	
+	public void delelete(User user) {
+
+		 session.getCurrentSession().delete(user);
+	}
+	
+	public void update(User user) {
+
+		 session.getCurrentSession().update(user);
 	}
 
 }
