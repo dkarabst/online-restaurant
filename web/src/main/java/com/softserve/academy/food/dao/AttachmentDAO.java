@@ -16,13 +16,13 @@ public class AttachmentDAO
 	@Autowired
 	private SessionFactory	sessionFactory;
 
-	public Attachment getEntityById(int id)
+	public Attachment getById(int id)
 	{
 		return (Attachment) sessionFactory.getCurrentSession().get(
 				Attachment.class, id);
 	}
 
-	public Attachment getEntityByName(String name)
+	public Attachment getByName(String name)
 	{
 		return (Attachment) sessionFactory.getCurrentSession()
 				.createQuery("from Attachment where name ='" + name + "'")
@@ -30,25 +30,25 @@ public class AttachmentDAO
 	}
 
 	@SuppressWarnings("unchecked")
-	public ArrayList<Attachment> getAllEntities()
+	public ArrayList<Attachment> getAll()
 	{
 		return (ArrayList<Attachment>) sessionFactory.getCurrentSession()
 				.createQuery("from Attachment").list();
 	}
 
-	public void addEntity(User user, String name, String path, Date modified)
+	public void add(User user, String name, String path, Date modified)
 	{
 		sessionFactory.getCurrentSession().save(
 				new Attachment(user, name, path, modified));
 	}
 
-	public void delEntityById(int id)
+	public void delById(int id)
 	{
 		String hql = "DELETE FROM ATTACHMENTS WHERE att_id ='" + id + "'";
 		sessionFactory.getCurrentSession().createQuery(hql);
 	}
 
-	public void delEntityByName(String name)
+	public void delByName(String name)
 	{
 		String hql = "DELETE FROM ATTACHMENTS WHERE name ='" + name + "'";
 		sessionFactory.getCurrentSession().createQuery(hql);
