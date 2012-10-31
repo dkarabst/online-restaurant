@@ -9,6 +9,8 @@
 	Hello world!  
 </h1>
 
+<a href="helloPage.htm">Hello page here</a>
+
 <P>  The time on the server is ${serverTime}. </P>
 </body>
 </html>

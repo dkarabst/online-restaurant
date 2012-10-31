@@ -1,33 +1,43 @@
 package com.softserve.academy.food.service;
 
+import java.util.ArrayList;
+import java.util.List;
 
-import com.softserve.academy.food.dao.OrderDAO;
-import com.softserve.academy.food.model.IModel;
-import com.softserve.academy.food.model.OrderModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
-@Service
-public class OrderHistoryServiceImpl implements OrderHistoryService{
+import com.softserve.academy.food.dao.OrderDAO;
+import com.softserve.academy.food.entity.OrderInfo;
+import com.softserve.academy.food.model.OrderModel;
 
-    @Autowired
-    private OrderDAO orderDAO;
+@Service("orderHistoryService")
+public class OrderHistoryServiceImpl implements OrderHistoryService
+{
 
-    @Transactional
-    public IModel getModelById(Integer id) {
-        return  orderDAO.getModelById(id);
-    }
+	@Autowired
+	private OrderDAO	orderDAO;
 
-    @Transactional
-    public List<OrderModel> getAllModels() {
-        return orderDAO.getAllModels();
-    }
+	@Transactional
+	public OrderModel getModelById(Integer id)
+	{
+		return orderDAO.getEntityById(id).toModel();
+	}
 
-    @Transactional
+	@Transactional
+	public List<OrderModel> getAllModels()
+	{
+		ArrayList<OrderModel> models = new ArrayList<OrderModel>();
+		for (OrderInfo m : orderDAO.getAllEntities())
+		{
+			models.add(m.toModel());
+		}
+		return models;
+	}
 
-    public void delModelById(Integer id) {
-        orderDAO.delModelById(id);
-    }
+	@Transactional
+	public void delModelById(Integer id)
+	{
+		orderDAO.delEntityById(id);
+	}
 }

@@ -64,6 +64,11 @@ public class User extends AbsEntity {
 		email = user.getPassword();
 		phone = user.getRole();
 	}
+	
+	public UserModel toModel()
+	{
+		return new UserModel(id,name,email,phone);
+	}
 
 	public int getId() {
 		return id;

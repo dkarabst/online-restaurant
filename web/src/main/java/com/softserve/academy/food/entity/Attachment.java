@@ -1,7 +1,18 @@
 package com.softserve.academy.food.entity;
 
-import javax.persistence.*;
 import java.util.Date;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+import com.softserve.academy.food.model.AttachmentModel;
 
 @Entity
 @Table(name = "ATTACHMENTS")
@@ -38,6 +49,11 @@ public class Attachment extends AbsEntity
 		setName(name);
 		setPath(path);
 		setModified(modified);
+	}
+	
+	public AttachmentModel toModel()
+	{
+		return new AttachmentModel(user,name,path,modified);
 	}
 
 	public Integer getId()

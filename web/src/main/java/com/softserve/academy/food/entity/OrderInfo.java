@@ -15,6 +15,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.softserve.academy.food.model.OrderModel;
+
 @Entity
 @Table(name = "ORDERINFO")
 public class OrderInfo extends AbsEntity
@@ -61,6 +63,11 @@ public class OrderInfo extends AbsEntity
 		setDate(date);
 		setStatus(status);
 		setSpec(spec);
+	}
+	
+	public OrderModel toModel()
+	{
+		return new OrderModel(user,date,status,spec);
 	}
 
 	public Long getId()

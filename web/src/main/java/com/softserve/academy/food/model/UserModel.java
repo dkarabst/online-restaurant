@@ -1,6 +1,8 @@
 package com.softserve.academy.food.model;
 
-public class UserModel implements IModel
+import com.softserve.academy.food.entity.User;
+
+public class UserModel
 {
 	private int		id;
 	private String	name;
@@ -17,6 +19,14 @@ public class UserModel implements IModel
 		this.name = name;
 		this.email = email;
 		this.phone = phone;
+	}
+	
+	public UserModel(User user)
+	{
+		this.id = user.getId();
+		this.name = user.getName();
+		this.email = user.getEmail();
+		this.phone = user.getPhone();
 	}
 
 	public int getId()

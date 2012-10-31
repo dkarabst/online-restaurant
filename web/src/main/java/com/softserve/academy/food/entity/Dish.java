@@ -8,6 +8,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.softserve.academy.food.model.DishModel;
+
 @Entity
 @Table(name = "DISHES")
 public class Dish extends AbsEntity
@@ -75,6 +77,11 @@ public class Dish extends AbsEntity
 		setAvail(avail);
 		setPrepTime(prepTime);
 		setWeight(weight);
+	}
+	
+	public DishModel toModel()
+	{
+		return new DishModel(id,category,name,price,photo,descr,avail,prepTime,weight);
 	}
 
 	public Integer getId()
