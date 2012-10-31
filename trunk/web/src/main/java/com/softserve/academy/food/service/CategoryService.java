@@ -21,7 +21,7 @@ public class CategoryService
 	public ArrayList<CategoryModel> getCategoryList()
 	{
 		ArrayList<CategoryModel> models = new ArrayList<CategoryModel>();
-		for (Category m : categoryDAO.getAllEntities())
+		for (Category m : categoryDAO.getAll())
 		{
 			models.add(m.toModel());
 		}
@@ -31,30 +31,30 @@ public class CategoryService
 	@Transactional
 	public CategoryModel getById(int id)
 	{
-		return categoryDAO.getEntityById(id).toModel();
+		return categoryDAO.getById(id).toModel();
 	}
 
 	@Transactional
 	public CategoryModel getByName(String st)
 	{
-		return categoryDAO.getEntityByName(st).toModel();
+		return categoryDAO.getByName(st).toModel();
 	}
 
 	@Transactional
 	public void addCat(String name)
 	{
-		categoryDAO.addEntity(name);
+		categoryDAO.add(name);
 	}
 
 	@Transactional
 	public void delById(int id)
 	{
-		categoryDAO.delEntityById(id);
+		categoryDAO.delById(id);
 	}
 
 	@Transactional
 	public void delByName(String name)
 	{
-		categoryDAO.delEntityByName(name);
+		categoryDAO.delByName(name);
 	}
 }

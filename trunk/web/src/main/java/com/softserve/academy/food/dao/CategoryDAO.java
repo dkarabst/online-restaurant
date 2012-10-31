@@ -17,32 +17,32 @@ public class CategoryDAO {
 	public CategoryDAO() {
 	}
 
-	public void addEntity(String name) {
+	public void add(String name) {
 		sessionFactory.getCurrentSession().save(new Category(name));
 	}
 
 	@SuppressWarnings("unchecked")
-	public ArrayList<Category> getAllEntities() {
+	public ArrayList<Category> getAll() {
 		return (ArrayList<Category>) sessionFactory.getCurrentSession()
 				.createQuery("from Category").list();
 	}
 
-	public void delEntityById(int id) {
+	public void delById(int id) {
 		String hql = "DELETE FROM Category WHERE id ='" + id + "'";
 		sessionFactory.getCurrentSession().createQuery(hql).executeUpdate();
 	}
 
-	public void delEntityByName(String name) {
+	public void delByName(String name) {
 		String hql = "DELETE FROM Category WHERE name ='" + name + "'";
 		sessionFactory.getCurrentSession().createQuery(hql).executeUpdate();
 	}
 
-	public Category getEntityById(int id) {
+	public Category getById(int id) {
 		return (Category) sessionFactory.getCurrentSession().get(
 				Category.class, id);
 	}
 
-	public Category getEntityByName(String name) {
+	public Category getByName(String name) {
 		return (Category) sessionFactory.getCurrentSession()
 				.createQuery("from Category where name ='" + name + "'").list()
 				.get(0);

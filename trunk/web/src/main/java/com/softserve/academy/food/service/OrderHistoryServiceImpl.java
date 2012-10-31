@@ -21,14 +21,14 @@ public class OrderHistoryServiceImpl implements OrderHistoryService
 	@Transactional
 	public OrderModel getModelById(Integer id)
 	{
-		return orderDAO.getEntityById(id).toModel();
+		return orderDAO.getById(id).toModel();
 	}
 
 	@Transactional
 	public List<OrderModel> getAllModels()
 	{
 		ArrayList<OrderModel> models = new ArrayList<OrderModel>();
-		for (OrderInfo m : orderDAO.getAllEntities())
+		for (OrderInfo m : orderDAO.getAll())
 		{
 			models.add(m.toModel());
 		}
@@ -38,6 +38,6 @@ public class OrderHistoryServiceImpl implements OrderHistoryService
 	@Transactional
 	public void delModelById(Integer id)
 	{
-		orderDAO.delEntityById(id);
+		orderDAO.delById(id);
 	}
 }

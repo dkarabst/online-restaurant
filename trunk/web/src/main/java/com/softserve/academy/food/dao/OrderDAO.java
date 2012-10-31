@@ -22,20 +22,20 @@ public class OrderDAO
 	{
 	}
 
-	public OrderInfo getEntityById(Integer id)
+	public OrderInfo getById(Integer id)
 	{
 		return (OrderInfo) sessionFactory.getCurrentSession().get(
 				OrderInfo.class, id);
 	}
 
 	@SuppressWarnings("unchecked")
-	public ArrayList<OrderInfo> getAllEntities()
+	public ArrayList<OrderInfo> getAll()
 	{
 		return (ArrayList<OrderInfo>) sessionFactory.getCurrentSession()
 				.createQuery("from OrderInfo").list();
 	}
 
-	public OrderInfo getEntityByUser(User user)
+	public OrderInfo getByUser(User user)
 	{
 		return (OrderInfo) sessionFactory
 				.getCurrentSession()
@@ -44,7 +44,7 @@ public class OrderDAO
 				.list().get(0);
 	}
 
-	public void addEntity(User user, Date date, Character status,
+	public void add(User user, Date date, Character status,
 			List<OrderSpec> spec)
 	{
 		sessionFactory.getCurrentSession().save(
@@ -52,14 +52,14 @@ public class OrderDAO
 
 	}
 
-	public void delEntityById(Integer id)
+	public void delById(Integer id)
 	{
 		String hql = "DELETE FROM ORDERINFO WHERE oinfo_id ='" + id + "'";
 		sessionFactory.getCurrentSession().createQuery(hql);
 
 	}
 
-	public void delEntityByUser(User user)
+	public void delByUser(User user)
 	{
 		String hql = "DELETE FROM ORDERINFO WHERE OINFO_USER ='" + user.getId() + "'";
 		sessionFactory.getCurrentSession().createQuery(hql);

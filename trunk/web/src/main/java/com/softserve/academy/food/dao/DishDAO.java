@@ -20,12 +20,12 @@ public class DishDAO
 	{
 	}
 
-	public Dish getEntityById(int id)
+	public Dish getById(int id)
 	{
 		return (Dish) sessionFactory.getCurrentSession().get(Dish.class, id);
 	}
 
-	public Dish getEntityByName(String name)
+	public Dish getByName(String name)
 	{
 		return (Dish) sessionFactory.getCurrentSession()
 				.createQuery("from Dish where name ='" + name + "'").list()
@@ -33,13 +33,13 @@ public class DishDAO
 	}
 
 	@SuppressWarnings("unchecked")
-	public ArrayList<Dish> getAllEntities()
+	public ArrayList<Dish> getAll()
 	{
 		return (ArrayList<Dish>) sessionFactory.getCurrentSession()
 				.createQuery("from Dish").list();
 	}
 
-	public void addEntity(Category category, String name, Integer price,
+	public void add(Category category, String name, Integer price,
 			String photo, String descr, Character avail, Integer prepTime,
 			String weight)
 	{
@@ -48,14 +48,14 @@ public class DishDAO
 						weight));
 	}
 
-	public void delEntityById(int id)
+	public void delById(int id)
 	{
 		String hql = "DELETE FROM DISHES WHERE dish_id ='" + id + "'";
 		sessionFactory.getCurrentSession().createQuery(hql);
 
 	}
 
-	public void delEntityByName(String name)
+	public void delByName(String name)
 	{
 		String hql = "DELETE FROM DISHES WHERE dish_name ='" + name + "'";
 		sessionFactory.getCurrentSession().createQuery(hql);
