@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.softserve.academy.food.dao.OrderDAO;
+import com.softserve.academy.food.dao.OrderDao;
 import com.softserve.academy.food.entity.OrderInfo;
 import com.softserve.academy.food.model.OrderModel;
 
@@ -16,19 +16,19 @@ public class OrderHistoryServiceImpl implements OrderHistoryService
 {
 
 	@Autowired
-	private OrderDAO	orderDAO;
+	private OrderDao	orderDao;
 
 	@Transactional
 	public OrderModel getModelById(Integer id)
 	{
-		return orderDAO.getById(id).toModel();
+		return orderDao.get(id).toModel();
 	}
 
 	@Transactional
 	public List<OrderModel> getAllModels()
 	{
 		ArrayList<OrderModel> models = new ArrayList<OrderModel>();
-		for (OrderInfo m : orderDAO.getAll())
+		for (OrderInfo m : orderDao.getAll())
 		{
 			models.add(m.toModel());
 		}
@@ -38,6 +38,6 @@ public class OrderHistoryServiceImpl implements OrderHistoryService
 	@Transactional
 	public void delModelById(Integer id)
 	{
-		orderDAO.delById(id);
+		orderDao.delete(id);
 	}
 }

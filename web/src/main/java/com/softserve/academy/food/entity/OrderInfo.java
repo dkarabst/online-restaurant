@@ -19,7 +19,7 @@ import com.softserve.academy.food.model.OrderModel;
 
 @Entity
 @Table(name = "ORDERINFO")
-public class OrderInfo extends AbsEntity
+public class OrderInfo extends AbstractEntity
 {
 
 	private static final long	serialVersionUID	= 1L;

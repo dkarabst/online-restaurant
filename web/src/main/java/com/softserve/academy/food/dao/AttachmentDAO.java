@@ -10,19 +10,19 @@ import org.springframework.stereotype.Repository;
 import com.softserve.academy.food.entity.Attachment;
 import com.softserve.academy.food.entity.User;
 
-@Repository("attachmentDAO")
-public class AttachmentDAO
+@Repository("attachmentDao")
+public class AttachmentDao
 {
 	@Autowired
 	private SessionFactory	sessionFactory;
 
-	public Attachment getById(int id)
+	public Attachment get(int id)
 	{
 		return (Attachment) sessionFactory.getCurrentSession().get(
 				Attachment.class, id);
 	}
 
-	public Attachment getByName(String name)
+	public Attachment get(String name)
 	{
 		return (Attachment) sessionFactory.getCurrentSession()
 				.createQuery("from Attachment where name ='" + name + "'")
@@ -42,13 +42,13 @@ public class AttachmentDAO
 				new Attachment(user, name, path, modified));
 	}
 
-	public void delById(int id)
+	public void delete(int id)
 	{
 		String hql = "DELETE FROM ATTACHMENTS WHERE att_id ='" + id + "'";
 		sessionFactory.getCurrentSession().createQuery(hql);
 	}
 
-	public void delByName(String name)
+	public void delete(String name)
 	{
 		String hql = "DELETE FROM ATTACHMENTS WHERE name ='" + name + "'";
 		sessionFactory.getCurrentSession().createQuery(hql);

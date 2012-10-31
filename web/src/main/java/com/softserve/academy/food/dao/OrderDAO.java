@@ -12,17 +12,17 @@ import com.softserve.academy.food.entity.OrderInfo;
 import com.softserve.academy.food.entity.OrderSpec;
 import com.softserve.academy.food.entity.User;
 
-@Repository("orderDAO")
-public class OrderDAO
+@Repository("orderDao")
+public class OrderDao
 {
 	@Autowired
 	private SessionFactory	sessionFactory;
 
-	public OrderDAO()
+	public OrderDao()
 	{
 	}
 
-	public OrderInfo getById(Integer id)
+	public OrderInfo get(Integer id)
 	{
 		return (OrderInfo) sessionFactory.getCurrentSession().get(
 				OrderInfo.class, id);
@@ -35,7 +35,7 @@ public class OrderDAO
 				.createQuery("from OrderInfo").list();
 	}
 
-	public OrderInfo getByUser(User user)
+	public OrderInfo get(User user)
 	{
 		return (OrderInfo) sessionFactory
 				.getCurrentSession()
@@ -52,14 +52,14 @@ public class OrderDAO
 
 	}
 
-	public void delById(Integer id)
+	public void delete(Integer id)
 	{
 		String hql = "DELETE FROM ORDERINFO WHERE oinfo_id ='" + id + "'";
 		sessionFactory.getCurrentSession().createQuery(hql);
 
 	}
 
-	public void delByUser(User user)
+	public void delete(User user)
 	{
 		String hql = "DELETE FROM ORDERINFO WHERE OINFO_USER ='" + user.getId() + "'";
 		sessionFactory.getCurrentSession().createQuery(hql);

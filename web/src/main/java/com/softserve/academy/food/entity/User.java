@@ -16,7 +16,7 @@ import com.softserve.academy.food.model.UserModel;
 
 @Entity
 @Table(name = "USERS")
-public class User extends AbsEntity {
+public class User extends AbstractEntity {
 	
 	private static final long	serialVersionUID	= 1L;
 
