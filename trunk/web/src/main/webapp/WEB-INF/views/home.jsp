@@ -9,8 +9,10 @@
 	Hello world!  
 </h1>
 
-<a href="helloPage.htm">Hello page here</a>
-<a href="lookup.json">LOOKUP HERE</a>
+<a href="helloPage.htm">Hello page here</a><br>
+<a href="1.json">LOOKUP HERE</a><br>
+<a href="2.json">LOOKUP HERE</a><br>
+<a href="3.json">LOOKUP HERE</a><br>
 
 <P>  The time on the server is ${serverTime}. </P>
 </body>
