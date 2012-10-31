@@ -10,7 +10,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "ORDER_SPECS")
-public class OrderSpec extends AbsEntity
+public class OrderSpec extends AbstractEntity
 {
 
 	private static final long	serialVersionUID	= 1L;

@@ -11,7 +11,7 @@ import com.softserve.academy.food.model.CategoryModel;
 
 @Entity
 @Table(name = "CATEGORIES")
-public class Category extends AbsEntity
+public class Category extends AbstractEntity
 {
 
 	private static final long	serialVersionUID	= 1L;

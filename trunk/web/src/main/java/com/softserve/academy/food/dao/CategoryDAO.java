@@ -8,13 +8,13 @@ import org.springframework.stereotype.Repository;
 
 import com.softserve.academy.food.entity.Category;
 
-@Repository("categoryDAO")
-public class CategoryDAO {
+@Repository("categoryDao")
+public class CategoryDao {
 
 	@Autowired
 	private SessionFactory sessionFactory;
 
-	public CategoryDAO() {
+	public CategoryDao() {
 	}
 
 	public void add(String name) {
@@ -27,22 +27,22 @@ public class CategoryDAO {
 				.createQuery("from Category").list();
 	}
 
-	public void delById(int id) {
+	public void delete(int id) {
 		String hql = "DELETE FROM Category WHERE id ='" + id + "'";
 		sessionFactory.getCurrentSession().createQuery(hql).executeUpdate();
 	}
 
-	public void delByName(String name) {
+	public void delete(String name) {
 		String hql = "DELETE FROM Category WHERE name ='" + name + "'";
 		sessionFactory.getCurrentSession().createQuery(hql).executeUpdate();
 	}
 
-	public Category getById(int id) {
+	public Category get(int id) {
 		return (Category) sessionFactory.getCurrentSession().get(
 				Category.class, id);
 	}
 
-	public Category getByName(String name) {
+	public Category get(String name) {
 		return (Category) sessionFactory.getCurrentSession()
 				.createQuery("from Category where name ='" + name + "'").list()
 				.get(0);

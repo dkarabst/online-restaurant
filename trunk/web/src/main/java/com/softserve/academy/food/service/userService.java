@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.softserve.academy.food.dao.UserDAO;
+import com.softserve.academy.food.dao.UserDao;
 import com.softserve.academy.food.entity.User;
 import com.softserve.academy.food.model.UserCredentials;
 import com.softserve.academy.food.model.UserModel;
@@ -15,12 +15,12 @@ public class UserService implements IUserService
 {
 
 	@Autowired
-	private UserDAO	daoUser;
+	private UserDao	userDao;
 
 	@Transactional
 	public boolean checkUser(String name)
 	{
-		if (daoUser.get(name) == null)
+		if (userDao.get(name) == null)
 		{
 			return false;
 		}
@@ -37,14 +37,14 @@ public class UserService implements IUserService
 			Coding code = new Coding();
 			user.setPassword(code.getHash(user.getPassword()));
 
-			daoUser.add(new User(user));
+			userDao.add(new User(user));
 		}
 	}
 
 	@Transactional
 	public UserModel getUser(int id)
 	{
-		return daoUser.get(id).toModel();
+		return userDao.get(id).toModel();
 	}
 
 	@Transactional
@@ -52,12 +52,12 @@ public class UserService implements IUserService
 	{
 		if (user != null)
 		{
-			User oldUser = daoUser.get(user.getId());
+			User oldUser = userDao.get(user.getId());
 
 			oldUser.setPhone(user.getPhone());
 			oldUser.setEmail(user.getEmail());
 
-			daoUser.update(oldUser);
+			userDao.update(oldUser);
 		}
 	}
 

@@ -2,17 +2,18 @@ package com.softserve.academy.food.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.softserve.academy.food.model.DishModel;
 
 @Entity
 @Table(name = "DISHES")
-public class Dish extends AbsEntity
+public class Dish extends AbstractEntity
 {
 
 	private static final long	serialVersionUID	= 1L;
@@ -23,7 +24,7 @@ public class Dish extends AbsEntity
 	private Integer				id;
 
 	// Is it right???
-	@OneToOne(mappedBy = "Dish")
+	@ManyToOne(fetch = FetchType.LAZY)
 	private Category			category;
 
 	@Column(name = "DISH_NAME", length = 50)
@@ -78,10 +79,11 @@ public class Dish extends AbsEntity
 		setPrepTime(prepTime);
 		setWeight(weight);
 	}
-	
+
 	public DishModel toModel()
 	{
-		return new DishModel(id,category,name,price,photo,descr,avail,prepTime,weight);
+		return new DishModel(id, category, name, price, photo, descr, avail,
+				prepTime, weight);
 	}
 
 	public Integer getId()

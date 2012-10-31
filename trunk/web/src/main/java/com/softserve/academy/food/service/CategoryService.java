@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.softserve.academy.food.dao.CategoryDAO;
+import com.softserve.academy.food.dao.CategoryDao;
 import com.softserve.academy.food.entity.Category;
 import com.softserve.academy.food.model.CategoryModel;
 
@@ -15,13 +15,13 @@ public class CategoryService
 {
 
 	@Autowired
-	private CategoryDAO	categoryDAO;
+	private CategoryDao	categoryDao;
 
 	@Transactional
 	public ArrayList<CategoryModel> getCategoryList()
 	{
 		ArrayList<CategoryModel> models = new ArrayList<CategoryModel>();
-		for (Category m : categoryDAO.getAll())
+		for (Category m : categoryDao.getAll())
 		{
 			models.add(m.toModel());
 		}
@@ -31,30 +31,30 @@ public class CategoryService
 	@Transactional
 	public CategoryModel getById(int id)
 	{
-		return categoryDAO.getById(id).toModel();
+		return categoryDao.get(id).toModel();
 	}
 
 	@Transactional
 	public CategoryModel getByName(String st)
 	{
-		return categoryDAO.getByName(st).toModel();
+		return categoryDao.get(st).toModel();
 	}
 
 	@Transactional
 	public void addCat(String name)
 	{
-		categoryDAO.add(name);
+		categoryDao.add(name);
 	}
 
 	@Transactional
 	public void delById(int id)
 	{
-		categoryDAO.delById(id);
+		categoryDao.delete(id);
 	}
 
 	@Transactional
 	public void delByName(String name)
 	{
-		categoryDAO.delByName(name);
+		categoryDao.delete(name);
 	}
 }

@@ -16,7 +16,7 @@ import com.softserve.academy.food.model.AttachmentModel;
 
 @Entity
 @Table(name = "ATTACHMENTS")
-public class Attachment extends AbsEntity
+public class Attachment extends AbstractEntity
 {
 	private static final long	serialVersionUID	= 1L;
 

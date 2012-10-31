@@ -9,23 +9,23 @@ import org.springframework.stereotype.Repository;
 import com.softserve.academy.food.entity.Category;
 import com.softserve.academy.food.entity.Dish;
 
-@Repository("dishDAO")
-public class DishDAO
+@Repository("dishDao")
+public class DishDao
 {
 
 	@Autowired
 	private SessionFactory	sessionFactory;
 
-	public DishDAO()
+	public DishDao()
 	{
 	}
 
-	public Dish getById(int id)
+	public Dish get(int id)
 	{
 		return (Dish) sessionFactory.getCurrentSession().get(Dish.class, id);
 	}
 
-	public Dish getByName(String name)
+	public Dish get(String name)
 	{
 		return (Dish) sessionFactory.getCurrentSession()
 				.createQuery("from Dish where name ='" + name + "'").list()
@@ -48,14 +48,14 @@ public class DishDAO
 						weight));
 	}
 
-	public void delById(int id)
+	public void delete(int id)
 	{
 		String hql = "DELETE FROM DISHES WHERE dish_id ='" + id + "'";
 		sessionFactory.getCurrentSession().createQuery(hql);
 
 	}
 
-	public void delByName(String name)
+	public void delete(String name)
 	{
 		String hql = "DELETE FROM DISHES WHERE dish_name ='" + name + "'";
 		sessionFactory.getCurrentSession().createQuery(hql);
