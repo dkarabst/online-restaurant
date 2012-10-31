@@ -2,7 +2,7 @@ package com.softserve.academy.food.model;
 
 import com.softserve.academy.food.entity.Category;
 
-public class DishModel implements IModel
+public class DishModel
 {
 	private int			id;
 	private Category	category;

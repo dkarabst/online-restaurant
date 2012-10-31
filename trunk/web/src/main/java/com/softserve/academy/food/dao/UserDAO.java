@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 import com.softserve.academy.food.entity.User;
 
 @Repository
-public class UserDao {
+public class UserDAO {
 
 	@Autowired
 	private SessionFactory session;

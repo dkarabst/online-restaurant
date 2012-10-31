@@ -9,15 +9,11 @@ import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.Date;
 
-import org.hibernate.Query;
 import org.hibernate.Session;
 
 import com.softserve.academy.food.entity.Attachment;
-import com.softserve.academy.food.entity.Category;
 import com.softserve.academy.food.entity.User;
 import com.softserve.academy.food.model.AttachmentModel;
-import com.softserve.academy.food.model.CategoryModel;
-import com.softserve.academy.food.model.IModel;
 
 public class AttachmentsXML {
 	protected Session	session;
@@ -31,14 +27,14 @@ public class AttachmentsXML {
 		return new XMLDecoder(new FileInputStream(new File(
 				"//java//Attachments.xml")));
 	}
-	public IModel getModelById(int id)
+	public AttachmentModel getModelById(int id)
 	{
 		Attachment att = (Attachment) session.get(Attachment.class, id);
 		return new AttachmentModel(att.getUser(), att.getName(), att.getPath(),
 				att.getModified());
 	}
 	
-	public IModel getModelByName(String name) throws FileNotFoundException
+	public AttachmentModel getModelByName(String name) throws FileNotFoundException
 	{
 		XMLDecoder d = GetXMLDecoder();
 		AttachmentModel atmodel = null;

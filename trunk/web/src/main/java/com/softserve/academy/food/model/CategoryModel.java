@@ -1,6 +1,6 @@
 package com.softserve.academy.food.model;
 
-public class CategoryModel implements IModel
+public class CategoryModel
 {
 	private int		id;
 	private String	name;

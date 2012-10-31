@@ -11,7 +11,7 @@
 	</appender>
 	
 	<!-- Application Loggers -->
-	<logger name="com.spring.android">
+	<logger name="com.softserve.academy">
 		<level value="info" />
 	</logger>
 	

@@ -4,8 +4,6 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Date;
 
-import antlr.collections.List;
-
 import com.softserve.academy.food.entity.Attachment;
 import com.softserve.academy.food.entity.User;
 import com.softserve.academy.food.model.AttachmentModel;

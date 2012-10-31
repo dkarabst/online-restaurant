@@ -3,7 +3,7 @@ package com.softserve.academy.food.model;
 import com.softserve.academy.food.entity.User;
 import java.util.Date;
 
-public class AttachmentModel implements IModel
+public class AttachmentModel
 {
 	private User	user;
 	private String	name;

@@ -1,85 +1,68 @@
 package com.softserve.academy.food.dao;
 
-import com.softserve.academy.food.entity.OrderInfo;
-import com.softserve.academy.food.entity.OrderSpec;
-import com.softserve.academy.food.entity.User;
-import com.softserve.academy.food.model.IModel;
-import com.softserve.academy.food.model.OrderModel;
-import org.hibernate.Query;
-import org.hibernate.Session;
-
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+import com.softserve.academy.food.entity.OrderInfo;
+import com.softserve.academy.food.entity.OrderSpec;
+import com.softserve.academy.food.entity.User;
+
+@Repository("orderDAO")
 public class OrderDAO
 {
-	protected Query		queryResult;
-	protected Session	session;
+	@Autowired
+	private SessionFactory	sessionFactory;
 
 	public OrderDAO()
 	{
-		session = HibernateUtil.getSession();
-		session.beginTransaction();
 	}
 
-	public IModel getModelById(Integer id)
+	public OrderInfo getEntityById(Integer id)
 	{
-		OrderInfo oi = (OrderInfo) session.get(OrderInfo.class, id);
-		return new OrderModel(oi.getUser(), oi.getDate(), oi.getStatus(),
-				oi.getSpec());
-	}
-	
-	public List<OrderModel> getAllModels()
-	{
-		queryResult = session.createQuery("from ORDERINFO ");
-		session.flush();
-		@SuppressWarnings("unchecked")
-		List<OrderInfo> entityList = queryResult.list();
-		ArrayList<OrderModel> modelList = new ArrayList<OrderModel>();
-		for (OrderInfo entity : entityList)
-		{
-			modelList.add(new OrderModel(entity.getUser(),
-					entity.getDate(), entity.getStatus(), entity.getSpec()));
-		}
-		return modelList;
+		return (OrderInfo) sessionFactory.getCurrentSession().get(
+				OrderInfo.class, id);
 	}
 
-	public List<OrderModel> getModelByUser(User user)
+	@SuppressWarnings("unchecked")
+	public ArrayList<OrderInfo> getAllEntities()
 	{
-		queryResult = session.createQuery("from ORDERINFO where OINFO_USER ="
-				+ user);
-		session.flush();
-		@SuppressWarnings("unchecked")
-		List<OrderInfo> entityList = queryResult.list();
-		ArrayList<OrderModel> modelList = new ArrayList<OrderModel>();
-		for (OrderInfo entity : entityList)
-		{
-			modelList.add(new OrderModel(entity.getUser(),
-					entity.getDate(), entity.getStatus(), entity.getSpec()));
-		}
-		return modelList;
+		return (ArrayList<OrderInfo>) sessionFactory.getCurrentSession()
+				.createQuery("from OrderInfo").list();
 	}
 
-	public void addModel(User user, Date date, Character status,
+	public OrderInfo getEntityByUser(User user)
+	{
+		return (OrderInfo) sessionFactory
+				.getCurrentSession()
+				.createQuery(
+						"from Orderinfo where user ='" + user.getId() + "'")
+				.list().get(0);
+	}
+
+	public void addEntity(User user, Date date, Character status,
 			List<OrderSpec> spec)
 	{
-		session.save(new OrderInfo(user, date, status, spec));
-		session.flush();
+		sessionFactory.getCurrentSession().save(
+				new OrderInfo(user, date, status, spec));
 
 	}
 
-	public void delModelById(Integer id)
+	public void delEntityById(Integer id)
 	{
-		String hql = "DELETE FROM ORDERINFO WHERE oinfo_id =" + id;
-		session.createQuery(hql);
+		String hql = "DELETE FROM ORDERINFO WHERE oinfo_id ='" + id + "'";
+		sessionFactory.getCurrentSession().createQuery(hql);
 
 	}
 
-	public void delModelByUser(User user)
+	public void delEntityByUser(User user)
 	{
-		String hql = "DELETE FROM ORDERINFO WHERE OINFO_USER =" + user;
-		session.createQuery(hql);
+		String hql = "DELETE FROM ORDERINFO WHERE OINFO_USER ='" + user.getId() + "'";
+		sessionFactory.getCurrentSession().createQuery(hql);
 
 	}
 

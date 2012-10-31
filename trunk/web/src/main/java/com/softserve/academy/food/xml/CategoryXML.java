@@ -10,7 +10,6 @@ import java.util.ArrayList;
 
 import com.softserve.academy.food.entity.Category;
 import com.softserve.academy.food.model.CategoryModel;
-import com.softserve.academy.food.model.IModel;
 
 public class CategoryXML
 {
@@ -110,7 +109,7 @@ public class CategoryXML
 		return catmodel;
 	}
 
-	public IModel getModelByName(String name) throws FileNotFoundException
+	public CategoryModel getModelByName(String name) throws FileNotFoundException
 	{
 		XMLDecoder d = GetXMLDecoder();
 		CategoryModel catmodel = null;
