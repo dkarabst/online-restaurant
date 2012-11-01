@@ -4,7 +4,7 @@
 ================================================================
 DISHES
 	DISH_ID			INT		UNSIGNED AUTO_INCREMENT PRIMARY KEY
-	DISH_CAT_ID		INT
+	CATEGORY_CAT_ID		INT
 	DISH_NAME		VARCHAR(255)
 	DISH_PRICE		INT
 	DISH_PHOTO		VARCHAR(255)

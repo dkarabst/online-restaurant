@@ -11,6 +11,7 @@
 	<center>
 		У нас сегодня на обед:<br> 
 		${helloMessage}
+		${cm}
 	</center>
 
 </body>

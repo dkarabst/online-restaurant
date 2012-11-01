@@ -82,7 +82,7 @@ public class Dish extends AbstractEntity
 
 	public DishModel toModel()
 	{
-		return new DishModel(id, category, name, price, photo, descr, avail,
+		return new DishModel(id, category.getId(), name, price, photo, descr, avail,
 				prepTime, weight);
 	}
 

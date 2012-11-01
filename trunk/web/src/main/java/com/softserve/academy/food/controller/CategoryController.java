@@ -22,12 +22,12 @@ public class CategoryController {
 	@Autowired
 	private CategoryService categoryService;
 
-	@RequestMapping(value = "/helloPage.htm", method = RequestMethod.GET)
+	@RequestMapping(value = "/helloPage", method = RequestMethod.GET)
 	protected String helloPage(Model model) {
 		ArrayList<String> names = new ArrayList<String>();
 
 		for (CategoryModel mod : categoryService.getCategoryList()) {
-			names.add(mod.getName());
+			names.add(mod.toString());
 		}
 		model.addAttribute("helloMessage", names);
 		return "helloPage";

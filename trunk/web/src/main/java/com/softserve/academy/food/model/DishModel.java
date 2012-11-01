@@ -1,11 +1,10 @@
 package com.softserve.academy.food.model;
 
-import com.softserve.academy.food.entity.Category;
 
 public class DishModel
 {
 	private int			id;
-	private Category	category;
+	private int	category_id;
 	private String		name;
 	private Integer		price;
 	private String		photo;
@@ -17,13 +16,19 @@ public class DishModel
 	public DishModel()
 	{
 	}
+	
+	@Override
+	public String toString()
+	{
+		return id+","+category_id+","+name+","+price+","+photo+","+descr+","+avail+","+prepTime+","+weight;
+	}
 
-	public DishModel(int id, Category category, String name, Integer price,
+	public DishModel(int id, int category, String name, Integer price,
 			String photo, String descr, Character avail, Integer prepTime,
 			String weight)
 	{
 		this.id = id;
-		this.category = category;
+		this.category_id = category;
 		this.name = name;
 		this.price = price;
 		this.photo = photo;
@@ -43,14 +48,14 @@ public class DishModel
 		this.id = id;
 	}
 
-	public Category getCategory()
+	public int getCategory()
 	{
-		return category;
+		return category_id;
 	}
 
-	public void setCategory(Category category)
+	public void setCategory(int category)
 	{
-		this.category = category;
+		this.category_id = category;
 	}
 
 	public String getName()

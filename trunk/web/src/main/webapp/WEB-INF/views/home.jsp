@@ -9,7 +9,9 @@
 	Hello world!  
 </h1>
 
-<a href="helloPage.htm">Hello page here</a><br>
+<a href="helloPage">Hello page here</a><br>
+<a href="dishes/getDishes">Dishes page here</a><br>
+<a href="dishes/1">Dish by id</a><br>
 <a href="1.json">LOOKUP HERE</a><br>
 <a href="2.json">LOOKUP HERE</a><br>
 <a href="3.json">LOOKUP HERE</a><br>
