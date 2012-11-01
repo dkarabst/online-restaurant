@@ -3,7 +3,7 @@ package com.softserve.academy.food.model;
 import java.util.Date;
 import java.util.List;
 
-import com.softserve.academy.food.entity.OrderSpec;
+import com.softserve.academy.food.entity.OrderContents;
 import com.softserve.academy.food.entity.User;
 
 public class OrderModel
@@ -11,13 +11,13 @@ public class OrderModel
 	private User user;
 	private Date date;
 	private Character status;
-	private List <OrderSpec> spec;
+	private List <OrderContents> spec;
 	
 	public OrderModel()
 	{
 	}
 
-	public OrderModel(User user, Date date, Character status,List <OrderSpec> spec)
+	public OrderModel(User user, Date date, Character status,List <OrderContents> spec)
 	{
 		this.user = user;
 		this.date = date;
@@ -55,12 +55,12 @@ public class OrderModel
 		this.status = status;
 	}
 
-	public List<OrderSpec> getSpec()
+	public List<OrderContents> getSpec()
 	{
 		return spec;
 	}
 
-	public void setSpec(List<OrderSpec> spec)
+	public void setSpec(List<OrderContents> spec)
 	{
 		this.spec = spec;
 	}

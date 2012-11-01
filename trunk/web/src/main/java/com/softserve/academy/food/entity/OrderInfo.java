@@ -19,11 +19,8 @@ import com.softserve.academy.food.model.OrderModel;
 
 @Entity
 @Table(name = "ORDERINFO")
-public class OrderInfo extends AbstractEntity
+public class OrderInfo
 {
-
-	private static final long	serialVersionUID	= 1L;
-
 	@Id
 	@Column(name = "oinfo_id")
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -40,25 +37,24 @@ public class OrderInfo extends AbstractEntity
 	private Character			status;
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "OrderInfo")
-	private List<OrderSpec>		spec				= new ArrayList<OrderSpec>();
-
+	private List<OrderContents>	spec	= new ArrayList<OrderContents>();
 
 	public OrderInfo()
 	{
 	}
 
 	public OrderInfo(User user, Date date, Character status,
-			List<OrderSpec> spec)
+			List<OrderContents> spec)
 	{
 		setUser(user);
 		setDate(date);
 		setStatus(status);
 		setSpec(spec);
 	}
-	
+
 	public OrderModel toModel()
 	{
-		return new OrderModel(user,date,status,spec);
+		return new OrderModel(user, date, status, spec);
 	}
 
 	public Long getId()
@@ -101,12 +97,12 @@ public class OrderInfo extends AbstractEntity
 		this.status = status;
 	}
 
-	public List<OrderSpec> getSpec()
+	public List<OrderContents> getSpec()
 	{
 		return spec;
 	}
 
-	public void setSpec(List<OrderSpec> spec)
+	public void setSpec(List<OrderContents> spec)
 	{
 		this.spec = spec;
 	}

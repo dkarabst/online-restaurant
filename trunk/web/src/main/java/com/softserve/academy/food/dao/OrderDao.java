@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.softserve.academy.food.entity.OrderInfo;
-import com.softserve.academy.food.entity.OrderSpec;
+import com.softserve.academy.food.entity.OrderContents;
 import com.softserve.academy.food.entity.User;
 
 @Repository("orderDao")
@@ -45,7 +45,7 @@ public class OrderDao
 	}
 
 	public void add(User user, Date date, Character status,
-			List<OrderSpec> spec)
+			List<OrderContents> spec)
 	{
 		sessionFactory.getCurrentSession().save(
 				new OrderInfo(user, date, status, spec));
