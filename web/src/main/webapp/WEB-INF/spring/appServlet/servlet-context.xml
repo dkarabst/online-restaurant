@@ -80,6 +80,7 @@
 		<property name="annotatedClasses">
 		    <list>
 		        <value>com.softserve.academy.food.entity.Category</value>
+		        <value>com.softserve.academy.food.entity.Dish</value>
 		    </list>
 		</property>
 		<property name="hibernateProperties">
