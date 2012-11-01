@@ -29,7 +29,7 @@ public class OrderInfo extends AbstractEntity
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long				id;
 
-	@Column(name = "OINFO_USER")
+	@Column(name = "OINFO_USER_ID")
 	private User				user;
 
 	@Temporal(TemporalType.DATE)
@@ -42,15 +42,6 @@ public class OrderInfo extends AbstractEntity
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "OrderInfo")
 	private List<OrderSpec>		spec				= new ArrayList<OrderSpec>();
 
-	// create table USERS (
-	// USER_ID integer,
-	// USER_NAME varchar(50),
-	// USER_EMAIL varchar(50)
-	// )
-
-	// insert into USERS (user_id,
-	// USER_NAME, USER_EMAIL)
-	// values (?, ?, ?)
 
 	public OrderInfo()
 	{

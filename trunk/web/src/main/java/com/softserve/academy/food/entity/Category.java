@@ -24,15 +24,6 @@ public class Category extends AbstractEntity
 	@Column(name = "CAT_NAME", length = 50)
 	private String				name;
 
-	// create table CATEGORIES (
-	// CAT_ID integer,
-	// CAT_NAME varchar(50)
-	// )
-
-	// insert into CATEGORIES (cat_id,
-	// CAT_NAME)
-	// values (?, ?)
-
 	public Category()
 	{
 	}
@@ -102,4 +93,4 @@ public class Category extends AbstractEntity
 		return true;
 	}
 
-} // Category
+}

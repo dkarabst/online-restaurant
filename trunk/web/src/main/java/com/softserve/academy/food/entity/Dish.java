@@ -23,7 +23,6 @@ public class Dish extends AbstractEntity
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer				id;
 
-	// Is it right???
 	@ManyToOne(fetch = FetchType.LAZY)
 	private Category			category;
 
@@ -247,4 +246,4 @@ public class Dish extends AbstractEntity
 		return true;
 	}
 
-} // Dish
+}
