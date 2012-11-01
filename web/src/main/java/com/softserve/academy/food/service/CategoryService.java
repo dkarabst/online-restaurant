@@ -18,7 +18,7 @@ public class CategoryService
 	private CategoryDao	categoryDao;
 
 	@Transactional
-	public ArrayList<CategoryModel> getCategoryList()
+	public ArrayList<CategoryModel> getAll()
 	{
 		ArrayList<CategoryModel> models = new ArrayList<CategoryModel>();
 		for (Category m : categoryDao.getAll())
@@ -29,31 +29,31 @@ public class CategoryService
 	}
 
 	@Transactional
-	public CategoryModel getById(int id)
+	public CategoryModel get(int id)
 	{
 		return categoryDao.get(id).toModel();
 	}
 
 	@Transactional
-	public CategoryModel getByName(String st)
+	public CategoryModel get(String st)
 	{
 		return categoryDao.get(st).toModel();
 	}
 
 	@Transactional
-	public void addCat(String name)
+	public void add(String name)
 	{
 		categoryDao.add(name);
 	}
 
 	@Transactional
-	public void delById(int id)
+	public void delete(int id)
 	{
 		categoryDao.delete(id);
 	}
 
 	@Transactional
-	public void delByName(String name)
+	public void delete(String name)
 	{
 		categoryDao.delete(name);
 	}

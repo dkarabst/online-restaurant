@@ -26,7 +26,7 @@ public class CategoryController {
 	protected String helloPage(Model model) {
 		ArrayList<String> names = new ArrayList<String>();
 
-		for (CategoryModel mod : categoryService.getCategoryList()) {
+		for (CategoryModel mod : categoryService.getAll()) {
 			names.add(mod.toString());
 		}
 		model.addAttribute("helloMessage", names);

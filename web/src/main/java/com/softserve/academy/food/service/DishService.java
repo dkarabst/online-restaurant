@@ -18,7 +18,7 @@ public class DishService
 	private DishDao	dishDao;
 
 	@Transactional
-	public ArrayList<DishModel> getCategoryList()
+	public ArrayList<DishModel> getAll()
 	{
 		ArrayList<DishModel> models = new ArrayList<DishModel>();
 		for (Dish m : dishDao.getAll())
@@ -29,19 +29,19 @@ public class DishService
 	}
 
 	@Transactional
-	public DishModel getById(int id)
+	public DishModel get(int id)
 	{
 		return dishDao.get(id).toModel();
 	}
 
 	@Transactional
-	public DishModel getByName(String st)
+	public DishModel get(String st)
 	{
 		return dishDao.get(st).toModel();
 	}
 
 	@Transactional
-	public void addCat(Category category, String name, Integer price,
+	public void add(Category category, String name, Integer price,
 			String photo, String descr, Character avail, Integer prepTime,
 			String weight)
 	{
@@ -50,13 +50,13 @@ public class DishService
 	}
 
 	@Transactional
-	public void delById(int id)
+	public void delete(int id)
 	{
 		dishDao.delete(id);
 	}
 
 	@Transactional
-	public void delByName(String name)
+	public void delete(String name)
 	{
 		dishDao.delete(name);
 	}
