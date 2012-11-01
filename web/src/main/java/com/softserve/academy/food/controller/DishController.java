@@ -19,7 +19,7 @@ public class DishController
 	@Autowired
 	private DishService	dishService;
 
-	@RequestMapping(value = "/dishes/getDishes", method = RequestMethod.GET)
+	@RequestMapping(value = "/dishes/all", method = RequestMethod.GET)
 	protected String getDishes(Model model)
 	{
 		ArrayList<String> names = new ArrayList<String>();
