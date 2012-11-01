@@ -24,7 +24,7 @@ public class DishController
 	{
 		ArrayList<String> names = new ArrayList<String>();
 
-		for (DishModel mod : dishService.getCategoryList())
+		for (DishModel mod : dishService.getAll())
 		{
 			names.add(mod.getName());
 		}
@@ -33,9 +33,9 @@ public class DishController
 	}
 
 	@RequestMapping(value = "/dishes/{id}", method = RequestMethod.GET)
-	protected String getDishes(@PathVariable int id,Model model) {
+	protected String getDish(@PathVariable int id,Model model) {
 		ArrayList<String> names = new ArrayList<String>();
-		DishModel mod = dishService.getById(id);
+		DishModel mod = dishService.get(id);
 			names.add(mod.toString());
 		model.addAttribute("helloMessage", names);
 		return "helloPage";

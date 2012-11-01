@@ -48,21 +48,6 @@ public class Dish extends AbstractEntity
 	@Column(name = "DISH_WEIGHT", length = 50)
 	private String				weight;
 
-	// create table DISHES (
-	// DISH_ID integer,
-	// DISH_NAME varchar(50),
-	// DISH_PRICE integer,
-	// DISH_PHOTO varchar(50),
-	// DISH_DESCR varchar(50),
-	// DISH_PREP_TIME integer,
-	// DISH_WEIGHT varchar(50)
-	// )
-
-	// insert into DISHES (dish_id,
-	// DISH_NAME, DISH_PRICE, DISH_PHOTO, DISH_DESCR, DISH_PREP_TIME,
-	// DISH_WEIGHT)
-	// values (?, ?, ?, ?, ?, ?, ?)
-
 	public Dish()
 	{
 	}
