@@ -22,7 +22,7 @@ import com.softserve.academy.food.model.OrderModel;
 public class OrderInfo
 {
 	@Id
-	@Column(name = "oinfo_id")
+	@Column(name = "OINFO_ID")
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long				id;
 
