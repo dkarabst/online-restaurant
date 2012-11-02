@@ -16,7 +16,7 @@ public class OrderSpec extends AbstractEntity
 	private static final long	serialVersionUID	= 1L;
 
 	@Id
-	@Column(name = "ospec_id")
+	@Column(name = "OSPEC_ID")
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long				id;
 
