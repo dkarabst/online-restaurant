@@ -20,7 +20,7 @@ public class UserModel
 		this.email = email;
 		this.phone = phone;
 	}
-	
+
 	public UserModel(User user)
 	{
 		this.id = user.getId();

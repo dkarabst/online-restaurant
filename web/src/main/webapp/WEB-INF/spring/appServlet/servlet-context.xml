@@ -81,6 +81,9 @@
 		    <list>
 		        <value>com.softserve.academy.food.entity.Category</value>
 		        <value>com.softserve.academy.food.entity.Dish</value>
+		        <value>com.softserve.academy.food.entity.OrderContents</value>
+		        <value>com.softserve.academy.food.entity.OrderInfo</value>
+		        <value>com.softserve.academy.food.entity.User</value>
 		    </list>
 		</property>
 		<property name="hibernateProperties">

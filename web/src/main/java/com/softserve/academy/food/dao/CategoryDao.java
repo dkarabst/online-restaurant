@@ -28,8 +28,12 @@ public class CategoryDao {
 	}
 
 	public void delete(int id) {
-		String hql = "DELETE FROM Category WHERE id ='" + id + "'";
-		sessionFactory.getCurrentSession().createQuery(hql).executeUpdate();
+		Category object = (Category) sessionFactory.getCurrentSession().load(
+				Category.class, id);
+		if (null != object)
+		{
+			sessionFactory.getCurrentSession().delete(object);
+		}
 	}
 
 	public void delete(String name) {

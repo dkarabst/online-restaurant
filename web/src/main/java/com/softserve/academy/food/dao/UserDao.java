@@ -2,7 +2,6 @@ package com.softserve.academy.food.dao;
 
 import java.util.List;
 
-import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -47,9 +46,12 @@ public class UserDao {
 
 	public void delelete(int id) {
 
-		Query query;
-		query = session.getCurrentSession().createQuery("delete from User where id = " + id);
-		query.executeUpdate();
+		User object = (User) session.getCurrentSession().load(
+				User.class, id);
+		if (null != object)
+		{
+			session.getCurrentSession().delete(object);
+		}
 	}
 	
 	public void delelete(User user) {

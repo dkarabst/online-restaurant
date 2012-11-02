@@ -17,7 +17,7 @@ public class Category extends AbstractEntity
 	private static final long	serialVersionUID	= 1L;
 
 	@Id
-	@Column(name = "CAT_ID")
+	@Column(name = "cat_id")
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer				id;
 

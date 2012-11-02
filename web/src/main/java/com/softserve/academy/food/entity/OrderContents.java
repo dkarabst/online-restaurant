@@ -2,27 +2,31 @@ package com.softserve.academy.food.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.softserve.academy.food.model.ContentModel;
+
 @Entity
-@Table(name = "ORDER_SPECS")
+@Table(name = "ORDERSPEC")
 public class OrderContents extends AbstractEntity
 {
 
 	private static final long	serialVersionUID	= 1L;
 
 	@Id
-	@Column(name = "OSPEC_ID")
+	@Column(name = "ospec_id")
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long				id;
+	private Integer				id;
 
+	@ManyToOne(fetch = FetchType.LAZY)
 	private OrderInfo			orderInfo;
 
-	@OneToOne(mappedBy = "ORDER_SPECS")
+	@ManyToOne(fetch = FetchType.LAZY)
 	private Dish				dish;
 
 	@Column(name = "OSPEC_QUANTITY")
@@ -32,6 +36,11 @@ public class OrderContents extends AbstractEntity
 	{
 	}
 
+	public ContentModel toModel()
+	{
+		return new ContentModel(id, orderInfo.getId(), dish.toModel(), quantity);
+	}
+
 	public OrderContents(OrderInfo orderInfo, Dish dish, Integer quantity)
 	{
 		setOrderInfo(orderInfo);
@@ -39,12 +48,12 @@ public class OrderContents extends AbstractEntity
 		setQuantity(quantity);
 	}
 
-	public Long getId()
+	public Integer getId()
 	{
 		return id;
 	}
 
-	public void setId(Long id)
+	public void setId(Integer id)
 	{
 		this.id = id;
 	}

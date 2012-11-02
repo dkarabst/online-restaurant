@@ -3,36 +3,42 @@ package com.softserve.academy.food.model;
 import java.util.Date;
 import java.util.List;
 
-import com.softserve.academy.food.entity.OrderContents;
-import com.softserve.academy.food.entity.User;
-
 public class OrderModel
 {
-	private User user;
-	private Date date;
-	private Character status;
-	private List <OrderContents> spec;
-	
+	private int					user_id;
+	private Date				date;
+	private Character			status;
+	private List<ContentModel>	spec;
+
 	public OrderModel()
 	{
 	}
 
-	public OrderModel(User user, Date date, Character status,List <OrderContents> spec)
+	@Override
+	public String toString()
 	{
-		this.user = user;
+		return "User: " + user_id + " Date: " + date + " Status: " + status
+				+ " Content: " + spec.toString();
+	}
+
+	public OrderModel(int user_id, Date date, Character status,
+			List<ContentModel> spec)
+	{
+		super();
+		this.user_id = user_id;
 		this.date = date;
 		this.status = status;
 		this.spec = spec;
 	}
 
-	public User getUser()
+	public int getUser_id()
 	{
-		return user;
+		return user_id;
 	}
 
-	public void setUser(User user)
+	public void setUser_id(int user_id)
 	{
-		this.user = user;
+		this.user_id = user_id;
 	}
 
 	public Date getDate()
@@ -55,18 +61,13 @@ public class OrderModel
 		this.status = status;
 	}
 
-	public List<OrderContents> getSpec()
+	public List<ContentModel> getSpec()
 	{
 		return spec;
 	}
 
-	public void setSpec(List<OrderContents> spec)
+	public void setSpec(List<ContentModel> spec)
 	{
 		this.spec = spec;
 	}
-	
-	
-	
-	
-
 }

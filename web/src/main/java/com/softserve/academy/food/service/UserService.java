@@ -46,6 +46,12 @@ public class UserService implements IUserService
 	{
 		return userDao.get(id).toModel();
 	}
+	
+	@Transactional
+	public User getUser(String name)
+	{
+		return userDao.get(name);
+	}
 
 	@Transactional
 	public void update(UserModel user)

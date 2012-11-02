@@ -11,11 +11,17 @@
 	<br>
 	<a href="category/1">Category by id</a>
 	<br>
-	<a href="category">Add Category</a>
+	<a href="category">Add Category</a>  <a href="delcategory">Del Category</a>  
 	<br>
 	<a href="dishes/all">All Dishes</a>
 	<br>
 	<a href="dishes/1">Dish by id</a>
+	<br>
+	<a href="order/all">All Orders</a>
+	<br>
+	<a href="order/1">Order by id</a>
+	<br>
+	<a href="order">Add order</a>
 	<br>
 	<a href="1.json">json by id</a>
 	<br>

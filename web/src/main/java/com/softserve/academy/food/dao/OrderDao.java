@@ -35,35 +35,24 @@ public class OrderDao
 				.createQuery("from OrderInfo").list();
 	}
 
-	public OrderInfo get(User user)
-	{
-		return (OrderInfo) sessionFactory
-				.getCurrentSession()
-				.createQuery(
-						"from Orderinfo where user ='" + user.getId() + "'")
-				.list().get(0);
-	}
-
 	public void add(User user, Date date, Character status,
 			List<OrderContents> spec)
 	{
-		sessionFactory.getCurrentSession().save(
-				new OrderInfo(user, date, status, spec));
-
+		OrderInfo oi = new OrderInfo(user, date, status, spec);
+		for (OrderContents oc : spec)
+		{
+			oc.setOrderInfo(oi);
+		}
+		sessionFactory.getCurrentSession().save(oi);
 	}
 
 	public void delete(Integer id)
 	{
-		String hql = "DELETE FROM ORDERINFO WHERE oinfo_id ='" + id + "'";
-		sessionFactory.getCurrentSession().createQuery(hql);
-
+		OrderInfo oi = (OrderInfo) sessionFactory.getCurrentSession().load(
+				OrderInfo.class, id);
+		if (null != oi)
+		{
+			sessionFactory.getCurrentSession().delete(oi);
+		}
 	}
-
-	public void delete(User user)
-	{
-		String hql = "DELETE FROM ORDERINFO WHERE OINFO_USER ='" + user.getId() + "'";
-		sessionFactory.getCurrentSession().createQuery(hql);
-
-	}
-
 }

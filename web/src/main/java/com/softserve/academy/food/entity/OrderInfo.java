@@ -4,17 +4,20 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.softserve.academy.food.model.ContentModel;
 import com.softserve.academy.food.model.OrderModel;
 
 @Entity
@@ -22,11 +25,11 @@ import com.softserve.academy.food.model.OrderModel;
 public class OrderInfo
 {
 	@Id
-	@Column(name = "OINFO_ID")
+	@Column(name = "oinfo_id")
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long				id;
+	private Integer				id;
 
-	@Column(name = "OINFO_USER_ID")
+	@ManyToOne(fetch = FetchType.LAZY)
 	private User				user;
 
 	@Temporal(TemporalType.DATE)
@@ -36,7 +39,7 @@ public class OrderInfo
 	@Column(name = "OINFO_STATUS")
 	private Character			status;
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "OrderInfo")
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "orderInfo", cascade = CascadeType.ALL )
 	private List<OrderContents>	spec	= new ArrayList<OrderContents>();
 
 	public OrderInfo()
@@ -54,15 +57,20 @@ public class OrderInfo
 
 	public OrderModel toModel()
 	{
-		return new OrderModel(user, date, status, spec);
+		List<ContentModel> cmod = new ArrayList<ContentModel>();
+		for (OrderContents c : spec)
+		{
+			cmod.add(c.toModel());
+		}
+		return new OrderModel(user.getId(), date, status, cmod);
 	}
 
-	public Long getId()
+	public Integer getId()
 	{
 		return id;
 	}
 
-	public void setId(Long id)
+	public void setId(Integer id)
 	{
 		this.id = id;
 	}

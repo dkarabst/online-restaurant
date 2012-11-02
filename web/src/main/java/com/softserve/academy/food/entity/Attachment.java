@@ -21,21 +21,21 @@ public class Attachment extends AbstractEntity
 	private static final long	serialVersionUID	= 1L;
 
 	@Id
-	@Column(name = "ATT_ID")
+	@Column(name = "att_id")
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer				id;
 
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "ATT_USER_ID", nullable = false)
+	@JoinColumn(name = "user_id", nullable = false)
 	private User				user;
 
-	@Column(name = "ATT_NAME", length = 50)
+	@Column(name = "name", length = 50)
 	private String				name;
 
-	@Column(name = "ATT_PATH", length = 255)
+	@Column(name = "path", length = 255)
 	private String				path;
 
-	@Column(name = "ATT_MODIFIED")
+	@Column(name = "modified")
 	private Date				modified;
 
 	public Attachment()

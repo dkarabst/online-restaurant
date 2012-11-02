@@ -15,13 +15,13 @@ DISHES
 ================================================================
 ORDERINFO
 	OINFO_ID		INT		UNSIGNED AUTO_INCREMENT PRIMARY KEY
-	OINFO_USER_ID	INT
+	USER_USER_ID	INT
 	OINFO_DATE		DATETIME
 	OINFO_STATUS	CHAR
 ================================================================
 ORDERSPEC
 	OSPEC_ID		INT		UNSIGNED AUTO_INCREMENT PRIMARY KEY
-	OSPEC_OINFO_ID	INT
+	ORDERINFO_OINFO_ID	INT
 	OSPEC_DISH_ID	INT
 	OSPEC_QUANTITY	INT
 ================================================================

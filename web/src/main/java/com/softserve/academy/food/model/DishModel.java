@@ -1,10 +1,9 @@
 package com.softserve.academy.food.model;
 
-
 public class DishModel
 {
 	private int			id;
-	private int	category_id;
+	private int			category_id;
 	private String		name;
 	private Integer		price;
 	private String		photo;
@@ -16,11 +15,15 @@ public class DishModel
 	public DishModel()
 	{
 	}
-	
+
 	@Override
 	public String toString()
 	{
-		return id+","+category_id+","+name+","+price+","+photo+","+descr+","+avail+","+prepTime+","+weight;
+		return "Id = " + id + "; category_id = " + category_id + "; "
+				+ "Name = " + name + "; Price = " + price + "; Photo = "
+				+ photo + "; Description = " + descr + "; Availuable = "
+				+ avail + "; Prepare Time = " + prepTime + "; Weight = "
+				+ weight;
 	}
 
 	public DishModel(int id, int category, String name, Integer price,
