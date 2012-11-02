@@ -7,7 +7,6 @@ public class CategoryModel
 
 	public CategoryModel(int id, String name)
 	{
-		super();
 		this.id = id;
 		this.name = name;
 	}
@@ -35,6 +34,6 @@ public class CategoryModel
 	@Override
 	public String toString()
 	{
-		return name;
+		return "Категория - "+name;
 	}
 }

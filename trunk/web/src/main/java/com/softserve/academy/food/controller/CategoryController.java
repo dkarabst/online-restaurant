@@ -41,6 +41,17 @@ public class CategoryController {
 	    return "redirect:../category";
 	}
 	
+	@RequestMapping(value = "/delcategory", method = RequestMethod.GET)
+	public String delete(Model model) {
+	    return "deleteCategory";
+	}
+	
+	@RequestMapping(value = "/delcategory/delete", method = RequestMethod.POST)
+	public String deleted(@RequestParam("name") String name, Model model) {
+	    categoryService.delete(Integer.parseInt(name));
+	    return "redirect:../delcategory";
+	}
+	
 	@RequestMapping(value = "/category/{id}", method = RequestMethod.GET)
 	protected String category(@PathVariable int id,Model model) {
 		ArrayList<String> names = new ArrayList<String>();

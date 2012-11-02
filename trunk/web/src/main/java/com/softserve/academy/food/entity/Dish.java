@@ -19,7 +19,7 @@ public class Dish extends AbstractEntity
 	private static final long	serialVersionUID	= 1L;
 
 	@Id
-	@Column(name = "DISH_ID")
+	@Column(name = "dish_id")
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer				id;
 

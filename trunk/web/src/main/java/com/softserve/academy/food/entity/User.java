@@ -16,20 +16,21 @@ import com.softserve.academy.food.model.UserModel;
 
 @Entity
 @Table(name = "USERS")
-public class User extends AbstractEntity {
-	
+public class User extends AbstractEntity
+{
+
 	private static final long	serialVersionUID	= 1L;
 
 	@Id
 	@Column(name = "USER_ID")
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int				id;
-	
+	private int					id;
+
 	@Column(name = "USER_PASSWORD", length = 50)
-	private String password;
-	
+	private String				password;
+
 	@Column(name = "USER_ROLE", length = 50)
-	private String role;
+	private String				role;
 
 	@Column(name = "USER_NAME", length = 50)
 	private String				name;
@@ -40,86 +41,103 @@ public class User extends AbstractEntity {
 	@Column(name = "USER_PHONE", length = 50)
 	private String				phone;
 
-	public User(){
+	public User()
+	{
 	}
 
-	public User(String name, String email, String phone) {
+	public User(String name, String email, String phone)
+	{
 		setName(name);
 		setEmail(email);
 		setPhone(phone);
 	}
-	
-	public User(UserModel user) {	
-		
+
+	public User(UserModel user)
+	{
+
 		id = user.getId();
 		name = user.getName();
 		email = user.getEmail();
 		phone = user.getPhone();
 	}
-	
-	public User(UserCredentials user) {	
-		
+
+	public User(UserCredentials user)
+	{
+
 		id = user.getId();
 		name = user.getName();
 		email = user.getPassword();
 		phone = user.getRole();
 	}
-	
+
 	public UserModel toModel()
 	{
-		return new UserModel(id,name,email,phone);
+		return new UserModel(id, name, email, phone);
 	}
 
-	public int getId() {
+	public int getId()
+	{
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(int id)
+	{
 		this.id = id;
 	}
 
-	public String getPassword() {
+	public String getPassword()
+	{
 		return password;
 	}
 
-	public void setPassword(String password) {
+	public void setPassword(String password)
+	{
 		this.password = password;
 	}
 
-	public String getRole() {
+	public String getRole()
+	{
 		return role;
 	}
 
-	public void setRole(String role) {
+	public void setRole(String role)
+	{
 		this.role = role;
 	}
 
-	public String getName() {
+	public String getName()
+	{
 		return name;
 	}
 
-	public void setName(String name) {
+	public void setName(String name)
+	{
 		this.name = name;
 	}
 
-	public String getEmail() {
+	public String getEmail()
+	{
 		return email;
 	}
 
-	public void setEmail(String email) {
+	public void setEmail(String email)
+	{
 		this.email = email;
 	}
 
-	public String getPhone() {
+	public String getPhone()
+	{
 		return phone;
 	}
 
-	public void setPhone(String phone) {
+	public void setPhone(String phone)
+	{
 		this.phone = phone;
 	}
 
 	@Override
-	public int hashCode() {
+	public int hashCode()
+	{
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((email == null) ? 0 : email.hashCode());
@@ -133,7 +151,8 @@ public class User extends AbstractEntity {
 	}
 
 	@Override
-	public boolean equals(Object obj) {
+	public boolean equals(Object obj)
+	{
 		if (this == obj)
 			return true;
 		if (obj == null)
@@ -141,29 +160,34 @@ public class User extends AbstractEntity {
 		if (!(obj instanceof User))
 			return false;
 		User other = (User) obj;
-		if (email == null) {
+		if (email == null)
+		{
 			if (other.email != null)
 				return false;
 		} else if (!email.equals(other.email))
 			return false;
 		if (id != other.id)
 			return false;
-		if (name == null) {
+		if (name == null)
+		{
 			if (other.name != null)
 				return false;
 		} else if (!name.equals(other.name))
 			return false;
-		if (password == null) {
+		if (password == null)
+		{
 			if (other.password != null)
 				return false;
 		} else if (!password.equals(other.password))
 			return false;
-		if (phone == null) {
+		if (phone == null)
+		{
 			if (other.phone != null)
 				return false;
 		} else if (!phone.equals(other.phone))
 			return false;
-		if (role == null) {
+		if (role == null)
+		{
 			if (other.role != null)
 				return false;
 		} else if (!role.equals(other.role))
@@ -172,11 +196,11 @@ public class User extends AbstractEntity {
 	}
 
 	@Override
-	public String toString() {
+	public String toString()
+	{
 		return "User [id=" + id + ", password=" + password + ", role=" + role
 				+ ", name=" + name + ", email=" + email + ", phone=" + phone
 				+ "]";
 	}
-	
 
-} 
+}

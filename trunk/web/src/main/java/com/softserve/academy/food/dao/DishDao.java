@@ -50,8 +50,12 @@ public class DishDao
 
 	public void delete(int id)
 	{
-		String hql = "DELETE FROM DISHES WHERE dish_id ='" + id + "'";
-		sessionFactory.getCurrentSession().createQuery(hql);
+		Dish object = (Dish) sessionFactory.getCurrentSession().load(
+				Dish.class, id);
+		if (null != object)
+		{
+			sessionFactory.getCurrentSession().delete(object);
+		}
 
 	}
 
