@@ -12,7 +12,7 @@ import com.softserve.academy.food.entity.Dish;
 import com.softserve.academy.food.model.DishModel;
 
 @Service("dishService")
-public class DishService
+public class MenuService
 {
 	@Autowired
 	private DishDao	dishDao;

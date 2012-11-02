@@ -10,14 +10,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.softserve.academy.food.model.DishModel;
-import com.softserve.academy.food.service.DishService;
+import com.softserve.academy.food.service.MenuService;
 
 @Controller
-public class DishController
+public class MenuController
 {
 
 	@Autowired
-	private DishService	dishService;
+	private MenuService	dishService;
 
 	@RequestMapping(value = "/dishes/all", method = RequestMethod.GET)
 	protected String getDishes(Model model)
