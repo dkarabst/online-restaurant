@@ -204,8 +204,9 @@
 			<artifactId>commons-io</artifactId>
 			<version>2.4</version>
 		</dependency>
-	</dependencies>
-    
+    </dependencies>
+	
+	
     <repositories>
         <repository>
 			<id>codehaus</id>
