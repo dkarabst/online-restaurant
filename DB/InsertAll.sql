@@ -35,8 +35,6 @@ INSERT INTO `users` VALUES (8, 'hhh', 'user', 'hhh', 'aaa@bbb.bbb.com', '111');
 INSERT INTO `users` VALUES (9, 'iii', 'user', 'iii', 'aaa@aaa.com', '23123');
 INSERT INTO `users` VALUES (10, 'jjj', 'user', 'jjj', 'aaa@aaa.com', '4124');
 -- Задаём заказы
-INSERT INTO ORDERINFO (OINFO_USER_ID, OINFO_DATE, OINFO_STATUS)
-	VALUES
 INSERT INTO `orderinfo` VALUES (1, 1, '2012-1-1 00:00:01', 'A');
 INSERT INTO `orderinfo` VALUES (2, 1, '2012-11-10 12:20:01', 'A');
 INSERT INTO `orderinfo` VALUES (3, 3, '2012-10-1 23:00:01', 'B');
