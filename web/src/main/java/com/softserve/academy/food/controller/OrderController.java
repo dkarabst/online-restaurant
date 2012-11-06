@@ -14,16 +14,14 @@ import com.softserve.academy.food.model.OrderModel;
 import com.softserve.academy.food.service.OrderService;
 
 @Controller
+@RequestMapping("/order")
 public class OrderController
 {
 
 	@Autowired
 	private OrderService	orderService;
 
-	// @Autowired
-	// private UserService userService;
-
-	@RequestMapping(value = "/order/all", method = RequestMethod.GET)
+	@RequestMapping(value = "/all", method = RequestMethod.GET)
 	protected String categoryList(Model model)
 	{
 		ArrayList<String> names = new ArrayList<String>();
@@ -36,12 +34,12 @@ public class OrderController
 		return "helloPage";
 	}
 
-	 @RequestMapping(value = "/order", method = RequestMethod.GET)
+	 @RequestMapping(value = "", method = RequestMethod.GET)
 	 public String add(Model model) {
 	 return "addOrder";
 	 }
 	 
-	 @RequestMapping(value = "/order/add", method = RequestMethod.POST)
+	 @RequestMapping(value = "/add", method = RequestMethod.POST)
 	 public String added(@RequestParam("name") String name, Model model) {
 		 ArrayList<Integer> list =  new ArrayList<Integer>();
 		 list.add(Integer.parseInt(name));
@@ -49,7 +47,7 @@ public class OrderController
 	 return "redirect:../order";
 	 }
 	
-	 @RequestMapping(value = "/order/{id}", method = RequestMethod.GET)
+	 @RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	 protected String category(@PathVariable int id,Model model) {
 	 ArrayList<String> names = new ArrayList<String>();
 	 OrderModel mod = orderService.get(id);
