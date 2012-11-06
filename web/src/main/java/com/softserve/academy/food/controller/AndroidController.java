@@ -16,7 +16,7 @@ public class AndroidController
 	private CategoryService categoryService;
 	
 	@RequestMapping(value="/{id}.json")
-	public ModelAndView getAllPlayedMatches(@PathVariable int id) {
+	public ModelAndView getCm(@PathVariable int id) {
 	   CategoryModel cm = categoryService.get(id);
 	    ModelAndView mav = new ModelAndView();
 	    mav.addObject("cm", cm);
