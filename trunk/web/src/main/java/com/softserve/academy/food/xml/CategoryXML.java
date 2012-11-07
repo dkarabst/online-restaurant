@@ -24,6 +24,7 @@ public class CategoryXML
 	}
 
 	
+	@SuppressWarnings("unchecked")
 	public void addModel(Category c) throws ClassNotFoundException,
 			FileNotFoundException
 	{   
@@ -40,6 +41,7 @@ public class CategoryXML
 	}
 
 
+	@SuppressWarnings("unchecked")
 	public ArrayList<CategoryModel> getAllModels() throws FileNotFoundException
 	{
 		XMLDecoder d = GetXMLDecoder();
@@ -56,6 +58,7 @@ public class CategoryXML
 		return modelList;
 	}
 
+	@SuppressWarnings("unchecked")
 	public void delModelById(int id) throws FileNotFoundException
 	{   	
 		XMLDecoder d = GetXMLDecoder();
@@ -72,6 +75,7 @@ public class CategoryXML
 		e.close();
 	}
 
+	@SuppressWarnings("unchecked")
 	public void delModelByName(String name) throws FileNotFoundException
 	{
 		XMLDecoder d = GetXMLDecoder();
@@ -92,6 +96,7 @@ public class CategoryXML
 		e.close();
 	}
 
+	@SuppressWarnings("unchecked")
 	public CategoryModel getModelById(int id) throws FileNotFoundException
 	{
 		XMLDecoder d = GetXMLDecoder();
@@ -109,6 +114,7 @@ public class CategoryXML
 		return catmodel;
 	}
 
+	@SuppressWarnings("unchecked")
 	public CategoryModel getModelByName(String name) throws FileNotFoundException
 	{
 		XMLDecoder d = GetXMLDecoder();
