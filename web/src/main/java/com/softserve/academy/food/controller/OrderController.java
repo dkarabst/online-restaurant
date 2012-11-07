@@ -92,6 +92,7 @@ public class OrderController
 		return "redirect:../order";
 	}
 
+	@SuppressWarnings("unchecked")
 	@RequestMapping(value = "/makeOrder", method = RequestMethod.GET)
 	public String makeOrder(Model model, HttpSession session)
 	{

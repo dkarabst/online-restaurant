@@ -34,6 +34,7 @@ public class AttachmentsXML {
 				att.getModified());
 	}
 	
+	@SuppressWarnings("unchecked")
 	public AttachmentModel getModelByName(String name) throws FileNotFoundException
 	{
 		XMLDecoder d = GetXMLDecoder();
@@ -51,6 +52,7 @@ public class AttachmentsXML {
 		return atmodel;
 	}
 	
+	@SuppressWarnings("unchecked")
 	public void addModel(User user, String name, String path, Date modified) throws FileNotFoundException
 	{
 		Attachment c = new Attachment(user,name,path,modified);
@@ -66,6 +68,7 @@ public class AttachmentsXML {
 		e.close();  	
 	}	
 	
+	@SuppressWarnings("unchecked")
 	public ArrayList<AttachmentModel> getAllModels() throws FileNotFoundException
 	{
 		
@@ -82,6 +85,7 @@ public class AttachmentsXML {
 		return modelList;
 	}
 	
+	@SuppressWarnings("unchecked")
 	public void delModelById(int id) throws FileNotFoundException
 	{
 		XMLDecoder d = GetXMLDecoder();
@@ -98,6 +102,7 @@ public class AttachmentsXML {
 		e.close();
 	}
 	
+	@SuppressWarnings("unchecked")
 	public void delModelByName(String name) throws FileNotFoundException
 	{
 		XMLDecoder d = GetXMLDecoder();
