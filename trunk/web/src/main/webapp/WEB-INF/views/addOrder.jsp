@@ -9,14 +9,22 @@
 <body>
 
 	<form method="post" action="order/addDish">
-		Put order params :<br>
-		Dish id:<input type="text" name="dish_id"/><br>
+		To add dish :<br>
+		  Dish id: <input type="text" name="dish_id"/><br>
 		Quantity : <input type="text" name="quantity"/><br>
 		<input	type="submit" value="add dish" />
 	</form>
-	
+	<br>
+	<form method="post" action="order/deleteDish">
+		To remove dish :<br>
+		  Dish id: <input type="text" name="dish_id"/><br>
+		Quantity : <input type="text" name="quantity"/><br>
+		<input	type="submit" value="remove dish" />
+	</form>
+	<br>
+	<br>
 	<form method="get" action="order/makeOrder">
-		<input	type="submit" value="Make order" />
+		to make order plz press: <input	type="submit" value="Make order" />
 	</form>
 
 </body>
