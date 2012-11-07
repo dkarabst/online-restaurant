@@ -8,10 +8,15 @@
 </head>
 <body>
 
-	<form method="post" action="order/add">
+	<form method="post" action="order/addDish">
 		Put order params :<br>
-		Dish id:<input type="text" name="name"/><br>
-		<input	type="submit" value="SUBMIT" />
+		Dish id:<input type="text" name="dish_id"/><br>
+		Quantity : <input type="text" name="quantity"/><br>
+		<input	type="submit" value="add dish" />
+	</form>
+	
+	<form method="get" action="order/makeOrder">
+		<input	type="submit" value="Make order" />
 	</form>
 
 </body>

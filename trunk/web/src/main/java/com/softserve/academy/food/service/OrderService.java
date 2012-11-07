@@ -2,7 +2,9 @@ package com.softserve.academy.food.service;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Set;
 
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,16 +47,19 @@ public class OrderService
 	// working 
 	//  but i dont realy understand what Status 4 ?  and where we will set it.
 	@Transactional
-	public void add(Integer user_id, ArrayList<Integer> spec)
+	public void add(Integer user_id, Object spec)
 	{
 		User user = (User) session.getCurrentSession().get(User.class, user_id);
+		@SuppressWarnings("unchecked")
+		HashMap<Integer,Integer> map = (HashMap<Integer,Integer>)spec;
+		Set<Integer> set = map.keySet();
 		List<OrderContents> list = new ArrayList<OrderContents>();
-		for(int id : spec)
+		for(int id : set)
 		{
 			OrderContents oc = new OrderContents();
 			Dish d = (Dish) session.getCurrentSession().get(Dish.class, id);
 			oc.setDish(d);
-			oc.setQuantity(1);
+			oc.setQuantity(map.get(id));
 			list.add(oc);
 		}
 		orderDao.add(user, new Date(), 'A', list);
