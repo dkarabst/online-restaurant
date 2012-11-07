@@ -99,6 +99,9 @@ public class OrderController
 		// Integer user_id = session.getAttribute("user_id");
 		// user id =1 , because we dont have security now
 		orderService.add(1, session.getAttribute("dishList"));
+		// clear list after order
+		// may be stored somewhere to repeat last order
+		((HashMap<Integer,Integer>)session.getAttribute("dishList")).clear();
 		return "redirect:../order";
 	}
 
