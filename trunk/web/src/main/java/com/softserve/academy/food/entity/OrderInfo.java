@@ -164,4 +164,11 @@ public class OrderInfo
 		return true;
 	}
 
-} // OrderInfo
+	@Override
+	public String toString() {
+		return "OrderInfo [id=" + id + ", user=" + user + ", date=" + date
+				+ ", status=" + status + ", spec=" + spec + "]";
+	}
+	
+
+} 
