@@ -139,4 +139,12 @@ public class OrderContents extends AbstractEntity
 		return true;
 	}
 
-} // OrderSpec
+	@Override
+	public String toString() {
+		return "OrderContents [id=" + id + ", orderInfo=" + orderInfo
+				+ ", dish=" + dish + ", quantity=" + quantity + "]";
+	}
+	
+	
+
+} 
