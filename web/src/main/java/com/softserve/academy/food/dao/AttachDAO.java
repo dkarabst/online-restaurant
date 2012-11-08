@@ -18,13 +18,8 @@ public class AttachDAO
     }
 
     public boolean delImage(String path)
-    {
-	boolean res = true;
-	if (!new File(path).delete())
-	{
-	    res = false;
-	}
-	return res;
+    {	
+	return new File(path).delete();
     }
 
     public boolean fileExists(String file)
