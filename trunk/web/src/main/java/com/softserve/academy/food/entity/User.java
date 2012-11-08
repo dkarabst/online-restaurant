@@ -45,13 +45,19 @@ public class User extends AbstractEntity
 	{
 	}
 
+	public User( String name, String password)
+	{
+		setName(name);
+		setPassword(password);
+	}
+
 	public User(String name, String email, String phone)
 	{
 		setName(name);
 		setEmail(email);
 		setPhone(phone);
 	}
-
+	
 	public User(UserModel user)
 	{
 
@@ -66,8 +72,8 @@ public class User extends AbstractEntity
 
 		id = user.getId();
 		name = user.getName();
-		email = user.getPassword();
-		phone = user.getRole();
+		password = user.getPassword();
+		role = user.getRole();
 	}
 
 	public UserModel toModel()
@@ -136,12 +142,10 @@ public class User extends AbstractEntity
 	}
 
 	@Override
-	public int hashCode()
-	{
+	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((email == null) ? 0 : email.hashCode());
-		result = prime * result + id;
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		result = prime * result
 				+ ((password == null) ? 0 : password.hashCode());
@@ -151,8 +155,7 @@ public class User extends AbstractEntity
 	}
 
 	@Override
-	public boolean equals(Object obj)
-	{
+	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
 		if (obj == null)
@@ -160,34 +163,27 @@ public class User extends AbstractEntity
 		if (!(obj instanceof User))
 			return false;
 		User other = (User) obj;
-		if (email == null)
-		{
+		if (email == null) {
 			if (other.email != null)
 				return false;
 		} else if (!email.equals(other.email))
 			return false;
-		if (id != other.id)
-			return false;
-		if (name == null)
-		{
+		if (name == null) {
 			if (other.name != null)
 				return false;
 		} else if (!name.equals(other.name))
 			return false;
-		if (password == null)
-		{
+		if (password == null) {
 			if (other.password != null)
 				return false;
 		} else if (!password.equals(other.password))
 			return false;
-		if (phone == null)
-		{
+		if (phone == null) {
 			if (other.phone != null)
 				return false;
 		} else if (!phone.equals(other.phone))
 			return false;
-		if (role == null)
-		{
+		if (role == null) {
 			if (other.role != null)
 				return false;
 		} else if (!role.equals(other.role))
