@@ -57,15 +57,6 @@ public class User extends AbstractEntity
 		setEmail(email);
 		setPhone(phone);
 	}
-	
-	public User(UserModel user)
-	{
-
-		id = user.getId();
-		name = user.getName();
-		email = user.getEmail();
-		phone = user.getPhone();
-	}
 
 	public User(UserCredentials user)
 	{
