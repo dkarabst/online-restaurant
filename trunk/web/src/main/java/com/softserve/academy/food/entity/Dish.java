@@ -246,4 +246,14 @@ public class Dish extends AbstractEntity
 		return true;
 	}
 
+	@Override
+	public String toString() {
+		return "Dish [id=" + id + ", category=" + category + ", name=" + name
+				+ ", price=" + price + ", photo=" + photo + ", descr=" + descr
+				+ ", avail=" + avail + ", prepTime=" + prepTime + ", weight="
+				+ weight + "]";
+	}
+	
+	
+
 }
