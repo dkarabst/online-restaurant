@@ -28,6 +28,12 @@ public class Category extends AbstractEntity
 	{
 	}
 	
+	public Category(int id, String name)
+	{
+		this.id = id;
+		this.name = name;
+	}
+	
 	public CategoryModel toModel()
 	{
 		return new CategoryModel(id, name);
@@ -92,5 +98,11 @@ public class Category extends AbstractEntity
 			return false;
 		return true;
 	}
+
+	@Override
+	public String toString() {
+		return "Category [id=" + id + ", name=" + name + "]";
+	}
+	
 
 }
