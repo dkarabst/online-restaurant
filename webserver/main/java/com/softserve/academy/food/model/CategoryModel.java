@@ -11,15 +11,15 @@ public class CategoryModel
 	{
 	}
 	
-	public CategoryModel(int id, String name)
+	public CategoryModel( Category category )
 	{
-		this.id = id;
-		this.name = name;
+		id = category.getId();
+		name = category.getName();
 	}
 	
 	public Category toEntity()
 	{
-		return new Category(id, name);
+		return new Category( this );
 	}
 
 	public int getId()
