@@ -22,10 +22,8 @@ public class CategoryRequest
 	        HttpTransportSE androidHttpTransport = new HttpTransportSE(URL);
 	        androidHttpTransport.call(SOAP_ACTION, envelope);
 	 
-	        Object result = envelope.getResponse();
-	 
-	        //handle result here
-	 
+//	        Object result = envelope.getResponse();
+//	        handle result here	 
 //	        myExampleHandler.getResults();
 	    } catch (Exception e) {
 	        e.printStackTrace();
