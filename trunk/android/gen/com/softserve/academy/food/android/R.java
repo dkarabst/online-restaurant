@@ -82,6 +82,7 @@ public final class R {
         public static final int about_us=0x7f040008;
         public static final int app_name=0x7f040000;
         public static final int back=0x7f04000f;
+        public static final int base_uri=0x7f040010;
         public static final int button1=0x7f04000a;
         public static final int editTextBackground=0x7f04000e;
         public static final int hello_world=0x7f040001;
