@@ -98,8 +98,7 @@ public class LoginActivity extends AbstractAsyncActivity {
 
 		@Override
 		protected Message doInBackground(Void... params) {
-			// final String url = getString(R.string.base_uri) + "/getmessage";
-			final String url = "http://10.0.2.2:8080/spring-android-basic-auth-server/getmessage";
+			final String url = getString(R.string.base_uri) + "/getmessage";
 
 			// Populate the HTTP Basic Authentication header with the username
 			// and password
