@@ -123,9 +123,17 @@ public class LoginActivity extends AbstractAsyncActivity {
 				ResponseEntity<Message> response = restTemplate.exchange(url,
 						HttpMethod.GET, new HttpEntity<Object>(requestHeaders),
 						Message.class);
+				
+				Log.d("ROLE", "Admin");				
+		        ((Role)getApplicationContext()).setAdmin();
+				
 				return response.getBody();
 			} catch (HttpClientErrorException e) {
 				Log.e(TAG, e.getLocalizedMessage(), e);
+				
+				Log.d("ROLE", "Guest");				
+		        ((Role)getApplicationContext()).setGuest();
+				
 				return new Message(0, e.getStatusText(),
 						e.getLocalizedMessage());
 			}
