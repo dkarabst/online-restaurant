@@ -13,18 +13,19 @@ import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
 
-import com.softserve.academy.food.android.R;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+
+import com.softserve.academy.food.android.Role;
 
 public class UserHistory extends Activity implements OnClickListener
 {
@@ -47,6 +48,16 @@ public class UserHistory extends Activity implements OnClickListener
 		button1  = (Button) findViewById(R.id.Button01);
 
 		button.setOnClickListener(this);
+		
+		//******* hide the button
+		if ( ((Role)getApplicationContext()).isGuest() ) {
+			Log.d("ROLE", "Guest - hide");
+			button1.setVisibility(View.INVISIBLE);
+		} else {
+			Log.d("ROLE", "Admin - show");
+			button1.setVisibility(View.VISIBLE);			
+		}
+		//*****************************
 		button1.setOnClickListener(this);
 		
 		outputText1 = (EditText) findViewById(R.id.EditText01);
