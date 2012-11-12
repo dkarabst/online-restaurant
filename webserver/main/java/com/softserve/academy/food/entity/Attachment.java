@@ -1,159 +1,94 @@
 package com.softserve.academy.food.entity;
 
-import java.util.Date;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
-
 import com.softserve.academy.food.model.AttachmentModel;
+
+import javax.persistence.*;
 
 @Entity
 @Table(name = "ATTACHMENTS")
-public class Attachment extends AbstractEntity
-{
-	private static final long	serialVersionUID	= 1L;
+public class Attachment {
 
-	@Id
-	@Column(name = "att_id")
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Integer				id;
+    private Long id;
+    private String name;
+    private String path;
 
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "user_id", nullable = false)
-	private User				user;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "ATTACHMENTS_ID")
+    public Long getId() {
+        return id;
+    }
 
-	@Column(name = "name", length = 50)
-	private String				name;
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	@Column(name = "path", length = 255)
-	private String				path;
+    @Column(name = "ATTACHMENTS_PATH")
+    public String getPath() {
+        return path;
+    }
 
-	@Column(name = "modified")
-	private Date				modified;
+    public void setPath(String path) {
+        this.path = path;
+    }
 
-	public Attachment()
-	{
-	}
+    @Column(name = "ATTACHMENTS_NAME")
+    public String getName() {
+        return name;
+    }
 
-	public Attachment(User user, String name, String path,
-			Date modified)
-	{
-		setUser(user);
-		setName(name);
-		setPath(path);
-		setModified(modified);
-	}
-	
-	public AttachmentModel toModel()
-	{
-		return new AttachmentModel(user,name,path,modified);
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public Integer getId()
-	{
-		return id;
-	}
+    public AttachmentModel toModel() {
+        AttachmentModel attachmentModel = new AttachmentModel();
+        attachmentModel.setId(id);
+        attachmentModel.setName(name);
+        attachmentModel.setPath(path);
+        return attachmentModel;
+    }
 
-	public void setId(Integer id)
-	{
-		this.id = id;
-	}
+    @Override
+    public int hashCode()
+    {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((id == null) ? 0 : id.hashCode());
+        result = prime * result + ((name == null) ? 0 : name.hashCode());
+        result = prime * result + ((path == null) ? 0 : path.hashCode());
+        return result;
+    }
 
-	public User getUser()
-	{
-		return user;
-	}
-
-	public void setUser(User user)
-	{
-		this.user = user;
-	}
-
-	public String getName()
-	{
-		return name;
-	}
-
-	public void setName(String name)
-	{
-		this.name = name;
-	}
-
-	public String getPath()
-	{
-		return path;
-	}
-
-	public void setPath(String path)
-	{
-		this.path = path;
-	}
-
-	public Date getModified()
-	{
-		return modified;
-	}
-
-	public void setModified(Date modified)
-	{
-		this.modified = modified;
-	}
-
-	@Override
-	public int hashCode()
-	{
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result + ((user == null) ? 0 : user.hashCode());
-		result = prime * result + ((path == null) ? 0 : path.hashCode());
-		result = prime * result
-				+ ((modified == null) ? 0 : modified.hashCode());
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj)
-	{
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Attachment other = (Attachment) obj;
-		if (id == null)
-		{
-			if (other.id != null)
-				return false;
-		} else if (!id.equals(other.id))
-			return false;
-		if (user == null)
-		{
-			if (other.user != null)
-				return false;
-		} else if (!user.equals(other.user))
-			return false;
-		if (path == null)
-		{
-			if (other.path != null)
-				return false;
-		} else if (!path.equals(other.path))
-			return false;
-		if (modified == null)
-		{
-			if (other.modified != null)
-				return false;
-		} else if (!modified.equals(other.modified))
-			return false;
-		return true;
-	}
+    @Override
+    public boolean equals(Object obj)
+    {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        Attachment other = (Attachment) obj;
+        if (id == null)
+        {
+            if (other.id != null)
+                return false;
+        } else if (!id.equals(other.id))
+            return false;
+        if (name == null)
+        {
+            if (other.name != null)
+                return false;
+        } else if (!name.equals(other.name))
+            return false;
+        if (path == null)
+        {
+            if (other.path != null)
+                return false;
+        } else if (!path.equals(other.path))
+            return false;
+        return true;
+    }
 
 }

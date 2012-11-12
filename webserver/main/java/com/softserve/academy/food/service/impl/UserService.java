@@ -15,7 +15,6 @@ import com.softserve.academy.food.service.IUserService;
 @Service("userService")
 public class UserService implements IUserService
 {
-	
 	@Autowired
 	@Qualifier("userDao")
 	private IUserDao userDao;
@@ -77,6 +76,4 @@ public class UserService implements IUserService
 		this.userDao = userDao;
 	}
 	
-	
-
 }

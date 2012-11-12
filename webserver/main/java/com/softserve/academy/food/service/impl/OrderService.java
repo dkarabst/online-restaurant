@@ -4,52 +4,50 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.softserve.academy.food.dao.impl.OrderDao;
+import com.softserve.academy.food.dao.IDishDao;
+import com.softserve.academy.food.dao.IOrderDao;
+import com.softserve.academy.food.dao.IUserDao;
 import com.softserve.academy.food.entity.Dish;
 import com.softserve.academy.food.entity.OrderContents;
 import com.softserve.academy.food.entity.OrderInfo;
-import com.softserve.academy.food.entity.User;
-import com.softserve.academy.food.model.OrderModel;
 
 @Service("orderService")
 public class OrderService
 {
 	@Autowired
-	private OrderDao	orderDao;
+	@Qualifier("orderDao")
+	private IOrderDao	orderDao;
+	
+	@Autowired
+	@Qualifier("userDao")
+	private IUserDao userDao;
+	
+	@Autowired
+	@Qualifier("dishDao")
+	private IDishDao dishDao;
 
 	@Transactional
-	public OrderModel get(int id)
+	public void add( String name, ArrayList<Integer> spec)
 	{
-		return orderDao.get(id).toModel();
-	}
-
-	// working 
-	//  but i dont realy understand what Status 4 ?  and where we will set it.
-	@Transactional
-	public void add(Integer user_id, ArrayList<Integer> spec)
-	{
-		User user = (User) session.getCurrentSession().get(User.class, user_id);
-		List<OrderContents> list = new ArrayList<OrderContents>();
-		for(int id : spec)
+		OrderInfo order = new OrderInfo(); 
+		order.setUser( userDao.get(name) );
+		order.setDate( new Date() );
+		order.setStatus('A');
+		
+		List<OrderContents> orderInfo = new ArrayList<OrderContents>();
+		
+		for( int id : spec )
 		{
-			OrderContents oc = new OrderContents();
-			Dish d = (Dish) session.getCurrentSession().get(Dish.class, id);
-			oc.setDish(d);
-			oc.setQuantity(1);
-			list.add(oc);
+			Dish dish = dishDao.get( id );
+			orderInfo.add( new OrderContents(dish, 1, order) );
 		}
-		orderDao.add(user, new Date(), 'A', list);
+		orderDao.add( order );
 	}
 
-	@Transactional
-	public void delete(int id)
-	{
-		orderDao.delete(id);
-	}
 
 }

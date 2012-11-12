@@ -11,6 +11,11 @@ public class CategoryModel
 	{
 	}
 	
+	public CategoryModel( String name )
+	{
+		this.name = name;
+	}
+	
 	public CategoryModel( Category category )
 	{
 		id = category.getId();

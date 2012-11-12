@@ -10,7 +10,7 @@ import com.softserve.academy.food.dao.IUserDao;
 import com.softserve.academy.food.entity.User;
 
 @Repository("userDao")
-public class UserDao implements IUserDao{
+public class UserDao extends Dao implements IUserDao{
 
 	@Autowired
 	private SessionFactory session;
@@ -45,7 +45,7 @@ public class UserDao implements IUserDao{
 		return user;
 	}
 
-	public void delelete(int id) {
+	public void delete(int id) {
 
 		User object = (User) session.getCurrentSession().load(
 				User.class, id);
@@ -55,14 +55,5 @@ public class UserDao implements IUserDao{
 		}
 	}
 	
-	public void delelete(User user) {
-
-		 session.getCurrentSession().delete(user);
-	}
-	
-	public void update(User user) {
-
-		 session.getCurrentSession().update(user);
-	}
 
 }

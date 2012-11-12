@@ -14,6 +14,11 @@ public class MockUserDao implements IUserDao {
 	private List<User> users = new ArrayList<User>();
 
 	public User get(int id) {
+		
+		if ( users.isEmpty() || id<1 )
+		{
+			return null;
+		}
 	
 		return users.get(id-1);
 	}
@@ -39,9 +44,10 @@ public class MockUserDao implements IUserDao {
 		return user;
 	}
 	
-	public void update(User user) {
+	public void update( Object object ) {
 
-		users.set(user.getId()-1, user);
+		User user = (User)object;
+		users.set( user.getId()-1, user );
 	}
 
 	public List<User> getAll() {
@@ -49,14 +55,16 @@ public class MockUserDao implements IUserDao {
 		return users;
 	}
 
-	public void delelete(int id) {
+	public void delete(int id) {
 		
 		users.remove(id-1);
 	}
 
-	public void delelete(User user) {
-		
+	public void delete( Object object ) 
+	{
+		User user = (User)object;
 		users.remove(user.getId()-1);
 	}
+
 
 }

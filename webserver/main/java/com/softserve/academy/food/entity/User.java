@@ -16,11 +16,8 @@ import com.softserve.academy.food.model.UserModel;
 
 @Entity
 @Table(name = "USERS")
-public class User extends AbstractEntity
+public class User 
 {
-
-	private static final long	serialVersionUID	= 1L;
-
 	@Id
 	@Column(name = "USER_ID")
 	@GeneratedValue(strategy = GenerationType.AUTO)
