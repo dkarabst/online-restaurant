@@ -13,11 +13,8 @@ import com.softserve.academy.food.model.ContentModel;
 
 @Entity
 @Table(name = "ORDERSPEC")
-public class OrderContents extends AbstractEntity
+public class OrderContents 
 {
-
-	private static final long	serialVersionUID	= 1L;
-
 	@Id
 	@Column(name = "ospec_id")
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -36,6 +33,12 @@ public class OrderContents extends AbstractEntity
 	{
 	}
 
+	public OrderContents( Dish dish, int quantity, OrderInfo orderInfo )
+	{
+		this.dish = dish;
+		this.quantity = quantity;
+		this.orderInfo = orderInfo;
+	}
 
 	public OrderContents( ContentModel content )
 	{

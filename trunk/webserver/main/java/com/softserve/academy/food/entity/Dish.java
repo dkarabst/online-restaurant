@@ -13,15 +13,12 @@ import com.softserve.academy.food.model.DishModel;
 
 @Entity
 @Table(name = "DISHES")
-public class Dish extends AbstractEntity
+public class Dish 
 {
-
-	private static final long	serialVersionUID	= 1L;
-
 	@Id
 	@Column(name = "dish_id")
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Integer				id;
+	private int				id;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	private Category			category;
@@ -30,7 +27,7 @@ public class Dish extends AbstractEntity
 	private String				name;
 
 	@Column(name = "DISH_PRICE")
-	private Integer				price;
+	private int				price;
 
 	@Column(name = "DISH_PHOTO", length = 50)
 	private String				photo;
@@ -42,13 +39,19 @@ public class Dish extends AbstractEntity
 	private Character			avail;
 
 	@Column(name = "DISH_PREP_TIME")
-	private Integer				prepTime;
+	private int				prepTime;
 
 	@Column(name = "DISH_WEIGHT", length = 50)
-	private String				weight;
+	private int					weight;
 
 	public Dish()
 	{
+	}
+	
+	public Dish( String name, Category category )
+	{
+		this.name = name;
+		this.category = category;
 	}
 
 	public Dish( DishModel dish)
@@ -70,12 +73,12 @@ public class Dish extends AbstractEntity
 		return new DishModel( this );
 	}
 
-	public Integer getId()
+	public int getId()
 	{
 		return id;
 	}
 
-	public void setId(Integer id)
+	public void setId(int id)
 	{
 		this.id = id;
 	}
@@ -100,12 +103,12 @@ public class Dish extends AbstractEntity
 		this.name = name;
 	}
 
-	public Integer getPrice()
+	public int getPrice()
 	{
 		return price;
 	}
 
-	public void setPrice(Integer price)
+	public void setPrice(int price)
 	{
 		this.price = price;
 	}
@@ -140,28 +143,28 @@ public class Dish extends AbstractEntity
 		this.avail = avail;
 	}
 
-	public Integer getPrepTime()
+	public int getPrepTime()
 	{
 		return prepTime;
 	}
 
-	public void setPrepTime(Integer prepTime)
+	public void setPrepTime(int prepTime)
 	{
 		this.prepTime = prepTime;
 	}
 
-	public String getWeight()
+	public int getWeight()
 	{
 		return weight;
 	}
 
-	public void setWeight(String weight)
+	public void setWeight( int weight )
 	{
 		this.weight = weight;
 	}
 
 	@Override
-	public int hashCode()
+	public int hashCode() 
 	{
 		final int prime = 31;
 		int result = 1;
@@ -169,85 +172,64 @@ public class Dish extends AbstractEntity
 		result = prime * result
 				+ ((category == null) ? 0 : category.hashCode());
 		result = prime * result + ((descr == null) ? 0 : descr.hashCode());
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + id;
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		result = prime * result + ((photo == null) ? 0 : photo.hashCode());
-		result = prime * result
-				+ ((prepTime == null) ? 0 : prepTime.hashCode());
-		result = prime * result + ((price == null) ? 0 : price.hashCode());
-		result = prime * result + ((weight == null) ? 0 : weight.hashCode());
+		result = prime * result + prepTime;
+		result = prime * result + price;
+		result = prime * result + weight;
 		return result;
 	}
 
 	@Override
-	public boolean equals(Object obj)
+	public boolean equals( Object obj ) 
 	{
 		if (this == obj)
 			return true;
 		if (obj == null)
 			return false;
-		if (getClass() != obj.getClass())
+		if (!(obj instanceof Dish))
 			return false;
 		Dish other = (Dish) obj;
-		if (avail == null)
-		{
+		if (avail == null) {
 			if (other.avail != null)
 				return false;
 		} else if (!avail.equals(other.avail))
 			return false;
-		if (category == null)
-		{
+		if (category == null) {
 			if (other.category != null)
 				return false;
 		} else if (!category.equals(other.category))
 			return false;
-		if (descr == null)
-		{
+		if (descr == null) {
 			if (other.descr != null)
 				return false;
 		} else if (!descr.equals(other.descr))
 			return false;
-		if (id == null)
-		{
-			if (other.id != null)
-				return false;
-		} else if (!id.equals(other.id))
+		if (id != other.id)
 			return false;
-		if (name == null)
-		{
+		if (name == null) {
 			if (other.name != null)
 				return false;
 		} else if (!name.equals(other.name))
 			return false;
-		if (photo == null)
-		{
+		if (photo == null) {
 			if (other.photo != null)
 				return false;
 		} else if (!photo.equals(other.photo))
 			return false;
-		if (prepTime == null)
-		{
-			if (other.prepTime != null)
-				return false;
-		} else if (!prepTime.equals(other.prepTime))
+		if (prepTime != other.prepTime)
 			return false;
-		if (price == null)
-		{
-			if (other.price != null)
-				return false;
-		} else if (!price.equals(other.price))
+		if (price != other.price)
 			return false;
-		if (weight == null)
-		{
-			if (other.weight != null)
-				return false;
-		} else if (!weight.equals(other.weight))
+		if (weight != other.weight)
 			return false;
 		return true;
 	}
 
 	@Override
-	public String toString() {
+	public String toString() 
+	{
 		return "Dish [id=" + id + ", category=" + category + ", name=" + name
 				+ ", price=" + price + ", photo=" + photo + ", descr=" + descr
 				+ ", avail=" + avail + ", prepTime=" + prepTime + ", weight="

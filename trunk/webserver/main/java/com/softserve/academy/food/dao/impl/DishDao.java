@@ -2,8 +2,6 @@ package com.softserve.academy.food.dao.impl;
 
 import java.util.ArrayList;
 
-import org.hibernate.SessionFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.softserve.academy.food.dao.IDishDao;
@@ -11,11 +9,8 @@ import com.softserve.academy.food.entity.Category;
 import com.softserve.academy.food.entity.Dish;
 
 @Repository("dishDao")
-public class DishDao implements IDishDao
+public class DishDao extends Dao implements IDishDao
 {
-	@Autowired
-	private SessionFactory	sessionFactory;
-
 	public Dish get(int id)
 	{
 		return (Dish) sessionFactory.getCurrentSession().get(Dish.class, id);
@@ -49,7 +44,6 @@ public class DishDao implements IDishDao
 		{
 			sessionFactory.getCurrentSession().delete(object);
 		}
-
 	}
 
 
