@@ -38,6 +38,13 @@ public class DishDao
 		return (ArrayList<Dish>) sessionFactory.getCurrentSession()
 				.createQuery("from Dish").list();
 	}
+	
+	@SuppressWarnings("unchecked")
+	public ArrayList<Dish> getAll(Integer cat)
+	{
+		return (ArrayList<Dish>) sessionFactory.getCurrentSession()
+				.createQuery("from Dish where category='"+cat+ "'").list();
+	}
 
 	public void add(Category category, String name, Integer price,
 			String photo, String descr, Character avail, Integer prepTime,
