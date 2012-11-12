@@ -20,21 +20,21 @@ public class UserServiceTest {
 	private IUserDao userDao;
 
 	@Before
-	public void setUp() throws Exception {
-		
+	public void setUp() throws Exception 
+	{
 		userDao = new MockUserDao();
 		uService.setUserDao(userDao);
 	}
 
 	@Test
-	public void testCheckUserEmptyBD() {
-
+	public void testCheckUserEmptyBD() 
+	{
 		assertFalse( uService.checkUser("Vasa") );
 	}
 	
 	@Test
-	public void testCheckUser() {
-
+	public void testCheckUser() 
+	{
 		userDao.add( new  User("Vasa", "1234") );
 		
 		assertFalse( uService.checkUser("Peta") );
@@ -42,8 +42,8 @@ public class UserServiceTest {
 	}
 
 	@Test
-	public void testAddUserEmptyBD() {
-		
+	public void testAddUserEmptyBD() 
+	{
 		UserCredentials user = new UserCredentials("Vasa", "1234");
 		
 		assertTrue( uService.addUser(user) );
@@ -53,8 +53,8 @@ public class UserServiceTest {
 	}
 	
 	@Test
-	public void testAddUser() {
-		
+	public void testAddUser() 
+	{
 		userDao.add( new  User("Vasa", "1234") );
 		UserCredentials user = new UserCredentials("Peta", "1234");
 		
@@ -65,16 +65,15 @@ public class UserServiceTest {
 	}
 
 	@Test
-	public void testGetUser() {
-		
+	public void testGetUser() 
+	{
 		userDao.add( new  User("Vasa", "1234") );
 		assertEquals( userDao.get(1).getName(), "Vasa" );
-		
 	}
 
 	@Test
-	public void testUpdate() {
-		
+	public void testUpdate() 
+	{
 		User user = new User("Vasa", "1234");
 		user = userDao.add( user );
 		
