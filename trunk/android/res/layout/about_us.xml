@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
-        android:text="About us" />
+        android:text="@string/tvAboutUs" />
 	<Button
         android:id="@+id/button_back"
         android:layout_width="match_parent"

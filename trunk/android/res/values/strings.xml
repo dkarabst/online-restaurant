@@ -16,5 +16,20 @@
     <string name="Color_light01">#F0F8FF</string>
     <string name="editTextBackground"></string>
     <color name="ColorBackG">#87CEFF</color>
+    <string name="tvUserName">User name</string>
+    <string name="etEnterUserName">Enter your name here</string>
+    <string name="tvPassword">Password</string>
+    <string name="etEnterPassword">Enter your password here</string>
+    <string name="imAndroidInTheCup">Android in the coffee cup</string>
+    <string name="btMainMenu">Main Menu</string>
+    <string name="btLogin">Login</string>
+    <string name="tvRegisterHere">New to IT Restaurant? Register here</string>
+    <string name="tvEmail">Email</string>
+    <string name="etEnterEmail">Enter your Email</string>
+    <string name="btRegisterNewAccount">Register new Account</string>
+    <string name="tvLoginHere">Have you got an account? Login here</string>
+    <string name="tvAboutUs">About Us</string>
+    <string name="tvProfile">Profile</string>
+    <string name="TestString">test test test</string>
     
 </resources>
