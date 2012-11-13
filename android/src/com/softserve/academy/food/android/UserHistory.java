@@ -13,26 +13,26 @@ import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
 
-import com.softserve.academy.food.android.R;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.StrictMode;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 
+import com.softserve.academy.food.android.Role;
+
 public class UserHistory extends Activity implements OnClickListener
 {
 	Button button, button1, button_back;
-	String url1 = "http://10.0.2.2:8777/au/echo";
+	String URL = "http://10.0.2.2:8777/au/echo";
 	EditText outputText, outputText1;
-	String url2 = "http://10.0.2.2:8666/AndroidJAX-RS/jaxrs/helloworld";
+	String line = "";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
@@ -44,9 +44,23 @@ public class UserHistory extends Activity implements OnClickListener
         linearLayout.setBackgroundColor(Color.rgb(160, 200, 240));
 
 		findViewsById();
-		StrictMode.enableDefaults();
+		button_back  = (Button) findViewById(R.id.button_back);
+		button1  = (Button) findViewById(R.id.Button01);
 
 		button.setOnClickListener(this);
+		
+		//******* hide the button
+		if ( ((Role)getApplicationContext()).isGuest() ) {
+			Log.d("ROLE", "Guest - hide");
+			button1.setVisibility(View.INVISIBLE);
+		} else {
+			Log.d("ROLE", "Admin - show");
+			button1.setVisibility(View.VISIBLE);			
+		}
+		//*****************************
+		button1.setOnClickListener(this);
+		
+		outputText1 = (EditText) findViewById(R.id.EditText01);
 		button_back.setOnClickListener(new View.OnClickListener() 
 		
 		{
@@ -62,18 +76,18 @@ public class UserHistory extends Activity implements OnClickListener
 			{
 				try{
 				HttpClient client = new DefaultHttpClient();
-				HttpGet request = new HttpGet(url1);
+				HttpGet request = new HttpGet("http://10.0.2.2:8777/au/echo");
 				HttpResponse response = client.execute(request);
 				BufferedReader rd = new BufferedReader(
 						new InputStreamReader(response.getEntity().getContent()));
-				String result = "";
-				while ((result = rd.readLine()) != null)
+				while ((line = rd.readLine()) != null)
 				{
-					outputText1.setText(result);
+					System.out.println(line);
 				}
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
+				outputText1.setText(line);
 			}
 		});
 	}
@@ -82,27 +96,73 @@ public class UserHistory extends Activity implements OnClickListener
 	{
 		button = (Button) findViewById(R.id.button1);
 		outputText = (EditText) findViewById(R.id.editText1);
-		button_back  = (Button) findViewById(R.id.button_back);
-		button1  = (Button) findViewById(R.id.Button01);
-		outputText1 = (EditText) findViewById(R.id.EditText01);
+
+	}
+	public void onClick(View view)
+	{
+		GetXMLTask task = new GetXMLTask();
+		task.execute(new String[]{URL});
 	}
 
-	public void onClick(View arg0)
+	private class GetXMLTask extends AsyncTask<String, Void, String>
 	{
-		try{
-		HttpClient client = new DefaultHttpClient();
-		HttpGet request = new HttpGet(url2);
-		HttpResponse response = client.execute(request);
-		BufferedReader rd = new BufferedReader(
-				new InputStreamReader(response.getEntity().getContent()));
-		String result = "";
-		while ((result = rd.readLine()) != null)
+		@Override
+		protected String doInBackground(String... urls)
 		{
-			outputText.setText(result);
+			
+			String output = null;
+			for (String url : urls)
+			{
+				output = getOutputFromUrl(url);
+			}
+			return output;
 		}
-		} catch (IOException e) {
-			e.printStackTrace();
+		private String getOutputFromUrl(String url)
+		{
+			StringBuffer output = new StringBuffer("");
+			try
+			{
+				InputStream stream = getHttpConnection(url);
+				BufferedReader buffer = new BufferedReader(new InputStreamReader(stream));
+				String s = "";
+				while ((s = buffer.readLine()) != null)
+					output.append(s);
+			} catch (IOException e1)
+			{
+				e1.printStackTrace();
+			}
+			return output.toString();
 		}
-		
+		// Makes HttpURLConnection and returns InputStream
+		private InputStream getHttpConnection(String urlString)
+				throws IOException
+		{
+			InputStream stream = null;
+			URL url = new URL(urlString);
+			URLConnection connection = url.openConnection();
+			try
+			{
+				HttpURLConnection httpConnection = (HttpURLConnection) connection;
+				httpConnection.setRequestMethod("GET");
+				httpConnection.connect();
+				if (httpConnection.getResponseCode() == HttpURLConnection.HTTP_OK)
+				{
+					stream = httpConnection.getInputStream();
+				}
+			} catch (Exception ex)
+			{
+				ex.printStackTrace();
+			}
+			return stream;
+		}
+
+		@Override
+		protected void onPostExecute(String resultstring)
+		{
+			outputText.setText(resultstring);
+		}
 	}
+	
+	
+	
 }

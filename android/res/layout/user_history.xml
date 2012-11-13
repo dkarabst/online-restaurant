@@ -15,10 +15,11 @@
 
     <EditText
         android:id="@+id/editText1"
-        android:text=""
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10" />
+        android:ems="10"
+        android:hint="@string/TestString"
+        android:text="" />
 
     <Button
         android:id="@+id/button1"
@@ -30,7 +31,8 @@
         android:id="@+id/EditText01"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10" />
+        android:ems="10"
+        android:hint="@string/TestString" />
 
     <Button
         android:id="@+id/Button01"
