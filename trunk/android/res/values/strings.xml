@@ -31,5 +31,6 @@
     <string name="tvAboutUs">About Us</string>
     <string name="tvProfile">Profile</string>
     <string name="TestString">test test test</string>
+    <string name="box">Basket</string>
     
 </resources>

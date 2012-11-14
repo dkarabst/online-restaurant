@@ -11,6 +11,7 @@ public class DishModel
 	private Character	avail;
 	private Integer		prepTime;
 	private String		weight;
+	public boolean box;
 
 	public DishModel()
 	{
@@ -28,7 +29,7 @@ public class DishModel
 
 	public DishModel(int id, int category, String name, Integer price,
 			String photo, String descr, Character avail, Integer prepTime,
-			String weight)
+			String weight, boolean box)
 	{
 		this.id = id;
 		this.category_id = category;
@@ -130,5 +131,13 @@ public class DishModel
 	{
 		this.weight = weight;
 	}
+	public boolean isBox()
+	{
+		return box;
+	}
 
+	public void setBox(boolean box)
+	{
+		this.box = box;
+	}
 }

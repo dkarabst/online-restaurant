@@ -6,27 +6,28 @@ import android.app.ProgressDialog;
 // *********************
 // Progress Bar
 // *********************
-public abstract class AbstractAsyncActivity extends Activity {
-
-	protected static final String TAG = AbstractAsyncActivity.class
-			.getSimpleName();
-
+public abstract class AbstractAsyncActivity extends Activity
+{
+	protected static final String TAG = AbstractAsyncActivity.class.getSimpleName();
 	private ProgressDialog progressDialog;
-
 	private boolean destroyed = false;
 
 	@Override
-	protected void onDestroy() {
+	protected void onDestroy()
+	{
 		super.onDestroy();
 		destroyed = true;
 	}
 
-	public void showLoadingProgressDialog() {
+	public void showLoadingProgressDialog()
+	{
 		this.showProgressDialog("Connecting to the Server. Please wait...");
 	}
 
-	public void showProgressDialog(CharSequence message) {
-		if (progressDialog == null) {
+	public void showProgressDialog(CharSequence message)
+	{
+		if (progressDialog == null)
+		{
 			progressDialog = new ProgressDialog(this);
 			progressDialog.setIndeterminate(true);
 		}
@@ -35,10 +36,11 @@ public abstract class AbstractAsyncActivity extends Activity {
 		progressDialog.show();
 	}
 
-	public void dismissProgressDialog() {
-		if (progressDialog != null && !destroyed) {
+	public void dismissProgressDialog()
+	{
+		if (progressDialog != null && !destroyed)
+		{
 			progressDialog.dismiss();
 		}
 	}
-
 }
