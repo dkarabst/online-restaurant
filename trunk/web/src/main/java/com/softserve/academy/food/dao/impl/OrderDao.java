@@ -16,7 +16,7 @@ public class OrderDao implements IOrderDao
 	@Autowired
 	private SessionFactory	sessionFactory;
 
-	public OrderInfo get(Integer id)
+	public OrderInfo get( int id )
 	{
 		return (OrderInfo) sessionFactory.getCurrentSession().get(
 				OrderInfo.class, id);
@@ -38,9 +38,11 @@ public class OrderDao implements IOrderDao
 				.createQuery("from OrderInfo where USERS_user_id="+user.getId()).list();
 	}
 
-	public void add( OrderInfo order )
+	public OrderInfo add( OrderInfo order )
 	{
-		sessionFactory.getCurrentSession().save(order);
+		order.setId( (Integer)sessionFactory.getCurrentSession().save(order) );
+		
+		return order;
 	}
 
 }
