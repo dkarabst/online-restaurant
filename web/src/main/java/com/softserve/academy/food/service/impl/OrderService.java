@@ -3,6 +3,7 @@ package com.softserve.academy.food.service.impl;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -32,19 +33,18 @@ public class OrderService
 	private IDishDao dishDao;
 
 	@Transactional
-	public void add( String name, ArrayList<Integer> spec)
+	public void add( String name, Map<Integer,Integer> spec)
 	{
 		OrderInfo order = new OrderInfo(); 
 		order.setUser( userDao.get(name) );
 		order.setDate( new Date() );
-		order.setStatus('A');
 		
 		List<OrderContents> orderInfo = new ArrayList<OrderContents>();
 		
-		for( int id : spec )
+		for( Map.Entry<Integer,Integer> item : spec.entrySet() )
 		{
-			Dish dish = dishDao.get( id );
-			orderInfo.add( new OrderContents(dish, 1, order) );
+			Dish dish = dishDao.get( item.getKey() );
+			orderInfo.add( new OrderContents(dish, item.getValue(), order) );
 		}
 		orderDao.add( order );
 	}
