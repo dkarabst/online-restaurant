@@ -47,7 +47,7 @@ public class MenuService implements IMenuService
 	{
 		if ( dishDao.get(id)!=null )
 		{
-			dishDao.get(id).toModel();
+			return dishDao.get(id).toModel();
 		}
 		return new DishModel();
 	}
