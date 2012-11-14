@@ -13,11 +13,8 @@ import com.softserve.academy.food.model.ContentModel;
 
 @Entity
 @Table(name = "ORDERSPEC")
-public class OrderContents extends AbstractEntity
+public class OrderContents 
 {
-
-	private static final long	serialVersionUID	= 1L;
-
 	@Id
 	@Column(name = "ospec_id")
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -36,16 +33,24 @@ public class OrderContents extends AbstractEntity
 	{
 	}
 
-	public ContentModel toModel()
+	public OrderContents( Dish dish, int quantity, OrderInfo orderInfo )
 	{
-		return new ContentModel(id, orderInfo.getId(), dish.toModel(), quantity);
+		this.dish = dish;
+		this.quantity = quantity;
+		this.orderInfo = orderInfo;
 	}
 
-	public OrderContents(OrderInfo orderInfo, Dish dish, Integer quantity)
+	public OrderContents( ContentModel content )
 	{
-		setOrderInfo(orderInfo);
-		setDish(dish);
-		setQuantity(quantity);
+		id = content.getId();
+		orderInfo = content.getOrderInfo().toEntity();
+		dish = content.getDish().toEntity();
+		quantity = content.getQuantity();
+	}
+	
+	public ContentModel toModel()
+	{
+		return new ContentModel( this );
 	}
 
 	public Integer getId()

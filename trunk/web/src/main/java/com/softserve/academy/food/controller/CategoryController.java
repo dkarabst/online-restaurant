@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.softserve.academy.food.model.CategoryModel;
-import com.softserve.academy.food.service.CategoryService;
+import com.softserve.academy.food.service.impl.CategoryService;
 
 @Controller
 public class CategoryController {

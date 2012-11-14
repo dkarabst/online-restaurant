@@ -16,11 +16,8 @@ import com.softserve.academy.food.model.UserModel;
 
 @Entity
 @Table(name = "USERS")
-public class User extends AbstractEntity
+public class User 
 {
-
-	private static final long	serialVersionUID	= 1L;
-
 	@Id
 	@Column(name = "USER_ID")
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -51,16 +48,15 @@ public class User extends AbstractEntity
 		setPassword(password);
 	}
 
-	public User(String name, String email, String phone)
+	public User( UserModel user )
 	{
-		setName(name);
-		setEmail(email);
-		setPhone(phone);
+		id = user.getId();
+		email = user.getEmail();
+		phone = user.getPhone();
 	}
 
 	public User(UserCredentials user)
 	{
-
 		id = user.getId();
 		name = user.getName();
 		password = user.getPassword();
@@ -69,7 +65,7 @@ public class User extends AbstractEntity
 
 	public UserModel toModel()
 	{
-		return new UserModel(id, name, email, phone);
+		return new UserModel( this );
 	}
 
 	public int getId()

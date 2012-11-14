@@ -8,23 +8,10 @@
 </head>
 <body>
 
-	<form method="post" action="order/addDish">
-		To add dish :<br>
-		  Dish id: <input type="text" name="dish_id"/><br>
-		Quantity : <input type="text" name="quantity"/><br>
-		<input	type="submit" value="add dish" />
-	</form>
-	<br>
-	<form method="post" action="order/deleteDish">
-		To remove dish :<br>
-		  Dish id: <input type="text" name="dish_id"/><br>
-		Quantity : <input type="text" name="quantity"/><br>
-		<input	type="submit" value="remove dish" />
-	</form>
-	<br>
-	<br>
-	<form method="get" action="order/makeOrder">
-		to make order plz press: <input	type="submit" value="Make order" />
+	<form method="post" action="order/add">
+		Put order params :<br>
+		Dish id:<input type="text" name="name"/><br>
+		<input	type="submit" value="SUBMIT" />
 	</form>
 
 </body>
