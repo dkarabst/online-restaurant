@@ -1,30 +1,27 @@
 package com.softserve.academy.food.android;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import org.springframework.http.converter.json.MappingJacksonHttpMessageConverter;
 import org.springframework.web.client.RestTemplate;
 
 import android.app.Activity;
-import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.softserve.academy.food.android.model.CategoryModel;
 import com.softserve.academy.food.android.model.DishModel;
 public class RMenu extends Activity implements OnClickListener
 {
-	ListView lvDishes;
-	String[] names;
+	ArrayList<DishModel> allDishes = new ArrayList<DishModel>();
+	BoxAdapter boxAdapter;
 	final String BASE_URL = "http://10.0.2.2:8666";
-
+	int id = 3;
 
 	public void onCreate(Bundle savedInstanceState)
 	{
@@ -32,59 +29,49 @@ public class RMenu extends Activity implements OnClickListener
 		setContentView(R.layout.rmenu);
 		
 		StrictMode.enableDefaults();
-		
-		LinearLayout linearLayout = (LinearLayout)findViewById(R.id.linlayout);
-        linearLayout.setBackgroundColor(Color.rgb(160, 200, 240));
-		lvDishes = (ListView) findViewById(R.id.lvDishes);
-		// устанавливаем режим выбора пунктов списка
-		lvDishes.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
+	
+		// создаем адаптер
+		boxAdapter = new BoxAdapter(this, getAllDishes());
 
-		// Создаем адаптер, используя массив, полученный от сервера		
-		ArrayAdapter<String> adapter = new ArrayAdapter<String>(
-				this, android.R.layout.simple_list_item_multiple_choice, getAllDishes());
-		lvDishes.setAdapter(adapter);
-		
-		Button btnChecked = (Button) findViewById(R.id.btnChecked);
-		Button button_back = (Button) findViewById(R.id.button_back);
-		// Установка слушателей для кнопок
-		btnChecked.setOnClickListener(this);
-		button_back.setOnClickListener(this);
+		// настраиваем список
+		ListView lvMain = (ListView) findViewById(R.id.lvMain);
+		lvMain.setAdapter(boxAdapter);
 	}
 
-	public void onClick(View arg0)
+	// выводим информацию о корзине
+	public void showResult(View v)
 	{
-		Intent intent_button_back = new Intent(RMenu.this, MainActivity.class);
-		startActivity(intent_button_back);
+		String result = "Товары в корзине:";
+		for (DishModel p : boxAdapter.getBox())
+		{
+			if (p.isBox())
+				result += "\n" + p.getName();
+		}
+		Toast.makeText(this, result, Toast.LENGTH_LONG).show();
 	}
-// Выбор блюда по категории	
-	public ArrayList<String> getDishesById(int id)
+	
+	// Выбор всех блюд	
+	public ArrayList<DishModel> getAllDishes()
+	{
+		String url = BASE_URL + "/Restaurant/dishes";
+		RestTemplate restTemplate = new RestTemplate();
+		restTemplate.getMessageConverters().add(new MappingJacksonHttpMessageConverter());
+		DishModel[] arrayDishes = restTemplate.getForObject(url, DishModel[].class);
+		ArrayList<DishModel> allDishes = new ArrayList<DishModel>(Arrays.asList(arrayDishes));
+		return allDishes;
+	}
+	
+	// Выбор блюда по категории	
+	public ArrayList<DishModel> getDishesById(int id)
 	{
 		String url = BASE_URL + "/Restaurant/dish/category/" + new CategoryModel().getId();
 		RestTemplate restTemplate = new RestTemplate();
 		restTemplate.getMessageConverters().add(new MappingJacksonHttpMessageConverter());
 		DishModel[] allDishes = restTemplate.getForObject(url, DishModel[].class);
-		ArrayList<String> dishNames = new ArrayList<String>();
-		dishNames = new ArrayList<String>();
-		for (DishModel dishModel : allDishes)
-		{
-			dishNames.add(dishModel.getName());
-		}
-		return dishNames;
-	}
-	// Выбор всех блюд	
-	public ArrayList<String> getAllDishes()
-	{
-		String url = BASE_URL + "/Restaurant/dishes";
-		RestTemplate restTemplate = new RestTemplate();
-		restTemplate.getMessageConverters().add(new MappingJacksonHttpMessageConverter());
-		DishModel[] allDishes = restTemplate.getForObject(url, DishModel[].class);
-		ArrayList<String> dishNames = new ArrayList<String>();
-		dishNames = new ArrayList<String>();
-		for (DishModel dishModel : allDishes)
-		{
-			dishNames.add(dishModel.getName());
-		}
+		ArrayList<DishModel> dishNames = new ArrayList<DishModel>(Arrays.asList(allDishes));
 		return dishNames;
 	}
 
+	public void onClick(View arg0)
+	{}
 }
