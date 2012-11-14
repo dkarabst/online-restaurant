@@ -2,11 +2,13 @@ package com.softserve.academy.food.model;
 
 import com.softserve.academy.food.entity.User;
 
-public class UserCredentials {
+public class UserCredentials 
+{
 	private int id;
 	private String name;
 	private String password;
 	private String role = "ROLE_USER";
+	private Boolean	enable=true;
 
 	public UserCredentials() {
 	}
@@ -21,6 +23,7 @@ public class UserCredentials {
 		name = user.getName();
 		password = user.getPassword();
 		role = user.getRole();
+		enable = user.getEnable();
 	}
 
 	public int getId() {
@@ -55,11 +58,20 @@ public class UserCredentials {
 		this.role = role;
 	}
 
+	public Boolean getEnable() {
+		return enable;
+	}
+
+	public void setEnable(Boolean enable) {
+		this.enable = enable;
+	}
+
 	@Override
-	public int hashCode() {
+	public int hashCode() 
+	{
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + id;
+		result = prime * result + ((enable == null) ? 0 : enable.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		result = prime * result
 				+ ((password == null) ? 0 : password.hashCode());
@@ -68,7 +80,8 @@ public class UserCredentials {
 	}
 
 	@Override
-	public boolean equals(Object obj) {
+	public boolean equals(Object obj) 
+	{
 		if (this == obj)
 			return true;
 		if (obj == null)
@@ -76,7 +89,10 @@ public class UserCredentials {
 		if (!(obj instanceof UserCredentials))
 			return false;
 		UserCredentials other = (UserCredentials) obj;
-		if (id != other.id)
+		if (enable == null) {
+			if (other.enable != null)
+				return false;
+		} else if (!enable.equals(other.enable))
 			return false;
 		if (name == null) {
 			if (other.name != null)
@@ -97,9 +113,12 @@ public class UserCredentials {
 	}
 
 	@Override
-	public String toString() {
-		return "mUserCredentials [id=" + id + ", name=" + name + ", password="
-				+ password + ", role=" + role + "]";
+	public String toString() 
+	{
+		return "UserCredentials [id=" + id + ", name=" + name + ", password="
+				+ password + ", role=" + role + ", enable=" + enable + "]";
 	}
+
+
 
 }
