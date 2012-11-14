@@ -1,10 +1,6 @@
 package com.softserve.academy.food.controller;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-
-import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,20 +11,19 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.softserve.academy.food.model.OrderModel;
-import com.softserve.academy.food.service.OrderService;
+import com.softserve.academy.food.service.impl.OrderService;
 
 @Controller
-@RequestMapping("/order")
 public class OrderController
 {
 
 	@Autowired
-	private OrderService				orderService;
+	private OrderService	orderService;
 
-	// temporal
-	private HashMap<Integer, Integer>	map	= new HashMap<Integer, Integer>();
+	// @Autowired
+	// private UserService userService;
 
-	@RequestMapping(value = "/all", method = RequestMethod.GET)
+	@RequestMapping(value = "/order/all", method = RequestMethod.GET)
 	protected String categoryList(Model model)
 	{
 		ArrayList<String> names = new ArrayList<String>();
@@ -41,79 +36,26 @@ public class OrderController
 		return "helloPage";
 	}
 
-	@RequestMapping(value = "", method = RequestMethod.GET)
-	public String add(Model model)
-	{
-		return "addOrder";
-	}
-
-	@RequestMapping(value = "/addDish", method = RequestMethod.POST)
-	public String addDish(@RequestParam("dish_id") int dish_id,
-			@RequestParam("quantity") int quantity, Model model,
-			HttpSession session)
-	{
-		// @SuppressWarnings("unchecked")
-		// HashMap<Integer,Integer> map must be created my sign in..
-		// HashMap<Integer,Integer> map = (HashMap<Integer,Integer>)
-		// session.getAttribute("dishList");
-		if (map.containsKey(dish_id))
-		{
-			map.put(dish_id, (map.get(dish_id) + quantity));
-		} else
-		{
-			map.put(dish_id, quantity);
-		}
-		session.setAttribute("dishList", map);
-		System.out.println(Arrays.asList(session.getAttribute("dishList")));
-		return "redirect:../order";
-	}
-
-	@RequestMapping(value = "/deleteDish", method = RequestMethod.POST)
-	public String deleteDish(@RequestParam("dish_id") int dish_id,
-			@RequestParam("quantity") int quantity, Model model,
-			HttpSession session)
-	{
-		// @SuppressWarnings("unchecked")
-		// HashMap<Integer,Integer> map must be created my sign in..
-		// HashMap<Integer,Integer> map = (HashMap<Integer,Integer>)
-		// session.getAttribute("dishList");
-		if (map.containsKey(dish_id))
-		{
-			if (map.get(dish_id) > quantity)
-			{
-				map.put(dish_id, (map.get(dish_id) - quantity));
-			} else
-			{
-				map.remove(dish_id);
-			}
-			session.setAttribute("dishList", map);
-		}
-		System.out.println(Arrays.asList(session.getAttribute("dishList")));
-		return "redirect:../order";
-	}
-
-	@SuppressWarnings("unchecked")
-	@RequestMapping(value = "/makeOrder", method = RequestMethod.GET)
-	public String makeOrder(Model model, HttpSession session)
-	{
-		// temporal
-		// Integer user_id = session.getAttribute("user_id");
-		// user id =1 , because we dont have security now
-		orderService.add(1, session.getAttribute("dishList"));
-		// clear list after order
-		// may be stored somewhere to repeat last order
-		((HashMap<Integer,Integer>)session.getAttribute("dishList")).clear();
-		return "redirect:../order";
-	}
-
-	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	protected String category(@PathVariable int id, Model model)
-	{
-		ArrayList<String> names = new ArrayList<String>();
-		OrderModel mod = orderService.get(id);
-		names.add(mod.toString());
-		model.addAttribute("helloMessage", names);
-		return "helloPage";
-	}
+	 @RequestMapping(value = "/order", method = RequestMethod.GET)
+	 public String add(Model model) {
+	 return "addOrder";
+	 }
+	 
+	 @RequestMapping(value = "/order/add", method = RequestMethod.POST)
+	 public String added(@RequestParam("name") String name, Model model) {
+		 ArrayList<Integer> list =  new ArrayList<Integer>();
+		 list.add(Integer.parseInt(name));
+	 orderService.add(1,list);
+	 return "redirect:../order";
+	 }
+	
+	 @RequestMapping(value = "/order/{id}", method = RequestMethod.GET)
+	 protected String category(@PathVariable int id,Model model) {
+	 ArrayList<String> names = new ArrayList<String>();
+	 OrderModel mod = orderService.get(id);
+	 names.add(mod.toString());
+	 model.addAttribute("helloMessage", names);
+	 return "helloPage";
+	 }
 
 }

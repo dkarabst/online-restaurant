@@ -6,6 +6,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "ATTACHMENTS")
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Attachment {
 
     private Long id;
@@ -90,5 +91,12 @@ public class Attachment {
             return false;
         return true;
     }
+
+	@Override
+	public String toString() {
+		return "Attachment [id=" + id + ", name=" + name + ", path=" + path
+				+ "]";
+	}
+    
 
 }

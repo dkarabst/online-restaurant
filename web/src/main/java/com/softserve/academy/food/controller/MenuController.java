@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.softserve.academy.food.model.DishModel;
-import com.softserve.academy.food.service.MenuService;
+import com.softserve.academy.food.service.impl.MenuService;
 
 @Controller
 public class MenuController

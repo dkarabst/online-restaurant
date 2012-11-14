@@ -1,9 +1,11 @@
 package com.softserve.academy.food.model;
 
+import com.softserve.academy.food.entity.OrderContents;
+
 public class ContentModel
 {
 	private int			id;
-	private int			orderInfo_id;
+	private OrderModel	orderInfo;
 	private DishModel	dish;
 	private Integer		quantity;
 
@@ -11,20 +13,17 @@ public class ContentModel
 	{
 	}
 
-	@Override
-	public String toString()
+	public ContentModel( OrderContents content)
 	{
-		return "Model - " + id + " order - " + orderInfo_id + " Dish - " + dish
-				+ " quantity - " + quantity;
+		id = content.getId();
+		orderInfo = content.getOrderInfo().toModel();
+		dish = content.getDish().toModel();
+		quantity = content.getQuantity();
 	}
-
-	public ContentModel(int id, int orderInfo_id, DishModel dish,
-			Integer quantity)
+	
+	public OrderContents toEntity()
 	{
-		this.id = id;
-		this.orderInfo_id = orderInfo_id;
-		this.dish = dish;
-		this.quantity = quantity;
+		return new OrderContents( this );
 	}
 
 	public int getId()
@@ -37,14 +36,14 @@ public class ContentModel
 		this.id = id;
 	}
 
-	public int getOrderInfo_id()
+	public OrderModel getOrderInfo()
 	{
-		return orderInfo_id;
+		return orderInfo;
 	}
 
-	public void setOrderInfo_id(int orderInfo_id)
+	public void setOrderInfo(OrderModel orderInfo)
 	{
-		this.orderInfo_id = orderInfo_id;
+		this.orderInfo = orderInfo;
 	}
 
 	public DishModel getDish()
@@ -65,6 +64,13 @@ public class ContentModel
 	public void setQuantity(Integer quantity)
 	{
 		this.quantity = quantity;
+	}
+	
+	@Override
+	public String toString()
+	{
+		return "Model - " + id + " order - " + orderInfo + " Dish - " + dish
+				+ " quantity - " + quantity;
 	}
 
 }

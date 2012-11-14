@@ -46,23 +46,24 @@ public class OrderInfo
 	{
 	}
 
-	public OrderInfo(User user, Date date, Character status,
-			List<OrderContents> spec)
+	public OrderInfo( OrderModel order )
 	{
-		setUser(user);
-		setDate(date);
-		setStatus(status);
-		setSpec(spec);
+		id = order.getId();
+		user = order.getUser().toEntity();
+		date = order.getDate();
+		status = order.getStatus();
+		
+		List<OrderContents>	spec = new ArrayList<OrderContents>();
+		for ( ContentModel content : order.getSpec() )
+		{
+			spec.add( content.toEntity() );
+		}
+		this.spec = spec;
 	}
 
 	public OrderModel toModel()
 	{
-		List<ContentModel> cmod = new ArrayList<ContentModel>();
-		for (OrderContents c : spec)
-		{
-			cmod.add(c.toModel());
-		}
-		return new OrderModel(user.getId(), date, status, cmod);
+		return new OrderModel( this );
 	}
 
 	public Integer getId()
