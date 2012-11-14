@@ -6,9 +6,9 @@ import com.softserve.academy.food.entity.OrderInfo;
 
 public interface IOrderDao 
 {
-	public OrderInfo get(Integer id);
+	public OrderInfo get( int id);
 	public List<OrderInfo> getAll();
-	public void add( OrderInfo order );
+	public OrderInfo add( OrderInfo order );
 	public List<OrderInfo> getAll( String login );
 
 }
