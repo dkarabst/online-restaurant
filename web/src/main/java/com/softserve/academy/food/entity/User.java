@@ -28,6 +28,9 @@ public class User
 
 	@Column(name = "USER_ROLE", length = 50)
 	private String				role;
+	
+	@Column(name = "USER_ENABLE")
+	private Boolean				enable;
 
 	@Column(name = "USER_NAME", length = 50)
 	private String				name;
@@ -61,6 +64,7 @@ public class User
 		name = user.getName();
 		password = user.getPassword();
 		role = user.getRole();
+		enable = user.getEnable();
 	}
 
 	public UserModel toModel()
@@ -68,63 +72,59 @@ public class User
 		return new UserModel( this );
 	}
 
-	public int getId()
-	{
+	public int getId() {
 		return id;
 	}
 
-	public void setId(int id)
-	{
+	public void setId(int id) {
 		this.id = id;
 	}
 
-	public String getPassword()
-	{
+	public String getPassword() {
 		return password;
 	}
 
-	public void setPassword(String password)
-	{
+	public void setPassword(String password) {
 		this.password = password;
 	}
 
-	public String getRole()
-	{
+	public String getRole() {
 		return role;
 	}
 
-	public void setRole(String role)
-	{
+	public void setRole(String role) {
 		this.role = role;
 	}
 
-	public String getName()
-	{
+	public Boolean getEnable() {
+		return enable;
+	}
+
+	public void setEnable(Boolean enable) {
+		this.enable = enable;
+	}
+
+	public String getName() {
 		return name;
 	}
 
-	public void setName(String name)
-	{
+	public void setName(String name) {
 		this.name = name;
 	}
 
-	public String getEmail()
-	{
+	public String getEmail() {
 		return email;
 	}
 
-	public void setEmail(String email)
-	{
+	public void setEmail(String email) {
 		this.email = email;
 	}
 
-	public String getPhone()
-	{
+	public String getPhone() {
 		return phone;
 	}
 
-	public void setPhone(String phone)
-	{
+	public void setPhone(String phone) {
 		this.phone = phone;
 	}
 
@@ -133,6 +133,8 @@ public class User
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((email == null) ? 0 : email.hashCode());
+		result = prime * result + ((enable == null) ? 0 : enable.hashCode());
+		result = prime * result + id;
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		result = prime * result
 				+ ((password == null) ? 0 : password.hashCode());
@@ -154,6 +156,13 @@ public class User
 			if (other.email != null)
 				return false;
 		} else if (!email.equals(other.email))
+			return false;
+		if (enable == null) {
+			if (other.enable != null)
+				return false;
+		} else if (!enable.equals(other.enable))
+			return false;
+		if (id != other.id)
 			return false;
 		if (name == null) {
 			if (other.name != null)
@@ -179,11 +188,10 @@ public class User
 	}
 
 	@Override
-	public String toString()
-	{
+	public String toString() {
 		return "User [id=" + id + ", password=" + password + ", role=" + role
-				+ ", name=" + name + ", email=" + email + ", phone=" + phone
-				+ "]";
+				+ ", enable=" + enable + ", name=" + name + ", email=" + email
+				+ ", phone=" + phone + "]";
 	}
 
 }
