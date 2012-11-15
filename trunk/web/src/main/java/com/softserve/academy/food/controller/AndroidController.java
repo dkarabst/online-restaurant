@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.softserve.academy.food.model.CategoryModel;
 import com.softserve.academy.food.model.DishModel;
-import com.softserve.academy.food.service.CategoryService;
-import com.softserve.academy.food.service.MenuService;
+import com.softserve.academy.food.service.impl.CategoryService;
+import com.softserve.academy.food.service.impl.MenuService;
 
 @Controller
 public class AndroidController
@@ -22,7 +22,7 @@ public class AndroidController
 	@Autowired
 	private MenuService menuService;
 
-	// Вызов всех категорий в список
+	// пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 	@RequestMapping(value = "/cats")
 	public @ResponseBody
 	ArrayList<CategoryModel> getAllCategories()
@@ -31,7 +31,7 @@ public class AndroidController
 		return allCategories;
 	}
 
-	// Вызов категории по id
+	// пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ id
 	@RequestMapping(value = "/cat/{id}")
 	public @ResponseBody
 	CategoryModel getCategoryById(@PathVariable int id)
@@ -40,7 +40,7 @@ public class AndroidController
 		return category;
 	}
 
-	// Вызов всех блюд в список
+	// пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 	@RequestMapping(value = "/dishes")
 	public @ResponseBody
 	ArrayList<DishModel> getAllDishes()
@@ -49,7 +49,7 @@ public class AndroidController
 		return allDishes;
 	}
 
-	// Вызов блюда по id
+	// пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ id
 	@RequestMapping(value = "/dish/{id}")
 	public @ResponseBody
 	DishModel getDishById(@PathVariable int id)
@@ -58,7 +58,7 @@ public class AndroidController
 		return dish;
 	}
 
-	// Вызов блюда по категории
+	// пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	@RequestMapping(value = "/dish/category/{id}")
 	public @ResponseBody
 	ArrayList<DishModel> getAllDishesByCategory(@PathVariable int id)
