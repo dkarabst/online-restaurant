@@ -4,7 +4,7 @@ import com.softserve.academy.food.entity.Attachment;
 
 import java.util.List;
 
-public interface AttachmentDao {
+public interface IAttachmentDao {
 
     void add(Attachment attachment);
 

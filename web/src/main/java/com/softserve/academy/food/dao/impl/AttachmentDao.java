@@ -1,6 +1,7 @@
-package com.softserve.academy.food.dao;
+package com.softserve.academy.food.dao.impl;
 
 
+import com.softserve.academy.food.dao.IAttachmentDao;
 import com.softserve.academy.food.entity.Attachment;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -11,7 +12,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public class AttachmentDaoImpl implements AttachmentDao {
+public class AttachmentDao implements IAttachmentDao {
 
     @Autowired
     private SessionFactory sessionFactory;
