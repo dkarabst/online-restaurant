@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.softserve.academy.food.model.CategoryModel;
 import com.softserve.academy.food.model.DishModel;
-import com.softserve.academy.food.service.impl.CategoryService;
-import com.softserve.academy.food.service.impl.MenuService;
+import com.softserve.academy.food.service.CategoryService;
+import com.softserve.academy.food.service.MenuService;
 
 @Controller
 public class AndroidController
@@ -22,8 +22,8 @@ public class AndroidController
 	@Autowired
 	private MenuService menuService;
 
-	// пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
-	@RequestMapping(value = "/cats")
+	// Вызов всех категорий в список
+	@RequestMapping(value = "/android/cats")
 	public @ResponseBody
 	ArrayList<CategoryModel> getAllCategories()
 	{
@@ -31,8 +31,8 @@ public class AndroidController
 		return allCategories;
 	}
 
-	// пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ id
-	@RequestMapping(value = "/cat/{id}")
+	// Вызов категории по id
+	@RequestMapping(value = "/android/cat/{id}")
 	public @ResponseBody
 	CategoryModel getCategoryById(@PathVariable int id)
 	{
@@ -40,8 +40,8 @@ public class AndroidController
 		return category;
 	}
 
-	// пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
-	@RequestMapping(value = "/dishes")
+	// Вызов всех блюд в список
+	@RequestMapping(value = "/android/dishes")
 	public @ResponseBody
 	ArrayList<DishModel> getAllDishes()
 	{
@@ -49,8 +49,8 @@ public class AndroidController
 		return allDishes;
 	}
 
-	// пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ id
-	@RequestMapping(value = "/dish/{id}")
+	// Вызов блюда по id
+	@RequestMapping(value = "/android/dish/{id}")
 	public @ResponseBody
 	DishModel getDishById(@PathVariable int id)
 	{
@@ -58,8 +58,8 @@ public class AndroidController
 		return dish;
 	}
 
-	// пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
-	@RequestMapping(value = "/dish/category/{id}")
+	// Вызов блюда по категории
+	@RequestMapping(value = "/android/dish/category/{id}")
 	public @ResponseBody
 	ArrayList<DishModel> getAllDishesByCategory(@PathVariable int id)
 	{
