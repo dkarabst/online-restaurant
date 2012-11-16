@@ -6,16 +6,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.softserve.academy.food.dao.impl.CategoryDao;
+import com.softserve.academy.food.dao.ICategoryDao;
 import com.softserve.academy.food.entity.Category;
 import com.softserve.academy.food.model.CategoryModel;
+import com.softserve.academy.food.service.ICategoryService;
 
 @Service("categoryService")
-public class CategoryService
+public class CategoryService implements ICategoryService
 {
-
 	@Autowired
-	private CategoryDao	categoryDao;
+	private ICategoryDao categoryDao;
 
 	@Transactional
 	public ArrayList<CategoryModel> getAll()
@@ -31,7 +31,11 @@ public class CategoryService
 	@Transactional
 	public CategoryModel get(int id)
 	{
-		return categoryDao.get(id).toModel();
+		if ( categoryDao.get(id)!=null )
+		{
+			return categoryDao.get(id).toModel();
+		}
+		return new CategoryModel();
 	}
 
 	@Transactional

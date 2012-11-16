@@ -3,7 +3,6 @@ package com.softserve.academy.food.service.impl;
 import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -17,7 +16,6 @@ import com.softserve.academy.food.service.IMenuService;
 public class MenuService implements IMenuService
 {
 	@Autowired
-	@Qualifier("dishDao")
 	private IDishDao dishDao;
 
 	@Transactional
