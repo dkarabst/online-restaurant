@@ -2,75 +2,62 @@ package com.softserve.academy.food.model;
 
 import com.softserve.academy.food.entity.OrderContents;
 
-public class ContentModel
-{
-	private int			id;
-	private OrderModel	orderInfo;
-	private DishModel	dish;
-	private Integer		quantity;
+public class ContentModel {
+    private int id;
+    private OrderModel orderInfo;
+    private DishModel dish;
+    private Integer quantity;
 
-	public ContentModel()
-	{
-	}
+    public ContentModel() {
+    }
 
-	public ContentModel( OrderContents content)
-	{
-		id = content.getId();
-		orderInfo = content.getOrderInfo().toModel();
-		dish = content.getDish().toModel();
-		quantity = content.getQuantity();
-	}
-	
-	public OrderContents toEntity()
-	{
-		return new OrderContents( this );
-	}
+    public ContentModel(OrderContents content) {
+        id = content.getId();
+        orderInfo = content.getOrderInfo().toModel();
+        dish = content.getDish().toModel();
+        quantity = content.getQuantity();
+    }
 
-	public int getId()
-	{
-		return id;
-	}
+    public OrderContents toEntity() {
+        return new OrderContents(this);
+    }
 
-	public void setId(int id)
-	{
-		this.id = id;
-	}
+    public int getId() {
+        return id;
+    }
 
-	public OrderModel getOrderInfo()
-	{
-		return orderInfo;
-	}
+    public void setId(int id) {
+        this.id = id;
+    }
 
-	public void setOrderInfo(OrderModel orderInfo)
-	{
-		this.orderInfo = orderInfo;
-	}
+    public OrderModel getOrderInfo() {
+        return orderInfo;
+    }
 
-	public DishModel getDish()
-	{
-		return dish;
-	}
+    public void setOrderInfo(OrderModel orderInfo) {
+        this.orderInfo = orderInfo;
+    }
 
-	public void setDish(DishModel dish)
-	{
-		this.dish = dish;
-	}
+    public DishModel getDish() {
+        return dish;
+    }
 
-	public Integer getQuantity()
-	{
-		return quantity;
-	}
+    public void setDish(DishModel dish) {
+        this.dish = dish;
+    }
 
-	public void setQuantity(Integer quantity)
-	{
-		this.quantity = quantity;
-	}
-	
-	@Override
-	public String toString()
-	{
-		return "Model - " + id + " order - " + orderInfo + " Dish - " + dish
-				+ " quantity - " + quantity;
-	}
+    public Integer getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
+    }
+
+    @Override
+    public String toString() {
+        return "Model - " + id + " order - " + orderInfo + " Dish - " + dish
+                + " quantity - " + quantity;
+    }
 
 }

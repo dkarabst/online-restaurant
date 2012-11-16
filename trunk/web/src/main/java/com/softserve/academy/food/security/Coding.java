@@ -4,68 +4,57 @@ import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-public class Coding
-{
-	private MessageDigest	md5;
-	private String			type	= "md5";
+public class Coding {
+    private MessageDigest md5;
+    private String type = "md5";
 
-	public Coding()
-	{
-	}
+    public Coding() {
+    }
 
-	public Coding(String type)
-	{
-		this.type = type;
-	}
+    public Coding(String type) {
+        this.type = type;
+    }
 
-	public String getHash(String str)
-	{
+    public String getHash(String str) {
 
-		String hashedPass;
+        String hashedPass;
 
-		try
-		{
-			md5 = MessageDigest.getInstance(type);
-			md5.update(str.getBytes(), 0, str.length());
-			hashedPass = new BigInteger(1, md5.digest()).toString(16);
-			if (hashedPass.length() < 32)
-			{
-				hashedPass = "0" + hashedPass;
-			}
-		} catch (NoSuchAlgorithmException e)
-		{
-			return e.toString();
-		}
+        try {
+            md5 = MessageDigest.getInstance(type);
+            md5.update(str.getBytes(), 0, str.length());
+            hashedPass = new BigInteger(1, md5.digest()).toString(16);
+            if (hashedPass.length() < 32) {
+                hashedPass = "0" + hashedPass;
+            }
+        } catch (NoSuchAlgorithmException e) {
+            return e.toString();
+        }
 
-		return hashedPass;
-	}
+        return hashedPass;
+    }
 
-	public String get(String str)
-	{
-		MessageDigest md5;
-		StringBuffer hexString = new StringBuffer();
+    public String get(String str) {
+        MessageDigest md5;
+        StringBuffer hexString = new StringBuffer();
 
-		try
-		{
+        try {
 
-			md5 = MessageDigest.getInstance(type);
+            md5 = MessageDigest.getInstance(type);
 
-			md5.reset();
-			md5.update(str.getBytes());
+            md5.reset();
+            md5.update(str.getBytes());
 
-			byte messageDigest[] = md5.digest();
+            byte messageDigest[] = md5.digest();
 
-			for (int i = 0; i < messageDigest.length; i++)
-			{
-				hexString.append(Integer.toHexString(0xFF & messageDigest[i]));
-			}
+            for (int i = 0; i < messageDigest.length; i++) {
+                hexString.append(Integer.toHexString(0xFF & messageDigest[i]));
+            }
 
-		} catch (NoSuchAlgorithmException e)
-		{
-			return e.toString();
-		}
+        } catch (NoSuchAlgorithmException e) {
+            return e.toString();
+        }
 
-		return hexString.toString();
-	}
+        return hexString.toString();
+    }
 
 }

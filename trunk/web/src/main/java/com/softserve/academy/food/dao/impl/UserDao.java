@@ -1,53 +1,44 @@
 package com.softserve.academy.food.dao.impl;
 
-import java.util.List;
-
-import org.springframework.stereotype.Repository;
-
 import com.softserve.academy.food.dao.IUserDao;
 import com.softserve.academy.food.entity.User;
+import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 @Repository("userDao")
-public class UserDao extends Dao implements IUserDao
-{
-	public User get(int id) 
-	{
-		return (User) session.getCurrentSession().get(User.class, id);
-	}
+public class UserDao extends Dao implements IUserDao {
+    public User get(int id) {
+        return (User) sessionFactory.getCurrentSession().get(User.class, id);
+    }
 
-	@SuppressWarnings("unchecked")
-	public List<User> getAll() 
-	{
-		return (List<User>) session.getCurrentSession().createQuery("from User ").list();
-	}
-	
-	@SuppressWarnings("unchecked")
-	public User get(String name) 
-	{
-		List<User> list = session.getCurrentSession().createQuery("from User where USER_NAME = '" + name + "'").list();
+    @SuppressWarnings("unchecked")
+    public List<User> getAll() {
+        return (List<User>) sessionFactory.getCurrentSession().createQuery("from User ").list();
+    }
 
-		if (list.isEmpty()) 
-		{
-			return null;
-		}
-		return list.get(0);
-	}
+    @SuppressWarnings("unchecked")
+    public User get(String name) {
+        List<User> list = sessionFactory.getCurrentSession().createQuery("from User where USER_NAME = '" + name + "'").list();
 
-	public User add(User user) 
-	{
-		user.setId( (Integer)session.getCurrentSession().save(user) );
-		
-		return user;
-	}
+        if (list.isEmpty()) {
+            return null;
+        }
+        return list.get(0);
+    }
 
-	public void delete(int id) 
-	{
-		User object = (User) session.getCurrentSession().load(
-				User.class, id);
-		if (null != object)
-		{
-			session.getCurrentSession().delete(object);
-		}
-	}
+    public User add(User user) {
+        user.setId((Integer) sessionFactory.getCurrentSession().save(user));
+
+        return user;
+    }
+
+    public void delete(int id) {
+        User object = (User) sessionFactory.getCurrentSession().load(
+                User.class, id);
+        if (null != object) {
+            sessionFactory.getCurrentSession().delete(object);
+        }
+    }
 
 }

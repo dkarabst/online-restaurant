@@ -1,78 +1,65 @@
 package com.softserve.academy.food.controller;
 
-import java.util.ArrayList;
-
+import com.softserve.academy.food.model.CategoryModel;
+import com.softserve.academy.food.model.DishModel;
+import com.softserve.academy.food.service.ICategoryService;
+import com.softserve.academy.food.service.IMenuService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.softserve.academy.food.model.CategoryModel;
-import com.softserve.academy.food.model.DishModel;
-import com.softserve.academy.food.service.CategoryService;
-import com.softserve.academy.food.service.MenuService;
+import java.util.ArrayList;
 
 @Controller
-public class AndroidController
-{
-	@Autowired
-	private CategoryService categoryService;
+public class AndroidController {
+    @Autowired
+    private ICategoryService categoryService;
 
-	@Autowired
-	private MenuService menuService;
+    @Autowired
+    private IMenuService menuService;
 
-	// Вызов всех категорий в список
-	@RequestMapping(value = "/android/cats")
-	public @ResponseBody
-	ArrayList<CategoryModel> getAllCategories()
-	{
-		ArrayList<CategoryModel> allCategories = categoryService.getAll();
-		return allCategories;
-	}
+    // Вызов всех категорий в список
+    @RequestMapping(value = "/android/cats")
+    @ResponseBody
+    public ArrayList<CategoryModel> getAllCategories() {
+        ArrayList<CategoryModel> allCategories = categoryService.getAll();
+        return allCategories;
+    }
 
-	// Вызов категории по id
-	@RequestMapping(value = "/android/cat/{id}")
-	public @ResponseBody
-	CategoryModel getCategoryById(@PathVariable int id)
-	{
-		CategoryModel category = categoryService.get(id);
-		return category;
-	}
+    // Вызов категории по id
+    @RequestMapping(value = "/android/cat/{id}")
+    @ResponseBody
+    public CategoryModel getCategoryById(@PathVariable int id) {
+        CategoryModel category = categoryService.get(id);
+        return category;
+    }
 
-	// Вызов всех блюд в список
-	@RequestMapping(value = "/android/dishes")
-	public @ResponseBody
-	ArrayList<DishModel> getAllDishes()
-	{
-		ArrayList<DishModel> allDishes = menuService.getAll();
-		return allDishes;
-	}
+    // Вызов всех блюд в список
+    @RequestMapping(value = "/android/dishes")
+    @ResponseBody
+    public ArrayList<DishModel> getAllDishes() {
+        ArrayList<DishModel> allDishes = menuService.getAllDishes();
+        return allDishes;
+    }
 
-	// Вызов блюда по id
-	@RequestMapping(value = "/android/dish/{id}")
-	public @ResponseBody
-	DishModel getDishById(@PathVariable int id)
-	{
-		DishModel dish = menuService.get(id);
-		return dish;
-	}
+    // Вызов блюда по id
+    @RequestMapping(value = "/android/dish/{id}")
+    public
+    @ResponseBody
+    DishModel getDishById(@PathVariable int id) {
+        DishModel dish = menuService.getDish(id);
+        return dish;
+    }
 
-	// Вызов блюда по категории
-	@RequestMapping(value = "/android/dish/category/{id}")
-	public @ResponseBody
-	ArrayList<DishModel> getAllDishesByCategory(@PathVariable int id)
-	{
+    // Вызов блюда по категории
+    @RequestMapping(value = "/android/dish/category/{id}")
+    @ResponseBody
+    public ArrayList<DishModel> getAllDishesByCategory(@PathVariable int id) {
+        CategoryModel category = categoryService.get(id);
+        ArrayList<DishModel> allDishesByCategory = menuService.getAllDishesForCategory(category);
+        return allDishesByCategory;
+    }
 
-		CategoryModel category = categoryService.get(id);
-		ArrayList<DishModel> allDishesByCategory = menuService.getAll(category);
-		return allDishesByCategory;
-	}
-
-	/*
-	 * @RequestMapping(value="/{id}.json") public ModelAndView
-	 * getAllPlayedMatches(@PathVariable int id) { CategoryModel cm =
-	 * categoryService.get(id); ModelAndView mav = new ModelAndView();
-	 * mav.addObject("cm", cm); return mav; }
-	 */
 }

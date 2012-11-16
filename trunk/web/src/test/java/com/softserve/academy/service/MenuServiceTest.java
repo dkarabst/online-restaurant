@@ -35,7 +35,7 @@ public class MenuServiceTest
 	@Test
 	public void getAllEmpty()
 	{
-		assertTrue( mService.getAll().isEmpty() );
+		assertTrue( mService.getAllDishes().isEmpty() );
 	}
 	
 	@Test
@@ -44,8 +44,8 @@ public class MenuServiceTest
 		Dish dish = new Dish( "IceCream", new Category("Dessert") );
 		dishDao.add( dish );
 		
-		assertFalse( mService.getAll().isEmpty() );
-		assertEquals(mService.getAll().get(0).getName(), dishDao.getAll().get(0).getName());
+		assertFalse( mService.getAllDishes().isEmpty() );
+		assertEquals(mService.getAllDishes().get(0).getName(), dishDao.getAll().get(0).getName());
 	}
 	
 	@Test
@@ -53,7 +53,7 @@ public class MenuServiceTest
 	{
 		CategoryModel category = new CategoryModel("Dessert");
 		
-		assertTrue( mService.getAll(category).isEmpty() );
+		assertTrue( mService.getAllDishesForCategory(category).isEmpty() );
 	}
 	
 	@Test
@@ -63,8 +63,8 @@ public class MenuServiceTest
 		Dish dish = new Dish( "IceCream", new Category("Dessert") );
 		dishDao.add( dish );
 		
-		assertFalse( mService.getAll(category).isEmpty() );
-		assertEquals(mService.getAll(category).get(0).getCategory().getName(), "Dessert");
+		assertFalse( mService.getAllDishesForCategory(category).isEmpty() );
+		assertEquals(mService.getAllDishesForCategory(category).get(0).getCategory().getName(), "Dessert");
 	}
 	
 	@Test
@@ -79,9 +79,9 @@ public class MenuServiceTest
 		dishDao.add( new Dish( "Soup", new Category("Fist") ) );
 		dishDao.add( new Dish( "Soup", new Category("Fist") ) );
 		
-		assertFalse( mService.getAll(category).isEmpty() );
+		assertFalse( mService.getAllDishesForCategory(category).isEmpty() );
 		
-		for ( DishModel dish : mService.getAll(category) )
+		for ( DishModel dish : mService.getAllDishesForCategory(category) )
 		{
 			assertEquals(dish.getCategory().getName(), "Dessert");
 		}
@@ -90,7 +90,7 @@ public class MenuServiceTest
 	@Test
 	public void getEmpty()
 	{
-		assertTrue( mService.get(1).equals(new DishModel()) );
+		assertTrue( mService.getDish(1).equals(new DishModel()) );
 	}
 	
 	
@@ -100,7 +100,7 @@ public class MenuServiceTest
 		Dish dish = new Dish( "IceCream", new Category("Dessert") );
 		dishDao.add( dish );
 		
-		assertEquals( mService.get(1).getName(), "IceCream");
+		assertEquals( mService.getDish(1).getName(), "IceCream");
 	}
 
 }
