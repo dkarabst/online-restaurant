@@ -6,16 +6,16 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "ATTACHMENTS")
-@Inheritance(strategy = InheritanceType.JOINED)
-public class Attachment {
-
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+public class Attachment 
+{
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "ATTACHMENTS_ID")
     private Long id;
     private String name;
     private String path;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "ATTACHMENTS_ID")
     public Long getId() {
         return id;
     }

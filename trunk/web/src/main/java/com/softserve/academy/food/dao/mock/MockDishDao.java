@@ -9,10 +9,9 @@ import com.softserve.academy.food.dao.IDishDao;
 import com.softserve.academy.food.entity.Category;
 import com.softserve.academy.food.entity.Dish;
 
-@Repository("MockuserDao")
+@Repository("MockDishDao")
 public class MockDishDao implements IDishDao 
 {
-	
 	private List<Dish> dishes = new ArrayList<Dish>();
 
 	public Dish get(int id) 
@@ -24,27 +23,27 @@ public class MockDishDao implements IDishDao
 		return dishes.get(id-1);
 	}
 
-	public Dish add(Dish dish) {
-		
+	public Dish add( Dish dish ) 
+	{
 		dishes.add(dish);
 		dish.setId(dishes.size());
 		
 		return dish;
 	}
 	
-	public void update( Object object ) {
-
+	public void update( Object object ) 
+	{
 		Dish user = (Dish)object;
 		dishes.set( user.getId()-1, user );
 	}
 
-	public List<Dish> getAll() {
-		
+	public List<Dish> getAll() 
+	{
 		return dishes;
 	}
 
-	public void delete(int id) {
-		
+	public void delete(int id) 
+	{
 		dishes.remove(id-1);
 	}
 

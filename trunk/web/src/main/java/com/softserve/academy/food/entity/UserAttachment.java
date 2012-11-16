@@ -4,7 +4,6 @@ package com.softserve.academy.food.entity;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "ATTACHMENTS")
 @PrimaryKeyJoinColumn(name="ATTACHMENTS_ID", referencedColumnName="ATTACHMENTS_ID")
 public class UserAttachment extends Attachment {
 
