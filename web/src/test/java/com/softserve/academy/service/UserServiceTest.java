@@ -4,26 +4,30 @@ import static org.junit.Assert.*;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.softserve.academy.food.dao.IUserDao;
-import com.softserve.academy.food.dao.mock.MockUserDao;
 import com.softserve.academy.food.entity.User;
 import com.softserve.academy.food.model.UserCredentials;
 import com.softserve.academy.food.model.UserModel;
 import com.softserve.academy.food.service.IUserService;
-import com.softserve.academy.food.service.impl.UserService;
 
-
-public class UserServiceTest {
-	
-	private IUserService uService = new UserService();
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations = {"beans.xml"})
+public class UserServiceTest 
+{
+	@Autowired
+	private IUserService uService;
+	@Autowired
 	private IUserDao userDao;
 
 	@Before
-	public void setUp() throws Exception 
+	public void setUp() throws Exception
 	{
-		userDao = new MockUserDao();
-		uService.setUserDao(userDao);
+		userDao.getAll().clear();
 	}
 
 	@Test

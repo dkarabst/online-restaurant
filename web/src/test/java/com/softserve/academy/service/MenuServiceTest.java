@@ -5,27 +5,31 @@ import static org.junit.Assert.*;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.softserve.academy.food.dao.IDishDao;
-import com.softserve.academy.food.dao.mock.MockDishDao;
 import com.softserve.academy.food.entity.Category;
 import com.softserve.academy.food.entity.Dish;
 import com.softserve.academy.food.model.CategoryModel;
 import com.softserve.academy.food.model.DishModel;
 import com.softserve.academy.food.service.IMenuService;
-import com.softserve.academy.food.service.impl.MenuService;
 
-
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations = {"beans.xml"})
 public class MenuServiceTest 
 {
-	private IMenuService mService = new MenuService();
+	@Autowired
+	private IMenuService mService;
+	@Autowired
 	private IDishDao dishDao;
 
 	@Before
 	public void setUp() throws Exception 
 	{
-		dishDao = new MockDishDao();
-		mService.setDishDao( dishDao );
+		dishDao.getAll().clear();
 	}
 
 	@Test
@@ -96,7 +100,7 @@ public class MenuServiceTest
 		Dish dish = new Dish( "IceCream", new Category("Dessert") );
 		dishDao.add( dish );
 		
-		assertTrue( mService.get(1).equals(dish) );
+		assertEquals( mService.get(1).getName(), "IceCream");
 	}
 
 }
