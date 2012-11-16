@@ -1,14 +1,19 @@
 package com.softserve.academy.food.dao;
 
-import java.util.List;
-
 import com.softserve.academy.food.entity.Category;
 
+import java.util.List;
+
 public interface ICategoryDao {
-	
-	public Category add( Category category );
-	public List<Category> getAll();
-	public void delete(int id);
-	public Category get(int id);
+
+    //TODO delete
+    public Category add(Category category);
+
+    public List<Category> getAll();
+
+    //TODO remove
+    public void delete(int id);
+
+    public Category get(int id);
 
 }

@@ -33,7 +33,7 @@ public class UserServiceTest
 	@Test
 	public void testCheckUserEmptyBD() 
 	{
-		assertFalse( uService.checkUser("Vasa") );
+		assertFalse( uService.isRegistered("Vasa") );
 	}
 	
 	@Test
@@ -41,8 +41,8 @@ public class UserServiceTest
 	{
 		userDao.add( new  User("Vasa", "1234") );
 		
-		assertFalse( uService.checkUser("Peta") );
-		assertTrue( uService.checkUser("Vasa") );
+		assertFalse( uService.isRegistered("Peta") );
+		assertTrue( uService.isRegistered("Vasa") );
 	}
 
 	@Test
@@ -50,7 +50,7 @@ public class UserServiceTest
 	{
 		UserCredentials user = new UserCredentials("Vasa", "1234");
 		
-		assertTrue( uService.addUser(user) );
+		assertTrue( uService.add(user) );
 		assertFalse( userDao.getAll().isEmpty() );
 		assertEquals( userDao.getAll().size(), 1 );
 		assertEquals( userDao.get(1).getName(), user.getName() );
@@ -62,7 +62,7 @@ public class UserServiceTest
 		userDao.add( new  User("Vasa", "1234") );
 		UserCredentials user = new UserCredentials("Peta", "1234");
 		
-		assertTrue( uService.addUser(user) );
+		assertTrue( uService.add(user) );
 		assertFalse(userDao.getAll().isEmpty());
 		assertEquals( userDao.getAll().size(), 2 );
 		assertEquals( userDao.get(2).getName(), user.getName() );

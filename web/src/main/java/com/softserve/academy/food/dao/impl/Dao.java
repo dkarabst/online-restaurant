@@ -1,25 +1,26 @@
 package com.softserve.academy.food.dao.impl;
 
+import com.softserve.academy.food.dao.IDao;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.softserve.academy.food.dao.IDao;
+public class Dao implements IDao {
 
-public class Dao implements IDao
-{
-	@Autowired
-	protected SessionFactory session;
-	
-	public void update( Object object )  
-	{
-		session.getCurrentSession().update( object );
-	}
+    @Autowired
+    protected SessionFactory sessionFactory;
 
-	public void delete( Object object )  
-	{
-		session.getCurrentSession().delete( object );
-	}
-	
-	
+    Session getSession() {
+        return sessionFactory.getCurrentSession();
+    }
+
+    public void update(Object object) {
+        sessionFactory.getCurrentSession().update(object);
+    }
+
+    public void delete(Object object) {
+        sessionFactory.getCurrentSession().delete(object);
+    }
+
 
 }

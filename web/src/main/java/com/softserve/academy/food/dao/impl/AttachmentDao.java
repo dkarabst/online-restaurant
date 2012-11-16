@@ -12,18 +12,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public class AttachmentDao implements IAttachmentDao {
-
-    @Autowired
-    private SessionFactory sessionFactory;
-
-    public Session getSession() {
-        return sessionFactory.getCurrentSession();
-    }
-
-    public void setSessionFactory(SessionFactory sessionFactory) {
-        this.sessionFactory = sessionFactory;
-    }
+public class AttachmentDao extends Dao implements IAttachmentDao {
 
     @Override
     public void add(Attachment attachment) {
@@ -35,7 +24,6 @@ public class AttachmentDao implements IAttachmentDao {
         return (Attachment) getSession().load(Attachment.class, id);
     }
 
-    @SuppressWarnings("unchecked")
     @Override
     public List<Attachment> getAll() {
         return getSession().createQuery("from Attachment").list();

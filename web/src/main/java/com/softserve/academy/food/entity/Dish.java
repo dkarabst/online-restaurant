@@ -1,239 +1,206 @@
 package com.softserve.academy.food.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
-
 import com.softserve.academy.food.model.DishModel;
+
+import javax.persistence.*;
 
 @Entity
 @Table(name = "DISHES")
-public class Dish 
-{
-	@Id
-	@Column(name = "dish_id")
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int				id;
+public class Dish {
+    @Id
+    @Column(name = "dish_id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	private Category			category;
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Category category;
 
-	@Column(name = "DISH_NAME", length = 50)
-	private String				name;
+    @Column(name = "DISH_NAME", length = 50)
+    private String name;
 
-	@Column(name = "DISH_PRICE")
-	private int				price;
+    @Column(name = "DISH_PRICE")
+    private int price;
 
-	@Column(name = "DISH_PHOTO", length = 50)
-	private String				photo;
+    @Column(name = "DISH_PHOTO", length = 50)
+    private String photo;
 
-	@Column(name = "DISH_DESCR", length = 50)
-	private String				descr;
+    @Column(name = "DISH_DESCR", length = 50)
+    private String descr;
 
-	@Column(name = "DISH_AVAIL")
-	private Character			avail;
+    @Column(name = "DISH_AVAIL")
+    private Character avail;
 
-	@Column(name = "DISH_PREP_TIME")
-	private int				prepTime;
+    @Column(name = "DISH_PREP_TIME")
+    private int prepTime;
 
-	@Column(name = "DISH_WEIGHT", length = 50)
-	private int					weight;
+    @Column(name = "DISH_WEIGHT", length = 50)
+    private int weight;
 
-	public Dish()
-	{
-	}
-	
-	public Dish( String name, Category category )
-	{
-		this.name = name;
-		this.category = category;
-	}
+    public Dish() {
+    }
 
-	public Dish( DishModel dish)
-	{
-		id = dish.getId();
-		category = dish.getCategory().toEntity();
-		name = dish.getName();
-		price = dish.getPrice();
-		photo = dish.getPhoto();
-		descr = dish.getDescr();
-		avail = dish.getAvail();
-		prepTime = dish.getPrepTime();
-		weight = dish.getWeight();
+    public Dish(String name, Category category) {
+        this.name = name;
+        this.category = category;
+    }
 
-	}
+    public Dish(DishModel dish) {
+        id = dish.getId();
+        category = dish.getCategory().toEntity();
+        name = dish.getName();
+        price = dish.getPrice();
+        photo = dish.getPhoto();
+        descr = dish.getDescr();
+        avail = dish.getAvail();
+        prepTime = dish.getPrepTime();
+        weight = dish.getWeight();
 
-	public DishModel toModel()
-	{
-		return new DishModel( this );
-	}
+    }
 
-	public int getId()
-	{
-		return id;
-	}
+    public DishModel toModel() {
+        return new DishModel(this);
+    }
 
-	public void setId(int id)
-	{
-		this.id = id;
-	}
+    public int getId() {
+        return id;
+    }
 
-	public Category getCategory()
-	{
-		return category;
-	}
+    public void setId(int id) {
+        this.id = id;
+    }
 
-	public void setCategory(Category category)
-	{
-		this.category = category;
-	}
+    public Category getCategory() {
+        return category;
+    }
 
-	public String getName()
-	{
-		return name;
-	}
+    public void setCategory(Category category) {
+        this.category = category;
+    }
 
-	public void setName(String name)
-	{
-		this.name = name;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public int getPrice()
-	{
-		return price;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public void setPrice(int price)
-	{
-		this.price = price;
-	}
+    public int getPrice() {
+        return price;
+    }
 
-	public String getPhoto()
-	{
-		return photo;
-	}
+    public void setPrice(int price) {
+        this.price = price;
+    }
 
-	public void setPhoto(String photo)
-	{
-		this.photo = photo;
-	}
+    public String getPhoto() {
+        return photo;
+    }
 
-	public String getDescr()
-	{
-		return descr;
-	}
+    public void setPhoto(String photo) {
+        this.photo = photo;
+    }
 
-	public void setDescr(String descr)
-	{
-		this.descr = descr;
-	}
+    public String getDescr() {
+        return descr;
+    }
 
-	public Character getAvail()
-	{
-		return avail;
-	}
+    public void setDescr(String descr) {
+        this.descr = descr;
+    }
 
-	public void setAvail(Character avail)
-	{
-		this.avail = avail;
-	}
+    public Character getAvail() {
+        return avail;
+    }
 
-	public int getPrepTime()
-	{
-		return prepTime;
-	}
+    public void setAvail(Character avail) {
+        this.avail = avail;
+    }
 
-	public void setPrepTime(int prepTime)
-	{
-		this.prepTime = prepTime;
-	}
+    public int getPrepTime() {
+        return prepTime;
+    }
 
-	public int getWeight()
-	{
-		return weight;
-	}
+    public void setPrepTime(int prepTime) {
+        this.prepTime = prepTime;
+    }
 
-	public void setWeight( int weight )
-	{
-		this.weight = weight;
-	}
+    public int getWeight() {
+        return weight;
+    }
 
-	@Override
-	public int hashCode() 
-	{
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((avail == null) ? 0 : avail.hashCode());
-		result = prime * result
-				+ ((category == null) ? 0 : category.hashCode());
-		result = prime * result + ((descr == null) ? 0 : descr.hashCode());
-		result = prime * result + id;
-		result = prime * result + ((name == null) ? 0 : name.hashCode());
-		result = prime * result + ((photo == null) ? 0 : photo.hashCode());
-		result = prime * result + prepTime;
-		result = prime * result + price;
-		result = prime * result + weight;
-		return result;
-	}
+    public void setWeight(int weight) {
+        this.weight = weight;
+    }
 
-	@Override
-	public boolean equals( Object obj ) 
-	{
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (!(obj instanceof Dish))
-			return false;
-		Dish other = (Dish) obj;
-		if (avail == null) {
-			if (other.avail != null)
-				return false;
-		} else if (!avail.equals(other.avail))
-			return false;
-		if (category == null) {
-			if (other.category != null)
-				return false;
-		} else if (!category.equals(other.category))
-			return false;
-		if (descr == null) {
-			if (other.descr != null)
-				return false;
-		} else if (!descr.equals(other.descr))
-			return false;
-		if (id != other.id)
-			return false;
-		if (name == null) {
-			if (other.name != null)
-				return false;
-		} else if (!name.equals(other.name))
-			return false;
-		if (photo == null) {
-			if (other.photo != null)
-				return false;
-		} else if (!photo.equals(other.photo))
-			return false;
-		if (prepTime != other.prepTime)
-			return false;
-		if (price != other.price)
-			return false;
-		if (weight != other.weight)
-			return false;
-		return true;
-	}
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((avail == null) ? 0 : avail.hashCode());
+        result = prime * result
+                + ((category == null) ? 0 : category.hashCode());
+        result = prime * result + ((descr == null) ? 0 : descr.hashCode());
+        result = prime * result + id;
+        result = prime * result + ((name == null) ? 0 : name.hashCode());
+        result = prime * result + ((photo == null) ? 0 : photo.hashCode());
+        result = prime * result + prepTime;
+        result = prime * result + price;
+        result = prime * result + weight;
+        return result;
+    }
 
-	@Override
-	public String toString() 
-	{
-		return "Dish [id=" + id + ", category=" + category + ", name=" + name
-				+ ", price=" + price + ", photo=" + photo + ", descr=" + descr
-				+ ", avail=" + avail + ", prepTime=" + prepTime + ", weight="
-				+ weight + "]";
-	}
-	
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (!(obj instanceof Dish))
+            return false;
+        Dish other = (Dish) obj;
+        if (avail == null) {
+            if (other.avail != null)
+                return false;
+        } else if (!avail.equals(other.avail))
+            return false;
+        if (category == null) {
+            if (other.category != null)
+                return false;
+        } else if (!category.equals(other.category))
+            return false;
+        if (descr == null) {
+            if (other.descr != null)
+                return false;
+        } else if (!descr.equals(other.descr))
+            return false;
+        if (id != other.id)
+            return false;
+        if (name == null) {
+            if (other.name != null)
+                return false;
+        } else if (!name.equals(other.name))
+            return false;
+        if (photo == null) {
+            if (other.photo != null)
+                return false;
+        } else if (!photo.equals(other.photo))
+            return false;
+        if (prepTime != other.prepTime)
+            return false;
+        if (price != other.price)
+            return false;
+        if (weight != other.weight)
+            return false;
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "Dish [id=" + id + ", category=" + category + ", name=" + name
+                + ", price=" + price + ", photo=" + photo + ", descr=" + descr
+                + ", avail=" + avail + ", prepTime=" + prepTime + ", weight="
+                + weight + "]";
+    }
+
 }
