@@ -1,7 +1,6 @@
 package com.softserve.academy.food.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -16,7 +15,6 @@ import com.softserve.academy.food.service.IUserService;
 public class UserService implements IUserService
 {
 	@Autowired
-	@Qualifier("userDao")
 	private IUserDao userDao;
 	
 	@Transactional
