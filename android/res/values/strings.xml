@@ -33,5 +33,8 @@
     <string name="TestString">test test test</string>
     <string name="box">Basket</string>
     <string name="order">Order</string>
-    
+    <string name="mesAdminOk">You have been authorized as an Administrator</string>
+    <string name="mesUserOk">You have been authorized as a User</string>
+    <string name="mesGuestOk">You have been authorized as an Anonimous guest</string>
+    <string name="mesUnknownError">Connection failed. Try to login later</string>     
 </resources>
