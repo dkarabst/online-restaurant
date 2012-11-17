@@ -1,8 +1,14 @@
 package com.softserve.academy.food.android;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +16,7 @@ import android.widget.BaseAdapter;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.softserve.academy.food.android.model.DishModel;
@@ -51,6 +58,8 @@ public class BoxAdapter extends BaseAdapter
 	// пункт списка
 	public View getView(int position, View convertView, ViewGroup parent)
 	{
+		final String BASE_URL = "http://10.0.2.2:8666/Restaurant/";
+		
 		// используем созданные, но не используемые view
 		View view = convertView;
 		if (view == null)
@@ -78,7 +87,6 @@ public class BoxAdapter extends BaseAdapter
 		{
 			e.printStackTrace();
 		}
-
 
 		CheckBox cbBuy = (CheckBox) view.findViewById(R.id.cbBox);
 		// присваиваем чекбоксу обработчик
