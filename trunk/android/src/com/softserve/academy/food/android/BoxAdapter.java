@@ -64,7 +64,21 @@ public class BoxAdapter extends BaseAdapter
 		// и картинка
 		((TextView) view.findViewById(R.id.tvName)).setText(dishModel.getName());
 		((TextView) view.findViewById(R.id.tvPrice)).setText("Цена: " + dishModel.getPrice() + " грн");
-//		((ImageView) view.findViewById(R.id.ivImage)).setImageResource(dishModel.getPhoto());
+		ImageView ivImage = (ImageView) view.findViewById(R.id.ivImage);
+
+		try
+		{
+			Bitmap bitmap = BitmapFactory.decodeStream((InputStream) new URL(
+					BASE_URL + dishModel.getPhoto()).getContent());
+			ivImage.setImageBitmap(bitmap);
+		} catch (MalformedURLException e)
+		{
+			e.printStackTrace();
+		} catch (IOException e)
+		{
+			e.printStackTrace();
+		}
+
 
 		CheckBox cbBuy = (CheckBox) view.findViewById(R.id.cbBox);
 		// присваиваем чекбоксу обработчик
