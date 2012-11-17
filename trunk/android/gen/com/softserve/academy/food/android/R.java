@@ -90,8 +90,8 @@ public final class R {
         public static final int TestString=0x7f04001d;
         public static final int about_us=0x7f040008;
         public static final int app_name=0x7f040000;
-        public static final int back=0x7f040020;
-        public static final int base_uri=0x7f040021;
+        public static final int back=0x7f040024;
+        public static final int base_uri=0x7f040025;
         public static final int box=0x7f04001e;
         public static final int btLogin=0x7f040015;
         public static final int btMainMenu=0x7f040014;
@@ -105,6 +105,10 @@ public final class R {
         public static final int imAndroidInTheCup=0x7f040013;
         public static final int login=0x7f040007;
         public static final int menu_settings=0x7f040002;
+        public static final int mesAdminOk=0x7f040020;
+        public static final int mesGuestOk=0x7f040022;
+        public static final int mesUnknownError=0x7f040023;
+        public static final int mesUserOk=0x7f040021;
         public static final int order=0x7f04001f;
         public static final int profile=0x7f040006;
         public static final int rmenu=0x7f040004;

@@ -56,7 +56,7 @@ public class LoginActivity extends AbstractAsyncActivity {
 
 		// ***** Login button
 		final Button submitButton = (Button) findViewById(R.id.btnLogin);
-		
+
 		submitButton.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				new FetchSecuredResourceTask().execute();
@@ -100,7 +100,7 @@ public class LoginActivity extends AbstractAsyncActivity {
 
 			// Populate the HTTP Basic Authentication header with the username
 			// and password
-			
+
 			HttpAuthentication authHeader = new HttpBasicAuthentication(
 					username, password);
 			HttpHeaders requestHeaders = new HttpHeaders();
@@ -108,12 +108,11 @@ public class LoginActivity extends AbstractAsyncActivity {
 			requestHeaders.setAccept(Collections
 					.singletonList(MediaType.APPLICATION_JSON));
 
-
 			// Create a new RestTemplate instance
 			RestTemplate restTemplate = new RestTemplate();
 			restTemplate.getMessageConverters().add(
 					new MappingJacksonHttpMessageConverter());
-			
+
 			try {
 				// Make the network request
 				Log.d(TAG, url);
@@ -121,19 +120,38 @@ public class LoginActivity extends AbstractAsyncActivity {
 				ResponseEntity<Message> response = restTemplate.exchange(url,
 						HttpMethod.GET, new HttpEntity<Object>(requestHeaders),
 						Message.class);
-				
-				Log.d("ROLE", "Admin");
-				((Role)getApplicationContext()).setAdmin();
-				
-				return response.getBody();
+
+				if (response.getStatusCode().value() < 300) {
+					Log.d("ROLE", "Admin");
+					((Role) getApplicationContext()).setAdmin();
+					return new Message(0, "", getResources().getString(
+							R.string.mesAdminOk));
+				} else {
+					return new Message(0, "", getResources().getString(
+							R.string.mesUnknownError));
+				}
 			} catch (HttpClientErrorException e) {
 				Log.e(TAG, e.getLocalizedMessage(), e);
-				
-				Log.d("ROLE", "Guest");				
-		        ((Role)getApplicationContext()).setGuest();
-				
-				return new Message(0, e.getStatusText(),
-						e.getLocalizedMessage());
+
+				String resp;
+				switch (e.getStatusCode().value()) {
+				case 403: {
+					Log.d("ROLE", "User");
+					((Role) getApplicationContext()).setUser();
+					resp = getResources().getString(R.string.mesUserOk);
+					break;
+				}
+				case 401: {
+					Log.d("ROLE", "Guest");
+					((Role) getApplicationContext()).setGuest();
+					resp = getResources().getString(R.string.mesGuestOk);
+					break;
+				}
+				default:
+					resp = getResources().getString(R.string.mesUnknownError);
+					break;
+				}
+				return new Message(0, "", resp);
 			}
 		}
 

@@ -1,8 +1,5 @@
 package com.softserve.academy.food.android;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-
 import org.springframework.http.converter.json.MappingJacksonHttpMessageConverter;
 import org.springframework.web.client.RestTemplate;
 
