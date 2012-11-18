@@ -1,7 +1,7 @@
 package com.softserve.academy.food.controller;
 
 import com.softserve.academy.food.model.DishModel;
-import com.softserve.academy.food.service.impl.MenuService;
+import com.softserve.academy.food.service.IMenuService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,7 +15,7 @@ import java.util.ArrayList;
 public class MenuController {
 
     @Autowired
-    private MenuService dishService;
+    private IMenuService dishService;
 
     @RequestMapping(value = "/dishes/all", method = RequestMethod.GET)
     protected String getMenu(Model model) {
