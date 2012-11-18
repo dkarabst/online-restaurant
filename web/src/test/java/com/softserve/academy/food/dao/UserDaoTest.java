@@ -17,7 +17,7 @@ import com.softserve.academy.food.dao.IUserDao;
 import com.softserve.academy.food.entity.User;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = {"resources/beans.xml"})
+@ContextConfiguration(locations = {"classpath:/dao/beans.xml"})
 public class UserDaoTest 
 {
 	@Autowired
