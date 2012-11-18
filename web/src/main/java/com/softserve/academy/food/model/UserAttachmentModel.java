@@ -1,6 +1,6 @@
-package com.softserve.academy.model;
+package com.softserve.academy.food.model;
 
-import com.softserve.academy.entity.UserAttachment;
+import com.softserve.academy.food.entity.UserAttachment;
 
 public class UserAttachmentModel extends AttachmentModel {
 

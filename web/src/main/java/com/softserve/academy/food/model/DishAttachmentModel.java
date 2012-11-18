@@ -1,7 +1,6 @@
 package com.softserve.academy.food.model;
 
 import com.softserve.academy.food.entity.DishAttachment;
-import com.softserve.academy.food.entity.UserAttachment;
 
 public class DishAttachmentModel extends AttachmentModel {
 
