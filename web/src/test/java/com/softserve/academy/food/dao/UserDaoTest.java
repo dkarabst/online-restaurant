@@ -1,4 +1,4 @@
-package com.softserve.academy.dao;
+package com.softserve.academy.food.dao;
 
 import static org.junit.Assert.*;
 
@@ -128,38 +128,70 @@ public class UserDaoTest
 
 	@Test
 	@Transactional
-	public void testDeleteInt() 
+	public void testDeleteIntEmptyBD() 
 	{
-		userDao.add( new  User("Peta", "1234") );
+		User user = userDao.add( new  User("Vasa", "1234") );
 		
-		userDao.delete(1);
+		userDao.delete( user.getId() );
 		
 		assertTrue( userDao.getAll().isEmpty() );
 	}
 	
 	@Test
 	@Transactional
-	public void testDeleteIntMany() 
+	public void testDeleteInt() 
 	{
 		userDao.add( new  User("Peta", "1234") );
 		User user = userDao.add( new  User("Vasa", "1234") );
-		userDao.add( new  User("Peta", "1234") );
+		userDao.add( new  User("Kosta", "1234") );
 		
 		userDao.delete(user.getId());
 		
 		assertFalse( userDao.getAll().isEmpty() );
+		assertEquals( userDao.getAll().size(), 2 );
+		assertEquals( userDao.get(user.getId()), null );
+		assertEquals( userDao.get("Vasa"), null );
+	}
+
+	@Test
+	@Transactional
+	public void testUpdate() 
+	{
+		User user = userDao.add( new  User("Vasa", "1234") );
+		user.setPhone("3457689");
+		
+		userDao.update(user);
+		
 		assertEquals( userDao.get(user.getId()), user );
-		assertEquals( userDao.get("Vasa"), user );
+		assertEquals( userDao.get("Vasa").getPhone(), "3457689"  );
 	}
 
 	@Test
-	public void testUpdate() {
-		fail("Not yet implemented");
+	@Transactional
+	public void testDeleteObjectEmptyBD() {
+		
+		User user = userDao.add( new  User("Vasa", "1234") );
+		
+		userDao.delete( user );
+		
+		assertTrue( userDao.getAll().isEmpty() );
+		
 	}
-
+	
 	@Test
+	@Transactional
 	public void testDeleteObject() {
-		fail("Not yet implemented");
+		
+		userDao.add( new  User("Peta", "1234") );
+		User user = userDao.add( new  User("Vasa", "1234") );
+		userDao.add( new  User("Kosta", "1234") );
+		
+		userDao.delete( user );
+		
+		assertFalse( userDao.getAll().isEmpty() );
+		assertEquals( userDao.getAll().size(), 2 );
+		assertEquals( userDao.get(user.getId()), null );
+		assertEquals( userDao.get("Vasa"), null );
 	}
 
 }

@@ -1,4 +1,4 @@
-package com.softserve.academy.dao;
+package com.softserve.academy.food.dao.mock;
 
 import com.softserve.academy.food.dao.IOrderDao;
 import com.softserve.academy.food.entity.OrderInfo;
