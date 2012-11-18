@@ -20,7 +20,7 @@ public class AndroidController {
     @Autowired
     private IMenuService menuService;
 
-    // Вызов всех категорий в список
+    // all category in list 
     @RequestMapping(value = "/android/cats")
     @ResponseBody
     public ArrayList<CategoryModel> getAllCategories() {
@@ -28,7 +28,7 @@ public class AndroidController {
         return allCategories;
     }
 
-    // Вызов категории по id
+    //ctegory by id
     @RequestMapping(value = "/android/cat/{id}")
     @ResponseBody
     public CategoryModel getCategoryById(@PathVariable int id) {
@@ -36,7 +36,7 @@ public class AndroidController {
         return category;
     }
 
-    // Вызов всех блюд в список
+    // all dishes
     @RequestMapping(value = "/android/dishes")
     @ResponseBody
     public ArrayList<DishModel> getAllDishes() {
@@ -44,7 +44,7 @@ public class AndroidController {
         return allDishes;
     }
 
-    // Вызов блюда по id
+    //dish by id
     @RequestMapping(value = "/android/dish/{id}")
     public
     @ResponseBody
@@ -53,7 +53,7 @@ public class AndroidController {
         return dish;
     }
 
-    // Вызов блюда по категории
+    // dishes by ctegory
     @RequestMapping(value = "/android/dish/category/{id}")
     @ResponseBody
     public ArrayList<DishModel> getAllDishesByCategory(@PathVariable int id) {
