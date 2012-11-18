@@ -1,5 +1,6 @@
-package com.softserve.academy.food.dao;
+package com.softserve.academy.food.dao.impl;
 
+import com.softserve.academy.food.dao.IUserAttachmentDao;
 import com.softserve.academy.food.entity.UserAttachment;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;

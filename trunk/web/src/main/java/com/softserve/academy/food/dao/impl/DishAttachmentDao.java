@@ -1,7 +1,8 @@
-package com.softserve.academy.food.dao;
+package com.softserve.academy.food.dao.impl;
 
-import com.softserve.academy.food.entity.Attachment;
-import com.softserve.academy.food.entity.IDishAttachment;
+import com.softserve.academy.food.dao.IDishAttachmentDao;
+import com.softserve.academy.food.entity.DishAttachment;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +25,7 @@ public class DishAttachmentDao implements IDishAttachmentDao {
     }
 
     @Override
-    public void add(DishAttachment attachment) {
+    public void add( DishAttachment attachment ) {
         getSession().save(attachment);
     }
 
