@@ -56,4 +56,6 @@ public class CategoryController {
         model.addAttribute("helloMessage", names);
         return "helloPage";
     }
+
+
 }
