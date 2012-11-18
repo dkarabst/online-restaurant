@@ -18,7 +18,7 @@ import com.softserve.academy.food.model.DishModel;
 import com.softserve.academy.food.service.IMenuService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = {"beans.xml"})
+@ContextConfiguration(locations = {"classpath:/service/beans.xml"})
 public class MenuServiceTest 
 {
 	@Autowired

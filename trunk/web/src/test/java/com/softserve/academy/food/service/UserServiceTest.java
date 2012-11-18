@@ -16,7 +16,7 @@ import com.softserve.academy.food.model.UserModel;
 import com.softserve.academy.food.service.IUserService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = {"beans.xml"})
+@ContextConfiguration(locations = {"classpath:/service/beans.xml"})
 public class UserServiceTest 
 {
 	@Autowired
