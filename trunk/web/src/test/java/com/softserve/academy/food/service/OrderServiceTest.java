@@ -1,4 +1,4 @@
-package com.softserve.academy.service;
+package com.softserve.academy.food.service;
 
 import static org.junit.Assert.*;
 
