@@ -6,19 +6,23 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "ATTACHMENTS")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class Attachment {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "ATTACHMENTS_ID")
     private Long id;
     private String name;
     private String path;
 
+    public Attachment() {}
+    
     public Attachment(Long id, String name, String path) {
         this.id = id;
         this.name = name;
         this.path = path;
     }
-
-    public Attachment() {}
 
     public Attachment(AttachmentModel attachmentModel) {
         id = attachmentModel.getId();
@@ -31,9 +35,6 @@ public class Attachment {
         this.path = path;
     }
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "ATTACHMENTS_ID")
     public Long getId() {
         return id;
     }
