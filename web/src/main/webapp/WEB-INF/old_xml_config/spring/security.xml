@@ -10,8 +10,16 @@
 						http://www.springframework.org/schema/security/spring-security-3.1.xsd">
 						
 	<http auto-config="true">
-	  <intercept-url pattern="/" access="ROLE_ANONYMOUS" />
+	  <intercept-url pattern="/registration.htm" access="ROLE_ANONYMOUS" />
+	  <intercept-url pattern="/upload.htm" access="ROLE_ANONYMOUS" />
+	  <intercept-url pattern="/index.htm" access="ROLE_ANONYMOUS,ROLE_USER,ROLE_ADMIN" />
+	  <intercept-url pattern="/managerusers.htm*" access="ROLE_ADMIN" />
+	  <intercept-url pattern="/managerdishs.htm*" access="ROLE_ADMIN" />
+	  <intercept-url pattern="/admin.htm*" access="ROLE_ADMIN" />
+	  
+	  <form-login login-page="/index.htm?action=login" authentication-failure-url="/index.htm?action=errLogin" default-target-url="/index.htm" />
 	  <anonymous username="guest" granted-authority="ROLE_ANONYMOUS" />
+	  <logout logout-url="/logout" logout-success-url="/index.htm" />
 	  <remember-me />
 	</http>
 	
