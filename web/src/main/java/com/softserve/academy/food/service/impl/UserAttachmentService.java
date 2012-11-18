@@ -1,8 +1,10 @@
-package com.softserve.academy.food.service;
+package com.softserve.academy.food.service.impl;
 
 import com.softserve.academy.food.dao.IUserAttachmentDao;
 import com.softserve.academy.food.entity.UserAttachment;
 import com.softserve.academy.food.model.UserAttachmentModel;
+import com.softserve.academy.food.service.IUserAttachmentService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

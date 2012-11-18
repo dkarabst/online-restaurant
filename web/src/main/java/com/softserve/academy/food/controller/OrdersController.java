@@ -20,11 +20,11 @@ public class OrdersController
 
 	@Autowired
 	private OrderHistoryService	orderHistoryService;
-
+	/*
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public String listContacts(Map<String, Object> map)
 	{
-
+		
 		map.put("order", new OrderModel());
 		map.put("orderList", orderHistoryService.getAllModels());
 		return "order";
@@ -45,5 +45,5 @@ public class OrdersController
 
 		orderHistoryService.delModelById(orderId);
 		return "redirect:/orders/list";
-	}
+	} */
 }
