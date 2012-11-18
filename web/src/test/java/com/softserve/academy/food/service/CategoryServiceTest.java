@@ -15,7 +15,7 @@ import com.softserve.academy.food.model.CategoryModel;
 import com.softserve.academy.food.service.ICategoryService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = {"beans.xml"})
+@ContextConfiguration(locations = {"classpath:/service/beans.xml"})
 public class CategoryServiceTest 
 {
 	@Autowired

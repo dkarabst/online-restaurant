@@ -20,7 +20,7 @@ import com.softserve.academy.food.entity.User;
 import com.softserve.academy.food.service.IOrderService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = {"beans.xml"})
+@ContextConfiguration(locations = {"classpath:/service/beans.xml"})
 public class OrderServiceTest 
 {
 	@Autowired
