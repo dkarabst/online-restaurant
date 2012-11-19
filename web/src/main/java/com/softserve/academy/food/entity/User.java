@@ -4,9 +4,6 @@
 
 package com.softserve.academy.food.entity;
 
-import com.softserve.academy.food.model.UserCredentials;
-import com.softserve.academy.food.model.UserModel;
-
 import javax.persistence.*;
 
 @Entity
@@ -44,23 +41,6 @@ public class User {
         setPassword(password);
     }
 
-    public User(UserModel user) {
-        id = user.getId();
-        email = user.getEmail();
-        phone = user.getPhone();
-    }
-
-    public User(UserCredentials user) {
-        id = user.getId();
-        name = user.getName();
-        password = user.getPassword();
-        role = user.getRole();
-        enable = user.getEnable();
-    }
-
-    public UserModel toModel() {
-        return new UserModel(this);
-    }
 
     public int getId() {
         return id;

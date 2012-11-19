@@ -1,7 +1,7 @@
 package com.softserve.academy.food.controller;
 
 import com.softserve.academy.food.model.UserAttachmentModel;
-import com.softserve.academy.food.service.IUserAttachmentService;
+import com.softserve.academy.food.service.UserAttachmentService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,10 +19,10 @@ import java.util.Map;
 @RequestMapping("/userinfo.html")
 public class UserAttachmentController {
 
-    private IUserAttachmentService userAttachmentService;
+    private UserAttachmentService userAttachmentService;
 
     @Autowired
-    public UserAttachmentController(IUserAttachmentService attachmentService) {
+    public UserAttachmentController(UserAttachmentService attachmentService) {
         this.userAttachmentService = attachmentService;
     }
 

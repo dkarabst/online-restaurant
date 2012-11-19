@@ -1,6 +1,6 @@
 package com.softserve.academy.food.dao.mock;
 
-import com.softserve.academy.food.dao.ICategoryDao;
+import com.softserve.academy.food.dao.CategoryDao;
 import com.softserve.academy.food.entity.Category;
 import org.springframework.stereotype.Repository;
 
@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Repository("MockCategoryDao")
-public class MockCategoryDao implements ICategoryDao {
+public class MockCategoryDao implements CategoryDao {
     private List<Category> categoryList = new ArrayList<Category>();
 
     public Category add(Category category) {

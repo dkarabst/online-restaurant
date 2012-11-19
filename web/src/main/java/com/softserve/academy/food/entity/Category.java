@@ -1,6 +1,6 @@
 package com.softserve.academy.food.entity;
 
-import com.softserve.academy.food.model.CategoryModel;
+
 
 import javax.persistence.*;
 
@@ -18,14 +18,6 @@ public class Category {
     public Category() {
     }
 
-    public Category(CategoryModel category) {
-        id = category.getId();
-        name = category.getName();
-    }
-
-    public CategoryModel toModel() {
-        return new CategoryModel(this);
-    }
 
     public Category(String name) {
         this.name = name;

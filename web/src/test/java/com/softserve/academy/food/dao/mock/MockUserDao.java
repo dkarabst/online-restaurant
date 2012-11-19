@@ -1,6 +1,6 @@
 package com.softserve.academy.food.dao.mock;
 
-import com.softserve.academy.food.dao.IUserDao;
+import com.softserve.academy.food.dao.UserDao;
 import com.softserve.academy.food.entity.User;
 import org.springframework.stereotype.Repository;
 
@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Repository("MockUserDao")
-public class MockUserDao implements IUserDao {
+public class MockUserDao implements UserDao {
 
     private List<User> users = new ArrayList<User>();
 

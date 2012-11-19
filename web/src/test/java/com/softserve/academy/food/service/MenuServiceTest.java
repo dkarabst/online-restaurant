@@ -10,21 +10,21 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.softserve.academy.food.dao.IDishDao;
+import com.softserve.academy.food.dao.DishDao;
 import com.softserve.academy.food.entity.Category;
 import com.softserve.academy.food.entity.Dish;
 import com.softserve.academy.food.model.CategoryModel;
 import com.softserve.academy.food.model.DishModel;
-import com.softserve.academy.food.service.IMenuService;
+import com.softserve.academy.food.service.MenuService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"classpath:/service/beans.xml"})
 public class MenuServiceTest 
 {
 	@Autowired
-	private IMenuService mService;
+	private MenuService mService;
 	@Autowired
-	private IDishDao dishDao;
+	private DishDao dishDao;
 
 	@Before
 	public void setUp() throws Exception 

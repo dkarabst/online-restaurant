@@ -9,19 +9,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.softserve.academy.food.dao.ICategoryDao;
+import com.softserve.academy.food.dao.CategoryDao;
 import com.softserve.academy.food.entity.Category;
 import com.softserve.academy.food.model.CategoryModel;
-import com.softserve.academy.food.service.ICategoryService;
+import com.softserve.academy.food.service.CategoryService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"classpath:/service/beans.xml"})
 public class CategoryServiceTest 
 {
 	@Autowired
-	private ICategoryService cService;
+	private CategoryService cService;
 	@Autowired
-	private ICategoryDao categoryDao;
+	private CategoryDao categoryDao;
 	
 	@Before
 	public void setUp() throws Exception 

@@ -1,6 +1,6 @@
 package com.softserve.academy.food.controller;
 
-import com.softserve.academy.food.service.IOrderService;
+import com.softserve.academy.food.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,7 +14,7 @@ import java.util.ArrayList;
 public class OrderController {
 
     @Autowired
-    private IOrderService orderService;
+    private OrderService orderService;
 
 //TODO
 //    @RequestMapping(value = "/order", method = RequestMethod.GET)

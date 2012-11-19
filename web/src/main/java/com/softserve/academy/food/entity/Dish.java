@@ -1,6 +1,5 @@
 package com.softserve.academy.food.entity;
 
-import com.softserve.academy.food.model.DishModel;
 
 import javax.persistence.*;
 
@@ -44,22 +43,7 @@ public class Dish {
         this.category = category;
     }
 
-    public Dish(DishModel dish) {
-        id = dish.getId();
-        category = dish.getCategory().toEntity();
-        name = dish.getName();
-        price = dish.getPrice();
-        photo = dish.getPhoto();
-        descr = dish.getDescr();
-        avail = dish.getAvail();
-        prepTime = dish.getPrepTime();
-        weight = dish.getWeight();
 
-    }
-
-    public DishModel toModel() {
-        return new DishModel(this);
-    }
 
     public int getId() {
         return id;

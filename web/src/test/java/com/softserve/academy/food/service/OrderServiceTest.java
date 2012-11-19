@@ -11,26 +11,26 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.softserve.academy.food.dao.IDishDao;
-import com.softserve.academy.food.dao.IOrderDao;
-import com.softserve.academy.food.dao.IUserDao;
+import com.softserve.academy.food.dao.DishDao;
+import com.softserve.academy.food.dao.OrderDao;
+import com.softserve.academy.food.dao.UserDao;
 import com.softserve.academy.food.entity.Category;
 import com.softserve.academy.food.entity.Dish;
 import com.softserve.academy.food.entity.User;
-import com.softserve.academy.food.service.IOrderService;
+import com.softserve.academy.food.service.OrderService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"classpath:/service/beans.xml"})
 public class OrderServiceTest 
 {
 	@Autowired
-	private IOrderService oService;
+	private OrderService oService;
 	@Autowired
-	private IDishDao dishDao;
+	private DishDao dishDao;
 	@Autowired
-	private IOrderDao orderDao;
+	private OrderDao orderDao;
 	@Autowired
-	private IUserDao userDao;
+	private UserDao userDao;
 
 	@Test
 	public void testAdd() 
