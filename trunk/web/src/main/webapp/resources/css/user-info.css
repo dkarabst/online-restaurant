@@ -1,0 +1,81 @@
+.UserInfo {
+    width: 60%;
+    height: 500pt;
+    margin-left: 20%;
+    position: relative;
+    top: 50pt;
+    margin-bottom: 100pt;
+    min-width: 600pt;
+    background: #ffffff; /* Old browsers */
+    background: -moz-linear-gradient(top,  #ffffff 0%, #ededed 0%, #f6f6f6 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(0%,#ededed), color-stop(100%,#f6f6f6)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  #ffffff 0%,#ededed 0%,#f6f6f6 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  #ffffff 0%,#ededed 0%,#f6f6f6 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  #ffffff 0%,#ededed 0%,#f6f6f6 100%); /* IE10+ */
+    background: linear-gradient(to bottom,  #ffffff 0%,#ededed 0%,#f6f6f6 100%); /* W3C */
+    border-radius: 10px;
+
+    box-shadow:0 0 10px 0 #1c6b72;
+    -webkit-box-shadow:0 0 10px 0 #1c6b72;
+    -moz-box-shadow:0 0 10px 0 #1c6b72;
+}
+
+.header h2 {
+    padding: 30px;
+}
+
+.UserInfo .header hr {
+    background: #BEBEBE;
+    width: 96%;
+    left: 2%;
+    position: relative;
+    margin: -30px 0px;
+}
+
+.UserInfo .body {
+    margin: 50px 0px;
+}
+
+.UserInfo .body #userinfo_table {
+    width: 50%;
+    margin-left: 18pt;
+    margin-top: -38pt;
+}
+
+.UserInfo .body #choose_image {
+    margin-left: 14pt;
+}
+
+.UserInfo .body #upload_btn {
+    margin-left: 14pt;
+}
+
+.UserInfo .body #choose_btn {
+     width: 107pt;
+ }
+
+#image_item {
+    width: 150pt !important;
+}
+
+.UserInfo .body #image_pos {
+    margin-top: -314pt;
+    float: right;
+    margin-right: 12%;
+}
+
+.UserInfo .body #fileuploadForm {
+    min-height: 226px;
+}
+
+.UserInfo .body #image_list {
+    max-height: 490px !important;
+    overflow: auto;
+    width: 171pt;
+}
+
+.UserInfo .body #images_title {
+    float: right;
+    margin-top: -150pt;
+    margin-right: 14%;
+}
