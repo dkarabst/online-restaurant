@@ -24,7 +24,7 @@
 	<br>
 	<a href="order">Add order</a>
 	<br>
-	<a href="1.json">json by id</a>
+	<a href="android/dish/1.json">json by id</a>
 	<br>
 	<a href="/register">register new user</a>
 	<br>
