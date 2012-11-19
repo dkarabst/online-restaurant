@@ -9,8 +9,10 @@ import javax.persistence.*;
 public class UserAttachment extends Attachment {
 
 	@ManyToOne(fetch = FetchType.LAZY)
-    private User user;
+	private User user;
 
+	public UserAttachment() {}
+	
     public UserAttachment(UserAttachmentModel userAttachmentModel) {
         super.setId(userAttachmentModel.getId());
         super.setName(userAttachmentModel.getName());
@@ -28,14 +30,6 @@ public class UserAttachment extends Attachment {
 
 	public void setUser(User user) {
 		this.user = user;
-	}
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = super.hashCode();
-		result = prime * result + ((user == null) ? 0 : user.hashCode());
-		return result;
 	}
 
 	@Override

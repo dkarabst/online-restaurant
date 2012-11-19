@@ -18,12 +18,6 @@ public class Attachment {
 
     public Attachment() {}
     
-    public Attachment(Long id, String name, String path) {
-        this.id = id;
-        this.name = name;
-        this.path = path;
-    }
-
     public Attachment(AttachmentModel attachmentModel) {
         id = attachmentModel.getId();
         name = attachmentModel.getName();
@@ -35,6 +29,10 @@ public class Attachment {
         this.path = path;
     }
 
+    public AttachmentModel toModel() {
+        return new AttachmentModel(this);
+    }
+    
     public Long getId() {
         return id;
     }
@@ -59,21 +57,6 @@ public class Attachment {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public AttachmentModel toModel() {
-        return new AttachmentModel(this);
-    }
-
-    @Override
-    public int hashCode()
-    {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((id == null) ? 0 : id.hashCode());
-        result = prime * result + ((name == null) ? 0 : name.hashCode());
-        result = prime * result + ((path == null) ? 0 : path.hashCode());
-        return result;
     }
 
     @Override
@@ -106,5 +89,11 @@ public class Attachment {
             return false;
         return true;
     }
+
+	@Override
+	public String toString() {
+		return "Attachment [id=" + id + ", name=" + name + ", path=" + path
+				+ "]";
+	}
 
 }

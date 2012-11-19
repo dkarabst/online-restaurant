@@ -132,24 +132,7 @@ public class Dish {
     public void setWeight(int weight) {
         this.weight = weight;
     }
-
-    @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((avail == null) ? 0 : avail.hashCode());
-        result = prime * result
-                + ((category == null) ? 0 : category.hashCode());
-        result = prime * result + ((descr == null) ? 0 : descr.hashCode());
-        result = prime * result + id;
-        result = prime * result + ((name == null) ? 0 : name.hashCode());
-        result = prime * result + ((photo == null) ? 0 : photo.hashCode());
-        result = prime * result + prepTime;
-        result = prime * result + price;
-        result = prime * result + weight;
-        return result;
-    }
-
+    
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
