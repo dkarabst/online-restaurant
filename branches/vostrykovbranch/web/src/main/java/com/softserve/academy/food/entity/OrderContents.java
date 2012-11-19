@@ -1,6 +1,5 @@
 package com.softserve.academy.food.entity;
 
-import com.softserve.academy.food.model.ContentModel;
 
 import javax.persistence.*;
 
@@ -28,17 +27,6 @@ public class OrderContents {
         this.dish = dish;
         this.quantity = quantity;
         this.orderInfo = orderInfo;
-    }
-
-    public OrderContents(ContentModel content) {
-        id = content.getId();
-        orderInfo = content.getOrderInfo().toEntity();
-        dish = content.getDish().toEntity();
-        quantity = content.getQuantity();
-    }
-
-    public ContentModel toModel() {
-        return new ContentModel(this);
     }
 
     public Integer getId() {

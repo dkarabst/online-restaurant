@@ -1,7 +1,5 @@
 package com.softserve.academy.food.entity;
 
-import com.softserve.academy.food.model.UserAttachmentModel;
-
 import javax.persistence.*;
 
 @Entity
@@ -10,17 +8,6 @@ public class UserAttachment extends Attachment {
 
 	@ManyToOne(fetch = FetchType.LAZY)
     private User user;
-
-    public UserAttachment(UserAttachmentModel userAttachmentModel) {
-        super.setId(userAttachmentModel.getId());
-        super.setName(userAttachmentModel.getName());
-        super.setPath(userAttachmentModel.getPath());
-        user = userAttachmentModel.getUserModel().toEntity();
-    }
-
-    public UserAttachmentModel toModel() {
-        return new UserAttachmentModel(this);
-    }
 
     public User getUser() {
 		return user;

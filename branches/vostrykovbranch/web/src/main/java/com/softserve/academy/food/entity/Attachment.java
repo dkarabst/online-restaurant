@@ -1,7 +1,5 @@
 package com.softserve.academy.food.entity;
 
-import com.softserve.academy.food.model.AttachmentModel;
-
 import javax.persistence.*;
 
 @Entity
@@ -24,11 +22,7 @@ public class Attachment {
         this.path = path;
     }
 
-    public Attachment(AttachmentModel attachmentModel) {
-        id = attachmentModel.getId();
-        name = attachmentModel.getName();
-        path = attachmentModel.getPath();
-    }
+
 
     public Attachment(String name, String path) {
         this.name = name;
@@ -61,10 +55,7 @@ public class Attachment {
         this.name = name;
     }
 
-    public AttachmentModel toModel() {
-        return new AttachmentModel(this);
-    }
-
+ 
     @Override
     public int hashCode()
     {

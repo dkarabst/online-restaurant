@@ -1,9 +1,8 @@
 package com.softserve.academy.food.controller;
 
-import com.softserve.academy.food.model.CategoryModel;
-import com.softserve.academy.food.model.DishModel;
-import com.softserve.academy.food.service.ICategoryService;
-import com.softserve.academy.food.service.IMenuService;
+import com.softserve.academy.food.entity.Category;
+import com.softserve.academy.food.service.CategoryService;
+import com.softserve.academy.food.service.MenuService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,16 +14,16 @@ import java.util.ArrayList;
 @Controller
 public class AndroidController {
     @Autowired
-    private ICategoryService categoryService;
+    private CategoryService categoryService;
 
     @Autowired
-    private IMenuService menuService;
+    private MenuService menuService;
 
     // all category in list 
     @RequestMapping(value = "/android/cats")
     @ResponseBody
-    public ArrayList<CategoryModel> getAllCategories() {
-        ArrayList<CategoryModel> allCategories = categoryService.getAll();
+    public ArrayList<Category> getAllCategories() {
+        ArrayList<Category> allCategories = categoryService.getAll();
         return allCategories;
     }
 

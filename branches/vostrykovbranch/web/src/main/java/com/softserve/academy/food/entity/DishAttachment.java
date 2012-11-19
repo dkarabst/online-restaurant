@@ -1,6 +1,5 @@
 package com.softserve.academy.food.entity;
 
-import com.softserve.academy.food.model.DishAttachmentModel;
 
 import javax.persistence.*;
 
@@ -12,18 +11,6 @@ public class DishAttachment extends Attachment {
     private Dish dish;
 
     public DishAttachment() {}
-
-    public DishAttachment(DishAttachmentModel dishAttachmentModel) {
-        super.setId(dishAttachmentModel.getId());
-        super.setName(dishAttachmentModel.getName());
-        super.setPath(dishAttachmentModel.getPath());
-        dish = dishAttachmentModel.getDishModel().toEntity();
-    }
-
-    public DishAttachmentModel toModel() {
-        return new DishAttachmentModel(this);
-    }
-
 
     public Dish getDish() {
 		return dish;

@@ -1,8 +1,8 @@
 package com.softserve.academy.food.controller;
 
 import com.softserve.academy.food.model.OrderModel;
-import com.softserve.academy.food.service.IOrderHistoryService;
-import com.softserve.academy.food.service.impl.OrderHistoryService;
+import com.softserve.academy.food.service.OrderHistoryService;
+import com.softserve.academy.food.service.impl.OrderHistoryServiceImpl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,7 +20,7 @@ public class OrdersController
 {
 
 	@Autowired
-	private IOrderHistoryService orderHistoryService;
+	private OrderHistoryService orderHistoryService;
 	/*
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public String listContacts(Map<String, Object> map)

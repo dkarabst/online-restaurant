@@ -9,20 +9,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.softserve.academy.food.dao.IUserDao;
+import com.softserve.academy.food.dao.UserDao;
 import com.softserve.academy.food.entity.User;
 import com.softserve.academy.food.model.UserCredentials;
 import com.softserve.academy.food.model.UserModel;
-import com.softserve.academy.food.service.IUserService;
+import com.softserve.academy.food.service.UserService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"classpath:/service/beans.xml"})
 public class UserServiceTest 
 {
 	@Autowired
-	private IUserService uService;
+	private UserService uService;
 	@Autowired
-	private IUserDao userDao;
+	private UserDao userDao;
 
 	@Before
 	public void setUp() throws Exception

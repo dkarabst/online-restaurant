@@ -1,6 +1,6 @@
 package com.softserve.academy.food.dao.mock;
 
-import com.softserve.academy.food.dao.IUserAttachmentDao;
+import com.softserve.academy.food.dao.UserAttachmentDao;
 
 import com.softserve.academy.food.entity.UserAttachment;
 
@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository("MockUserAttachmentDao")
-public class MockUserAttachmentDao implements IUserAttachmentDao {
+public class MockUserAttachmentDao implements UserAttachmentDao {
 
 	@Override
 	public void add(UserAttachment userAttachment) {

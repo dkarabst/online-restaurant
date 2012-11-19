@@ -17,14 +17,14 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.softserve.academy.food.entity.User;
 import com.softserve.academy.food.model.UserCredentials;
-import com.softserve.academy.food.service.IUserService;
+import com.softserve.academy.food.service.UserService;
 
 @Controller
 @SessionAttributes("user")
 public class UserController
 {
 	@Autowired
-	private IUserService userService;
+	private UserService userService;
 
 	 @RequestMapping(value = "/register", method = RequestMethod.GET)
 	 	    public String showRegisterForm(ModelMap model) {

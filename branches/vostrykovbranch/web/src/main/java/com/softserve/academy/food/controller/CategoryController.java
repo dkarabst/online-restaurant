@@ -1,7 +1,7 @@
 package com.softserve.academy.food.controller;
 
 import com.softserve.academy.food.model.CategoryModel;
-import com.softserve.academy.food.service.ICategoryService;
+import com.softserve.academy.food.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,7 +13,7 @@ import java.util.ArrayList;
 public class CategoryController {
 
     @Autowired
-    private ICategoryService categoryService;
+    private CategoryService categoryService;
 
     @RequestMapping(value = "/category/all", method = RequestMethod.GET)
     protected String categoryList(Model model) {

@@ -1,8 +1,5 @@
 package com.softserve.academy.food.entity;
 
-import com.softserve.academy.food.model.ContentModel;
-import com.softserve.academy.food.model.OrderModel;
-
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Date;
@@ -32,22 +29,6 @@ public class OrderInfo {
     public OrderInfo() {
     }
 
-    public OrderInfo(OrderModel order) {
-        id = order.getId();
-        user = order.getUser().toEntity();
-        date = order.getDate();
-        status = order.getStatus();
-
-        List<OrderContents> spec = new ArrayList<OrderContents>();
-        for (ContentModel content : order.getSpec()) {
-            spec.add(content.toEntity());
-        }
-        this.spec = spec;
-    }
-
-    public OrderModel toModel() {
-        return new OrderModel(this);
-    }
 
     public Integer getId() {
         return id;

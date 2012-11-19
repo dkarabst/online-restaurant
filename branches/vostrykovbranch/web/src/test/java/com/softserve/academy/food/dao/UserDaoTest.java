@@ -13,7 +13,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.softserve.academy.food.dao.IUserDao;
+import com.softserve.academy.food.dao.UserDao;
 import com.softserve.academy.food.entity.User;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -21,7 +21,7 @@ import com.softserve.academy.food.entity.User;
 public class UserDaoTest 
 {
 	@Autowired
-	private IUserDao userDao;
+	private UserDao userDao;
 	@Autowired
 	protected SessionFactory session;
 

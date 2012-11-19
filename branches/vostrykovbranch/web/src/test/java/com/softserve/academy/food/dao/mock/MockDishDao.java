@@ -1,6 +1,6 @@
 package com.softserve.academy.food.dao.mock;
 
-import com.softserve.academy.food.dao.IDishDao;
+import com.softserve.academy.food.dao.DishDao;
 import com.softserve.academy.food.entity.Category;
 import com.softserve.academy.food.entity.Dish;
 import org.springframework.stereotype.Repository;
@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Repository("MockDishDao")
-public class MockDishDao implements IDishDao {
+public class MockDishDao implements DishDao {
     private List<Dish> dishes = new ArrayList<Dish>();
 
     public Dish get(int id) {
