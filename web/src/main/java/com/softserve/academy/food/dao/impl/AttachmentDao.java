@@ -2,33 +2,55 @@ package com.softserve.academy.food.dao.impl;
 
 
 import com.softserve.academy.food.dao.IAttachmentDao;
-import com.softserve.academy.food.entity.Attachment;
+import com.softserve.academy.food.entity.DishAttachment;
+import com.softserve.academy.food.entity.UserAttachment;
+
 import org.hibernate.Query;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Repository
+@Repository("attachmentDao")
 public class AttachmentDao extends Dao implements IAttachmentDao {
 
+	@Override
+	public DishAttachment addDishAttachment( DishAttachment dishAttachment ) {
+		
+		dishAttachment.setId( (Long)sessionFactory.getCurrentSession().save(dishAttachment));
+        return dishAttachment;
+	}
+	
     @Override
-    public void add(Attachment attachment) {
-        getSession().save(attachment);
+    public DishAttachment getDishAttachment( Long id ) {
+    	
+        return (DishAttachment) getSession().load(DishAttachment.class, id);
     }
 
     @Override
-    public Attachment get(Long id) {
-        return (Attachment) getSession().load(Attachment.class, id);
+    public List<DishAttachment> getAllDishAttachment() {
+    	
+        return getSession().createQuery("from DishAttachment").list();
     }
 
-    @Override
-    public List<Attachment> getAll() {
-        return getSession().createQuery("from Attachment").list();
-    }
+	@Override
+	public UserAttachment addUserAttachment(UserAttachment userAttachment) {
 
+		userAttachment.setId( (Long)sessionFactory.getCurrentSession().save(userAttachment));
+        return userAttachment;
+	}
+
+	@Override
+	public UserAttachment getUserAttachment(Long id) {
+		
+		return (UserAttachment) getSession().load(UserAttachment.class, id);
+	}
+
+	@Override
+	public List<UserAttachment> getAllUserAttachment() {
+
+		return getSession().createQuery("from UserAttachment").list();
+	}
+	
     @Override
     public void delete(Long id) {
         Query query = getSession().createQuery("delete Attachment where id = :attachmentId");
@@ -36,8 +58,4 @@ public class AttachmentDao extends Dao implements IAttachmentDao {
         query.executeUpdate();
     }
 
-    @Override
-    public void delete(Attachment attachment) {
-        getSession().delete(attachment);
-    }
 }
