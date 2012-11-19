@@ -1,6 +1,0 @@
-@echo I will create DB and all its Tabels...
-@mysql -u root < CreateAll.sql
-@echo DB with the Tabels are created
-@echo I will fill them now...
-@mysql -u root < InsertAll.sql
-@echo Done.
