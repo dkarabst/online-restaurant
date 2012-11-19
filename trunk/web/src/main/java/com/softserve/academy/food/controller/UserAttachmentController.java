@@ -19,15 +19,12 @@ import java.util.Map;
 @RequestMapping("/userinfo.html")
 public class UserAttachmentController {
 
+	@Autowired
     private IUserAttachmentService userAttachmentService;
-
-    @Autowired
-    public UserAttachmentController(IUserAttachmentService attachmentService) {
-        this.userAttachmentService = attachmentService;
-    }
 
     @RequestMapping(method = RequestMethod.GET)
     public String showUserInfo(Map<String, Object> model) {
+    	
         List<UserAttachmentModel> userAttachmentList = userAttachmentService.getAll();
         model.put("userAttachmentList",  userAttachmentList);
         return "userinfo";
@@ -35,17 +32,22 @@ public class UserAttachmentController {
 
     @RequestMapping(method = RequestMethod.POST)
     public String handleUpload(@RequestParam("file") MultipartFile file, HttpSession session) {
-        String path = session.getServletContext().getRealPath("/") + "/data/";
-        File destination = new File(path + file.getOriginalFilename());
-        userAttachmentService.add(userAttachmentService.setModel(file.getOriginalFilename(), "/data/" + file.getOriginalFilename()));
-        File parentDirectory = destination.getParentFile();
-        parentDirectory.mkdirs();
-        try {
-            file.transferTo(destination);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    	
+    	checkPath(session);
+    	      
+        userAttachmentService.add( file );
+        
         return "redirect:/userinfo.html";
+    }
+    
+    
+    private void checkPath( HttpSession session )
+    {
+    	if ( userAttachmentService.getPath()==null )
+    	{
+    		userAttachmentService.setPath( session
+    				.getServletContext().getRealPath("/") + "/attach_data/" );
+    	}
     }
 
 }
