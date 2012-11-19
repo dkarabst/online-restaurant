@@ -264,7 +264,6 @@
     </repositories>
 	
     <build>
-        <plugins>
 		<plugins>
 		
 			<plugin>
