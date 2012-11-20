@@ -1,6 +1,7 @@
 package com.softserve.academy.food.android;
 
-import com.softserve.academy.food.android.R;
+import java.util.ArrayList;
+import java.util.Map;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -10,10 +11,15 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.LinearLayout;
+
+import com.softserve.academy.food.android.model.CategoryModel;
+import com.softserve.academy.food.android.model.DishModel;
 public class MainActivity extends Activity implements OnClickListener
 {
 	private LinearLayout linearLayout;
 	private Button rmenu, user_history, profile, login, about_us;
+	
+	static Map<CategoryModel, ArrayList<DishModel>> map;
 	@Override
 	public void onCreate(Bundle savedInstanceState)
 	{
@@ -31,6 +37,11 @@ public class MainActivity extends Activity implements OnClickListener
 		about_us.setOnClickListener(this);
 		linearLayout = (LinearLayout)findViewById(R.id.linlayout);
         linearLayout.setBackgroundColor(Color.rgb(160, 200, 240));
+        
+        if(map == null )
+        {
+        	map = Request.getDishesByCatId();
+        }
 	}
 	
 	public void onClick(View v)

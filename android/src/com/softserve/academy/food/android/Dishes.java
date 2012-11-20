@@ -18,39 +18,46 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.softserve.academy.food.android.model.CategoryModel;
 import com.softserve.academy.food.android.model.DishModel;
+
 public class Dishes extends Activity implements OnClickListener
 {
-	ArrayList<DishModel> allDishes = new ArrayList<DishModel>();
-	BoxAdapterDish boxAdapter;
-	ListView lvMain;
-	
+	ArrayList<DishModel>	allDishes;
+	BoxAdapterDish			boxAdapter;
+	ListView				lvMain;
+
 	public void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.dish);
-		
 		StrictMode.enableDefaults();
 
-		int id = new Categories().getId();
-		
+		Intent intent = getIntent();
+		int id = intent.getIntExtra(Categories.MSG, 0);
+
+		@SuppressWarnings("unchecked")
+		CategoryModel cm = ((ArrayList<CategoryModel>) MainActivity.map
+				.keySet()).get(id);
+
 		// создаем адаптер
-		boxAdapter = new BoxAdapterDish( this, Request.getDishesByCatId(id) );
+		boxAdapter = new BoxAdapterDish(this, MainActivity.map.get(cm));
 
 		// настраиваем список
 		lvMain = (ListView) findViewById(R.id.lvMain);
 		lvMain.setAdapter(boxAdapter);
 		Button button_back = (Button) findViewById(R.id.button_back);
-		button_back.setOnClickListener(new View.OnClickListener() 
+		button_back.setOnClickListener(new View.OnClickListener()
 		{
 			public void onClick(View v)
 			{
-				Intent intent_button_back = new Intent(Dishes.this, Categories.class);
+				Intent intent_button_back = new Intent(Dishes.this,
+						Categories.class);
 				startActivity(intent_button_back);
 			}
 		});
 	}
-	
+
 	// выводим информацию о корзине
 	public void showResult(View v)
 	{
@@ -62,6 +69,7 @@ public class Dishes extends Activity implements OnClickListener
 		}
 		Toast.makeText(this, result, Toast.LENGTH_LONG).show();
 	}
+
 	// post order
 	@SuppressLint("UseSparseArrays")
 	public void post()
@@ -75,11 +83,13 @@ public class Dishes extends Activity implements OnClickListener
 		}
 		String url = Request.BASE_URL + "/order";
 		RestTemplate restTemplate = new RestTemplate();
-		restTemplate.getMessageConverters().add(new MappingJacksonHttpMessageConverter());
+		restTemplate.getMessageConverters().add(
+				new MappingJacksonHttpMessageConverter());
 		String result = restTemplate.postForObject(url, map, String.class);
 		Toast.makeText(this, result, Toast.LENGTH_SHORT).show();
 	}
 
 	public void onClick(View v)
-	{}
+	{
+	}
 }

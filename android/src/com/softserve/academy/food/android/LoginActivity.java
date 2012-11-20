@@ -13,6 +13,8 @@ import org.springframework.http.converter.json.MappingJacksonHttpMessageConverte
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 
+import com.softserve.academy.food.android.model.Message;
+
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
