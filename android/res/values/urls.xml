@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+    <string name="base_uri">http://10.0.2.2:8080/spring-android-basic-auth-server</string>
+    <string name="site_URL">http://10.0.2.2:8666/Restaurant/android</string>
+</resources>
