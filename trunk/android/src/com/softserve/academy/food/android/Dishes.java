@@ -35,10 +35,7 @@ public class Dishes extends Activity implements OnClickListener
 
 		Intent intent = getIntent();
 		int id = intent.getIntExtra(Categories.MSG, 0);
-
-		@SuppressWarnings("unchecked")
-		CategoryModel cm = ((ArrayList<CategoryModel>) MainActivity.map
-				.keySet()).get(id);
+		CategoryModel cm = Categories.acm.get(id);
 
 		// создаем адаптер
 		boxAdapter = new BoxAdapterDish(this, MainActivity.map.get(cm));
