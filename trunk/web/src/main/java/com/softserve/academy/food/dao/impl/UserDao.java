@@ -9,17 +9,17 @@ import java.util.List;
 @Repository("userDao")
 public class UserDao extends Dao implements IUserDao {
     public User get(int id) {
-        return (User) sessionFactory.getCurrentSession().get(User.class, id);
+        return (User) getSession().get(User.class, id);
     }
 
     @SuppressWarnings("unchecked")
     public List<User> getAll() {
-        return (List<User>) sessionFactory.getCurrentSession().createQuery("from User ").list();
+        return (List<User>) getSession().createQuery("from User ").list();
     }
 
     @SuppressWarnings("unchecked")
     public User get(String name) {
-        List<User> list = sessionFactory.getCurrentSession().createQuery("from User where USER_NAME = '" + name + "'").list();
+        List<User> list = getSession().createQuery("from User where USER_NAME = '" + name + "'").list();
 
         if (list.isEmpty()) {
             return null;
@@ -28,16 +28,16 @@ public class UserDao extends Dao implements IUserDao {
     }
 
     public User add(User user) {
-        user.setId((Integer) sessionFactory.getCurrentSession().save(user));
+        user.setId((Integer) getSession().save(user));
 
         return user;
     }
 
     public void delete(int id) {
-        User object = (User) sessionFactory.getCurrentSession().load(
+        User object = (User) getSession().load(
                 User.class, id);
         if (null != object) {
-            sessionFactory.getCurrentSession().delete(object);
+            getSession().delete(object);
         }
     }
 

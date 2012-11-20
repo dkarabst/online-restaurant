@@ -10,31 +10,31 @@ import java.util.ArrayList;
 @Repository("dishDao")
 public class DishDao extends Dao implements IDishDao {
     public Dish get(int id) {
-        return (Dish) sessionFactory.getCurrentSession().get(Dish.class, id);
+        return (Dish) getSession().get(Dish.class, id);
     }
 
     @SuppressWarnings("unchecked")
     public ArrayList<Dish> getAll() {
-        return (ArrayList<Dish>) sessionFactory.getCurrentSession()
+        return (ArrayList<Dish>) getSession()
                 .createQuery("from Dish").list();
     }
 
     @SuppressWarnings("unchecked")
     public ArrayList<Dish> getAll(Category category) {
-        return (ArrayList<Dish>) sessionFactory.getCurrentSession()
+        return (ArrayList<Dish>) getSession()
                 .createQuery("from Dish where CATEGORIES_cat_id = " + category.getId()).list();
     }
 
     public Dish add(Dish dish) {
-        dish.setId((Integer) sessionFactory.getCurrentSession().save(dish));
+        dish.setId((Integer) getSession().save(dish));
         return dish;
     }
 
     public void delete(int id) {
-        Dish object = (Dish) sessionFactory.getCurrentSession().load(
+        Dish object = (Dish) getSession().load(
                 Dish.class, id);
         if (null != object) {
-            sessionFactory.getCurrentSession().delete(object);
+            getSession().delete(object);
         }
     }
 

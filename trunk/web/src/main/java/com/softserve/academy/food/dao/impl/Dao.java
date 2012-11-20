@@ -15,11 +15,11 @@ public class Dao implements IDao {
     }
 
     public void update(Object object) {
-        sessionFactory.getCurrentSession().update(object);
+        getSession().update(object);
     }
 
     public void delete(Object object) {
-        sessionFactory.getCurrentSession().delete(object);
+        getSession().delete(object);
     }
 
 

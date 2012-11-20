@@ -11,26 +11,26 @@ public class CategoryDao extends Dao implements ICategoryDao {
 
     //TODO delete?
     public Category add(Category category) {
-        category.setId((Integer) sessionFactory.getCurrentSession().save(category));
+        category.setId((Integer) getSession().save(category));
         return category;
     }
 
     public ArrayList<Category> getAll() {
-        return (ArrayList<Category>) sessionFactory.getCurrentSession()
+        return (ArrayList<Category>) getSession()
                 .createQuery("from Category").list();
     }
 
     public Category get(int id) {
-        return (Category) sessionFactory.getCurrentSession().get(
+        return (Category) getSession().get(
                 Category.class, id);
     }
 
     //TODO delete
     public void delete(int id) {
-        Category object = (Category) sessionFactory.getCurrentSession().load(
+        Category object = (Category) getSession().load(
                 Category.class, id);
         if (null != object) {
-            sessionFactory.getCurrentSession().delete(object);
+            getSession().delete(object);
         }
     }
 
