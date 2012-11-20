@@ -1,6 +1,7 @@
 package com.softserve.academy.food.controller;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,8 +18,8 @@ import com.softserve.academy.food.service.ICategoryService;
 import com.softserve.academy.food.service.IMenuService;
 import com.softserve.academy.food.service.IOrderService;
 
-@RequestMapping(value = "/android")
 @Controller
+@RequestMapping(value = "/android")
 public class AndroidController
 {
 	@Autowired
@@ -30,17 +31,20 @@ public class AndroidController
 	@Autowired
 	private IOrderService		orderService;
 
+	@Autowired
+	private IMenuService		dishService;
+
 	// all category in list
-	@RequestMapping(value = "/cats", method = RequestMethod.GET)
 	@ResponseBody
+	@RequestMapping(value = "/cats", method = RequestMethod.GET)
 	public ArrayList<CategoryModel> getAllCategories()
 	{
 		ArrayList<CategoryModel> allCategories = categoryService.getAll();
 		return allCategories;
 	}
 
-	@RequestMapping(value = "/order", method = RequestMethod.POST)
 	@ResponseBody
+	@RequestMapping(value = "/order", method = RequestMethod.POST)
 	public String makeOrder(@RequestBody Map<Integer, Integer> map)
 	{
 		String result = "Success";
@@ -54,10 +58,22 @@ public class AndroidController
 		return result;
 	}
 
+	@ResponseBody
+	@RequestMapping(value = "/dishesByCategory", method = RequestMethod.GET)
+	protected Map<CategoryModel, ArrayList<DishModel>> getMenu()
+	{
+		Map<CategoryModel, ArrayList<DishModel>> map = new HashMap<CategoryModel, ArrayList<DishModel>>();
+		for (CategoryModel c : categoryService.getAll())
+		{
+			map.put(c, dishService.getAllDishesForCategory(c));
+		}
+		return map;
+	}
+
 	// dont know what 4 ?
 	// ctegory by id
-	@RequestMapping(value = "/cat/{id}", method = RequestMethod.GET)
 	@ResponseBody
+	@RequestMapping(value = "/cat/{id}", method = RequestMethod.GET)
 	public CategoryModel getCategoryById(@PathVariable int id)
 	{
 		CategoryModel category = categoryService.get(id);
@@ -65,8 +81,8 @@ public class AndroidController
 	}
 
 	// all dishes
-	@RequestMapping(value = "/dishes", method = RequestMethod.GET)
 	@ResponseBody
+	@RequestMapping(value = "/dishes", method = RequestMethod.GET)
 	public ArrayList<DishModel> getAllDishes()
 	{
 		ArrayList<DishModel> allDishes = menuService.getAllDishes();
@@ -74,8 +90,8 @@ public class AndroidController
 	}
 
 	// dish by id
-	@RequestMapping(value = "/dish/{id}", method = RequestMethod.GET)
 	@ResponseBody
+	@RequestMapping(value = "/dish/{id}", method = RequestMethod.GET)
 	public DishModel getDishById(@PathVariable int id)
 	{
 		DishModel dish = menuService.getDish(id);
@@ -83,8 +99,8 @@ public class AndroidController
 	}
 
 	// dishes by ctegory
-	@RequestMapping(value = "/dish/category/{id}", method = RequestMethod.GET)
 	@ResponseBody
+	@RequestMapping(value = "/dish/category/{id}", method = RequestMethod.GET)
 	public ArrayList<DishModel> getAllDishesByCategory(@PathVariable int id)
 	{
 		CategoryModel category = categoryService.get(id);
