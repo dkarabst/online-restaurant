@@ -14,6 +14,7 @@
 <body>
 <P> You just register new user:  <span class="colortext">${user.name}</span> </P>
   <button><img src="/resources/login.png" style="vertical-align: middle">Login</button>
+  <a href="index.jsp">HOME</a>
 </body>
 
 </html>
