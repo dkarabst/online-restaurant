@@ -16,7 +16,7 @@ public class AttachmentDao extends Dao implements IAttachmentDao {
 	@Override
 	public DishAttachment addDishAttachment( DishAttachment dishAttachment ) {
 		
-		dishAttachment.setId( (Long)sessionFactory.getCurrentSession().save(dishAttachment));
+		dishAttachment.setId( (Long)getSession().save(dishAttachment));
         return dishAttachment;
 	}
 	
@@ -35,7 +35,7 @@ public class AttachmentDao extends Dao implements IAttachmentDao {
 	@Override
 	public UserAttachment addUserAttachment(UserAttachment userAttachment) {
 
-		userAttachment.setId( (Long)sessionFactory.getCurrentSession().save(userAttachment));
+		userAttachment.setId( (Long)getSession().save(userAttachment));
         return userAttachment;
 	}
 
