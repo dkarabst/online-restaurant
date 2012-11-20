@@ -2,8 +2,6 @@ package com.softserve.academy.food.android;
 
 import java.util.ArrayList;
 
-import com.softserve.academy.food.android.model.CategoryModel;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,26 +12,35 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.ListView;
 
+import com.softserve.academy.food.android.model.CategoryModel;
+
 public class Categories extends Activity implements OnItemClickListener
 {
 	BoxAdapterCat				boxAdapterCats;
-	static ListView				lvMain1;
 	public static final String	MSG	= "category";
+	public static ArrayList<CategoryModel> acm;
 
-	@SuppressWarnings("unchecked")
 	public void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.categories);
 
 		StrictMode.enableDefaults();
+		
+		if (acm == null)
+		{
+			acm = new ArrayList<CategoryModel>();
+			for(CategoryModel cm :MainActivity.map.keySet())
+			{
+				acm.add(cm);
+			}
+		}
 
 		// создаем адаптер
-		boxAdapterCats = new BoxAdapterCat(this,
-				((ArrayList<CategoryModel>) MainActivity.map.keySet()));
+		boxAdapterCats = new BoxAdapterCat(this,acm);
 
 		// настраиваем список
-		lvMain1 = (ListView) findViewById(R.id.lvMain1);
+		ListView lvMain1 = (ListView) findViewById(R.id.lvMain1);
 		lvMain1.setAdapter(boxAdapterCats);
 		lvMain1.setOnItemClickListener(this);
 

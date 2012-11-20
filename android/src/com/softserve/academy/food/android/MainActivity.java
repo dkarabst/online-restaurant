@@ -7,6 +7,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -25,6 +26,7 @@ public class MainActivity extends Activity implements OnClickListener
 	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
+		StrictMode.enableDefaults();
 		rmenu = (Button) findViewById(R.id.rmenu);
 		rmenu.setOnClickListener(this);
 		user_history = (Button) findViewById(R.id.user_history);

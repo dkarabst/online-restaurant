@@ -14,7 +14,7 @@ import com.softserve.academy.food.android.model.DishModel;
 
 public class Request
 {
-	final static String	BASE_URL	= "http://10.0.2.2:8666/Restaurant/android";
+	final static String	BASE_URL	= "http://10.0.2.2:8666/academy/android";
 
 	Request()
 	{
@@ -25,7 +25,7 @@ public class Request
 	@SuppressWarnings("unchecked")
 	public static Map<CategoryModel, ArrayList<DishModel>> getDishesByCatId()
 	{
-		String url = BASE_URL + "/dishById";
+		String url = BASE_URL + "/dishesByCategory";
 		RestTemplate restTemplate = new RestTemplate();
 		restTemplate.getMessageConverters().add(
 				new MappingJacksonHttpMessageConverter());
