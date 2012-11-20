@@ -1,4 +1,4 @@
-package com.softserve.academy.food.android;
+package com.softserve.academy.food.android.model;
 
 public class Message {
 	private long id;

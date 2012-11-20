@@ -23,29 +23,18 @@ import com.softserve.academy.food.android.model.DishModel;
 
 public class BoxAdapterDish extends BaseAdapter
 {
-	Context ctx;
-	LayoutInflater lInflater;
-	Dishes dish = new Dishes();
-	
-	ArrayList<DishModel> dishByCategory;
+	Context					ctx;
+	LayoutInflater			lInflater;
+	ArrayList<DishModel>	dishByCategory;
 
 	BoxAdapterDish(Context context, ArrayList<DishModel> products)
 	{
 		ctx = context;
 		dishByCategory = products;
-		lInflater = (LayoutInflater) ctx.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+		lInflater = (LayoutInflater) ctx
+				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 	}
 
-	public ArrayList<DishModel> dishByCategory()
-	{
-		return Request.getDishesByCatId(getItemId());
-	}
-	
-	public int getItemId()
-	{
-		return dish.lvMain.getCheckedItemPosition();
-	}
-	
 	// кол-во элементов
 	public int getCount()
 	{
@@ -67,7 +56,7 @@ public class BoxAdapterDish extends BaseAdapter
 	// пункт списка
 	public View getView(int position, View convertView, ViewGroup parent)
 	{
-		
+
 		// используем созданные, но не используемые view
 		View view = convertView;
 		if (view == null)
@@ -79,8 +68,10 @@ public class BoxAdapterDish extends BaseAdapter
 
 		// заполняем View в пункте списка данными из товаров: наименование, цена
 		// и картинка
-		((TextView) view.findViewById(R.id.tvName)).setText(dishModel.getName());
-		((TextView) view.findViewById(R.id.tvPrice)).setText("Цена: " + dishModel.getPrice() + " грн");
+		((TextView) view.findViewById(R.id.tvName))
+				.setText(dishModel.getName());
+		((TextView) view.findViewById(R.id.tvPrice)).setText("Цена: "
+				+ dishModel.getPrice() + " грн");
 		ImageView ivImage = (ImageView) view.findViewById(R.id.ivImage);
 
 		try
@@ -126,13 +117,16 @@ public class BoxAdapterDish extends BaseAdapter
 	}
 
 	// обработчик для чекбоксов
-	OnCheckedChangeListener myCheckChangList = new OnCheckedChangeListener()
-	{
-		public void onCheckedChanged(CompoundButton buttonView,
-				boolean isChecked)
-		{
-			// меняем данные товара (в корзине или нет)
-			getDishModel((Integer) buttonView.getTag()).box = isChecked;
-		}
-	};
+	OnCheckedChangeListener	myCheckChangList	= new OnCheckedChangeListener()
+												{
+													public void onCheckedChanged(
+															CompoundButton buttonView,
+															boolean isChecked)
+													{
+														// меняем данные товара
+														// (в корзине или нет)
+														getDishModel((Integer) buttonView
+																.getTag()).box = isChecked;
+													}
+												};
 }

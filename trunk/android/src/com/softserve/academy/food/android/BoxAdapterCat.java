@@ -20,16 +20,16 @@ import com.softserve.academy.food.android.model.CategoryModel;
 
 public class BoxAdapterCat extends BaseAdapter
 {
-	Context ctx;
-	LayoutInflater lInflater;
-	
-	ArrayList<CategoryModel> allCategories = Request.getAllCategories();
+	Context						ctx;
+	LayoutInflater				lInflater;
+	ArrayList<CategoryModel>	allCategories;
 
 	BoxAdapterCat(Context context, ArrayList<CategoryModel> products)
 	{
 		ctx = context;
 		allCategories = products;
-		lInflater = (LayoutInflater) ctx.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+		lInflater = (LayoutInflater) ctx
+				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 	}
 
 	// кол-во элементов
@@ -53,7 +53,7 @@ public class BoxAdapterCat extends BaseAdapter
 	// пункт списка
 	public View getView(int position, View convertView, ViewGroup parent)
 	{
-	
+
 		// используем созданные, но не используемые view
 		View view = convertView;
 		if (view == null)
@@ -65,10 +65,8 @@ public class BoxAdapterCat extends BaseAdapter
 
 		// заполняем View в пункте списка данными из товаров: наименование, цена
 		// и картинка
-		((TextView) view.findViewById(R.id.tvName1)).setText(
-				"*  *  *  *  *  *  *  *  *  *  *  *  *  *  *\n" + 
-				categoryModel.getName() + 
-				"\n*  *  *  *  *  *  *  *  *  *  *  *  *  *  *");
+		((TextView) view.findViewById(R.id.tvName1)).setText(categoryModel
+				.getName());
 		ImageView ivImage = (ImageView) view.findViewById(R.id.ivImage1);
 
 		try

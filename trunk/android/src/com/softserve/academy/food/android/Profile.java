@@ -1,10 +1,5 @@
 package com.softserve.academy.food.android;
 
-import org.springframework.http.converter.json.MappingJacksonHttpMessageConverter;
-import org.springframework.web.client.RestTemplate;
-
-import com.softserve.academy.food.android.model.DishModel;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
@@ -35,20 +30,4 @@ public class Profile extends Activity
 			}
 		});
 	}		
-	
-	// Выбор всех блюд	
-	public void postOrder()
-	{
-		DishModel dm1 = new DishModel();
-		DishModel dm2 = new DishModel();
-		DishModel dm3 = new DishModel();
-		dm1.setId(15);
-		dm2.setId(17);
-		dm3.setId(18);
-		int[] ar = new int[3];
-		String url = BASE_URL + "/order";
-		RestTemplate restTemplate = new RestTemplate();
-		restTemplate.getMessageConverters().add(new MappingJacksonHttpMessageConverter());
-		restTemplate.postForObject(url, ar, Integer[].class);
-	}
 }
