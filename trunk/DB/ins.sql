@@ -100,14 +100,13 @@ INSERT INTO `dishes` (`DISH_ID`,`CATEGORY_CAT_ID`,`DISH_NAME`,`DISH_PRICE`,`DISH
 INSERT INTO `dishes` (`DISH_ID`,`CATEGORY_CAT_ID`,`DISH_NAME`,`DISH_PRICE`,`DISH_PHOTO`,`DISH_DESCR`,`DISH_AVAIL`,`DISH_PREP_TIME`,`DISH_WEIGHT`) VALUES (99,9,'Салат \"Курица с сухариками\"',19,'C:\\images\\099.jpg','Салат \"Курица с сухариками\"',NULL,NULL,NULL);
 INSERT INTO `dishes` (`DISH_ID`,`CATEGORY_CAT_ID`,`DISH_NAME`,`DISH_PRICE`,`DISH_PHOTO`,`DISH_DESCR`,`DISH_AVAIL`,`DISH_PREP_TIME`,`DISH_WEIGHT`) VALUES (100,9,'Рулет из лаваша',23,'C:\\images\\100.jpg','Рулет из лаваша',NULL,NULL,NULL);
 
-INSERT INTO `categories` (`CAT_ID`,`CAT_NAME`) VALUES (1,'Салаты');
-INSERT INTO `categories` (`CAT_ID`,`CAT_NAME`) VALUES (2,'Суши');
-INSERT INTO `categories` (`CAT_ID`,`CAT_NAME`) VALUES (3,'Роллы');
-INSERT INTO `categories` (`CAT_ID`,`CAT_NAME`) VALUES (4,'Рыбные блюда');
-INSERT INTO `categories` (`CAT_ID`,`CAT_NAME`) VALUES (5,'Горячие закуски');
-INSERT INTO `categories` (`CAT_ID`,`CAT_NAME`) VALUES (6,'Первые блюда');
-INSERT INTO `categories` (`CAT_ID`,`CAT_NAME`) VALUES (7,'Напитки безалкогольные');
-INSERT INTO `categories` (`CAT_ID`,`CAT_NAME`) VALUES (8,'Коктейли');
-INSERT INTO `categories` (`CAT_ID`,`CAT_NAME`) VALUES (9,'Холодные закуски');
-INSERT INTO `categories` (`CAT_ID`,`CAT_NAME`) VALUES (10,'Десерты');
-INSERT INTO `categories` (`CAT_ID`,`CAT_NAME`) VALUES (11,'Другое');
+INSERT INTO `categories` (`CAT_ID`,`CAT_NAME`,`CAT_PHOTO`) VALUES (1,'Салаты','images/dishes/cat01/Category page_salads.jpg');
+INSERT INTO `categories` (`CAT_ID`,`CAT_NAME`,`CAT_PHOTO`) VALUES (2,'Суши','/images/dishes/cat02/Category page_sushi.jpg');
+INSERT INTO `categories` (`CAT_ID`,`CAT_NAME`,`CAT_PHOTO`) VALUES (3,'Роллы','/images/dishes/cat03/Category page_rolls.jpg');
+INSERT INTO `categories` (`CAT_ID`,`CAT_NAME`,`CAT_PHOTO`) VALUES (4,'Рыбные блюда','/images/dishes/cat04/Category page_fishdish.jpg');
+INSERT INTO `categories` (`CAT_ID`,`CAT_NAME`,`CAT_PHOTO`) VALUES (5,'Горячие закуски','/images/dishes/cat05/Category page_Hot appetizers.jpg');
+INSERT INTO `categories` (`CAT_ID`,`CAT_NAME`,`CAT_PHOTO`) VALUES (6,'Первые блюда','/images/dishes/cat06/Category page_First course.jpg');
+INSERT INTO `categories` (`CAT_ID`,`CAT_NAME`,`CAT_PHOTO`) VALUES (7,'Напитки безалкогольные','/images/dishes/cat07/Category page_Non alcohol drinks.jpg');
+INSERT INTO `categories` (`CAT_ID`,`CAT_NAME`,`CAT_PHOTO`) VALUES (8,'Коктейли','/images/dishes/cat08/Category page_Coctails.jpg');
+INSERT INTO `categories` (`CAT_ID`,`CAT_NAME`,`CAT_PHOTO`) VALUES (9,'Холодные закуски','/images/dishes/cat09/Category page_Cold.jpg');
+INSERT INTO `categories` (`CAT_ID`,`CAT_NAME`,`CAT_PHOTO`) VALUES (10,'Десерты','/images/dishes/cat10/Category page_Deserts.jpg');
