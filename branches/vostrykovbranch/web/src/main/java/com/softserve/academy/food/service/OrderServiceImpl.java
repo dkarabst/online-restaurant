@@ -4,8 +4,8 @@ import com.softserve.academy.food.dao.DishDao;
 import com.softserve.academy.food.dao.OrderDao;
 import com.softserve.academy.food.dao.UserDao;
 import com.softserve.academy.food.entity.Dish;
-import com.softserve.academy.food.entity.OrderContents;
-import com.softserve.academy.food.entity.OrderInfo;
+import com.softserve.academy.food.entity.OrderDetail;
+import com.softserve.academy.food.entity.Order;
 import com.softserve.academy.food.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -31,15 +31,15 @@ public class OrderServiceImpl implements OrderService {
 
     @Transactional
     public void add(Map<Integer, Integer> dishIdsToQuantities) {
-        OrderInfo order = new OrderInfo();
+        Order order = new Order();
         order.setUser(userDao.get(getLogin()));
         order.setDate(new Date());
 
-        List<OrderContents> ordercontents = new ArrayList<OrderContents>();
+        List<OrderDetail> ordercontents = new ArrayList<OrderDetail>();
 
         for (Map.Entry<Integer, Integer> item : dishIdsToQuantities.entrySet()) {
             Dish dish = dishDao.get(item.getKey());
-            ordercontents.add(new OrderContents(dish, item.getValue(), order));
+            ordercontents.add(new OrderDetail(dish, item.getValue(), order));
         }
 
         order.setSpec(ordercontents);

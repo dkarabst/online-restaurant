@@ -4,14 +4,14 @@ package com.softserve.academy.food.service;
 
 import java.util.List;
 
-import com.softserve.academy.food.entity.OrderInfo;
+import com.softserve.academy.food.entity.Order;
 
 public interface OrderHistoryService {
 
-    public OrderInfo get(int id);
+    public Order get(int id);
 
-    public List<OrderInfo> getAll();
+    public List<Order> getAll();
 
-    public List<OrderInfo> getUserHistory();
+    public List<Order> getUserHistory();
 
 }

@@ -8,7 +8,7 @@ import java.util.List;
 
 @Repository("userDao")
 public class UserDaoImpl extends DaoImpl implements UserDao {
-    public User get(int id) {
+    public User getById(int id) {
         return (User) sessionFactory.getCurrentSession().get(User.class, id);
     }
 
@@ -18,7 +18,7 @@ public class UserDaoImpl extends DaoImpl implements UserDao {
     }
 
     @SuppressWarnings("unchecked")
-    public User get(String name) {
+    public User getByName(String name) {
         List<User> list = sessionFactory.getCurrentSession().createQuery("from User where USER_NAME = '" + name + "'").list();
 
         if (list.isEmpty()) {
@@ -40,5 +40,7 @@ public class UserDaoImpl extends DaoImpl implements UserDao {
             sessionFactory.getCurrentSession().delete(object);
         }
     }
+
+
 
 }

@@ -19,7 +19,7 @@ public class CategoryServiceImpl implements CategoryService {
     public ArrayList<Category> getAll() {
         ArrayList<Category> models = new ArrayList<Category>();
         for (Category m : categoryDao.getAll()) {
-            models.add(m.toModel());
+            models.add(m);
         }
         return models;
     }
@@ -27,14 +27,15 @@ public class CategoryServiceImpl implements CategoryService {
     @Transactional
     public Category get(int id) {
         if (categoryDao.get(id) != null) {
-            return categoryDao.get(id).toModel();
+            return categoryDao.get(id);
         }
-        return new CategoryModel();
+        return new Category();
     }
 
-    @Transactional
-    public void add(CategoryModel category) {
-        categoryDao.add(category.toEntity());
+
+	@Transactional
+    public void add(Category category) {
+        categoryDao.add(category);
     }
 
     @Transactional
@@ -42,11 +43,7 @@ public class CategoryServiceImpl implements CategoryService {
         categoryDao.delete(id);
     }
 
-	@Override
-	public void add(Category category) {
-		// TODO Auto-generated method stub
-		
-	}
+
 
 
 }

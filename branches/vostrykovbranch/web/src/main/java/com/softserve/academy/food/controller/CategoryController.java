@@ -1,6 +1,7 @@
 package com.softserve.academy.food.controller;
 
-import com.softserve.academy.food.model.CategoryModel;
+
+import com.softserve.academy.food.entity.Category;
 import com.softserve.academy.food.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,7 +20,7 @@ public class CategoryController {
     protected String categoryList(Model model) {
         ArrayList<String> names = new ArrayList<String>();
 
-        for (CategoryModel mod : categoryService.getAll()) {
+        for (Category mod : categoryService.getAll()) {
             names.add(mod.toString());
         }
         model.addAttribute("helloMessage", names);
@@ -32,7 +33,7 @@ public class CategoryController {
     }
 
     @RequestMapping(value = "/category/add", method = RequestMethod.POST)
-    public String added(@ModelAttribute("categoryModel") CategoryModel categoryModel, Model model) {
+    public String added(@ModelAttribute("categoryModel") Category categoryModel, Model model) {
         categoryService.add(categoryModel);
         return "redirect:../category";
     }
@@ -51,7 +52,7 @@ public class CategoryController {
     @RequestMapping(value = "/category/{id}", method = RequestMethod.GET)
     protected String category(@PathVariable int id, Model model) {
         ArrayList<String> names = new ArrayList<String>();
-        CategoryModel mod = categoryService.get(id);
+        Category mod = categoryService.get(id);
         names.add(mod.toString());
         model.addAttribute("helloMessage", names);
         return "helloPage";

@@ -6,14 +6,11 @@ import java.util.List;
 
 public interface UserDao extends Dao {
 
-    public User get(int id);
-
     public List<User> getAll();
 
-    public User get(String name);
-
+    public User getByName(String name);
+    public User getById(int id);    
     public User add(User user);
-
     public void delete(int id);
 
 }

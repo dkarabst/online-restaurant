@@ -7,7 +7,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "ORDERINFO")
-public class OrderInfo {
+public class Order {
     @Id
     @Column(name = "oinfo_id")
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -24,9 +24,9 @@ public class OrderInfo {
     private Character status;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "orderInfo", cascade = CascadeType.ALL)
-    private List<OrderContents> spec = new ArrayList<OrderContents>();
+    private List<OrderDetail> spec = new ArrayList<OrderDetail>();
 
-    public OrderInfo() {
+    public Order() {
     }
 
 
@@ -62,11 +62,11 @@ public class OrderInfo {
         this.status = status;
     }
 
-    public List<OrderContents> getSpec() {
+    public List<OrderDetail> getSpec() {
         return spec;
     }
 
-    public void setSpec(List<OrderContents> spec) {
+    public void setSpec(List<OrderDetail> spec) {
         this.spec = spec;
     }
 
@@ -89,7 +89,7 @@ public class OrderInfo {
             return false;
         if (getClass() != obj.getClass())
             return false;
-        OrderInfo other = (OrderInfo) obj;
+        Order other = (Order) obj;
         if (date == null) {
             if (other.date != null)
                 return false;

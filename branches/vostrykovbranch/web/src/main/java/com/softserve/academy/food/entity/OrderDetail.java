@@ -5,14 +5,14 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "ORDERSPEC")
-public class OrderContents {
+public class OrderDetail {
     @Id
     @Column(name = "ospec_id")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    private OrderInfo orderInfo;
+    private Order orderInfo;
 
     @ManyToOne(fetch = FetchType.LAZY)
     private Dish dish;
@@ -20,10 +20,10 @@ public class OrderContents {
     @Column(name = "OSPEC_QUANTITY")
     private Integer quantity;
 
-    public OrderContents() {
+    public OrderDetail() {
     }
 
-    public OrderContents(Dish dish, int quantity, OrderInfo orderInfo) {
+    public OrderDetail(Dish dish, int quantity, Order orderInfo) {
         this.dish = dish;
         this.quantity = quantity;
         this.orderInfo = orderInfo;
@@ -37,11 +37,11 @@ public class OrderContents {
         this.id = id;
     }
 
-    public OrderInfo getOrderInfo() {
+    public Order getOrderInfo() {
         return orderInfo;
     }
 
-    public void setOrderInfo(OrderInfo orderInfo) {
+    public void setOrderInfo(Order orderInfo) {
         this.orderInfo = orderInfo;
     }
 
@@ -82,7 +82,7 @@ public class OrderContents {
             return false;
         if (getClass() != obj.getClass())
             return false;
-        OrderContents other = (OrderContents) obj;
+        OrderDetail other = (OrderDetail) obj;
         if (dish == null) {
             if (other.dish != null)
                 return false;
