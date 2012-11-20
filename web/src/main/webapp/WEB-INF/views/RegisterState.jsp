@@ -13,7 +13,7 @@
 </head>
 <body>
 <P> You just register new user:  <span class="colortext">${user.name}</span> </P>
-  <button><img src="login.png" style="vertical-align: middle">Login</button>
+  <button><img src="/resources/login.png" style="vertical-align: middle">Login</button>
 </body>
 
 </html>
