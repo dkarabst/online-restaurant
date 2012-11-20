@@ -1,7 +1,7 @@
 package com.softserve.academy.food.dao.mock;
 
 import com.softserve.academy.food.dao.OrderDao;
-import com.softserve.academy.food.entity.OrderInfo;
+import com.softserve.academy.food.entity.Order;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
@@ -9,17 +9,17 @@ import java.util.List;
 
 @Repository("MockOrderDao")
 public class MockOrderDao implements OrderDao {
-    public List<OrderInfo> orders = new ArrayList<OrderInfo>();
+    public List<Order> orders = new ArrayList<Order>();
 
-    public OrderInfo get(int id) {
+    public Order get(int id) {
         return orders.get(id - 1);
     }
 
-    public List<OrderInfo> getAll() {
+    public List<Order> getAll() {
         return orders;
     }
 
-    public OrderInfo add(OrderInfo order) {
+    public Order add(Order order) {
         orders.add(order);
         order.setId(orders.size());
 
@@ -27,10 +27,10 @@ public class MockOrderDao implements OrderDao {
 
     }
 
-    public List<OrderInfo> getAll(String login) {
-        List<OrderInfo> orders = new ArrayList<OrderInfo>();
+    public List<Order> getAll(String login) {
+        List<Order> orders = new ArrayList<Order>();
 
-        for (OrderInfo order : this.orders) {
+        for (Order order : this.orders) {
             if (order.getUser().getName().equals(login)) {
                 orders.add(order);
             }

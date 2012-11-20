@@ -1,7 +1,7 @@
 package com.softserve.academy.food.service;
 
 import com.softserve.academy.food.dao.OrderDao;
-import com.softserve.academy.food.entity.OrderInfo;
+import com.softserve.academy.food.entity.Order;
 import com.softserve.academy.food.model.OrderModel;
 import com.softserve.academy.food.service.OrderHistoryService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +19,7 @@ public class OrderHistoryServiceImpl implements OrderHistoryService {
     @Transactional
     public List<OrderModel> get(String login) {
         ArrayList<OrderModel> models = new ArrayList<OrderModel>();
-        for (OrderInfo m : orderDao.getAll(login)) {
+        for (Order m : orderDao.getAll(login)) {
             models.add(m.toModel());
         }
         return models;

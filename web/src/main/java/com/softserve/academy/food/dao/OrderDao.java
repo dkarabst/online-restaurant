@@ -1,16 +1,16 @@
 package com.softserve.academy.food.dao;
 
-import com.softserve.academy.food.entity.OrderInfo;
+import com.softserve.academy.food.entity.Order;
 
 import java.util.List;
 
 public interface OrderDao {
-    public OrderInfo get(int id);
+    public Order get(int id);
 
-    public List<OrderInfo> getAll();
+    public List<Order> getAll();
 
-    public OrderInfo add(OrderInfo order);
+    public Order add(Order order);
 
-    public List<OrderInfo> getAll(String login);
+    public List<Order> getAll(String login);
 
 }

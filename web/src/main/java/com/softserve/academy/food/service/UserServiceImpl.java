@@ -26,12 +26,12 @@ public class UserServiceImpl implements UserService {
     }
 
     @Transactional
-    public Boolean add(UserCredentials user) {
+    public Boolean add(User user) {
         if (user != null) {
             SecurityMD5 code = new SecurityMD5();
             user.setPassword(code.getHash(user.getPassword()));
 
-            if (userDao.add(new User(user)).getId() != 0) {
+            if (userDao.add(user).getId() != 0) {
                 return true;
             }
         }
@@ -39,7 +39,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Transactional
-    public UserModel getUser(int id) {
+    public User getUser(int id) {
         return userDao.get(id).toModel();
     }
 
@@ -63,5 +63,7 @@ public class UserServiceImpl implements UserService {
     public void setUserDao(UserDao userDao) {
         this.userDao = userDao;
     }
+
+
 
 }
