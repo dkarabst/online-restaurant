@@ -2,7 +2,6 @@ package com.softserve.academy.food.controller;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,7 +31,7 @@ public class MenuController
 	@RequestMapping(value = "/dishes/all", method = RequestMethod.GET)
 	protected String getMenu(Model model)
 	{
-		Map<CategoryModel, List<DishModel>> map = new HashMap<CategoryModel, List<DishModel>>();
+		Map<CategoryModel, ArrayList<DishModel>> map = new HashMap<CategoryModel, ArrayList<DishModel>>();
 		for (CategoryModel c : categoryService.getAll())
 		{
 			map.put(c, dishService.getAllDishesForCategory(c));

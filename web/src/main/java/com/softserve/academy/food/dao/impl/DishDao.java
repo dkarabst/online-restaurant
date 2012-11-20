@@ -22,7 +22,7 @@ public class DishDao extends Dao implements IDishDao {
     @SuppressWarnings("unchecked")
     public ArrayList<Dish> getAll(Category category) {
         return (ArrayList<Dish>) getSession()
-                .createQuery("from Dish where CATEGORIES_cat_id = " + category.getId()).list();
+                .createQuery("from Dish where category_cat_id = " + category.getId()).list();
     }
 
     public Dish add(Dish dish) {
