@@ -9,6 +9,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
+import java.util.List;
+
+import javax.servlet.http.HttpSession;
 
 @Controller
 public class OrderController {
@@ -17,14 +20,15 @@ public class OrderController {
     private IOrderService orderService;
 
 //TODO
-//    @RequestMapping(value = "/order", method = RequestMethod.GET)
-//    public String add(Model model) {
-//        return "addOrder";
-//    }
+    @RequestMapping(value = "/order", method = RequestMethod.GET)
+    public String add(Model model) {
+        return "addOrder";
+    }
 
     @RequestMapping(value = "/order/add", method = RequestMethod.POST)
-    public String add(@RequestParam("name") String name, Model model) {
-        ArrayList<Integer> list = new ArrayList<Integer>();
+    public String add(@RequestParam("name") String name, Model model, HttpSession session) {
+    	
+        List<Integer> list = new ArrayList<Integer>();
         list.add(Integer.parseInt(name));
         //TODO
 //        orderService.add(1, list);

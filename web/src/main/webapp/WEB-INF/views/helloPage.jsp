@@ -1,15 +1,16 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="utf-8" session="true" %>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ page session="true" %>
 
 <!DOCTYPE HTML>
 <html>
 <head>
-	<link href="css/style.css" rel="stylesheet">
-	<link href="css/bootstrap.css" rel="stylesheet">
-    <link href="css/bootstrap-responsive.css" rel="stylesheet">
-    <script type="text/javascript" src="js/bootstrap.js"></script>
+	<link href="/academy/resources/css/style.css" rel="stylesheet" type="text/css">
+	<link href="/academy/resources/css/bootstrap.css" rel="stylesheet" type="text/css">
+    <link href="/academy/resources/css/bootstrap-responsive.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="/academy/resources/js/bootstrap.js"></script>
+        <script type="text/javascript" src="/academy/resources/js/jquery.js"></script>
 </head>
 <body>
 <div class="center">
@@ -24,16 +25,18 @@
 
 	<ul class="main_menu">
 		<li><a href="#"><div><p class="well">Home</p></div></a></li>
-		<li><a href="#"><div><p class="well">Order</p></div></a></li>
-		<li><a href="#"><div><p class="well">######</p></div></a></li>
+		<li><a href="order"><div><p class="well">Order</p></div></a></li>
+		<li><a href="category"><div><p class="well">Categories</p></div></a></li>
 		<li><a href="#"><div><p class="well">About</p></div></a></li>
+		<li><a href="userinfo.html"><div><p class="well">UserInfo</p></div></a></li>
+		<li><a href="/register"><div><p class="well">Register</p></div></a></li>
 	</ul>
 
 	<div class="categories">
-		<div ref="/dish/category/1" class="category"><div></div></div>
-		<div ref="/dish/category/2" class="category"><div></div></div>
-		<div ref="/dish/category/3" class="category"><div></div></div>
-		<div ref="/dish/category/4" class="category"><div></div></div>
+		<div ref="/academy/resources/images/vine.jpg" class="category"></div><div>Vine</div>
+		<div ref="/dish/category/2" class="category"></div><div></div>
+		<div ref="/dish/category/3" class="category"></div><div></div>
+		<div ref="/dish/category/4" class="category"></div><div></div>
 	</div>
 
 	<footer>
