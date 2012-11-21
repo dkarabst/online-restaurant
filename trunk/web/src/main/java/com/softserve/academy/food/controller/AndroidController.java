@@ -20,7 +20,7 @@ import com.softserve.academy.food.model.UserModel;
 import com.softserve.academy.food.service.ICategoryService;
 import com.softserve.academy.food.service.IMenuService;
 import com.softserve.academy.food.service.IOrderService;
-import com.softserve.academy.food.service.impl.UserService;
+import com.softserve.academy.food.service.IUserService;
 
 @Controller
 @RequestMapping(value = "/android")
@@ -30,7 +30,7 @@ public class AndroidController
 	private ICategoryService	categoryService;
 
 	@Autowired
-	private UserService		userService;
+	private IUserService		userService;
 
 	@Autowired
 	private IOrderService		orderService;
