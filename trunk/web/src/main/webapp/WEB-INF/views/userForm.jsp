@@ -7,9 +7,9 @@
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
     <script type="text/javascript" src="http://ajax.microsoft.com/ajax/jquery.validate/1.8.1/jquery.validate.js"></script>
     
-	<link rel="stylesheet" href="/mvc/resources/base.css" type="text/css" media="screen"/>
-	<link rel="stylesheet" href="/mvc/resources/form.css" type="text/css" media="screen"/>
-    <script type="text/javascript" src="/mvc/resources/script.js" ></script>
+	<link rel="stylesheet" href="/academy/resources/base.css" type="text/css" media="screen"/>
+	<link rel="stylesheet" href="/academy/resources/form.css" type="text/css" media="screen"/>
+    <script type="text/javascript" src="/academy/resources/script.js" ></script>
      
 		<title>Registration Page</title>
 	</head>

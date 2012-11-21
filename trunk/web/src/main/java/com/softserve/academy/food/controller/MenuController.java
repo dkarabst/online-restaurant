@@ -29,7 +29,7 @@ public class MenuController
 	// returning map of CategoryModel - List<DishModel>
 	// as TODO was
 	@RequestMapping(value = "/dishes/all", method = RequestMethod.GET)
-	protected String getMenu(Model model)
+	protected Model getMenu(Model model)
 	{
 		Map<CategoryModel, ArrayList<DishModel>> map = new HashMap<CategoryModel, ArrayList<DishModel>>();
 		for (CategoryModel c : categoryService.getAll())
@@ -37,7 +37,7 @@ public class MenuController
 			map.put(c, dishService.getAllDishesForCategory(c));
 		}
 		model.addAttribute("helloMessage", map);
-		return "helloPage";
+		return model;
 	}
 
 	@RequestMapping(value = "/dishes/{id}", method = RequestMethod.GET)
