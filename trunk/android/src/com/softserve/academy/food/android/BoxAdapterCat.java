@@ -23,6 +23,7 @@ public class BoxAdapterCat extends BaseAdapter
 	Context						ctx;
 	LayoutInflater				lInflater;
 	ArrayList<CategoryModel>	allCategories;
+	String						catURL	= "http://192.168.1.3:8080/academy/resources/images/dishes/cat";
 
 	BoxAdapterCat(Context context)
 	{
@@ -72,8 +73,18 @@ public class BoxAdapterCat extends BaseAdapter
 		try
 		{
 			new Request();
-			Bitmap bitmap = BitmapFactory.decodeStream((InputStream) new URL(
-					Request.BASE_URL + "Mock").getContent());
+			Bitmap bitmap;
+			if (categoryModel.getId() < 10)
+			{
+				bitmap = BitmapFactory.decodeStream((InputStream) new URL(
+						catURL + "0" + categoryModel.getId() + "/Category.jpg")
+						.getContent());
+			} else
+			{
+				bitmap = BitmapFactory.decodeStream((InputStream) new URL(
+						catURL + categoryModel.getId() + "/Category.jpg")
+						.getContent());
+			}
 			ivImage.setImageBitmap(bitmap);
 		} catch (MalformedURLException e)
 		{
