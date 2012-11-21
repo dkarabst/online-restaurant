@@ -6,37 +6,52 @@
 
     <Button
         android:id="@+id/rmenu"
+        style="@style/ThemeButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="4dp"
         android:text="Restauraunt menu" >
+
     </Button>
 
     <Button
         android:id="@+id/user_history"
+        style="@style/ThemeButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="4dp"
         android:text="User History" >
+
     </Button>
 
     <Button
         android:id="@+id/profile"
+        style="@style/ThemeButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="4dp"
         android:text="Profile" >
+
     </Button>
 
     <Button
         android:id="@+id/logreg"
+        style="@style/ThemeButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="4dp"
         android:text="Login/Register" >
+
     </Button>
 
     <Button
         android:id="@+id/about_us"
+        style="@style/ThemeButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="4dp"
         android:text="About us" >
+
     </Button>
 
 </LinearLayout>

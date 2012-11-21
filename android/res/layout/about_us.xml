@@ -12,13 +12,16 @@
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
         android:text="@string/tvAboutUs" />
+
 	<Button
-        android:id="@+id/button_back"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
-        android:textSize="20dp"
-        android:textStyle="italic"
-        android:text="@string/back"/>
+	    android:id="@+id/button_back"
+	    style="@style/ThemeButton"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_marginLeft="30dp"
+	    android:layout_marginRight="30dp"
+	    android:text="@string/back"
+	    android:textSize="20dp"
+	    android:textStyle="italic" />
+
 </LinearLayout>

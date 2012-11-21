@@ -73,19 +73,20 @@ public class BoxAdapterCat extends BaseAdapter
 		try
 		{
 			new Request();
-			Bitmap bitmap;
+			
 			if (categoryModel.getId() < 10)
 			{
-				bitmap = BitmapFactory.decodeStream((InputStream) new URL(
+				Bitmap	bitmap = BitmapFactory.decodeStream((InputStream) new URL(
 						catURL + "0" + categoryModel.getId() + "/Category.jpg")
 						.getContent());
+				ivImage.setImageBitmap(bitmap);
 			} else
 			{
-				bitmap = BitmapFactory.decodeStream((InputStream) new URL(
+				Bitmap bitmap = BitmapFactory.decodeStream((InputStream) new URL(
 						catURL + categoryModel.getId() + "/Category.jpg")
 						.getContent());
+				ivImage.setImageBitmap(bitmap);
 			}
-			ivImage.setImageBitmap(bitmap);
 		} catch (MalformedURLException e)
 		{
 			e.printStackTrace();

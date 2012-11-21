@@ -86,26 +86,36 @@
 		        android:layout_width="match_parent"
 		        android:layout_height="0dip"
 		        android:layout_weight="0.24" >
+
 		        <TableRow
 		            android:id="@+id/tableRow1"
 		            android:layout_width="wrap_content"
-		            android:layout_height="wrap_content" >
+		            android:layout_height="wrap_content"
+		            android:layout_weight="1" >
 
 		            <Button
 		                android:id="@+id/button_back"
-		                android:layout_width="124dp"
+		                style="@style/ThemeButton"
+		                android:layout_width="wrap_content"
 		                android:layout_height="wrap_content"
+		                android:layout_marginLeft="2dp"
+		                android:layout_marginRight="2dp"
 		                android:layout_marginTop="10dip"
-		                android:textSize="16dip"
-		                android:text="@string/btMainMenu" />
+		                android:layout_weight="1"
+		                android:text="@string/btMainMenu"
+		                android:textSize="16dip" />
 
 		            <Button
 		                android:id="@+id/btnLogin"
-		                android:layout_width="124dp"
+		                style="@style/ThemeButton"
+		                android:layout_width="wrap_content"
 		                android:layout_height="wrap_content"
+		                android:layout_marginLeft="2dp"
+		                android:layout_marginRight="2dp"
 		                android:layout_marginTop="10dip"
-		                android:textSize="16dip"
-		                android:text="@string/btLogin" />
+		                android:layout_weight="1"
+		                android:text="@string/btLogin"
+		                android:textSize="16dip" />
 
 		        </TableRow>
 
