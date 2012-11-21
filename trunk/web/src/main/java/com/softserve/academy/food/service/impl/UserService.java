@@ -43,8 +43,8 @@ public class UserService implements IUserService {
     }
 
     @Transactional
-    public User getUser(String name) {
-        return userDao.get(name);
+    public UserModel getUser(String name) {
+        return userDao.get(name).toModel();
     }
 
     @Transactional
