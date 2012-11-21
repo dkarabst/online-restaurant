@@ -126,7 +126,7 @@ public class BoxAdapterDish extends BaseAdapter
 														// меняем данные товара
 														// (в корзине или нет)
 														getDishModel((Integer) buttonView
-																.getTag()).box = isChecked;
+																.getTag()).setBox(isChecked);
 													}
 												};
 }

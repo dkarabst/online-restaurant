@@ -1,63 +1,53 @@
 package com.softserve.academy.food.android;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 import org.springframework.http.converter.json.MappingJacksonHttpMessageConverter;
 import org.springframework.web.client.RestTemplate;
 
 import android.os.StrictMode;
 
+import com.softserve.academy.food.android.model.AndroidMapModel;
 import com.softserve.academy.food.android.model.CategoryModel;
 import com.softserve.academy.food.android.model.DishModel;
 
 public class Request
 {
-	final static String	BASE_URL	= "http://10.0.2.2:8080/academy/android";
-	public static Map<CategoryModel, ArrayList<DishModel>> map;
-	public static ArrayList<CategoryModel> acm;
-	
+	final static String				BASE_URL	= "http://192.168.1.3:8080/academy/android";
+	public static AndroidMapModel	model;
+
 	Request()
 	{
 		StrictMode.enableDefaults();
 	}
 
-	public static Map<CategoryModel, ArrayList<DishModel>> getMap()
+	public static AndroidMapModel getModel()
 	{
-		return map;
+		return model;
 	}
 
-
-
-	public static void setMap(Map<CategoryModel, ArrayList<DishModel>> map)
+	public static void setModel(AndroidMapModel model)
 	{
-		Request.map = map;
+		Request.model = model;
 	}
 
-
-
-	public static ArrayList<CategoryModel> getAcm()
+	public static ArrayList<CategoryModel> getCategoryList()
 	{
-		return acm;
+		return new ArrayList<CategoryModel>(model.getCategoryList().values());
 	}
 
-
-
-	public static void setAcm(ArrayList<CategoryModel> acm)
+	public static ArrayList<DishModel> getDishListBiId(int id)
 	{
-		Request.acm = acm;
+		return model.getDishesList().get(id);
 	}
 
 	// Выбор блюда по категории
-	@SuppressWarnings("unchecked")
-	public static Map<CategoryModel, ArrayList<DishModel>> getDishesByCatId()
+	public static void getDishesByCatId()
 	{
 		String url = BASE_URL + "/dishesByCategory";
 		RestTemplate restTemplate = new RestTemplate();
 		restTemplate.getMessageConverters().add(
 				new MappingJacksonHttpMessageConverter());
-		return (HashMap<CategoryModel, ArrayList<DishModel>>) restTemplate
-				.getForObject(url, HashMap.class);
+		setModel(restTemplate.getForObject(url, AndroidMapModel.class));
 	}
 }

@@ -1,7 +1,5 @@
 package com.softserve.academy.food.android;
 
-import java.util.ArrayList;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
@@ -12,8 +10,6 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.Toast;
-
-import com.softserve.academy.food.android.model.CategoryModel;
 public class MainActivity extends Activity implements OnClickListener
 {
 	private LinearLayout linearLayout;
@@ -38,13 +34,9 @@ public class MainActivity extends Activity implements OnClickListener
 		linearLayout = (LinearLayout)findViewById(R.id.linlayout);
         linearLayout.setBackgroundColor(Color.rgb(160, 200, 240));
         
-        if(Request.map == null )
+        if(Request.model == null )
         {
-        	Request.setMap(Request.getDishesByCatId());
-        }
-        if (Request.acm == null)
-        {
-        	Request.setAcm(new ArrayList<CategoryModel>(Request.map.keySet()));
+        	Request.getDishesByCatId();
         }
 	}
 	
@@ -52,7 +44,10 @@ public class MainActivity extends Activity implements OnClickListener
 	protected void onStart()
 	{
 		super.onStart();
-		Toast.makeText(this, Request.acm.toString(),Toast.LENGTH_LONG).show();
+		if(Request.model != null )
+        {
+		Toast.makeText(this, Request.model.getCategoryList().toString(),Toast.LENGTH_LONG).show();
+        }
 	}
 	
 	public void onClick(View v)

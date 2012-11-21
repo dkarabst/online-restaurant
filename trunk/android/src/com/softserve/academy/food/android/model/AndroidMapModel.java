@@ -1,4 +1,4 @@
-package com.softserve.academy.food.model;
+package com.softserve.academy.food.android.model;
 
 import java.util.ArrayList;
 import java.util.SortedMap;
