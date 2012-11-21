@@ -16,9 +16,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.softserve.academy.food.model.AndroidMapModel;
 import com.softserve.academy.food.model.CategoryModel;
 import com.softserve.academy.food.model.DishModel;
+import com.softserve.academy.food.model.UserModel;
 import com.softserve.academy.food.service.ICategoryService;
 import com.softserve.academy.food.service.IMenuService;
 import com.softserve.academy.food.service.IOrderService;
+import com.softserve.academy.food.service.impl.UserService;
 
 @Controller
 @RequestMapping(value = "/android")
@@ -28,22 +30,13 @@ public class AndroidController
 	private ICategoryService	categoryService;
 
 	@Autowired
-	private IMenuService		menuService;
+	private UserService		userService;
 
 	@Autowired
 	private IOrderService		orderService;
 
 	@Autowired
 	private IMenuService		dishService;
-
-	// all category in list
-	@ResponseBody
-	@RequestMapping(value = "/cats", method = RequestMethod.GET)
-	public ArrayList<CategoryModel> getAllCategories()
-	{
-		ArrayList<CategoryModel> allCategories = categoryService.getAll();
-		return allCategories;
-	}
 
 	@ResponseBody
 	@RequestMapping(value = "/order", method = RequestMethod.POST)
@@ -58,6 +51,13 @@ public class AndroidController
 			result = "fail";
 		}
 		return result;
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/userInfo", method = RequestMethod.POST)
+	public UserModel makeOrder(@PathVariable String name)
+	{
+		return userService.getUser(name);
 	}
 
 	@ResponseBody
@@ -75,45 +75,6 @@ public class AndroidController
 		model.setCategoryList(categoryList);
 		model.setDishesList(dishesList);
 		return model;
-	}
-
-	// dont know what 4 ?
-	// ctegory by id
-	@ResponseBody
-	@RequestMapping(value = "/cat/{id}", method = RequestMethod.GET)
-	public CategoryModel getCategoryById(@PathVariable int id)
-	{
-		CategoryModel category = categoryService.get(id);
-		return category;
-	}
-
-	// all dishes
-	@ResponseBody
-	@RequestMapping(value = "/dishes", method = RequestMethod.GET)
-	public ArrayList<DishModel> getAllDishes()
-	{
-		ArrayList<DishModel> allDishes = menuService.getAllDishes();
-		return allDishes;
-	}
-
-	// dish by id
-	@ResponseBody
-	@RequestMapping(value = "/dish/{id}", method = RequestMethod.GET)
-	public DishModel getDishById(@PathVariable int id)
-	{
-		DishModel dish = menuService.getDish(id);
-		return dish;
-	}
-
-	// dishes by ctegory
-	@ResponseBody
-	@RequestMapping(value = "/dish/category/{id}", method = RequestMethod.GET)
-	public ArrayList<DishModel> getAllDishesByCategory(@PathVariable int id)
-	{
-		CategoryModel category = categoryService.get(id);
-		ArrayList<DishModel> allDishesByCategory = menuService
-				.getAllDishesForCategory(category);
-		return allDishesByCategory;
 	}
 
 }
