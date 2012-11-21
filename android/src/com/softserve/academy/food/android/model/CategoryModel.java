@@ -4,8 +4,6 @@ public class CategoryModel
 {
 	private int id;
 	private String name;
-	private String photo;
-	public boolean box;
 
 	public CategoryModel()
 	{}
@@ -16,13 +14,6 @@ public class CategoryModel
 		this.name = name;
 	}
 
-	public CategoryModel(int id, String name, String photo, boolean box)
-	{
-		this.id = id;
-		this.name = name;
-		this.photo = photo;
-		this.box = box;
-	}
 
 	public int getId()
 	{
@@ -50,24 +41,5 @@ public class CategoryModel
 		return "Категория - " + name;
 	}
 
-	public String getPhoto()
-	{
-		return photo;
-	}
-
-	public void setPhoto(String photo)
-	{
-		this.photo = photo;
-	}
-
-	public boolean isBox()
-	{
-		return box;
-	}
-
-	public void setBox(boolean box)
-	{
-		this.box = box;
-	}
 
 }

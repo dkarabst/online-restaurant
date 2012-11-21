@@ -18,7 +18,6 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.softserve.academy.food.android.model.CategoryModel;
 import com.softserve.academy.food.android.model.DishModel;
 
 public class Dishes extends Activity implements OnClickListener
@@ -35,10 +34,9 @@ public class Dishes extends Activity implements OnClickListener
 
 		Intent intent = getIntent();
 		int id = intent.getIntExtra(Categories.MSG, 0);
-		CategoryModel cm = Request.getAcm().get(id);
 
 		// создаем адаптер
-		boxAdapter = new BoxAdapterDish(this, Request.getMap().get(cm));
+		boxAdapter = new BoxAdapterDish(this, Request.getDishListBiId(id));
 
 		// настраиваем список
 		lvMain = (ListView) findViewById(R.id.lvMain);

@@ -22,7 +22,7 @@ public class Categories extends Activity implements OnItemClickListener
 		StrictMode.enableDefaults();
 		
 		// создаем адаптер
-		boxAdapterCats = new BoxAdapterCat(this,Request.getAcm());
+		boxAdapterCats = new BoxAdapterCat(this);
 
 		// настраиваем список
 		ListView lvMain1 = (ListView) findViewById(R.id.lvMain1);
@@ -45,7 +45,7 @@ public class Categories extends Activity implements OnItemClickListener
 	public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3)
 	{
 		Intent intent = new Intent(Categories.this, Dishes.class);
-		intent.putExtra("category", arg2);
+		intent.putExtra("category", arg2+1);
 		startActivity(intent);
 	}
 }

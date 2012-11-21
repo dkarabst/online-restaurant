@@ -24,10 +24,10 @@ public class BoxAdapterCat extends BaseAdapter
 	LayoutInflater				lInflater;
 	ArrayList<CategoryModel>	allCategories;
 
-	BoxAdapterCat(Context context, ArrayList<CategoryModel> products)
+	BoxAdapterCat(Context context)
 	{
 		ctx = context;
-		allCategories = products;
+		allCategories = Request.getCategoryList();
 		lInflater = (LayoutInflater) ctx
 				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 	}
@@ -73,7 +73,7 @@ public class BoxAdapterCat extends BaseAdapter
 		{
 			new Request();
 			Bitmap bitmap = BitmapFactory.decodeStream((InputStream) new URL(
-					Request.BASE_URL + categoryModel.getPhoto()).getContent());
+					Request.BASE_URL + "Mock").getContent());
 			ivImage.setImageBitmap(bitmap);
 		} catch (MalformedURLException e)
 		{

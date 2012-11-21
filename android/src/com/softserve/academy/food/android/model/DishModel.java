@@ -2,16 +2,16 @@ package com.softserve.academy.food.android.model;
 
 public class DishModel
 {
-	private int			id;
-	private int			category_id;
-	private String		name;
-	private Integer		price;
-	private String		photo;
-	private String		descr;
-	private Character	avail;
-	private Integer		prepTime;
-	private String		weight;
-	public boolean box;
+	private int				id;
+	private CategoryModel	category;
+	private String			name;
+	private int				price;
+	private String			photo;
+	private String			descr;
+	private Character		avail;
+	private int				prepTime;
+	private int				weight;
+	private boolean			box;
 
 	public DishModel()
 	{
@@ -20,19 +20,19 @@ public class DishModel
 	@Override
 	public String toString()
 	{
-		return "Id = " + id + "; category_id = " + category_id + "; "
+		return "Id = " + id + "; category_id = " + category.getId() + "; "
 				+ "Name = " + name + "; Price = " + price + "; Photo = "
 				+ photo + "; Description = " + descr + "; Availuable = "
 				+ avail + "; Prepare Time = " + prepTime + "; Weight = "
 				+ weight;
 	}
 
-	public DishModel(int id, int category, String name, Integer price,
-			String photo, String descr, Character avail, Integer prepTime,
-			String weight, boolean box)
+	public DishModel(int id, CategoryModel category, String name, int price,
+			String photo, String descr, Character avail, int prepTime,
+			int weight)
 	{
 		this.id = id;
-		this.category_id = category;
+		this.category = category;
 		this.name = name;
 		this.price = price;
 		this.photo = photo;
@@ -40,7 +40,6 @@ public class DishModel
 		this.avail = avail;
 		this.prepTime = prepTime;
 		this.weight = weight;
-		this.box = box;
 	}
 
 	public int getId()
@@ -53,14 +52,14 @@ public class DishModel
 		this.id = id;
 	}
 
-	public int getCategory()
+	public CategoryModel getCategory()
 	{
-		return category_id;
+		return category;
 	}
 
-	public void setCategory(int category)
+	public void setCategory(CategoryModel category)
 	{
-		this.category_id = category;
+		this.category = category;
 	}
 
 	public String getName()
@@ -73,12 +72,12 @@ public class DishModel
 		this.name = name;
 	}
 
-	public Integer getPrice()
+	public int getPrice()
 	{
 		return price;
 	}
 
-	public void setPrice(Integer price)
+	public void setPrice(int price)
 	{
 		this.price = price;
 	}
@@ -113,25 +112,26 @@ public class DishModel
 		this.avail = avail;
 	}
 
-	public Integer getPrepTime()
+	public int getPrepTime()
 	{
 		return prepTime;
 	}
 
-	public void setPrepTime(Integer prepTime)
+	public void setPrepTime(int prepTime)
 	{
 		this.prepTime = prepTime;
 	}
 
-	public String getWeight()
+	public int getWeight()
 	{
 		return weight;
 	}
 
-	public void setWeight(String weight)
+	public void setWeight(int weight)
 	{
 		this.weight = weight;
 	}
+
 	public boolean isBox()
 	{
 		return box;
@@ -141,4 +141,5 @@ public class DishModel
 	{
 		this.box = box;
 	}
+
 }
