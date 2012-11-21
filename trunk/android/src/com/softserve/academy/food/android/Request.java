@@ -1,6 +1,7 @@
 package com.softserve.academy.food.android;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 import org.springframework.http.converter.json.MappingJacksonHttpMessageConverter;
 import org.springframework.web.client.RestTemplate;
@@ -39,6 +40,15 @@ public class Request
 	public static ArrayList<DishModel> getDishListBiId(int id)
 	{
 		return model.getDishesList().get(id);
+	}
+	
+	public static String postOrder(Map<Integer, Integer> map)
+	{
+		String url = BASE_URL + "/order";
+		RestTemplate restTemplate = new RestTemplate();
+		restTemplate.getMessageConverters().add(
+				new MappingJacksonHttpMessageConverter());
+		return restTemplate.postForObject(url, map, String.class);
 	}
 
 	// Выбор блюда по категории
