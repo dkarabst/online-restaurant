@@ -26,6 +26,7 @@ public class BoxAdapterDish extends BaseAdapter
 	Context					ctx;
 	LayoutInflater			lInflater;
 	ArrayList<DishModel>	dishByCategory;
+	String dishURL  = "http://192.168.1.3:8080/academy/";
 
 	BoxAdapterDish(Context context, ArrayList<DishModel> products)
 	{
@@ -77,7 +78,7 @@ public class BoxAdapterDish extends BaseAdapter
 		try
 		{
 			Bitmap bitmap = BitmapFactory.decodeStream((InputStream) new URL(
-					Request.BASE_URL + dishModel.getPhoto()).getContent());
+					dishURL + dishModel.getPhoto()).getContent());
 			ivImage.setImageBitmap(bitmap);
 		} catch (MalformedURLException e)
 		{
@@ -125,8 +126,10 @@ public class BoxAdapterDish extends BaseAdapter
 													{
 														// меняем данные товара
 														// (в корзине или нет)
-														getDishModel((Integer) buttonView
-																.getTag()).setBox(isChecked);
+														getDishModel(
+																(Integer) buttonView
+																		.getTag())
+																.setBox(isChecked);
 													}
 												};
 }
