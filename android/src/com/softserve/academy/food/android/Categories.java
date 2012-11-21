@@ -1,7 +1,5 @@
 package com.softserve.academy.food.android;
 
-import java.util.ArrayList;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,32 +10,19 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.ListView;
 
-import com.softserve.academy.food.android.model.CategoryModel;
-
 public class Categories extends Activity implements OnItemClickListener
 {
 	BoxAdapterCat				boxAdapterCats;
 	public static final String	MSG	= "category";
-	public static ArrayList<CategoryModel> acm;
 
 	public void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.categories);
-
 		StrictMode.enableDefaults();
 		
-		if (acm == null)
-		{
-			acm = new ArrayList<CategoryModel>();
-			for(CategoryModel cm :MainActivity.map.keySet())
-			{
-				acm.add(cm);
-			}
-		}
-
 		// создаем адаптер
-		boxAdapterCats = new BoxAdapterCat(this,acm);
+		boxAdapterCats = new BoxAdapterCat(this,Request.getAcm());
 
 		// настраиваем список
 		ListView lvMain1 = (ListView) findViewById(R.id.lvMain1);

@@ -35,10 +35,10 @@ public class Dishes extends Activity implements OnClickListener
 
 		Intent intent = getIntent();
 		int id = intent.getIntExtra(Categories.MSG, 0);
-		CategoryModel cm = Categories.acm.get(id);
+		CategoryModel cm = Request.getAcm().get(id);
 
 		// создаем адаптер
-		boxAdapter = new BoxAdapterDish(this, MainActivity.map.get(cm));
+		boxAdapter = new BoxAdapterDish(this, Request.getMap().get(cm));
 
 		// настраиваем список
 		lvMain = (ListView) findViewById(R.id.lvMain);
