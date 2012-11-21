@@ -4,9 +4,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.springframework.http.converter.json.MappingJacksonHttpMessageConverter;
-import org.springframework.web.client.RestTemplate;
-
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
@@ -76,11 +73,7 @@ public class Dishes extends Activity implements OnClickListener
 				// must be quantity instead of 1
 				map.put(p.getId(), 1);
 		}
-		String url = Request.BASE_URL + "/order";
-		RestTemplate restTemplate = new RestTemplate();
-		restTemplate.getMessageConverters().add(
-				new MappingJacksonHttpMessageConverter());
-		String result = restTemplate.postForObject(url, map, String.class);
+		String result = Request.postOrder(map);
 		Toast.makeText(this, result, Toast.LENGTH_SHORT).show();
 	}
 
