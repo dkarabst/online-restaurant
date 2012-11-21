@@ -10,6 +10,8 @@ public interface IUserService {
     public Boolean add(UserCredentials user);
 
     public UserModel getUser(int id);
+    
+    public UserModel getUser(String name);
 
     public void update(UserModel user);
 }
