@@ -8,15 +8,19 @@
 
     <Gallery
         android:id="@+id/gallery1"
+        style="@style/ThemeButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
         android:layout_marginBottom="20dp"
         android:background="@drawable/ic_logo01" />
 
     <Button
         android:id="@+id/rmenu"
+        style="@style/ThemeButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
         android:text="@string/rmenu"
@@ -27,46 +31,57 @@
 
     <Button
         android:id="@+id/user_history"
+        style="@style/ThemeButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
+        android:text="@string/user_history"
         android:textSize="20dp"
-        android:textStyle="italic"
-        android:text="@string/user_history" >
+        android:textStyle="italic" >
+
     </Button>
 
     <Button
         android:id="@+id/profile"
+        style="@style/ThemeButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
+        android:text="@string/profile"
         android:textSize="20dp"
-        android:textStyle="italic"
-        android:text="@string/profile" >
+        android:textStyle="italic" >
+
     </Button>
 
     <Button
         android:id="@+id/login"
+        style="@style/ThemeButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
+        android:text="@string/login"
         android:textSize="20dp"
-        android:textStyle="italic"
-        android:text="@string/login" >
+        android:textStyle="italic" >
+
     </Button>
 
     <Button
         android:id="@+id/about_us"
+        style="@style/ThemeButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
+        android:text="@string/about_us"
         android:textSize="20dp"
-        android:textStyle="italic"
-        android:text="@string/about_us" >
+        android:textStyle="italic" >
+
     </Button>
 
 </LinearLayout>

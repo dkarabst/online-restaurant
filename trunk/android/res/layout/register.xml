@@ -90,19 +90,24 @@
 		      android:singleLine="true" />
 
 		  <!-- Register Button -->		
-		  <Button android:id="@+id/btnRegister" 
-		  		android:layout_width="fill_parent"
-		  		android:layout_height="wrap_content"
-		  		android:layout_marginTop="10dip"
-		  		android:text="@string/btRegisterNewAccount"/>
+
+		  <Button
+		      android:id="@+id/btnRegister"
+		      style="@style/ThemeButton"
+		      android:layout_width="fill_parent"
+		      android:layout_height="wrap_content"
+		      android:layout_marginTop="10dip"
+		      android:text="@string/btRegisterNewAccount" />
+
 		  <!-- Link to Login Screen -->
 
 		  <Button
 		      android:id="@+id/button_back"
+		      style="@style/ThemeButton"
 		      android:layout_width="wrap_content"
 		      android:layout_height="wrap_content"
-		      android:textSize="16dip"
-		      android:text="@string/btMainMenu" />
+		      android:text="@string/btMainMenu"
+		      android:textSize="16dip" />
 
 		  <TextView
 		      android:id="@+id/link_to_login"
