@@ -1,0 +1,151 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html>
+
+	<!-- Place for new positions # 1 of 4 -->
+	<style>
+		#First_course_Div {
+		}
+		#Second_course_Div {
+			/* visibility: hidden; */
+			display: none;
+		}
+		#Salad_Div {
+			/* visibility: hidden; */
+			display: none;
+		}
+		#Drinks_Div {
+			/* visibility: hidden; */
+			display: none;
+		}
+	</style>
+
+<head>
+ <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+ <title>Dish Menu</title>
+ </head>
+ <body>
+
+
+<script language="JavaScript">
+// **  **  **  **  **  **  **  **  **  **  **  **  **  **  **  **  **  **  **  **  **  **  **  **  **
+// Library functions. Begin
+// trim functions from http://www.cyberguru.ru/web/html/javascript-samples-page20.html
+function trim(s) {  return rtrim(ltrim(s)); }
+function ltrim(s) { return s.replace(/^\s+/, ''); }
+function rtrim(s) { return s.replace(/\s+$/, ''); }
+
+	/* --  --  --  --  --  --  Sun Jan 02 2011 21:18:50 GMT+0200  --  --  --  --  --  --  -- */
+function is_empty( in_Field, in_l_return_undefined ) {
+	/* 	* Version : 1
+	* Language : 1. Java Script ( Mozila FireFox 3.6.12 ) 
+	* Purpose :   
+	* Examples of using : 
+
+	* Notes : 
+
+	* Modification History : 
+	2 do:
+		I neet to make this function working with objects.
+	*/
+
+	/*  .  .  .  .  .  .  .  .  . Declaration of Variables   .  .  .  .  .  .  .  .  .  .  . */
+	var c_type = "", c_message = "";
+	// works http://snippets.dzone.com/posts/show/2387
+	c_type =  typeof( in_l_return_undefined );
+	if ( c_type == "string" ) {
+		c_message = in_l_return_undefined;
+	} else {
+		in_l_return_undefined = in_l_return_undefined || false ;
+	}
+
+	/*  .  .  .  .  .  .  .  .  .  .  .  .  . The body  .  .  .  .  .   .  .  .  .  .  .  .  .  .  .  . */
+	c_type =  typeof( in_Field );
+	//alert( c_type );
+	//alert( "is empty" );
+	switch  ( c_type ) {
+		case "undefined":
+			if ( !c_message == "" ) alert( "UnDefined!: " + c_message );
+			return true;
+		case "boolean":
+			return in_Field;
+		case "number":
+			if ( in_Field == 0 && !c_message == "" ) alert( "Number: " + c_message );
+			return  ( in_Field == 0 ) ;
+		case "string":
+			// latter I shoul to thing about it (http://www.codetoad.com/javascript/isempty.asp)
+			// ||    (aTextField.value==null))
+			in_Field = trim( in_Field );
+   			if ( in_Field.length==0 ) {
+   				if ( c_message == "" ) return true;
+				alert( c_message );
+				alert( "Text: " + c_message );
+      				return true;
+   			}
+   			else { return false; } 			 
+		default:
+			//return ( in_l_return_undefined ) ? "undef" : true ;
+	}
+	return true;
+} // is_empty( in_Field, in_l_return_undefined )
+
+//<!-- Place for new positions # 2 of 4 -->
+// library
+function hideDivs()
+{	for(i=0; i<hideDivs.arguments.length; i++)
+		document.getElementById(hideDivs.arguments[i]).style.display = 'none';
+}
+
+// for this case:
+function selectDishButtonFunction_OnChange() {
+	id = document.getElementById("selectButton").options
+		[document.getElementById("selectButton").selectedIndex].text
+		+ "_Div";
+	hideDivs( 'First_course_Div', 'Second_course_Div', 'Salad_Div', 'Drinks_Div' );
+	document.getElementById(id).style.display = 'block';
+}
+
+
+// **  **  **  **  **  **  **  **  **  **  **  **  **  **  **  **  **  **  **  **  **  **  **  **  **
+// ==   ==   ==   ==   ==   ==   ==   ==   ==   ==   ==   ==   ==   ==   ==   ==   ==   ==   ==   ==   ==   ==
+
+
+</script>
+
+<!--                                  -->
+<!--         End Of Script part       -->  
+<!--                                  -->
+
+
+<h1>Dish Menu</h1>
+<form name="myForm">
+
+<!-- Place for new positions # 3 -->
+<select id="selectButton" onChange="selectDishButtonFunction_OnChange()">
+	<option>First_course</option>
+	<option>Second_course</option>
+	<option>Salad</option>
+	<option>Drinks</option>
+</select>
+
+
+<!-- Place for new positions # 4 of 4 -->
+<div id="First_course_Div">
+First course positions
+</div>
+<div id="Second_course_Div">
+Second course positions
+<br>Second course positions 2
+</div>
+<div id="Salad_Div">
+Salads
+</div>
+<div id="Drinks_Div">
+Drinks
+</div>
+
+</form>
+
+
+</body>
+</html>
