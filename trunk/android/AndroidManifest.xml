@@ -32,10 +32,9 @@
         <activity android:name="Profile"></activity>
         <activity android:name="LoginActivity"></activity>
         <activity android:name="AboutUs"></activity>
-        <activity android:name="com.softserve.academy.food.android.RegisterActivity"></activity>
-        <activity android:name="Categories"></activity>
+        <activity android:name="RegisterActivity"></activity>
         <activity android:name="CategoryList"></activity>
-        <activity android:name=".Dishes"></activity>
+        <activity android:name="Dishes"></activity>
     </application>
 
 </manifest>

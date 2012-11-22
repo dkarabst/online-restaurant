@@ -30,7 +30,7 @@ public class Dishes extends Activity implements OnClickListener
 		StrictMode.enableDefaults();
 
 		Intent intent = getIntent();
-		int id = intent.getIntExtra(Categories.MSG, 0);
+		int id = intent.getIntExtra(CategoryList.MSG, 0);
 
 		// создаем адаптер
 		boxAdapter = new BoxAdapterDish(this, Request.getDishListBiId(id));
@@ -44,7 +44,7 @@ public class Dishes extends Activity implements OnClickListener
 			public void onClick(View v)
 			{
 				Intent intent_button_back = new Intent(Dishes.this,
-						Categories.class);
+						CategoryList.class);
 				startActivity(intent_button_back);
 			}
 		});
