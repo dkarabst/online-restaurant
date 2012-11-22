@@ -37,6 +37,7 @@ public class MainActivity extends Activity implements OnClickListener
 
 		if (Request.model == null)
 		{
+			new Request();
 			new GetData().execute();
 		}
 	}
