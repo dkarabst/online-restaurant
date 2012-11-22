@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,28 +28,35 @@ public class MenuController
 	@Autowired
 	private ICategoryService	categoryService;
 
-	// returning map of CategoryModel - List<DishModel>
-	// as TODO was
-	@RequestMapping(value = "/dishes/all", method = RequestMethod.GET)
-	protected Model getMenu(Model model)
+	@RequestMapping(value = "/", method = RequestMethod.GET)
+	protected String viewMenu( Model model, HttpSession session )
 	{
-		Map<CategoryModel, ArrayList<DishModel>> map = new HashMap<CategoryModel, ArrayList<DishModel>>();
-		for (CategoryModel c : categoryService.getAll())
+		model.addAttribute( "listDishes", dishService.getAllDishes() );
+		model.addAttribute( "listCategory", categoryService.getAll() );
+		
+		if ( session.getAttribute("listDishes")!=null )
 		{
-			map.put(c, dishService.getAllDishesForCategory(c));
+			model.addAttribute("listDishes", (ArrayList<DishModel>)session.getAttribute("listDishes"));
 		}
-		model.addAttribute("helloMessage", map);
-		return model;
+		else
+		{
+			session.setAttribute( "listDishes", dishService.getAllDishes() );
+		}
+
+		return "menu";
+	}
+	
+	@RequestMapping(value = "/index", method = RequestMethod.GET)
+	protected String view( )
+	{
+		return "redirect:/";
 	}
 
 	@RequestMapping(value = "/dishes/{id}", method = RequestMethod.GET)
-	protected String getDish(@PathVariable int id, Model model)
+	protected String getDish(@PathVariable int id, Model model )
 	{
-		ArrayList<String> names = new ArrayList<String>();
-		DishModel mod = dishService.getDish(id);
-		names.add(mod.toString());
-		model.addAttribute("helloMessage", names);
-		return "helloPage";
+		model.addAttribute( "dish", dishService.getDish(id) );
+		return "dishesinfo";
 	}
 
 }

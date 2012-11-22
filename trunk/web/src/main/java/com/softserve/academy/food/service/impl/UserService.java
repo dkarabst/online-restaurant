@@ -7,6 +7,8 @@ import com.softserve.academy.food.model.UserModel;
 import com.softserve.academy.food.security.Coding;
 import com.softserve.academy.food.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -43,11 +45,6 @@ public class UserService implements IUserService {
     }
 
     @Transactional
-    public UserModel getUser(String name) {
-        return userDao.get(name).toModel();
-    }
-
-    @Transactional
     public void update(UserModel user) {
         if (user != null) {
             User oldUser = userDao.get(user.getId());
@@ -58,9 +55,27 @@ public class UserService implements IUserService {
             userDao.update(oldUser);
         }
     }
+    
+    @Transactional
+    public User getUser() {
+        return userDao.get( getLogin() );
+    }
+    
+    private String getLogin() {
+        String login = "guest";
 
-    public void setUserDao(IUserDao userDao) {
-        this.userDao = userDao;
+        try {
+            Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+            if (principal instanceof UserDetails) {
+                login = ((UserDetails) principal).getUsername();
+            } else {
+                login = principal.toString();
+            }
+        } catch (NullPointerException e) {
+
+        }
+        return login;
     }
 
 }

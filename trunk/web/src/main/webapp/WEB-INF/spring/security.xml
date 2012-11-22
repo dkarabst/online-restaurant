@@ -10,7 +10,7 @@
 						http://www.springframework.org/schema/security/spring-security-3.1.xsd">
 						
 	<http auto-config="true">
-	  <intercept-url pattern="/" access="ROLE_ANONYMOUS" />
+	  <intercept-url pattern="/" access="ROLE_ANONYMOUS, ROLE_USER, ROLE_ADMIN" />
 	  <anonymous username="guest" granted-authority="ROLE_ANONYMOUS" />
 	  <remember-me />
 	</http>
@@ -20,7 +20,7 @@
 	  <password-encoder hash="md5" />
 	  <jdbc-user-service data-source-ref="dataSource" 
 	  users-by-username-query="
-		      select USER_NAME, USER_PASSWORD, enabled 
+		      select USER_NAME, USER_PASSWORD, USER_ENABLE 
 		      from users where USER_NAME=?" 
  
 	 authorities-by-username-query="
