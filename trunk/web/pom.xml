@@ -116,6 +116,14 @@
 			<artifactId>jackson-core-asl</artifactId>
 			<version>1.9.9</version>
 		</dependency>
+		
+		<!--  Jsql Parser for Dima Project -->
+		<dependency>
+			<groupId>net.sf.jsqlparser</groupId>
+			<artifactId>jsqlparser</artifactId>
+			<version>0.7.0</version>
+		</dependency>
+		
             
 		<!-- AspectJ -->
 		<dependency>

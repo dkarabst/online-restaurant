@@ -20,8 +20,8 @@ import com.softserve.academy.food.service.ISqlQueryService;
 @Service("sqlService")
 public class SqlQueryService implements ISqlQueryService {
 	
-    @Autowired
-    private ISqlQueryDao sqlDao;
+   @Autowired  
+   private ISqlQueryDao sqlDao;
 	CCJSqlParserManager parserManager = new CCJSqlParserManager();
 	
 	 @Transactional

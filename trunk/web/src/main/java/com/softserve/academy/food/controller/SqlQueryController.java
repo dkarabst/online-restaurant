@@ -10,12 +10,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.softserve.academy.food.service.ISqlQueryService;
 import com.softserve.academy.food.service.impl.SqlQueryService;
 
 @Controller
 public class SqlQueryController {
 	 @Autowired
-	    private SqlQueryService sqlService;
+	    private ISqlQueryService sqlService;
 	    
 	    
 	    @RequestMapping("/sql")
