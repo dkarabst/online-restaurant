@@ -10,7 +10,7 @@ import com.softserve.academy.food.dao.ISqlQueryDao;
 import antlr.collections.List;
 
 @Repository("MocksqlDao")
-public class SqlQueryDao implements ISqlQueryDao{
+public class MockSqlQueryDao implements ISqlQueryDao{
 
 
 		public java.util.List<?> doScript(String script) {
