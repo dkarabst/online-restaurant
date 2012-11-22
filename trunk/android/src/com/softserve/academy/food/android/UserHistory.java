@@ -27,7 +27,7 @@ import android.widget.LinearLayout;
 public class UserHistory extends Activity implements OnClickListener
 {
 	Button button, button1, button_back;
-	String URL = "http://10.0.2.2:8777/au/echo";
+	String URL = "http://192.168.1.3:8080/au/echo";
 	EditText outputText, outputText1;
 	String line = "";
 
@@ -71,7 +71,7 @@ public class UserHistory extends Activity implements OnClickListener
 			{
 				try{
 				HttpClient client = new DefaultHttpClient();
-				HttpGet request = new HttpGet("http://10.0.2.2:8777/au/echo");
+				HttpGet request = new HttpGet(URL);
 				HttpResponse response = client.execute(request);
 				BufferedReader rd = new BufferedReader(
 						new InputStreamReader(response.getEntity().getContent()));
