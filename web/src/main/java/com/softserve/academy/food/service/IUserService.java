@@ -12,6 +12,8 @@ public interface IUserService {
 
     public UserModel getUser(int id);
     
+    public UserModel getUser(String name) ;
+    
     public User getUser();
 
     public void update(UserModel user);
