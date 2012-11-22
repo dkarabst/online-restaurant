@@ -13,6 +13,10 @@ public class UserModel
 				"Email :"+email+"\n"+
 				"Phone :"+phone;
 	}
+	
+	public UserModel()
+	{
+	}
 
 	public UserModel(int id, String email, String phone)
 	{
