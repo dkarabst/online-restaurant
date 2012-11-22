@@ -21,7 +21,6 @@ public class CategoryList extends Activity {
 
 		GridView gridview = (GridView) findViewById(R.id.gridView1);
 		gridview.setAdapter(new ImageAdapter(this));
-
 		gridview.setOnItemClickListener(gridviewOnItemClickListener);
 	}
 
