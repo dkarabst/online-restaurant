@@ -19,7 +19,7 @@ public class UserDao extends Dao implements IUserDao {
 
     @SuppressWarnings("unchecked")
     public User get(String name) {
-        List<User> list = getSession().createQuery("from User where USER_NAME = '" + name + "'").list();
+        List<User> list = getSession().createQuery("from User where name ='" + name +"'").list();
 
         if (list.isEmpty()) {
             return null;
