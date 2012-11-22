@@ -90,7 +90,7 @@
                             <h5>${dish.getName()} </h5>
                             <p class="p1">${dish.getDescr()}</p>
                             <p class="p2"><strong class="color-2">Price: ${dish.getPrice()}</strong></p>
-                            <a class="button-1" href="order/${dish.getId()}">В карзину</a>
+                            <a class="button-1" href="order/${dish.getId()}">В корзину</a>
                     </div>
          
                 <a href="../"><h3 class="prev-indent-bot">назад</h3></a>
