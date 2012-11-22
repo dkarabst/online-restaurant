@@ -17,7 +17,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.softserve.academy.food.android.model.CategoryModel;
-
+// unused
 public class BoxAdapterCat extends BaseAdapter
 {
 	Context						ctx;
@@ -72,8 +72,6 @@ public class BoxAdapterCat extends BaseAdapter
 
 		try
 		{
-			new Request();
-			
 			if (categoryModel.getId() < 10)
 			{
 				Bitmap	bitmap = BitmapFactory.decodeStream((InputStream) new URL(
