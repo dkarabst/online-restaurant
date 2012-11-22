@@ -46,6 +46,22 @@ public class OrderService implements IOrderService {
 
         orderDao.add(order);
     }
+    
+    @Transactional
+    public void addAndroid(Map<Integer, Integer> dishIdsToQuantities,String name) {
+        OrderInfo order = new OrderInfo();
+        order.setUser(userDao.get(name));
+        order.setDate(new Date());
+
+        List<OrderContents> ordercontents = new ArrayList<OrderContents>();
+
+        for (Map.Entry<Integer, Integer> item : dishIdsToQuantities.entrySet()) {
+            Dish dish = dishDao.get(item.getKey());
+            ordercontents.add(new OrderContents(dish, item.getValue(), order));
+        }
+        order.setSpec(ordercontents);
+        orderDao.add(order);
+    }
 
     private String getLogin() {
         String login = "guest";
