@@ -18,10 +18,11 @@ import com.softserve.academy.food.android.model.UserModel;
 @SuppressLint("UseSparseArrays")
 public class Request
 {
-	final static String							BASE_URL	= "http://192.168.1.3:8080/academy/android";
-	public static AndroidMapModel				model;
-	public static Map<Integer, Integer>			map;
+	final static String						BASE_URL	= "http://192.168.1.3:8080/academy/android";
+	public static AndroidMapModel			model;
+	public static Map<Integer, Integer>		map;
 	public static Map<DishModel, Integer>	modelMap;
+	public static UserModel					userModel;
 
 	Request()
 	{
@@ -32,26 +33,25 @@ public class Request
 			modelMap = new HashMap<DishModel, Integer>();
 		}
 	}
-	
+
 	public static String getModels()
 	{
-		String str="";
-		for(DishModel dm : modelMap.keySet())
+		String str = "";
+		for (DishModel dm : modelMap.keySet())
 		{
-			str+=dm.getName()+"\n";
+			str += dm.getName() + "\n";
 		}
 		return str;
 	}
-	
+
 	public static void prepareOrder()
 	{
-		for(DishModel dm : modelMap.keySet())
+		for (DishModel dm : modelMap.keySet())
 		{
 			map.put(dm.getId(), modelMap.get(dm));
 		}
 		modelMap.clear();
 	}
-	
 
 	public static AndroidMapModel getModel()
 	{
@@ -79,17 +79,18 @@ public class Request
 		RestTemplate restTemplate = new RestTemplate();
 		restTemplate.getMessageConverters().add(
 				new MappingJacksonHttpMessageConverter());
-		return restTemplate.postForObject(url, map, String.class);
+		Object[] obj = {map,userModel.getId()};
+		return restTemplate.postForObject(url, obj, String.class);
 	}
 
 	// tolko peredai emy parametr
-	public static UserModel getUserInfo(String name)
+	public static void getUserInfo(int id)
 	{
 		String url = BASE_URL + "/userInfo";
 		RestTemplate restTemplate = new RestTemplate();
 		restTemplate.getMessageConverters().add(
 				new MappingJacksonHttpMessageConverter());
-		return restTemplate.postForObject(url, name, UserModel.class);
+		userModel = restTemplate.postForObject(url, id, UserModel.class);
 	}
 
 	public static void getDishesByCatId()

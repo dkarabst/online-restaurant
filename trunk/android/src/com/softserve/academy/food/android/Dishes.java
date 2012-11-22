@@ -132,22 +132,29 @@ public class Dishes extends Activity implements OnClickListener
 	@SuppressLint("UseSparseArrays")
 	public void post()
 	{
-		Request.prepareOrder();
-		if (Request.map.size() != 0)
+		if (!((Role) getApplicationContext()).isGuest())
 		{
-			if (Request.postOrder() == "true")
+			Request.prepareOrder();
+			if (Request.map.size() != 0)
 			{
-				Toast.makeText(this, "We got your order", Toast.LENGTH_SHORT)
-						.show();
-				Request.map.clear();
+				if (Request.postOrder() == "true")
+				{
+					Toast.makeText(this, "We got your order",
+							Toast.LENGTH_SHORT).show();
+					Request.map.clear();
+				} else
+				{
+					Toast.makeText(this, "something wrong on server",
+							Toast.LENGTH_SHORT).show();
+				}
 			} else
 			{
-				Toast.makeText(this, "Please Login/Register",
-						Toast.LENGTH_SHORT).show();
+				Toast.makeText(this, "no items in basket", Toast.LENGTH_SHORT)
+						.show();
 			}
 		} else
 		{
-			Toast.makeText(this, "no items in basket", Toast.LENGTH_SHORT)
+			Toast.makeText(this, "Please Login/Register", Toast.LENGTH_SHORT)
 					.show();
 		}
 	}
