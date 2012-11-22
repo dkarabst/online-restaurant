@@ -9,6 +9,7 @@ import java.util.TreeMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -68,6 +69,13 @@ public class AndroidController
 	public UserModel getUser(@RequestBody Object obj)
 	{
 		return userService.getUser((Integer) obj);
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/user/{name}", method = RequestMethod.GET)
+	public UserModel getUser(@PathVariable String name)
+	{
+		return userService.getUser(name);
 	}
 
 	@ResponseBody
