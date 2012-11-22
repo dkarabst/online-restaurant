@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
@@ -46,7 +48,7 @@ public class Dishes extends Activity implements OnClickListener
 				startActivity(intent_button_back);
 			}
 		});
-		
+
 		Button button = (Button) findViewById(R.id.button3);
 		button.setOnClickListener(new View.OnClickListener()
 		{
@@ -55,50 +57,97 @@ public class Dishes extends Activity implements OnClickListener
 				post();
 			}
 		});
-		
-//		Button order = (Button) findViewById(R.id.button3);
-//		if ( ((Role)getApplicationContext()).isGuest() ) {
-//			order.setVisibility(View.INVISIBLE);
-//		} else {
-//			order.setVisibility(View.VISIBLE);			
-//		}
-		
+
 	}
 
 	// выводим информацию о корзине
 	public void showResult(View v)
 	{
-		String result = "Товары в корзине:";
+		String result = "Выбранные товары:";
 		for (DishModel p : boxAdapter.getBox())
 		{
 			if (p.isBox())
 			{
-				if (Request.map.containsKey(p.getId()))
-				{
-					Request.map.put(p.getId(),Request.map.get(p.getId())+1);
-				}
-				else
-				{
-					Request.map.put(p.getId(), 1);
-				}
 				result += "\n" + p.getName();
 			}
 		}
-		Toast.makeText(this, result, Toast.LENGTH_LONG).show();
+		if (result == "Выбранные товары:")
+		{
+			Toast.makeText(this, "nothing to add", Toast.LENGTH_LONG).show();
+		} else
+			showDishDialog(result);
+	}
+
+	public void addToBasket()
+	{
+		for (DishModel p : boxAdapter.getBox())
+		{
+			if (p.isBox())
+			{
+				if (Request.modelMap.containsKey(p))
+				{
+					Request.modelMap.remove(p);
+				} else
+				{
+					Request.modelMap.put(p, 1);
+				}
+			}
+		}
+	}
+
+	protected void showDishDialog(String text)
+	{
+		final AlertDialog alertDialog = new AlertDialog.Builder(this).create();
+
+		alertDialog.setTitle("Товары в корзине :");
+		alertDialog.setMessage(Request.getModels() + text
+				+ "\n Добавить в корзину?");
+
+		alertDialog.setButton(DialogInterface.BUTTON_POSITIVE, "yes",
+				new DialogInterface.OnClickListener()
+				{
+					@Override
+					public void onClick(DialogInterface dialog, int which)
+					{
+						Toast.makeText(findViewById(R.id.lvMain).getContext(),
+								"done", Toast.LENGTH_LONG).show();
+						Dishes.this.addToBasket();
+					}
+				});
+
+		alertDialog.setButton(DialogInterface.BUTTON_NEGATIVE, "no",
+				new DialogInterface.OnClickListener()
+				{
+					@Override
+					public void onClick(DialogInterface dialog, int which)
+					{
+						alertDialog.cancel();
+					}
+				});
+
+		alertDialog.show();
 	}
 
 	// post order
 	@SuppressLint("UseSparseArrays")
 	public void post()
 	{
-		if(Request.postOrder()== "true")
+		if (Request.map.size() != 0)
 		{
-			Toast.makeText(this, "We got your order", Toast.LENGTH_SHORT).show();
-			Request.map.clear();
-		}
-		else
+			if (Request.postOrder() == "true")
+			{
+				Toast.makeText(this, "We got your order", Toast.LENGTH_SHORT)
+						.show();
+				Request.map.clear();
+			} else
+			{
+				Toast.makeText(this, "Please Login/Register",
+						Toast.LENGTH_SHORT).show();
+			}
+		} else
 		{
-			Toast.makeText(this,"try to repeat your order", Toast.LENGTH_SHORT).show();
+			Toast.makeText(this, "no items in basket", Toast.LENGTH_SHORT)
+					.show();
 		}
 	}
 

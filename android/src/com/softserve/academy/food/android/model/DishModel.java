@@ -20,11 +20,7 @@ public class DishModel
 	@Override
 	public String toString()
 	{
-		return "Id = " + id + "; category_id = " + category.getId() + "; "
-				+ "Name = " + name + "; Price = " + price + "; Photo = "
-				+ photo + "; Description = " + descr + "; Availuable = "
-				+ avail + "; Prepare Time = " + prepTime + "; Weight = "
-				+ weight;
+		return name ;
 	}
 
 	public DishModel(int id, CategoryModel category, String name, int price,
