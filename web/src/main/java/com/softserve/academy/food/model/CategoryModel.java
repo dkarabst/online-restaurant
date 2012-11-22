@@ -1,8 +1,10 @@
 package com.softserve.academy.food.model;
 
+import java.io.Serializable;
+
 import com.softserve.academy.food.entity.Category;
 
-public class CategoryModel {
+public class CategoryModel implements Serializable {
     private int id;
     private String name;
 
