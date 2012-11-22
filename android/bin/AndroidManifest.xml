@@ -34,6 +34,7 @@
         <activity android:name="AboutUs"></activity>
         <activity android:name="com.softserve.academy.food.android.RegisterActivity"></activity>
         <activity android:name="Categories"></activity>
+        <activity android:name="CategoryList"></activity>
         <activity android:name=".Dishes"></activity>
     </application>
 
