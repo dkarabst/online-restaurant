@@ -48,9 +48,9 @@ public class OrderService implements IOrderService {
     }
     
     @Transactional
-    public void addAndroid(Map<Integer, Integer> dishIdsToQuantities,String name) {
+    public void addAndroid(Map<Integer, Integer> dishIdsToQuantities,int id) {
         OrderInfo order = new OrderInfo();
-        order.setUser(userDao.get(name));
+        order.setUser(userDao.get(id));
         order.setDate(new Date());
 
         List<OrderContents> ordercontents = new ArrayList<OrderContents>();
