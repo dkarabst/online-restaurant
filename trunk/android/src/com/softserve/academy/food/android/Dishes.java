@@ -132,6 +132,7 @@ public class Dishes extends Activity implements OnClickListener
 	@SuppressLint("UseSparseArrays")
 	public void post()
 	{
+		Request.prepareOrder();
 		if (Request.map.size() != 0)
 		{
 			if (Request.postOrder() == "true")

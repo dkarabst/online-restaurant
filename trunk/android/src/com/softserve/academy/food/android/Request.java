@@ -43,7 +43,7 @@ public class Request
 		return str;
 	}
 	
-	private static void prepareOrder()
+	public static void prepareOrder()
 	{
 		for(DishModel dm : modelMap.keySet())
 		{
@@ -76,7 +76,6 @@ public class Request
 	public static String postOrder()
 	{
 		String url = BASE_URL + "/order";
-		prepareOrder();
 		RestTemplate restTemplate = new RestTemplate();
 		restTemplate.getMessageConverters().add(
 				new MappingJacksonHttpMessageConverter());
