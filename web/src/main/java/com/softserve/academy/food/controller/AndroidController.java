@@ -7,7 +7,6 @@ import java.util.TreeMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -42,20 +41,21 @@ public class AndroidController
 	@RequestMapping(value = "/order", method = RequestMethod.POST)
 	public String makeOrder(@RequestBody Map<Integer, Integer> map)
 	{
-		String result = "Success";
+		String result = "true";
+		System.out.println(map);
 		try
 		{
 			orderService.add(map);
 		} catch (Exception e)
 		{
-			result = "fail";
+			result = "false";
 		}
 		return result;
 	}
 	
 	@ResponseBody
 	@RequestMapping(value = "/userInfo", method = RequestMethod.POST)
-	public UserModel makeOrder(@PathVariable String name)
+	public UserModel makeOrder(@RequestBody String name)
 	{
 		return userService.getUser(name);
 	}
