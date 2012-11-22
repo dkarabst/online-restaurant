@@ -10,7 +10,7 @@ public class UserModel
 	public String toString()
 	{
 		return "Profile \n \n \n" +
-				"Email :"+email+"\n"+
+				"Email :"+email+"\n \n"+
 				"Phone :"+phone;
 	}
 	
