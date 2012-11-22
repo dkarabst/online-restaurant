@@ -1,6 +1,7 @@
 package com.softserve.academy.food.controller;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.SortedMap;
 import java.util.TreeMap;
@@ -42,7 +43,7 @@ public class AndroidController
 	public String makeOrder(@RequestBody Object[] obj)
 	{
 		@SuppressWarnings("unchecked")
-		Map<Integer, Integer> map = (Map<Integer, Integer>) obj[0];
+		Map<Integer, Integer> map = (HashMap<Integer, Integer>) obj[0];
 		String result = "true";
 		System.out.println(map);
 		try
