@@ -1,8 +1,6 @@
 package com.softserve.academy.food.android;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -48,6 +46,23 @@ public class Dishes extends Activity implements OnClickListener
 				startActivity(intent_button_back);
 			}
 		});
+		
+		Button button = (Button) findViewById(R.id.button3);
+		button.setOnClickListener(new View.OnClickListener()
+		{
+			public void onClick(View v)
+			{
+				post();
+			}
+		});
+		
+//		Button order = (Button) findViewById(R.id.button3);
+//		if ( ((Role)getApplicationContext()).isGuest() ) {
+//			order.setVisibility(View.INVISIBLE);
+//		} else {
+//			order.setVisibility(View.VISIBLE);			
+//		}
+		
 	}
 
 	// выводим информацию о корзине
@@ -57,7 +72,17 @@ public class Dishes extends Activity implements OnClickListener
 		for (DishModel p : boxAdapter.getBox())
 		{
 			if (p.isBox())
+			{
+				if (Request.map.containsKey(p.getId()))
+				{
+					Request.map.put(p.getId(),Request.map.get(p.getId())+1);
+				}
+				else
+				{
+					Request.map.put(p.getId(), 1);
+				}
 				result += "\n" + p.getName();
+			}
 		}
 		Toast.makeText(this, result, Toast.LENGTH_LONG).show();
 	}
@@ -66,15 +91,15 @@ public class Dishes extends Activity implements OnClickListener
 	@SuppressLint("UseSparseArrays")
 	public void post()
 	{
-		Map<Integer, Integer> map = new HashMap<Integer, Integer>();
-		for (DishModel p : boxAdapter.getBox())
+		if(Request.postOrder()== "true")
 		{
-			if (p.isBox())
-				// must be quantity instead of 1
-				map.put(p.getId(), 1);
+			Toast.makeText(this, "We got your order", Toast.LENGTH_SHORT).show();
+			Request.map.clear();
 		}
-		String result = Request.postOrder(map);
-		Toast.makeText(this, result, Toast.LENGTH_SHORT).show();
+		else
+		{
+			Toast.makeText(this,"try to repeat your order", Toast.LENGTH_SHORT).show();
+		}
 	}
 
 	public void onClick(View v)

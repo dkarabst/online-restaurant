@@ -9,7 +9,6 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 public class MainActivity extends Activity implements OnClickListener
 {
 	private LinearLayout linearLayout;
@@ -37,16 +36,6 @@ public class MainActivity extends Activity implements OnClickListener
         if(Request.model == null )
         {
         	Request.getDishesByCatId();
-        }
-	}
-	
-	@Override
-	protected void onStart()
-	{
-		super.onStart();
-		if(Request.model != null )
-        {
-		Toast.makeText(this, Request.model.getCategoryList().toString(),Toast.LENGTH_LONG).show();
         }
 	}
 	
