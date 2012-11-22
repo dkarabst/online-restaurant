@@ -1,4 +1,4 @@
-package com.softserve.academy.food.dao.impl;
+package com.softserve.academy.food.dao.mock;
 
 import org.hibernate.Query;
 import org.hibernate.SessionFactory;
