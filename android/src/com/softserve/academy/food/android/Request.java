@@ -106,6 +106,15 @@ public class Request
 				new MappingJacksonHttpMessageConverter());
 		userModel = restTemplate.postForObject(url, id, UserModel.class);
 	}
+	
+	public static void getUserInfo(String name)
+	{
+		String url = BASE_URL + "/user/"+name;
+		RestTemplate restTemplate = new RestTemplate();
+		restTemplate.getMessageConverters().add(
+				new MappingJacksonHttpMessageConverter());
+		userModel = restTemplate.getForObject(url,UserModel.class);
+	}
 
 	public static void getDishesByCatId()
 	{
