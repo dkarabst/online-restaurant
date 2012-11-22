@@ -55,9 +55,9 @@ public class AndroidController
 	
 	@ResponseBody
 	@RequestMapping(value = "/userInfo", method = RequestMethod.POST)
-	public UserModel makeOrder(@RequestBody String name)
+	public UserModel getUser(@RequestBody Object obj)
 	{
-		return userService.getUser(name);
+		return userService.getUser((String) obj);
 	}
 
 	@ResponseBody
