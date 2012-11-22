@@ -7,9 +7,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 public class Profile extends Activity
 {
-	final String BASE_URL = "http://10.0.2.2:8666/Restaurant/android";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
@@ -21,6 +21,8 @@ public class Profile extends Activity
         linearLayout.setBackgroundColor(Color.rgb(160, 200, 240));
 
 		Button button_back = (Button) findViewById(R.id.button_back);
+		TextView tv = (TextView) findViewById(R.id.textView1);
+		tv.setText(Request.userModel.toString());
 		button_back.setOnClickListener(new View.OnClickListener() 
 		{
 			public void onClick(View v)

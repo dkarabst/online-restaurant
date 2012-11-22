@@ -39,6 +39,7 @@ public class MainActivity extends Activity implements OnClickListener
 		{
 			new Request();
 			new GetData().execute();
+			Request.getUserInfo(1);
 		}
 	}
 
@@ -60,10 +61,6 @@ public class MainActivity extends Activity implements OnClickListener
 			case R.id.rmenu:
 				Intent intent_rmenu = new Intent(this, CategoryList.class);
 				startActivity(intent_rmenu);
-				break;
-			case R.id.user_history:
-				Intent intent_user_history = new Intent(this, UserHistory.class);
-				startActivity(intent_user_history);
 				break;
 			case R.id.profile:
 				Intent intent_profile = new Intent(this, Profile.class);

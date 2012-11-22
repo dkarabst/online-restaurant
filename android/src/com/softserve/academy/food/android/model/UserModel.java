@@ -5,6 +5,14 @@ public class UserModel
 	private int		id;
 	private String	email;
 	private String	phone;
+	
+	@Override
+	public String toString()
+	{
+		return "Profile \n \n \n" +
+				"Email :"+email+"\n"+
+				"Phone :"+phone;
+	}
 
 	public UserModel(int id, String email, String phone)
 	{
