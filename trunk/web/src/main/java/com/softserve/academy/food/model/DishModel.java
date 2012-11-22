@@ -1,8 +1,10 @@
 package com.softserve.academy.food.model;
 
+import java.io.Serializable;
+
 import com.softserve.academy.food.entity.Dish;
 
-public class DishModel {
+public class DishModel implements Serializable {
     private int id;
     private CategoryModel category;
     private String name;
