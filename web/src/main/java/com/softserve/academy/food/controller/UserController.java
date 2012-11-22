@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -20,7 +22,6 @@ import com.softserve.academy.food.model.UserCredentials;
 import com.softserve.academy.food.service.IUserService;
 
 @Controller
-@SessionAttributes("user")
 public class UserController
 {
 	@Autowired
@@ -32,10 +33,31 @@ public class UserController
 	 	        return "userForm";
 	 	    }
 	 
-	  @RequestMapping(method = RequestMethod.POST)
-	  	    public String onSubmit(@ModelAttribute("usercredentials") UserCredentials user) {
-		      userService.add(user);
-	  	        return "RegisterState";
-	  	    }
+
+	
+	@RequestMapping(value = "/user", method = RequestMethod.GET)
+	public String showUser( ModelMap model ) {
+		
+		model.addAttribute( "userinfo", userService.getUser() );
+		model.addAttribute( "login", getLogin() );
+		return "userinfo";
+	}
+	  
+    private String getLogin() {
+        String login = "guest";
+
+        try {
+            Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+            if (principal instanceof UserDetails) {
+                login = ((UserDetails) principal).getUsername();
+            } else {
+                login = principal.toString();
+            }
+        } catch (NullPointerException e) {
+
+        }
+        return login;
+    }
 	  	
 }

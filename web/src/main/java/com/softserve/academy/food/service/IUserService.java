@@ -1,5 +1,6 @@
 package com.softserve.academy.food.service;
 
+import com.softserve.academy.food.entity.User;
 import com.softserve.academy.food.model.UserCredentials;
 import com.softserve.academy.food.model.UserModel;
 
@@ -11,7 +12,7 @@ public interface IUserService {
 
     public UserModel getUser(int id);
     
-    public UserModel getUser(String name);
+    public User getUser();
 
     public void update(UserModel user);
 }
