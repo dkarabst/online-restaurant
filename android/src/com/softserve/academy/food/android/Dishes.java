@@ -63,7 +63,7 @@ public class Dishes extends Activity implements OnClickListener
 	// выводим информацию о корзине
 	public void showResult(View v)
 	{
-		String result = "Выбранные товары:";
+		String result = "Selected items:";
 		for (DishModel p : boxAdapter.getBox())
 		{
 			if (p.isBox())
@@ -71,7 +71,7 @@ public class Dishes extends Activity implements OnClickListener
 				result += "\n" + p.getName();
 			}
 		}
-		if (result == "Выбранные товары:")
+		if (result == "Selected items:")
 		{
 			Toast.makeText(this, "nothing to add", Toast.LENGTH_LONG).show();
 		} else
@@ -99,9 +99,9 @@ public class Dishes extends Activity implements OnClickListener
 	{
 		final AlertDialog alertDialog = new AlertDialog.Builder(this).create();
 
-		alertDialog.setTitle("Товары в корзине :");
-		alertDialog.setMessage(Request.getModels() + text
-				+ "\n Добавить в корзину?");
+		alertDialog.setTitle("Items in basket :");
+		alertDialog.setMessage(Request.getModels() +"\n"+ text+"\n"
+				+ "\n add to basket?");
 
 		alertDialog.setButton(DialogInterface.BUTTON_POSITIVE, "yes",
 				new DialogInterface.OnClickListener()
