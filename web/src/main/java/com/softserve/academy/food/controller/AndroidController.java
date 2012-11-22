@@ -2,6 +2,7 @@ package com.softserve.academy.food.controller;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.SortedMap;
 import java.util.TreeMap;
@@ -38,19 +39,25 @@ public class AndroidController
 	@Autowired
 	private IMenuService		dishService;
 
+	@SuppressWarnings("unchecked")
 	@ResponseBody
 	@RequestMapping(value = "/order", method = RequestMethod.POST)
-	public String makeOrder(@RequestBody Object[] obj)
+	public String makeOrder(@RequestBody ArrayList<Object> obj)
 	{
-		@SuppressWarnings("unchecked")
-		Map<Integer, Integer> map = (HashMap<Integer, Integer>) obj[0];
+		List<Integer> ids =(ArrayList<Integer>)obj.get(0);
+		List<Integer> col = (ArrayList<Integer>)obj.get(1); 
+		Map<Integer, Integer> map = new HashMap<Integer, Integer>();
+		for( int i=0; i<ids.size(); i++)
+		{
+			map.put(ids.get(i),col.get(i));
+		}
 		String result = "true";
-		System.out.println(map);
 		try
 		{
-			orderService.addAndroid(map,(Integer)obj[1]);
-		} catch (Exception e)
+			orderService.addAndroid(map,(Integer)obj.get(2));
+		}catch(Exception e)
 		{
+			System.out.println(e);
 			result = "false";
 		}
 		return result;
