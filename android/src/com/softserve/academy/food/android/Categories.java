@@ -10,6 +10,8 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.ListView;
 
+
+// UNUSED
 public class Categories extends Activity implements OnItemClickListener
 {
 	BoxAdapterCat				boxAdapterCats;
