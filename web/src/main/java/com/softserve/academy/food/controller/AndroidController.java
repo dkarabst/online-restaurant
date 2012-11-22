@@ -39,13 +39,15 @@ public class AndroidController
 
 	@ResponseBody
 	@RequestMapping(value = "/order", method = RequestMethod.POST)
-	public String makeOrder(@RequestBody Map<Integer, Integer> map)
+	public String makeOrder(@RequestBody Object[] obj)
 	{
+		@SuppressWarnings("unchecked")
+		Map<Integer, Integer> map = (Map<Integer, Integer>) obj[0];
 		String result = "true";
 		System.out.println(map);
 		try
 		{
-			orderService.add(map);
+			orderService.addAndroid(map,(Integer)obj[1]);
 		} catch (Exception e)
 		{
 			result = "false";
@@ -57,7 +59,7 @@ public class AndroidController
 	@RequestMapping(value = "/userInfo", method = RequestMethod.POST)
 	public UserModel getUser(@RequestBody Object obj)
 	{
-		return userService.getUser((String) obj);
+		return userService.getUser((Integer) obj);
 	}
 
 	@ResponseBody
