@@ -1,7 +1,5 @@
 package com.softserve.academy.food.controller;
 
-import java.util.Map;
-
 import net.sf.jsqlparser.JSQLParserException;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.softserve.academy.food.service.ISqlQueryService;
-import com.softserve.academy.food.service.impl.SqlQueryService;
 
 @Controller
 public class SqlQueryController {
