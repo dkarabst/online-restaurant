@@ -43,7 +43,8 @@ public class MainActivity extends Activity implements OnClickListener
 	{
 		switch (v.getId())
 		{
-			case R.id.rmenu : Intent intent_rmenu = new Intent(this, Categories.class);
+//			case R.id.rmenu : Intent intent_rmenu = new Intent(this, Categories.class);
+			case R.id.rmenu : Intent intent_rmenu = new Intent(this, CategoryList.class);
 			startActivity(intent_rmenu);
 			break;
 			case R.id.user_history : Intent intent_user_history = new Intent(this, UserHistory.class);
