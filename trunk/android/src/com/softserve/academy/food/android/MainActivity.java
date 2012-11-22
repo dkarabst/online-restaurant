@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 public class MainActivity extends Activity implements OnClickListener
 {
@@ -37,13 +38,14 @@ public class MainActivity extends Activity implements OnClickListener
 		{
 			new Request();
 			new GetData().execute();
-			Request.getUserInfo(1);
+			Request.getUserInfo(2);
+			((Role) getApplicationContext()).setUser();
 		}
 	}
 
 	private class GetData extends AsyncTask<Void, Void, Void>
 	{
-		protected Void doInBackground(Void ...voids )
+		protected Void doInBackground(Void... voids)
 		{
 			Request.getDishesByCatId();
 			return null;
@@ -54,15 +56,20 @@ public class MainActivity extends Activity implements OnClickListener
 	{
 		switch (v.getId())
 		{
-		// case R.id.rmenu : Intent intent_rmenu = new Intent(this,
-		// Categories.class);
 			case R.id.rmenu:
 				Intent intent_rmenu = new Intent(this, CategoryList.class);
 				startActivity(intent_rmenu);
 				break;
 			case R.id.profile:
-				Intent intent_profile = new Intent(this, Profile.class);
-				startActivity(intent_profile);
+				if (!((Role) getApplicationContext()).isGuest())
+				{
+					Intent intent_profile = new Intent(this, Profile.class);
+					startActivity(intent_profile);
+				} else
+				{
+					Toast.makeText(this, "Please Login/Register",
+							Toast.LENGTH_SHORT).show();
+				}
 				break;
 			case R.id.login:
 				Intent intent_login = new Intent(this, LoginActivity.class);

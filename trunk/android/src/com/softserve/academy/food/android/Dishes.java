@@ -142,6 +142,7 @@ public class Dishes extends Activity implements OnClickListener
 					Toast.makeText(this, "We got your order",
 							Toast.LENGTH_SHORT).show();
 					Request.map.clear();
+					Request.modelMap.clear();
 				} else
 				{
 					Toast.makeText(this, "something wrong on server",

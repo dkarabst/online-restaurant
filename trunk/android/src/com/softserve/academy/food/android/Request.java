@@ -2,6 +2,7 @@ package com.softserve.academy.food.android;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.http.converter.json.MappingJacksonHttpMessageConverter;
@@ -79,7 +80,20 @@ public class Request
 		RestTemplate restTemplate = new RestTemplate();
 		restTemplate.getMessageConverters().add(
 				new MappingJacksonHttpMessageConverter());
-		Object[] obj = {map,userModel.getId()};
+		List<Object> obj = new ArrayList<Object>();
+		List<Integer> id = new ArrayList<Integer>();
+		for(Integer ident : map.keySet())
+		{
+			id.add(ident);
+		}
+		List<Integer> quantity = new ArrayList<Integer>();
+		for(Integer ident : map.values())
+		{
+			quantity.add(ident);
+		}
+		obj.add(id);
+		obj.add(quantity);
+		obj.add(userModel.getId());
 		return restTemplate.postForObject(url, obj, String.class);
 	}
 
