@@ -10,6 +10,7 @@ import android.widget.GridView;
 
 public class CategoryList extends Activity {
 
+	public static final String MSG ="category";
 
 	/** Called when the activity is first created. */
 	@Override
