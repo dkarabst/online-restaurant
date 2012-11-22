@@ -14,7 +14,7 @@ import android.widget.LinearLayout;
 public class MainActivity extends Activity implements OnClickListener
 {
 	private LinearLayout	linearLayout;
-	private Button			rmenu, user_history, profile, login, about_us;
+	private Button			rmenu, profile, login, about_us;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState)
@@ -24,8 +24,6 @@ public class MainActivity extends Activity implements OnClickListener
 		StrictMode.enableDefaults();
 		rmenu = (Button) findViewById(R.id.rmenu);
 		rmenu.setOnClickListener(this);
-		user_history = (Button) findViewById(R.id.user_history);
-		user_history.setOnClickListener(this);
 		profile = (Button) findViewById(R.id.profile);
 		profile.setOnClickListener(this);
 		login = (Button) findViewById(R.id.login);
