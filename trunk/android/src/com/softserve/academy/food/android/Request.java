@@ -13,6 +13,7 @@ import android.os.StrictMode;
 import com.softserve.academy.food.android.model.AndroidMapModel;
 import com.softserve.academy.food.android.model.CategoryModel;
 import com.softserve.academy.food.android.model.DishModel;
+import com.softserve.academy.food.android.model.UserModel;
 
 @SuppressLint("UseSparseArrays")
 public class Request
@@ -58,8 +59,17 @@ public class Request
 				new MappingJacksonHttpMessageConverter());
 		return  restTemplate.postForObject(url, map, String.class);
 	}
+	
+	//  tolko peredai emy parametr
+	public static UserModel getUserInfo(String name)
+	{
+		String url = BASE_URL + "/userInfo";
+		RestTemplate restTemplate = new RestTemplate();
+		restTemplate.getMessageConverters().add(
+				new MappingJacksonHttpMessageConverter());
+		return  restTemplate.postForObject(url, name, UserModel.class);
+	}
 
-	// Выбор блюда по категории
 	public static void getDishesByCatId()
 	{
 		String url = BASE_URL + "/dishesByCategory";
