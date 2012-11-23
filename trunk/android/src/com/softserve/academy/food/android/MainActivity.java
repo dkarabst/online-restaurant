@@ -38,8 +38,6 @@ public class MainActivity extends Activity implements OnClickListener
 		{
 			new Request();
 			new GetData().execute();
-			Request.getUserInfo(2);
-			((Role) getApplicationContext()).setUser();
 		}
 	}
 
@@ -67,7 +65,7 @@ public class MainActivity extends Activity implements OnClickListener
 					startActivity(intent_profile);
 				} else
 				{
-					Toast.makeText(this, "Please Login/Register",
+					Toast.makeText(this, getString(R.string.login),
 							Toast.LENGTH_SHORT).show();
 				}
 				break;
