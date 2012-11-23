@@ -33,7 +33,6 @@ public class LoginActivity extends AbstractAsyncActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.login);
 
-		// ***** Main Menu button (BACK)
 		Button button_back = (Button) findViewById(R.id.button_back);
 		button_back.setOnClickListener(new View.OnClickListener()
 
@@ -46,19 +45,15 @@ public class LoginActivity extends AbstractAsyncActivity {
 		});
 
 		TextView registerScreen = (TextView) findViewById(R.id.link_to_register);
-
-		// Listening to register new account link
 		registerScreen.setOnClickListener(new View.OnClickListener() {
 
 			public void onClick(View v) {
-				// Switching to Register screen
 				Intent i = new Intent(getApplicationContext(),
 						RegisterActivity.class);
 				startActivity(i);
 			}
 		});
 
-		// ***** Login button
 		final Button submitButton = (Button) findViewById(R.id.btnLogin);
 
 		submitButton.setOnClickListener(new View.OnClickListener() {
@@ -69,16 +64,10 @@ public class LoginActivity extends AbstractAsyncActivity {
 
 	}
 
-	// ***************************************
-	// Private methods
-	// ***************************************
 	private void displayResponse(Message response) {
 		Toast.makeText(this, response.getText(), Toast.LENGTH_LONG).show();
 	}
-
-	// ***************************************
-	// Private classes
-	// ***************************************
+	
 	private class FetchSecuredResourceTask extends
 			AsyncTask<Void, Void, Message> {
 
@@ -90,7 +79,6 @@ public class LoginActivity extends AbstractAsyncActivity {
 		protected void onPreExecute() {
 			showLoadingProgressDialog();
 
-			// build the message object
 			EditText editText = (EditText) findViewById(R.id.userName);
 			this.username = editText.getText().toString();
 
@@ -102,9 +90,6 @@ public class LoginActivity extends AbstractAsyncActivity {
 		protected Message doInBackground(Void... params) {
 			final String url = getString(R.string.base_uri) + "/user/" + username;
 
-			// Populate the HTTP Basic Authentication header with the username
-			// and password
-
 			HttpAuthentication authHeader = new HttpBasicAuthentication(
 					username, password);
 			HttpHeaders requestHeaders = new HttpHeaders();
@@ -112,16 +97,11 @@ public class LoginActivity extends AbstractAsyncActivity {
 			requestHeaders.setAccept(Collections
 					.singletonList(MediaType.APPLICATION_JSON));
 
-			// Create a new RestTemplate instance
 			RestTemplate restTemplate = new RestTemplate();
 			restTemplate.getMessageConverters().add(
 					new MappingJacksonHttpMessageConverter());
-
-			///////////////////////////////////////
 			
 			try {
-				// Make the network request
-				Log.d(TAG, url);
 
 				ResponseEntity<UserModel> response = restTemplate.exchange(url,
 						HttpMethod.GET, new HttpEntity<Object>(requestHeaders),
@@ -129,6 +109,7 @@ public class LoginActivity extends AbstractAsyncActivity {
 				
 				((Role) getApplicationContext()).setLogin(username);
 				((Role) getApplicationContext()).setUserModel(response.getBody());
+				Request.userModel=((Role) getApplicationContext()).getUserModel();
 				
 				if (response.getStatusCode().value() < 300) {
 					Log.d("ROLE", "Admin");

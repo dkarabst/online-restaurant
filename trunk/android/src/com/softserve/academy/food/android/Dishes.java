@@ -70,7 +70,7 @@ public class Dishes extends Activity implements OnClickListener
 		}
 		if (result == getString(R.string.selected))
 		{
-			Toast.makeText(this, getString(R.string.nothing), Toast.LENGTH_LONG).show();
+			Toast.makeText(this, getString(R.string.nothing), Toast.LENGTH_SHORT).show();
 		} else
 			showDishDialog(result);
 	}
@@ -107,7 +107,7 @@ public class Dishes extends Activity implements OnClickListener
 					public void onClick(DialogInterface dialog, int which)
 					{
 						Toast.makeText(findViewById(R.id.lvMain).getContext(),
-								getString(R.string.done), Toast.LENGTH_LONG).show();
+								getString(R.string.done), Toast.LENGTH_SHORT).show();
 						Dishes.this.addToBasket();
 					}
 				});

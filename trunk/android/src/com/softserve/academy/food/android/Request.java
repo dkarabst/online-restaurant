@@ -82,12 +82,12 @@ public class Request
 				new MappingJacksonHttpMessageConverter());
 		List<Object> obj = new ArrayList<Object>();
 		List<Integer> id = new ArrayList<Integer>();
-		for(Integer ident : map.keySet())
+		for (Integer ident : map.keySet())
 		{
 			id.add(ident);
 		}
 		List<Integer> quantity = new ArrayList<Integer>();
-		for(Integer ident : map.values())
+		for (Integer ident : map.values())
 		{
 			quantity.add(ident);
 		}
@@ -95,25 +95,6 @@ public class Request
 		obj.add(quantity);
 		obj.add(userModel.getId());
 		return restTemplate.postForObject(url, obj, String.class);
-	}
-
-	// tolko peredai emy parametr
-	public static void getUserInfo(int id)
-	{
-		String url = BASE_URL + "/userInfo";
-		RestTemplate restTemplate = new RestTemplate();
-		restTemplate.getMessageConverters().add(
-				new MappingJacksonHttpMessageConverter());
-		userModel = restTemplate.postForObject(url, id, UserModel.class);
-	}
-	
-	public static void getUserInfo(String name)
-	{
-		String url = BASE_URL + "/user/"+name;
-		RestTemplate restTemplate = new RestTemplate();
-		restTemplate.getMessageConverters().add(
-				new MappingJacksonHttpMessageConverter());
-		userModel = restTemplate.getForObject(url,UserModel.class);
 	}
 
 	public static void getDishesByCatId()
