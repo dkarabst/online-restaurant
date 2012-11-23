@@ -67,17 +67,18 @@ public class AndroidController
 	
 	@ResponseBody
 	@RequestMapping(value = "/newUser", method = RequestMethod.POST)
-	public String newUser(@RequestBody Object obj)
+	public UserModel newUser(@RequestBody Object obj)
 	{
 		
 		 @SuppressWarnings("unchecked")
 		 ArrayList<String> info = (ArrayList<String>) obj;
 		 UserCredentials uc = new UserCredentials(info.get(0),info.get(1));
 		 String result = "true";
+		 UserModel um = new UserModel();
 		 try {
 			 if(userService.add(uc))
 			 {
-				 UserModel um = userService.getUser(info.get(0));
+				 um = userService.getUser(info.get(0));
 				 um.setEmail(info.get(2));
 				 um.setPhone(info.get(3));
 				 userService.update(um);
@@ -87,7 +88,7 @@ public class AndroidController
 			 System.out.println(e);
 			 result = "false";
 		 }
-		return result;
+		return um;
 	}
 	
 	@ResponseBody
