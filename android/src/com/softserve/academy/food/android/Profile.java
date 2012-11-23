@@ -20,12 +20,6 @@ public class Profile extends Activity
 		linearLayout = (LinearLayout)findViewById(R.id.linlayout);
         linearLayout.setBackgroundColor(Color.rgb(160, 200, 240));
         
-        if ( ((Role) getApplicationContext()).isGuest() ) {
-        	
-        	
-        } else {
-
-		
 		TextView tv = (TextView) findViewById(R.id.textView1);
 		tv.setText(
 				"Hello, " + ((Role) getApplicationContext()).getLogin() + '\n' + '\n' + '\n' +
@@ -33,7 +27,6 @@ public class Profile extends Activity
 				"Email: " + ((Role) getApplicationContext()).getUserModel().getEmail() +"\n" +
 				"Phone: " + ((Role) getApplicationContext()).getUserModel().getPhone()
 		);
-        }
         
         Button button_back = (Button) findViewById(R.id.button_back);
 		button_back.setOnClickListener(new View.OnClickListener() 
