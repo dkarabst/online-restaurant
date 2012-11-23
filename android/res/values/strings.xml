@@ -11,6 +11,7 @@
     <string name="server">Something wrong on server</string>
     <string name="noitems">No items in basket</string>
     <string name="login">Please Login/Register</string>
+    <string name="loginButton">Login/Register</string>
     <string name="profile">Profile</string>
     <string name="app_name">IT Restaurant</string>
     <string name="hello_world">Hello world!</string>
@@ -48,5 +49,6 @@
     <string name="mesUserOk">You have been authorized as a User</string>
     <string name="mesGuestOk">You have been authorized as an Anonimous guest</string>
     <string name="mesUnknownError">Connection failed. Try to login later</string>
-    <string name="color_for_category">#181818</string>     
+    <string name="color_for_category">#181818</string>
+    <string name="welcome">Welcome!</string>     
 </resources>

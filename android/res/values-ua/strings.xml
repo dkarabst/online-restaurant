@@ -11,6 +11,7 @@
     <string name="server">Невдача спідкала</string>
     <string name="noitems">Кошик пустий</string>
     <string name="login">Необхідно авторизуватися</string>
+    <string name="loginButton">Логін/Реестрація</string>
     <string name="profile">Профіль</string>
     <string name="app_name">IT Ресторан</string>
     <string name="hello_world"></string>
@@ -18,7 +19,7 @@
     <string name="title_activity_main">IT Ресторанt</string>
     <string name="rmenu">Меню</string>
     <string name="user_history"></string>
-    <string name="about_us">Інфа</string>
+    <string name="about_us">Про нас</string>
     <string name="user_history1"></string>
     <string name="button1"></string>
     <string name="windowBackground">#FFEBCD</string>
@@ -47,5 +48,7 @@
     <string name="mesAdminOk">Вы увійши як Адміністратор</string>
     <string name="mesUserOk">Вы увійши як Користувач</string>
     <string name="mesGuestOk">Вы увійши як Гість</string>
-    <string name="mesUnknownError">Помилка з'еднання , перевірте підключення</string>
-    <string name="color_for_category">#181818</string></resources>
+    <string name="mesUnknownError">Помилка підключення , перевірте підключення</string>
+    <string name="color_for_category">#181818</string>
+    <string name="welcome">Ласкаво просимо!</string>
+</resources>
