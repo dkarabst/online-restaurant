@@ -23,7 +23,7 @@ public class Role extends Application
 
 	private int currentRole = 2;
 	
-	private String login = "guest";
+	private String login = "nobody";
 	
 	private UserModel userModel;
 
