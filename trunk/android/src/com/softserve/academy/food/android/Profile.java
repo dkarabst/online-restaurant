@@ -19,10 +19,23 @@ public class Profile extends Activity
 		LinearLayout linearLayout;
 		linearLayout = (LinearLayout)findViewById(R.id.linlayout);
         linearLayout.setBackgroundColor(Color.rgb(160, 200, 240));
+        
+        if ( ((Role) getApplicationContext()).isGuest() ) {
+        	
+        	
+        } else {
 
-		Button button_back = (Button) findViewById(R.id.button_back);
+		
 		TextView tv = (TextView) findViewById(R.id.textView1);
-		tv.setText(getString(R.string.profile)+Request.userModel.toString());
+		tv.setText(
+				"Hello, " + ((Role) getApplicationContext()).getLogin() + '\n' + '\n' + '\n' +
+				"Your profile is" + "\n\n" +
+				"Email: " + ((Role) getApplicationContext()).getUserModel().getEmail() +"\n" +
+				"Phone: " + ((Role) getApplicationContext()).getUserModel().getPhone()
+		);
+        }
+        
+        Button button_back = (Button) findViewById(R.id.button_back);
 		button_back.setOnClickListener(new View.OnClickListener() 
 		{
 			public void onClick(View v)
