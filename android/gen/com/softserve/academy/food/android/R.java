@@ -96,8 +96,8 @@ public final class R {
         public static final int TestString=0x7f040029;
         public static final int about_us=0x7f040014;
         public static final int app_name=0x7f04000e;
-        public static final int back=0x7f040032;
-        public static final int base_uri=0x7f040033;
+        public static final int back=0x7f040033;
+        public static final int base_uri=0x7f040034;
         public static final int box=0x7f04002a;
         public static final int btLogin=0x7f040021;
         public static final int btMainMenu=0x7f040020;
@@ -114,6 +114,7 @@ public final class R {
         public static final int items=0x7f040003;
         public static final int login=0x7f04000b;
         public static final int loginButton=0x7f04000c;
+        public static final int lpage=0x7f040032;
         public static final int menu_settings=0x7f040010;
         public static final int mesAdminOk=0x7f04002c;
         public static final int mesGuestOk=0x7f04002e;

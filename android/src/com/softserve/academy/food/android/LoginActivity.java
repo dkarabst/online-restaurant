@@ -58,6 +58,8 @@ public class LoginActivity extends AbstractAsyncActivity {
 
 		submitButton.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
+				Intent intent_login = new Intent(LoginActivity.this, MainActivity.class);
+				startActivity(intent_login);
 				new FetchSecuredResourceTask().execute();
 			}
 		});
