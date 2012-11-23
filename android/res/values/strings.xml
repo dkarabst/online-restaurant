@@ -1,13 +1,23 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android">
-
+    <string name="showProgressDialog">Connecting ..</string>
+    <string name="selected">Selected items:</string>
+    <string name="nothing">nothing to add</string>
+    <string name="items">Items in basket :</string>
+    <string name="question">add to basket?</string>
+    <string name="yes">yes</string>
+    <string name="no">no</string>
+    <string name="done">done</string>
+    <string name="wgot">We got your order</string>
+    <string name="server">something wrong on server</string>
+    <string name="noitems">no items in basket</string>
+    <string name="login">Please Login/Register</string>
+    <string name="profile">Profile</string>
     <string name="app_name">IT Restaurant</string>
     <string name="hello_world">Hello world!</string>
     <string name="menu_settings">Settings</string>
     <string name="title_activity_main">IT Restaurant</string>
     <string name="rmenu">Menu</string>
     <string name="user_history">User History</string>
-    <string name="profile">Profile</string>
-    <string name="login">Login/Register</string>
     <string name="about_us">About us</string>
     <string name="user_history1">User history</string>
     <string name="button1">Button</string>
