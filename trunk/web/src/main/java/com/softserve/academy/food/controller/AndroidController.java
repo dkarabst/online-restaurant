@@ -65,13 +65,6 @@ public class AndroidController
 	}
 	
 	@ResponseBody
-	@RequestMapping(value = "/userInfo", method = RequestMethod.POST)
-	public UserModel getUser(@RequestBody Object obj)
-	{
-		return userService.getUser((Integer) obj);
-	}
-	
-	@ResponseBody
 	@RequestMapping(value = "/user/{name}", method = RequestMethod.GET)
 	public UserModel getUser(@PathVariable String name)
 	{
