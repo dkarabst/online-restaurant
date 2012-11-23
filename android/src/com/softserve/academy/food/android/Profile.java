@@ -22,7 +22,7 @@ public class Profile extends Activity
 
 		Button button_back = (Button) findViewById(R.id.button_back);
 		TextView tv = (TextView) findViewById(R.id.textView1);
-		tv.setText(Request.userModel.toString());
+		tv.setText(getString(R.string.profile)+Request.userModel.toString());
 		button_back.setOnClickListener(new View.OnClickListener() 
 		{
 			public void onClick(View v)
