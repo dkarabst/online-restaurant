@@ -89,7 +89,10 @@
     
     <!-- home PAGE -->
   
- 
+    <welcome-file-list>
+        <welcome-file>/WEB-INF/views/index.jsp</welcome-file>
+        <welcome-file>index.jsp</welcome-file>        
+    </welcome-file-list>	 
 
     
     
