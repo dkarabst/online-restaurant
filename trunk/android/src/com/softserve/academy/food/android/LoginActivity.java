@@ -13,8 +13,6 @@ import org.springframework.http.converter.json.MappingJacksonHttpMessageConverte
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 
-import com.softserve.academy.food.android.model.Message;
-
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -24,6 +22,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.softserve.academy.food.android.model.Message;
+import com.softserve.academy.food.android.model.UserModel;
+
 
 public class LoginActivity extends AbstractAsyncActivity {
 	@Override
@@ -98,7 +100,7 @@ public class LoginActivity extends AbstractAsyncActivity {
 
 		@Override
 		protected Message doInBackground(Void... params) {
-			final String url = getString(R.string.base_uri) + "/getmessage";
+			final String url = getString(R.string.base_uri) + "/user/" + username;
 
 			// Populate the HTTP Basic Authentication header with the username
 			// and password
@@ -115,19 +117,24 @@ public class LoginActivity extends AbstractAsyncActivity {
 			restTemplate.getMessageConverters().add(
 					new MappingJacksonHttpMessageConverter());
 
+			///////////////////////////////////////
+			
 			try {
 				// Make the network request
 				Log.d(TAG, url);
 
-				ResponseEntity<Message> response = restTemplate.exchange(url,
+				ResponseEntity<UserModel> response = restTemplate.exchange(url,
 						HttpMethod.GET, new HttpEntity<Object>(requestHeaders),
-						Message.class);
-
+						UserModel.class);
+				
+				((Role) getApplicationContext()).setLogin(username);
+				((Role) getApplicationContext()).setUserModel(response.getBody());
+				
 				if (response.getStatusCode().value() < 300) {
 					Log.d("ROLE", "Admin");
 					((Role) getApplicationContext()).setAdmin();
 					return new Message(0, "", getResources().getString(
-							R.string.mesAdminOk));
+							R.string.mesUserOk));
 				} else {
 					return new Message(0, "", getResources().getString(
 							R.string.mesUnknownError));
