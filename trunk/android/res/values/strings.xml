@@ -50,5 +50,6 @@
     <string name="mesGuestOk">You have been authorized as an Anonimous guest</string>
     <string name="mesUnknownError">Connection failed. Try to login later</string>
     <string name="color_for_category">#181818</string>
-    <string name="welcome">Welcome!</string>     
+    <string name="welcome">Welcome!</string>
+    <string name="lpage">Go to the login page?</string>     
 </resources>
