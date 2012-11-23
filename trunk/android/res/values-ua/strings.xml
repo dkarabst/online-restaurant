@@ -51,4 +51,5 @@
     <string name="mesUnknownError">Помилка підключення , перевірте підключення</string>
     <string name="color_for_category">#181818</string>
     <string name="welcome">Ласкаво просимо!</string>
+    <string name="lpage">Перейти на сторінку логіна ?</string>
 </resources>
