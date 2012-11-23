@@ -9,7 +9,7 @@ public class UserModel
 	@Override
 	public String toString()
 	{
-		return "Profile \n \n \n" +
+		return "\n \n \n" +
 				"Email :"+email+"\n \n"+
 				"Phone :"+phone;
 	}
