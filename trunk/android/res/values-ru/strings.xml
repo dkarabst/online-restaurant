@@ -11,6 +11,7 @@
     <string name="server">Ошибка сервера</string>
     <string name="noitems">Корзина пуста</string>
     <string name="login">Нужно авторезоватся</string>
+    <string name="loginButton">Логин/Регистрация</string>
     <string name="profile">Профиль</string>
     <string name="app_name">IT Ресторан</string>
     <string name="hello_world"></string>
@@ -18,7 +19,7 @@
     <string name="title_activity_main">IT Ресторанt</string>
     <string name="rmenu">Меню</string>
     <string name="user_history"></string>
-    <string name="about_us">Инфа</string>
+    <string name="about_us">О нас</string>
     <string name="user_history1"></string>
     <string name="button1"></string>
     <string name="windowBackground">#FFEBCD</string>
@@ -48,4 +49,6 @@
     <string name="mesUserOk">Вы воши как Пользователь</string>
     <string name="mesGuestOk">Вы воши как Гость</string>
     <string name="mesUnknownError">Ошибка соединения , проверьте подключение</string>
-    <string name="color_for_category">#181818</string></resources>
+    <string name="color_for_category">#181818</string>
+    <string name="welcome">Добро пожаловать!</string>
+</resources>
