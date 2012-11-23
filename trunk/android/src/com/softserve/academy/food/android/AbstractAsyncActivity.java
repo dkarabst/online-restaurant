@@ -21,7 +21,7 @@ public abstract class AbstractAsyncActivity extends Activity
 
 	public void showLoadingProgressDialog()
 	{
-		this.showProgressDialog("Connecting to the Server. Please wait...");
+		this.showProgressDialog(getString(R.string.showProgressDialog));
 	}
 
 	public void showProgressDialog(CharSequence message)

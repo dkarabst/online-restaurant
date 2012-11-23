@@ -32,10 +32,8 @@ public class Dishes extends Activity implements OnClickListener
 		Intent intent = getIntent();
 		int id = intent.getIntExtra(CategoryList.MSG, 0);
 
-		// создаем адаптер
 		boxAdapter = new BoxAdapterDish(this, Request.getDishListBiId(id));
 
-		// настраиваем список
 		lvMain = (ListView) findViewById(R.id.lvMain);
 		lvMain.setAdapter(boxAdapter);
 		Button button_back = (Button) findViewById(R.id.button_back);
@@ -60,10 +58,9 @@ public class Dishes extends Activity implements OnClickListener
 
 	}
 
-	// выводим информацию о корзине
 	public void showResult(View v)
 	{
-		String result = "Selected items:";
+		String result = getString(R.string.selected);
 		for (DishModel p : boxAdapter.getBox())
 		{
 			if (p.isBox())
@@ -71,9 +68,9 @@ public class Dishes extends Activity implements OnClickListener
 				result += "\n" + p.getName();
 			}
 		}
-		if (result == "Selected items:")
+		if (result == getString(R.string.selected))
 		{
-			Toast.makeText(this, "nothing to add", Toast.LENGTH_LONG).show();
+			Toast.makeText(this, getString(R.string.nothing), Toast.LENGTH_LONG).show();
 		} else
 			showDishDialog(result);
 	}
@@ -99,23 +96,23 @@ public class Dishes extends Activity implements OnClickListener
 	{
 		final AlertDialog alertDialog = new AlertDialog.Builder(this).create();
 
-		alertDialog.setTitle("Items in basket :");
-		alertDialog.setMessage(Request.getModels() +"\n"+ text+"\n"
-				+ "\n add to basket?");
+		alertDialog.setTitle(getString(R.string.items));
+		alertDialog.setMessage(Request.getModels() + "\n" + text + "\n"
+				+ "\n"+getString(R.string.question));
 
-		alertDialog.setButton(DialogInterface.BUTTON_POSITIVE, "yes",
+		alertDialog.setButton(DialogInterface.BUTTON_POSITIVE, getString(R.string.yes),
 				new DialogInterface.OnClickListener()
 				{
 					@Override
 					public void onClick(DialogInterface dialog, int which)
 					{
 						Toast.makeText(findViewById(R.id.lvMain).getContext(),
-								"done", Toast.LENGTH_LONG).show();
+								getString(R.string.done), Toast.LENGTH_LONG).show();
 						Dishes.this.addToBasket();
 					}
 				});
 
-		alertDialog.setButton(DialogInterface.BUTTON_NEGATIVE, "no",
+		alertDialog.setButton(DialogInterface.BUTTON_NEGATIVE, getString(R.string.no),
 				new DialogInterface.OnClickListener()
 				{
 					@Override
@@ -139,23 +136,23 @@ public class Dishes extends Activity implements OnClickListener
 			{
 				if (Request.postOrder() == "true")
 				{
-					Toast.makeText(this, "We got your order",
+					Toast.makeText(this, getString(R.string.wgot),
 							Toast.LENGTH_SHORT).show();
 					Request.map.clear();
 					Request.modelMap.clear();
 				} else
 				{
-					Toast.makeText(this, "something wrong on server",
+					Toast.makeText(this, getString(R.string.server),
 							Toast.LENGTH_SHORT).show();
 				}
 			} else
 			{
-				Toast.makeText(this, "no items in basket", Toast.LENGTH_SHORT)
+				Toast.makeText(this, getString(R.string.noitems), Toast.LENGTH_SHORT)
 						.show();
 			}
 		} else
 		{
-			Toast.makeText(this, "Please Login/Register", Toast.LENGTH_SHORT)
+			Toast.makeText(this, getString(R.string.login), Toast.LENGTH_SHORT)
 					.show();
 		}
 	}

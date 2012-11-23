@@ -12,7 +12,6 @@ public class CategoryList extends Activity {
 
 	public static final String MSG ="category";
 
-	/** Called when the activity is first created. */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
