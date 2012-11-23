@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.softserve.academy.food.model.AndroidMapModel;
 import com.softserve.academy.food.model.CategoryModel;
 import com.softserve.academy.food.model.DishModel;
+import com.softserve.academy.food.model.UserCredentials;
 import com.softserve.academy.food.model.UserModel;
 import com.softserve.academy.food.service.ICategoryService;
 import com.softserve.academy.food.service.IMenuService;
@@ -61,6 +62,31 @@ public class AndroidController
 			System.out.println(e);
 			result = "false";
 		}
+		return result;
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/newUser", method = RequestMethod.POST)
+	public String newUser(@RequestBody Object obj)
+	{
+		
+		 @SuppressWarnings("unchecked")
+		 ArrayList<String> info = (ArrayList<String>) obj;
+		 UserCredentials uc = new UserCredentials(info.get(0),info.get(1));
+		 String result = "true";
+		 try {
+			 if(userService.add(uc))
+			 {
+				 UserModel um = userService.getUser(info.get(0));
+				 um.setEmail(info.get(2));
+				 um.setPhone(info.get(3));
+				 userService.update(um);
+			 }
+		 }catch (Exception e)
+		 {
+			 System.out.println(e);
+			 result = "false";
+		 }
 		return result;
 	}
 	
