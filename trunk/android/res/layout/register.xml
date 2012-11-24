@@ -37,92 +37,122 @@
   		<!-- Footer Ends --> 
   		
   		<!-- Registration Form -->
+
 		<LinearLayout
-		  xmlns:android="http://schemas.android.com/apk/res/android"
-		  android:orientation="vertical"
-		  android:layout_width="match_parent"
-		  android:layout_height="wrap_content"
-		  android:padding="10dip"
-		  android:layout_below="@id/header">
-		  <!-- Full Name Label -->
-		  <TextView android:layout_width="fill_parent"
-		  		android:layout_height="wrap_content"
-		  		android:textColor="#372c24"
-		  		android:text="@string/tvUserName"/>
+		    xmlns:android="http://schemas.android.com/apk/res/android"
+		    android:layout_width="match_parent"
+		    android:layout_height="wrap_content"
+		    android:layout_below="@id/header"
+		    android:orientation="vertical"
+		    android:padding="10dip" >
 
-		  <EditText
-		      android:id="@+id/reg_fullname"
-		      android:layout_width="fill_parent"
-		      android:layout_height="wrap_content"
-		      android:layout_marginBottom="20dip"
-		      android:layout_marginTop="5dip"
-		      android:hint="@string/etEnterUserName"
-		      android:singleLine="true" />
+		    <!-- Full Name Label -->
 
-		  <!--  Email Label -->
-		  <TextView android:layout_width="fill_parent"
-		  		android:layout_height="wrap_content"
-		  		android:textColor="#372c24"
-		  		android:text="@string/tvEmail"/>
+		    <TextView
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:text="@string/tvUserName"
+		        android:textColor="#372c24" />
 
-		  <EditText
-		      android:id="@+id/reg_email"
-		      android:layout_width="fill_parent"
-		      android:layout_height="wrap_content"
-		      android:layout_marginBottom="20dip"
-		      android:layout_marginTop="5dip"
-		      android:hint="@string/etEnterEmail"
-		      android:singleLine="true" />
+		    <EditText
+		        android:id="@+id/reg_fullname"
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_marginBottom="20dip"
+		        android:layout_marginTop="5dip"
+		        android:hint="@string/etEnterUserName"
+		        android:singleLine="true" />
 
-		  <!-- Password Label -->
-		  <TextView android:layout_width="fill_parent"
-		  		android:layout_height="wrap_content"
-		  		android:textColor="#372c24"
-		  		android:text="@string/tvPassword"/>
+		    <!-- Email Label -->
 
-		  <EditText
-		      android:id="@+id/reg_password"
-		      android:layout_width="fill_parent"
-		      android:layout_height="wrap_content"
-		      android:layout_marginTop="5dip"
-		      android:hint="@string/etEnterPassword"
-		      android:inputType="textPassword"
-		      android:singleLine="true" />
+		    <TextView
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:text="@string/tvEmail"
+		        android:textColor="#372c24" />
 
-		  <!-- Register Button -->		
+		    <EditText
+		        android:id="@+id/reg_email"
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_marginBottom="20dip"
+		        android:layout_marginTop="5dip"
+		        android:hint="@string/etEnterEmail"
+		        android:singleLine="true" />
 
-		  <Button
-		      android:id="@+id/btnRegister"
-		      style="@style/ThemeButton"
-		      android:layout_width="fill_parent"
-		      android:layout_height="wrap_content"
-		      android:layout_margin="4dp"
-		      android:layout_marginTop="10dip"
-		      android:text="@string/btRegisterNewAccount" />
+		    <!-- Password Label -->
 
-		  <!-- Link to Login Screen -->
+		    <TextView
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:text="@string/tvPassword"
+		        android:textColor="#372c24" />
 
-		  <Button
-		      android:id="@+id/button_back"
-		      style="@style/ThemeButton"
-		      android:layout_width="wrap_content"
-		      android:layout_height="wrap_content"
-		      android:layout_margin="4dp"
-		      android:text="@string/btMainMenu"
-		      android:textSize="16dip" />
+		    <EditText
+		        android:id="@+id/reg_password"
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_marginTop="5dip"
+		        android:hint="@string/etEnterPassword"
+		        android:inputType="textPassword"
+		        android:layout_marginBottom="20dip"
+		        android:singleLine="true" />
 
-		  <TextView
-		      android:id="@+id/link_to_login"
-		      android:layout_width="fill_parent"
-		      android:layout_height="wrap_content"
-		      android:layout_marginBottom="40dip"
-		      android:layout_marginTop="5dip"
-		      android:gravity="center"
-		      android:text="@string/tvLoginHere"
-		      android:textColor="#025f7c"
-		      android:textSize="16dip" />
-		    
+		    <!-- Phone Label -->
+
+		    <TextView
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:text="@string/tvPhone"
+		        android:textColor="#372c24" />
+
+		    <EditText
+		        android:id="@+id/reg_phone"
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_marginTop="5dip"
+		        android:hint="@string/etEnterPhone"
+		        android:singleLine="true" >
+
+		        <requestFocus />
+		    </EditText>
+
+		    <Button
+		        android:id="@+id/btnRegister"
+		        style="@style/ThemeButton"
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_margin="4dp"
+		        android:layout_marginTop="10dip"
+		        android:text="@string/btRegisterNewAccount" />
+
+		    <Button
+		        android:id="@+id/button_back"
+		        style="@style/ThemeButton"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_margin="4dp"
+		        android:text="@string/btMainMenu"
+		        android:textSize="16dip" />
+
+		    <TextView
+		        android:id="@+id/link_to_login"
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_marginBottom="40dip"
+		        android:layout_marginTop="5dip"
+		        android:gravity="center"
+		        android:text="@string/tvLoginHere"
+		        android:textColor="#025f7c"
+		        android:textSize="16dip" />
+
+		    <!-- Register Button -->
+
+
+		    <!-- Link to Login Screen -->
+
 		</LinearLayout>
+
   		<!-- Registration Form Ends -->
   		
   		

@@ -25,9 +25,7 @@ public class CategoryList extends Activity {
 
 	private GridView.OnItemClickListener gridviewOnItemClickListener = new GridView.OnItemClickListener() {
 
-		@Override
-		public void onItemClick(AdapterView<?> parent, View v, int position,
-				long id) {
+		public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
 			Intent intent = new Intent(CategoryList.this, Dishes.class);
 			intent.putExtra("category", position+1);
 			startActivity(intent);

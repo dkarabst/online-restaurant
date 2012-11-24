@@ -26,6 +26,7 @@ public class BoxAdapterDish extends BaseAdapter
 	Context					ctx;
 	LayoutInflater			lInflater;
 	ArrayList<DishModel>	dishByCategory;
+	final static String		BASE_URL			= "http://10.0.2.2:8666/academy/";
 
 	BoxAdapterDish(Context context, ArrayList<DishModel> products)
 	{
@@ -70,7 +71,7 @@ public class BoxAdapterDish extends BaseAdapter
 		try
 		{
 			Bitmap bitmap = BitmapFactory.decodeStream((InputStream) new URL(
-					Request.BASE_URL + "/resources/" + dishModel.getPhoto())
+					BASE_URL + "/resources/" + dishModel.getPhoto())
 					.getContent());
 			ivImage.setImageBitmap(bitmap);
 		} catch (MalformedURLException e)
