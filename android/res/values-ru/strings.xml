@@ -52,4 +52,6 @@
     <string name="color_for_category">#181818</string>
     <string name="welcome">Добро пожаловать!</string>
     <string name="lpage">Перейти на страницу логина ?</string>
+    <string name="mesConnErr">Проверьте соединение с Internet</string> 
+    
 </resources>

@@ -44,7 +44,7 @@ public final class R {
         public static final int RelativeLayout1=0x7f08000a;
         public static final int about_us=0x7f08001b;
         public static final int btnLogin=0x7f080013;
-        public static final int btnRegister=0x7f080021;
+        public static final int btnRegister=0x7f080022;
         public static final int button3=0x7f080008;
         public static final int button_back=0x7f080003;
         public static final int cbBox=0x7f080009;
@@ -53,17 +53,18 @@ public final class R {
         public static final int gridView1=0x7f080004;
         public static final int header=0x7f08000e;
         public static final int ivImage=0x7f08000d;
-        public static final int link_to_login=0x7f080022;
+        public static final int link_to_login=0x7f080023;
         public static final int link_to_register=0x7f080017;
         public static final int linlayout=0x7f080000;
         public static final int login=0x7f08001a;
         public static final int logreg=0x7f08001d;
         public static final int lvMain=0x7f080006;
-        public static final int menu_settings=0x7f080023;
+        public static final int menu_settings=0x7f080024;
         public static final int profile=0x7f080019;
         public static final int reg_email=0x7f08001f;
         public static final int reg_fullname=0x7f08001e;
         public static final int reg_password=0x7f080020;
+        public static final int reg_phone=0x7f080021;
         public static final int rmenu=0x7f080018;
         public static final int tableRow1=0x7f080012;
         public static final int tableRow2=0x7f080014;
@@ -96,8 +97,8 @@ public final class R {
         public static final int TestString=0x7f040029;
         public static final int about_us=0x7f040014;
         public static final int app_name=0x7f04000e;
-        public static final int back=0x7f040033;
-        public static final int base_uri=0x7f040034;
+        public static final int back=0x7f040036;
+        public static final int base_uri=0x7f040037;
         public static final int box=0x7f04002a;
         public static final int btLogin=0x7f040021;
         public static final int btMainMenu=0x7f040020;
@@ -108,6 +109,7 @@ public final class R {
         public static final int editTextBackground=0x7f04001a;
         public static final int etEnterEmail=0x7f040024;
         public static final int etEnterPassword=0x7f04001e;
+        public static final int etEnterPhone=0x7f040034;
         public static final int etEnterUserName=0x7f04001c;
         public static final int hello_world=0x7f04000f;
         public static final int imAndroidInTheCup=0x7f04001f;
@@ -117,6 +119,7 @@ public final class R {
         public static final int lpage=0x7f040032;
         public static final int menu_settings=0x7f040010;
         public static final int mesAdminOk=0x7f04002c;
+        public static final int mesConnErr=0x7f040033;
         public static final int mesGuestOk=0x7f04002e;
         public static final int mesUnknownError=0x7f04002f;
         public static final int mesUserOk=0x7f04002d;
@@ -136,6 +139,7 @@ public final class R {
         public static final int tvEmail=0x7f040023;
         public static final int tvLoginHere=0x7f040026;
         public static final int tvPassword=0x7f04001d;
+        public static final int tvPhone=0x7f040035;
         public static final int tvProfile=0x7f040028;
         public static final int tvRegisterHere=0x7f040022;
         public static final int tvUserName=0x7f04001b;

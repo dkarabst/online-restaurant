@@ -51,5 +51,8 @@
     <string name="mesUnknownError">Connection failed. Try to login later</string>
     <string name="color_for_category">#181818</string>
     <string name="welcome">Welcome!</string>
-    <string name="lpage">Go to the login page?</string>     
+    <string name="lpage">Go to the login page?</string> 
+	<string name="mesConnErr">Check your Internet connection</string> 
+    <string name="etEnterPhone">Enter phone number</string>
+    <string name="tvPhone">Phone number: </string>	   
 </resources>

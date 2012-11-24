@@ -103,7 +103,6 @@ public class Dishes extends Activity implements OnClickListener
 		alertDialog.setButton(DialogInterface.BUTTON_POSITIVE, getString(R.string.yes),
 				new DialogInterface.OnClickListener()
 				{
-					@Override
 					public void onClick(DialogInterface dialog, int which)
 					{
 						Toast.makeText(findViewById(R.id.lvMain).getContext(),
@@ -115,7 +114,6 @@ public class Dishes extends Activity implements OnClickListener
 		alertDialog.setButton(DialogInterface.BUTTON_NEGATIVE, getString(R.string.no),
 				new DialogInterface.OnClickListener()
 				{
-					@Override
 					public void onClick(DialogInterface dialog, int which)
 					{
 						alertDialog.cancel();
@@ -135,7 +133,6 @@ public class Dishes extends Activity implements OnClickListener
 		alertDialog.setButton(DialogInterface.BUTTON_POSITIVE, getString(R.string.yes),
 				new DialogInterface.OnClickListener()
 				{
-					@Override
 					public void onClick(DialogInterface dialog, int which)
 					{
 						Intent intent_login = new Intent(Dishes.this, LoginActivity.class);
@@ -146,7 +143,6 @@ public class Dishes extends Activity implements OnClickListener
 		alertDialog.setButton(DialogInterface.BUTTON_NEGATIVE, getString(R.string.no),
 				new DialogInterface.OnClickListener()
 				{
-					@Override
 					public void onClick(DialogInterface dialog, int which)
 					{
 						alertDialog.cancel();

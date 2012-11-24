@@ -33,11 +33,17 @@ public class MainActivity extends Activity implements OnClickListener
 		about_us.setOnClickListener(this);
 		linearLayout = (LinearLayout) findViewById(R.id.linlayout);
 		linearLayout.setBackgroundColor(Color.rgb(160, 200, 240));
+		
+		try{
 
 		if (Request.model == null)
 		{
 			new Request();
 			new GetData().execute();
+		}
+		}catch (Exception e)
+		{
+			
 		}
 	}
 
@@ -55,8 +61,15 @@ public class MainActivity extends Activity implements OnClickListener
 		switch (v.getId())
 		{
 			case R.id.rmenu:
+				if (!(Request.map==null))
+				{
 				Intent intent_rmenu = new Intent(this, CategoryList.class);
 				startActivity(intent_rmenu);
+				}
+				else 
+				{
+					Toast.makeText(this, getString(R.string.mesConnErr), Toast.LENGTH_SHORT).show();
+				}
 				break;
 			case R.id.profile:
 				if (!((Role) getApplicationContext()).isGuest())

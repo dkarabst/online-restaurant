@@ -19,7 +19,7 @@ import com.softserve.academy.food.android.model.UserModel;
 @SuppressLint("UseSparseArrays")
 public class Request
 {
-	final static String						BASE_URL	= "http://192.168.1.3:8080/academy/android";
+	final static String						BASE_URL	= "http://10.0.2.2:8666/academy/android";
 	public static AndroidMapModel			model;
 	public static Map<Integer, Integer>		map;
 	public static Map<DishModel, Integer>	modelMap;
@@ -95,6 +95,20 @@ public class Request
 		obj.add(quantity);
 		obj.add(userModel.getId());
 		return restTemplate.postForObject(url, obj, String.class);
+	}
+	
+	public static UserModel newUser(String name,String password, String email,String phone)
+	{
+		String url = BASE_URL + "/newUser";
+		RestTemplate restTemplate = new RestTemplate();
+		restTemplate.getMessageConverters().add(
+				new MappingJacksonHttpMessageConverter());
+		ArrayList<String> data = new ArrayList<String>();
+		data.add(name);
+		data.add(password);
+		data.add(email);
+		data.add(phone);
+		return restTemplate.postForObject(url, data, UserModel.class);
 	}
 
 	public static void getDishesByCatId()
